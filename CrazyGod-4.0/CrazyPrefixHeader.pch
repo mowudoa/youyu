@@ -1,0 +1,397 @@
+//
+//  PrefixHeader.pch
+//  TiaoWei
+//
+//  Created by dukai on 15/2/2.
+//  Copyright (c) 2015年 longcai. All rights reserved.
+//
+
+#ifndef Crazy_PrefixHeader_pch
+#define Crazy_PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#import <Availability.h>
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "CrazyNetWork.h"
+#import "CrazyDB.h"
+#import "CrazyAutoLayout.h"
+#import "CrazyExtensionHeader.h"
+#import "CrazyFunction.h"
+#import "UIImageView+WebCache.h"
+#import "UIButton+WebCache.h"
+#import "UIView+SDAutoLayout.h"
+#import "MJExtension.h"
+#import "MJRefresh.h"
+#import "JSONKit.h"
+#import "Masonry.h"
+#import "WYFTools.h"
+#import "UIColor+hexColor.h"
+
+#import "AppDelegate.h"
+#import "CrazyConfiguration.h"
+#import "JKToast.h"
+#import "commentStar.h"
+#import "MyMD5.h"
+#import "UITableView+FDTemplateLayoutCell.h"
+
+
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+
+#define SCREEN_STATUSRECT [[UIApplication sharedApplication] statusBarFrame].size.height
+
+#define SCREEN_NAVRECT    self.navigationController.navigationBar.frame.size.height
+
+#define SCREEN_TABBARRECT      ((AppDelegate *)[[UIApplication sharedApplication]delegate]).tabBarControll.tabBar.frame.size.height
+
+//获取系统版本
+#define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
+//获取当前语言
+#define CurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0])
+
+
+#define HEIGHT(f) f * (SCREEN_WIDTH/320.0) //屏幕比例 算出实际UI大小
+
+#define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+
+
+#define SUCCESS     [[NSString stringWithFormat:@"%d",[dic[@"code"] intValue]] isEqualToString:@"200"]
+#define FAILURE     [[NSString stringWithFormat:@"%d",[dic[@"status"] intValue]] isEqualToString:@"400"]
+
+
+//打印请求结果
+#define MyDeBug
+
+#ifdef MyDeBug
+
+#define LOG(a,b)       NSLog(@"%@-----%@",a,b);
+
+#else
+
+#define LOG(a,b)
+
+#endif
+
+
+#define USER_DEFAULT [NSUserDefaults standardUserDefaults]  //实例化
+
+
+#define HEADURL          @"https://www.renrenyouyu.wang/api/"  //正式网址
+
+//#define HEADERURL_USER   @"https://www.renrenyouyu.wang/apiuser"
+
+#define defaultImageUrl   @"http://www.renrenyouyu.wang/"//图片前缀
+
+#define ImageURL_CODE     @"http://www.renrenyouyu.wang/attachs/"//二维码前缀
+
+#define HOMEINFO         @"index"//首页信息
+
+#define HOMESEARCH       @"index/search"//首页搜索
+
+#define BUSINESSDETAIL   @"shop/detail"//商家信息
+
+#define RUSHTOBUYDETAIL           @"tuan/detail"//抢购详情
+
+#define SHOPPING_MALL    @"mall/index"//商城
+
+#define SHOPPING_MALL_LIST     @"mall/lists"//商城列表
+
+#define SHOPPING_MALL_CLASS     @"mall/shop"//商城分类
+
+#define SHOPPING_MALL_DETAIL   @"mall/detail"//商城商品详情
+
+#define SHOPPING_MALL_EVALUATE  @"mall/dianping"//商品点评
+
+#define SHOPPING_MALL_COLLECTION  @"mall/favorites"//商城商品收藏
+
+#define SHOP_DETAIL             @"shop/detail_xs"//店铺详情
+
+#define SHOP_FOLLOW             @"http://www.renrenyouyu.wang/api/shop/favorites_xs"//关注店铺
+
+#define SHOPPING_MALL_ADDSHOPCART  @"mall/cartadd2"//加入购物车
+
+#define SHOPPING_MALL_CARTLIST   @"mall/cart"//购物车列表
+
+#define SHOPPING_MALL_CARTLIST_DELETE  @"mall/cartdel"//购物车删除
+
+#define SHOPPING_MALL_UPLOADORDER  @"mall/order"//结算
+
+#define SHOPPING_MALL_ORDER_SET    @"mall/pay"//订单设定
+
+#define PAYTYPE_LIST               @"mall/paymentType"//支付类型获取
+
+#define PAY_WITHONEGOODS           @"mall/pay2"//单个商品付款
+
+#define PAY_WITHMOREGOODS          @"mall/paycode2"//多个商品付款
+
+#define ADDRESS_LIST               @"address/addlist"//地址列表
+
+#define PROVINCE_CITY_COUNTY       @"address/city"//省市县选择
+
+#define ADDRESS_ADD                @"address/addrcat"//添加地址
+
+#define ADDRESS_DELETE             @"address/adddels"//删除地址
+
+#define ADDRESS_EDIT_INFO           @"address/addedit"//编辑地址界面
+
+#define ADDRESS_CHOICE              @"address/choice"//地址选择
+
+#define SHOPPING_MALL_BUYNOW   @"mall/buy"//立即购买
+
+#define SHOPPING_MALL_ORDER    @"https://www.renrenyouyu.wang/apiuser/goods/index"//商城订单
+
+#define SHOPPING_MALL_ORDER_DETAIL  @"https://www.renrenyouyu.wang/apiuser/goods/detail"//商城订单详情
+
+#define SHOPPING_MALL_ORDER_DELETE  @"https://www.renrenyouyu.wang/apiuser/goods/orderdel"//取消订单
+
+#define SHOPPING_MALL_ORDER_REFUND  @"http://www.renrenyouyu.wang/apiuser/goods/refund"//申请退款
+
+#define SHOPPING_MALL_ORDER_CANCEL_REFUND @"http://www.renrenyouyu.wang/apiuser/goods/cancel_refund"//取消退款
+
+#define SHOPPING_MALL_ORDER_RECEIVE @"http://www.renrenyouyu.wang/apiuser/goods/queren"//确认收货
+
+#define SHOPPING_MALL_ORDER_EVALUATE  @"http://www.renrenyouyu.wang/apiuser/goods/dianping"//评价页面
+
+
+#define SHOPPING_MALL_ORDER_SUBMITEVALUATE   @"http://www.renrenyouyu.wang/apiuser/goods/dianping"//提交评价
+
+#define COLLECTION_RUSHTOBUY      @"https://www.renrenyouyu.wang/apiuser/favorites/tuan"//收藏列表
+
+#define COLLECTION_SHOP            @"https://www.renrenyouyu.wang/api/favoritesxs/index"//线上店铺收藏列表
+
+#define COLLECTION_MALLGOODS        @"https://www.renrenyouyu.wang/apiuser/favorites/index"//商品收藏列表
+
+#define COLLECTION_DELETE_RUSH    @"https://www.renrenyouyu.wang/apiuser/favorites/tuan_delete"//删除抢购
+
+#define COLLECTION_DELETE_MALLGOODS  @"https://www.renrenyouyu.wang/apiuser/favorites/delete"//删除商品
+
+#define COLLECTION_DELETE_SHOP       @"https://www.renrenyouyu.wang/apiuser/favorites/shop_delete_xs"//删除店铺
+
+
+#define  FAVORITES_GOODS          @"https://www.renrenyouyu.wang/api/tuan/favorites"//抢购收藏
+
+
+
+#define CITYLIST         @"city/index"//城市列表
+
+#define CITY_CHANGE      @"https://www.renrenyouyu.wang/api/city/change"//城市
+
+#define BUSINESSLIST     @"index/shop_list"//商家列表
+
+#define BUSINESSCLASS    @"index/shop"//分类查询列表
+
+#define LOGIN            @"passport/login"//登录
+
+#define REGISTER_CODE    @"passport/sendsms"//注册获取验证码
+
+#define REGISTER_IF      @"passport/register"//注册
+
+#define GETNEWPASS_CODE  @"passport/findsms"//获取新密码时验证码
+
+#define GETNEWPASSWORD   @"passport/newpwd"//获取新密码
+
+#define GETNEWPAYPASSWORD  @"passport/newpwd2"//获取新的支付密码
+#define CHANGEPAYPASSWORD  @"https://www.renrenyouyu.wang/apiuser/info/pay_password"//修改支付密码
+
+#define CHANGEPAYPASS_INFO  @"https://www.renrenyouyu.wang/apiuser/info/pay_password"//修改支付密码页面
+
+#define GETUSERINFO_MINE      @"https://www.renrenyouyu.wang/apiuser/member/index"//获取个人中心用户信息
+
+#define AUTHENTICATION_INFO   @"http://www.renrenyouyu.wang/apiuser/usersaux/index"//用户认证界面
+
+#define AUTHENTICATION        @"http://www.renrenyouyu.wang/apiuser/usersaux/index"//认证
+
+#define LINKUSER_GETCODE    @"http://www.renrenyouyu.wang/api/tuan/tuan_sendsms"//绑定用户获取验证码
+
+#define LINKUSER_PHONE     @"http://www.renrenyouyu.wang/api/tuan/tuan_mobile"//绑定手机号
+
+#define USERLOGINCHECK   @"http://www.renrenyouyu.wang/api/common/checks_login"//检查用户是否登录
+
+#define EXITLOGINSTATUS  @"https://www.renrenyouyu.wang/api/passport/logout"//退出登录
+
+#define UPLOADIMAGE      @"http://www.renrenyouyu.wang/apiapp/upload/uploadify"//上传图片
+
+#define UNDERLINE_INFO   @"https://www.renrenyouyu.wang/apiuser/apply/index"//线下入驻分类
+
+#define CITY_LIST        @"https://www.renrenyouyu.wang/apiapp/datas/cab"//商圈选择
+
+#define ADDRESS_COORDINATE  @"https://www.renrenyouyu.wang/api/zhandian/addToLng"//根据地址获取坐标
+
+#define UNDERLINE_APPLY     @"https://www.renrenyouyu.wang/apiuser/apply/index"//线下申请
+
+#define GETUSERINFO    @"http://www.renrenyouyu.wang/apiuser/information/index"//获取个人信息
+
+#define UPLOADICON_USER     @"http://www.renrenyouyu.wang/apiuser/info/face"//上传个人头像
+
+#define CHANGEICON_USER     @"http://www.renrenyouyu.wang/apiuser/information/upload_face"//修改头像
+
+#define CHECKNICKNAME       @"http://www.renrenyouyu.wang/apiuser/info/nickcheck"//检测昵称
+
+#define CHANGENICKNAME      @"http://www.renrenyouyu.wang/apiuser/info/nickname"//修改昵称
+
+#define CHANGEPASS_LOGIN    @"http://www.renrenyouyu.wang/apiuser/info/password"//修改登录密码
+
+#define MERCHANT_CENTER     @"https://www.renrenyouyu.wang/apidis/index/index"//商家中心
+
+#define MERCHANT_MONEY       @"https://www.renrenyouyu.wang/apidis/money/index"//商家资金
+
+#define MERCHANT_MONEY_APPLY_INFO  @"https://www.renrenyouyu.wang/apidis/money/cash"//资金提现详情
+
+#define MERCHANT_MONEY_APPLY       @"https://www.renrenyouyu.wang/apidis/money/cash"//资金提现申请
+
+#define MERCHANT_MONEY_LIST        @"https://www.renrenyouyu.wang/apidis/money/detail"//资金日志
+
+#define MERCHANT_INTEGRAL    @"https://www.renrenyouyu.wang/apidis/shopintegral/index"//商家积分
+
+#define CASH_SENDCODE        @"https://www.renrenyouyu.wang/apidis/money/sendsms"//提现发送验证码
+
+#define INTEGRAL_LIST        @"https://www.renrenyouyu.wang/apidis/shopintegral/detail"//积分日志
+
+#define GET_INTEGRAL_APPLY_INFO   @"https://www.renrenyouyu.wang/apidis/shopintegral/cash"//积分提现页面详情
+
+#define GET_INTEGRAL_APPLY   @"https://www.renrenyouyu.wang/apidis/shopintegral/cash"//积分提现申请
+
+#define INTEGRSL_CASH_LIST   @"https://www.renrenyouyu.wang/apidis/shopintegral/cashlogs"//积分提现日志
+
+
+#define MERCHANT_MONEY_CASH_LIST @"https://www.renrenyouyu.wang/apidis/money/cashlogs"//资金提现日志
+
+#define MERCHANTSET_BASE     @"https://www.renrenyouyu.wang/apidis/shop/about"//商户基本设置
+
+#define MERCHANT_ORDER       @"https://www.renrenyouyu.wang/apidis/tuan/order"//商户订单管理
+
+#define EMPLOYEE_ORDER       @"http://www.renrenyouyu.wang/apiworker/tuan/order"//员工订单管理
+
+#define MERCHANT_ORDER_DETAIL  @"https://www.renrenyouyu.wang/apidis/tuan/detail"//商家订单详情
+
+#define MERCHANTSET_BASE_EDIT  @"https://www.renrenyouyu.wang/apidis/shop/about"//编辑基本设置
+
+#define MERCHANT_IMAGE       @"https://www.renrenyouyu.wang/apidis/shop/photo"//商户图片
+
+#define MERCHANT_IMAGE_ADD    @"https://www.renrenyouyu.wang/apidis/shop/photo_create"//添加商户图片
+
+#define MERCHANT_IMAGE_DELETE  @"https://www.renrenyouyu.wang/apidis/shop/photo_delete"//删除商户图片
+
+#define EMPLOYEE_ID_CHECK     @"http://www.renrenyouyu.wang/apidis/worker/checkuserid"//员工id检测
+
+#define EMPLOYEE_ADD      @"https://www.renrenyouyu.wang/apidis/worker/create"//添加员工
+
+#define EMPLOYEE_LIST     @"https://www.renrenyouyu.wang/apidis/worker/index"//员工列表
+
+#define EMPLOYEE_DELETE     @"https://www.renrenyouyu.wang/apidis/worker/delete"//删除员工
+
+#define EMPLOYEE_EDIT      @"https://www.renrenyouyu.wang/apidis/worker/edit"//员工编辑
+
+#define MY_COUPON         @"https://www.renrenyouyu.wang/apiuser/tuancode/codeloading"//我的消费券
+
+#define COUPON_DETAIL    @"https://www.renrenyouyu.wang/apiuser/tuancode/weixin"//我的消费券详情
+
+#define UPLOAD_ORDER     @"https://www.renrenyouyu.wang/api/tuan/buy"//提交订单
+
+#define CREATE_ORDER     @"https://www.renrenyouyu.wang/api/tuan/order"//生成订单
+
+#define MY_ORDER         @"https://www.renrenyouyu.wang/apiuser/tuan/orderloading"//我的订单
+
+#define MY_ORDER_DETAIL  @"https://www.renrenyouyu.wang/apiuser/tuan/detail"//我的订单详情
+
+#define ORDER_PAY     @"https://www.renrenyouyu.wang/api/tuan/pay"//支付
+
+#define ORDER_PAY_UPLOAD  @"https://www.renrenyouyu.wang/api/tuan/pay2"//支付提交
+
+#define PAY_WCHAT      @"https://www.renrenyouyu.wang/api/payment/payment"//微信支付
+
+#define PAY_BALANCE_CHECKPASS  @"https://www.renrenyouyu.wang/api/payment/check_pay_password"//余额支付密码检测
+
+#define PAY_BALANCE            @"https://www.renrenyouyu.wang/apiuser/member/pay"//余额支付
+
+
+#define MY_ORDER_DELETE  @"https://www.renrenyouyu.wang/apiuser/tuan/delete"//取消抢购
+
+#define MY_MESSAGE       @"https://www.renrenyouyu.wang/apiuser/message/index"//我的消息
+
+#define MY_MESSGAE_DETAIL   @"https://www.renrenyouyu.wang/apiuser/message/msgshow"//我的消息详情
+
+#define MY_MESSAGE_CHOICE   @"https://www.renrenyouyu.wang/apiuser/information/worker"//判断是否同意过
+
+#define MERCHANT_MESSAGE    @"https://www.renrenyouyu.wang/apidis/message/index"
+
+#define MERCHANT_MESSAGE_DETAIL  @"https://www.renrenyouyu.wang/apidis/message/msgshow"//商家通知详情
+
+#define MESSAGE_AGREE   @"https://www.renrenyouyu.wang/apiuser/information/worker_agree"//同意邀请
+
+#define MESSAGE_REFUSE   @"https://www.renrenyouyu.wang/apiuser/information/worker_refuse"//拒绝邀请
+
+#define EMPLOYEE_MESSAGE    @"https://www.renrenyouyu.wang/apiworker/message/index"//员工通知
+
+#define EMPLOYEE_CENTRE     @"https://www.renrenyouyu.wang/apiworker/index/index"//店员中心
+
+#define MERCHANT_COUPON_CHECK        @"http://www.renrenyouyu.wang/apidis/tuan/used"//抢购券验证
+
+#define EMPLOYEE_COUPON_CHECK       @"http://www.renrenyouyu.wang/apiworker/tuan/used"//店员验证抢购券
+
+#define MERCHANT_COUPON_CHECK_HISTORY  @"https://www.renrenyouyu.wang/apidis/tuan/usedok"//验证记录
+
+#define EMPLOYEE_COUPON_CHECK_HISTORY  @"http://www.renrenyouyu.wang/apiworker/tuan/usedok"//员工验证中心
+
+#define MERCHANT_COUPON_CHECK_DETAIL   @"https://www.renrenyouyu.wang/apidis/tuan/usedok_detail"//验证记录详情
+
+#define EMPLOYEE_COUPON_CHECK_DETAIL   @"http://www.renrenyouyu.wang/apiworker/tuan/usedok_detail"//员工验证码详情记录
+
+#define MALL_MANAGE_GOODSLIST          @"http://www.renrenyouyu.wang/apidis/mart/index"//商城商品
+
+#define MALL_MANAGE_GOODSLIST_DELETE   @"http://www.renrenyouyu.wang/apidis/mart/delete2"//删除商城商品
+
+#define MALL_MANAGE_ORDER              @"http://www.renrenyouyu.wang/apidis/mart/order"//卖出商品订单
+
+#define MALL_ORDER_NOEXPRESS             @"http://www.renrenyouyu.wang/apidis/mart/deliver"//一键发货
+
+
+#define MALL_ORDER_BYEXPRESS               @"http://www.renrenyouyu.wang/apidis/mart/express"//快递发货
+
+#define MALL_MANAGE_ORDER_PAY          @"http://www.renrenyouyu.wang/apidis/mart/wait"//付款订单
+
+#define MALL_MANAGE_ORDERDETAIL        @"http://www.renrenyouyu.wang/apidis/mart/detail"//商家订单管理详情
+
+#define MALL_MANAGE_ADDGOODS           @"http://www.renrenyouyu.wang/apidis/goods/create"//添加商品
+
+#define MALL_MANAGE_EDITGOODS          @"http://www.renrenyouyu.wang/apidis/goods/edit"//编辑商品
+
+
+#define LINKWCHAT             @"https://www.renrenyouyu.wang/api/passport/wxlogin"//绑定微信
+
+
+#define MYMARKET_CENTER       @"https://www.renrenyouyu.wang/apiuser/distribution/index"//我的营销中心
+
+#define MYLEADER              @"https://www.renrenyouyu.wang/apiuser/distribution/superior"//我的领导
+
+#define MYSHARE_QRCODE        @"https://www.renrenyouyu.wang/api/api/qrcode"//我的分享二维码
+
+#define MY_BALANCE            @"https://www.renrenyouyu.wang/apiuser/money/index"//我的余额
+
+#define MYBALANCE_RECHARGE    @"https://www.renrenyouyu.wang/apiuser/money/moneypay"//余额充值
+
+#define MYBALANCE_LOGLIST     @"https://www.renrenyouyu.wang/apiuser/logs/moneylogs"//余额日志
+
+#define MYBALANCE_CASHINFO    @"http://www.renrenyouyu.wang/apiuser/cash/index"//提现信息
+
+#define MYBALANCE_CASHSUBMIT  @"http://www.renrenyouyu.wang/apiuser/cash/applycash"//申请提现
+
+#define MYBALANCE_CASHLIST    @"https://www.renrenyouyu.wang/apiuser/cash/cashlogloaddata"//余额提现列表
+
+#define MYSUBORDINATE         @"https://www.renrenyouyu.wang/apiuser/distribution/subordinateloaddata"//我的顾客
+
+#define TRANSACCOUNT_INFO     @"https://www.renrenyouyu.wang/apiuser/money/transferym"//转账给好友界面
+
+#define TRANSACCOUNT_GETCODE  @"http://www.renrenyouyu.wang/apiuser/money/sendsms"//转账给好友获取验证码
+
+#define TRANSACCOUNT_CHECKPHONE  @"http://www.renrenyouyu.wang/apiuser/money/check_mobile"//转账给好友检测手机号
+
+#define TRANSACCOUNT          @"http://www.renrenyouyu.wang/apiuser/money/transfer"//转账给好友
+
+#define MYPROFITLIST          @"https://www.renrenyouyu.wang/apiuser/distribution/profitloaddata"//收益统计
+#endif

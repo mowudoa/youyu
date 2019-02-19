@@ -1,0 +1,25 @@
+//
+//  HZDSaddEmployeeViewController.h
+//  CrazyGod
+//
+//  Created by 英峰 on 2019/1/10.
+//  Copyright © 2019年 英峰. All rights reserved.
+//
+
+#import "XTBaseBackViewController.h"
+#import "HZDSemployeeListModel.h"
+
+typedef enum {
+    addType,
+    editType
+}addEmployeeType;
+
+@interface HZDSaddEmployeeViewController : XTBaseBackViewController
+
+@property(nonatomic,copy) NSString *addUrl;
+
+@property(nonatomic)addEmployeeType employeeType;
+
+@property(nonatomic,strong)HZDSemployeeListModel *employModel;
+
+@end
