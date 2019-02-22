@@ -27,7 +27,7 @@
 {
     self.navigationItem.title = @"修改昵称";
     
-    _changeNickNameButton.layer.cornerRadius = _changeNickNameButton.frame.size.height/16*9;
+    _changeNickNameButton.layer.cornerRadius = _changeNickNameButton.frame.size.height/16*3;
     
     _changeNickNameButton.layer.masksToBounds = YES;
  

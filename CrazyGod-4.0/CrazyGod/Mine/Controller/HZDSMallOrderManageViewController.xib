@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HZDSMallOrderManageViewController">
             <connections>
+                <outlet property="backGroundView" destination="egT-VH-srb" id="0DK-e3-3Ic"/>
                 <outlet property="orderListTableView" destination="eb1-RY-FE6" id="TZK-Wa-b1n"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -68,6 +69,23 @@
                         <constraint firstAttribute="height" constant="40" id="zGL-JI-Cim"/>
                     </constraints>
                 </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="egT-VH-srb">
+                    <rect key="frame" x="0.0" y="62" width="320" height="506"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nothing" translatesAutoresizingMaskIntoConstraints="NO" id="wHM-gC-wbZ">
+                            <rect key="frame" x="40" y="133" width="240" height="240"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="240" id="bmx-4M-KSJ"/>
+                                <constraint firstAttribute="width" constant="240" id="uPC-Vz-vDq"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="wHM-gC-wbZ" firstAttribute="centerX" secondItem="egT-VH-srb" secondAttribute="centerX" id="1bR-Km-tiS"/>
+                        <constraint firstItem="wHM-gC-wbZ" firstAttribute="centerY" secondItem="egT-VH-srb" secondAttribute="centerY" id="g3x-08-HQZ"/>
+                    </constraints>
+                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eb1-RY-FE6">
                     <rect key="frame" x="0.0" y="62" width="320" height="506"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -80,14 +98,22 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="gtc-0X-hft" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="6We-Ck-w7K"/>
+                <constraint firstItem="egT-VH-srb" firstAttribute="top" secondItem="gtc-0X-hft" secondAttribute="bottom" constant="2" id="Byd-4W-OJn"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="eb1-RY-FE6" secondAttribute="trailing" id="MdE-dM-xkG"/>
                 <constraint firstItem="gtc-0X-hft" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="RAA-UA-Qo6"/>
+                <constraint firstItem="egT-VH-srb" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="RtP-Ww-rka"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="egT-VH-srb" secondAttribute="bottom" id="bpz-9K-Un8"/>
+                <constraint firstItem="egT-VH-srb" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="lXy-Pm-Pa2"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="eb1-RY-FE6" secondAttribute="bottom" id="rhV-3z-M5v"/>
                 <constraint firstItem="eb1-RY-FE6" firstAttribute="top" secondItem="gtc-0X-hft" secondAttribute="bottom" constant="2" id="xtI-q5-s9S"/>
                 <constraint firstItem="eb1-RY-FE6" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="ypI-tX-awP"/>
                 <constraint firstItem="gtc-0X-hft" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="zL3-j4-LGY"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="138.75" y="138.38028169014083"/>
         </view>
     </objects>
+    <resources>
+        <image name="nothing" width="500" height="500"/>
+    </resources>
 </document>

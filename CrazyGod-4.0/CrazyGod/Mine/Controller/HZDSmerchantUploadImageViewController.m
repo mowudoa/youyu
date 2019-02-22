@@ -36,7 +36,7 @@ UIActionSheetDelegate
 {
     self.navigationItem.title = @"添加环境图";
     
-    _addImageButton.layer.cornerRadius = _addImageButton.frame.size.height/16*9;
+    _addImageButton.layer.cornerRadius = _addImageButton.frame.size.height/16*3;
     
     _addImageButton.layer.masksToBounds = YES;
 }

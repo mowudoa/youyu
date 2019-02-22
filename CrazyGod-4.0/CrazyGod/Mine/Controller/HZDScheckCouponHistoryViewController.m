@@ -114,9 +114,19 @@ UITableViewDataSource
                 
                 model.couponID = dict1[@"code_id"];
                 model.couponImage = dict1[@"photo"];
-                model.couponTite = dict1[@"title"];
+                
+                if (dict1[@"title"] == NULL || dict1[@"title"] == nil || dict1[@"title"] == [NSNull null]) {
+                    
+                    model.couponTite = @"";
+
+                }else{
+                    model.couponTite = dict1[@"title"];
+
+                }
                 
                 model.couponNUm = dict1[@"code"];
+                
+                model.couponChecker = dict1[@"user_name"];
                 
                 model.couponTime = dict1[@"create_time"];
                 
@@ -162,7 +172,15 @@ UITableViewDataSource
                 
                 model.couponID = dict1[@"code_id"];
                 model.couponImage = dict1[@"photo"];
-                model.couponTite = dict1[@"title"];
+
+                if (dict1[@"title"] == NULL || dict1[@"title"] == nil || dict1[@"title"] == [NSNull null]) {
+                    
+                    model.couponTite = @"";
+                    
+                }else{
+                    model.couponTite = dict1[@"title"];
+                    
+                }
                 
                 model.couponNUm = dict1[@"code"];
                 
@@ -212,6 +230,7 @@ UITableViewDataSource
     [cell.orderIcon sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,model.couponImage]] placeholderImage:[UIImage imageNamed:@"baseImage"]];
     
     cell.titleLabel.text = [NSString stringWithFormat:@"名称:%@",model.couponTite];
+    
     
     cell.numLabel.text = [NSString stringWithFormat:@"下单日期:%@",[self ConvertStrToTime:model.couponTime]];
     
@@ -312,11 +331,72 @@ UITableViewDataSource
 {
     return 31;
 }
+-(UIView*)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    
+    HZDScouponModel *model = [[HZDScouponModel alloc] init];
+    model = _counponListArray[section];
+    
+    UIView* view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
+    
+    UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,39,SCREEN_WIDTH,1)];
+    lineLabel.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
+    [view addSubview:lineLabel];
+    
+    UILabel* zongjia = [[UILabel alloc]initWithFrame:CGRectMake(15, 13,100, 20)];
+    zongjia.font=[UIFont systemFontOfSize:14];
+    zongjia.textAlignment = NSTextAlignmentLeft;
+    zongjia.textColor = [UIColor colorWithHexString:@"BEC2C9"];
+    //  zongjia.text = [NSString stringWithFormat:@"共%ld件商品",(long)goodsNum];
+    
+    [view addSubview:zongjia];
+    
+    UILabel* price = [[UILabel alloc]initWithFrame:CGRectMake(120, 13,SCREEN_WIDTH - 120 -75 -5, 20)];
+    [view addSubview:price];
+    
+    //  price.text =  [NSString stringWithFormat:@"合计 :￥%.2f",goodstotalPirce];
+    price.tag = section;
+    price.textColor = [UIColor colorWithHexString:@"#BEC2C9"];
+    price.font=[UIFont systemFontOfSize:14];
+    price.textAlignment = NSTextAlignmentLeft;
+    // price.adjustsFontSizeToFitWidth = YES;
+    
+    
+    //    UILabel* postLabel = [UILabel alloc]initWithFrame:CGRectMake(150, 5, <#CGFloat width#>, <#CGFloat height#>)
+    
+    UIButton* leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftBtn setFrame:CGRectMake(SCREEN_WIDTH-75-75, 8, 70, 25)];
+    [leftBtn setTitle:@"" forState:UIControlStateNormal];
+    leftBtn.layer.cornerRadius = 3;
+    leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    leftBtn.layer.masksToBounds = YES;
+    leftBtn.backgroundColor = [UIColor colorWithHexString:@"#c6c6c6"];
+    //  leftBtn.layer.borderWidth = 0.5;
+    leftBtn.tag = section;
+    //  [leftBtn addTarget:self action:@selector(tapleftBtn:) forControlEvents:UIControlEventTouchUpInside];
+    //  [view addSubview:leftBtn];
+    
+    UIButton* rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [rightBtn setFrame:CGRectMake(SCREEN_WIDTH-75, 8, 70, 25)];
+    rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    [rightBtn setTitle:[NSString stringWithFormat:@"验证-%@",model.couponChecker] forState:UIControlStateNormal];
+    rightBtn.backgroundColor = [UIColor colorWithHexString:@"#b5b5b5"];
+    rightBtn.layer.cornerRadius = 3;
+    rightBtn.layer.masksToBounds = YES;
+    rightBtn.tag = section;
+    //   [rightBtn addTarget:self action:@selector(tapBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:rightBtn];
+    
+    
+    view.backgroundColor=[UIColor whiteColor];
+    
+    return view;
+}
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    return 10;
+    return 40;
     
 }
 - (void)didReceiveMemoryWarning {

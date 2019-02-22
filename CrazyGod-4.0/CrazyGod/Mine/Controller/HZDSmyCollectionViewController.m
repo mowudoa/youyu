@@ -7,6 +7,8 @@
 //
 
 #import "HZDSmyCollectionViewController.h"
+#import "HZDSMallDetailViewController.h"
+#import "HZDGoodsDetailSViewController.h"
 #import "HZDSShopViewController.h"
 #import "HZDSOrderTableViewCell.h"
 #import "HZDSOrderModel.h"
@@ -220,7 +222,8 @@ UITableViewDataSource
         model.orderTitle = dict1[@"title"];
         model.orderPrice = [dict1[@"price"] stringValue];
         model.orderNeedPayPrice = [dict1[@"tuan_price"] stringValue];
-        
+        model.orderStatus = dict1[@"tuan_id"];
+
         [_collectionListArray addObject:model];
     }
     
@@ -265,7 +268,8 @@ UITableViewDataSource
         model.orderTitle = dict1[@"title"];
         model.orderPrice = [dict1[@"price"] stringValue];
         model.orderNeedPayPrice = [dict1[@"mall_price"] stringValue];
-        
+        model.orderStatus = dict1[@"goods_id"];
+
         [_collectionMallGoodsListArray addObject:model];
     }
     
@@ -356,7 +360,17 @@ UITableViewDataSource
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([_collectionType isEqualToString:@"1"]) {
+    if ([_collectionType isEqualToString:@"0"]) {
+        
+    
+        HZDSMallDetailViewController *detail = [[HZDSMallDetailViewController alloc] init];
+        
+        HZDSOrderModel *model = _collectionMallGoodsListArray[indexPath.section];
+        
+        detail.goodsId = model.orderStatus;
+        
+        [self.navigationController pushViewController:detail animated:YES];
+    }else if ([_collectionType isEqualToString:@"1"]) {
         
         HZDSShopViewController *shop = [[HZDSShopViewController alloc] init];
         
@@ -365,6 +379,18 @@ UITableViewDataSource
         shop.shop_id = model.orderStatus;
         
         [self.navigationController pushViewController:shop animated:YES];
+        
+    }else if ([_collectionType isEqualToString:@"2"]){
+     
+        HZDSOrderModel *model = [[HZDSOrderModel alloc] init];
+        
+        model = _collectionListArray[indexPath.section];
+        
+        HZDGoodsDetailSViewController *good = [[HZDGoodsDetailSViewController alloc] init];
+        
+        good.goodsID = model.orderStatus;
+    
+        [self.navigationController pushViewController:good animated:YES];
         
     }
 }

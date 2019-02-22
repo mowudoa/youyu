@@ -89,25 +89,24 @@
             
             strongSelf.vipRank.text = [NSString stringWithFormat:@"VIP %@",dic[@"datas"][@"MEMBER"][@"rank_id"]];
 
-            strongSelf.myBalance.text = [dic[@"datas"][@"MEMBER"][@"money"] stringValue];
-
+            strongSelf.myBalance.text = [NSString stringWithFormat:@"¥%@",[dic[@"datas"][@"MEMBER"][@"money"] stringValue]];
 
             if (dic[@"datas"][@"profit_ok"] == NULL || dic[@"datas"][@"profit_ok"] == nil ||dic[@"datas"][@"profit_ok"] == [NSNull null]) {
                 
-                strongSelf.myReward.text = @"0";
+                strongSelf.myReward.text = @"¥0";
 
             }else{
                 
-                strongSelf.myReward.text = [dic[@"datas"][@"profit_ok"] stringValue];
+                strongSelf.myReward.text = [NSString stringWithFormat:@"¥%@",[dic[@"datas"][@"profit_ok"] stringValue]];
 
             }
             if (dic[@"datas"][@"profit_cancel"] == NULL || dic[@"datas"][@"profit_cancel"] == nil ||dic[@"datas"][@"profit_cancel"] == [NSNull null]) {
                 
-                strongSelf.myCancleReward.text = @"0";
+                strongSelf.myCancleReward.text = @"¥0";
                 
             }else{
                 
-                strongSelf.myCancleReward.text = [dic[@"datas"][@"profit_cancel"] stringValue];
+                strongSelf.myCancleReward.text = [NSString stringWithFormat:@"¥%@",[dic[@"datas"][@"profit_cancel"] stringValue]];
                 
             }
             

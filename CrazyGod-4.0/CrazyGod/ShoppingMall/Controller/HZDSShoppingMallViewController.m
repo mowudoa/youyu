@@ -173,7 +173,6 @@ UICollectionViewDelegateFlowLayout
                 model.goodsId = dictlist[@"goods_id"];
                 
                 
-                
                 [strongSelf.goodArray addObject:model];
             }
             

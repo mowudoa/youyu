@@ -30,7 +30,7 @@
 {
     self.navigationItem.title = @"绑定手机";
     
-    _linkButton.layer.cornerRadius = _linkButton.frame.size.height/16*9;
+    _linkButton.layer.cornerRadius = _linkButton.frame.size.height/16*3;
     
     _linkButton.layer.masksToBounds = YES;
     

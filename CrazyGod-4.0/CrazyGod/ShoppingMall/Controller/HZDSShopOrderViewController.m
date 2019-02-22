@@ -62,7 +62,7 @@ UIActionSheetDelegate
 {
     self.navigationItem.title = @"订单设定";
     
-    _uploadOrderButton.layer.cornerRadius = _uploadOrderButton.frame.size.height/16*9;
+    _uploadOrderButton.layer.cornerRadius = _uploadOrderButton.frame.size.height/16*3;
     
     _uploadOrderButton.layer.masksToBounds = YES;
     

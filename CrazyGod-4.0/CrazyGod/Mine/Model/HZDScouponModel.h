@@ -29,4 +29,6 @@
 
 @property(copy,nonatomic)NSString* couponImage; //消费券商品名字
 
+@property(copy,nonatomic)NSString* couponChecker; //消费验证人
+
 @end

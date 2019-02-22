@@ -49,7 +49,7 @@ deleteBtnDelagate
     UINib* nib   =[UINib nibWithNibName:@"HZDSshopAddressTableViewCell" bundle:nil];
     [_addressListTableView registerNib:nib forCellReuseIdentifier:@"AddressTableViewCell"];
     
-    _addAddressbutton.layer.cornerRadius = _addAddressbutton.frame.size.height/16*9;
+    _addAddressbutton.layer.cornerRadius = _addAddressbutton.frame.size.height/16*3;
     
     _addAddressbutton.layer.masksToBounds = YES;
 }

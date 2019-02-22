@@ -43,7 +43,7 @@
     
     _codeButton.layer.masksToBounds = YES;
     
-    _applyButton.layer.cornerRadius = _applyButton.frame.size.height/16*9;
+    _applyButton.layer.cornerRadius = _applyButton.frame.size.height/16*3;
     
     _applyButton.layer.masksToBounds = YES;
     

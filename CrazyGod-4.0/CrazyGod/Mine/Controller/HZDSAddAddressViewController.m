@@ -72,7 +72,7 @@ UIPickerViewDataSource
     //设置边框颜色有两种方法：第一种如下:
     _addressDetailTextView.layer.borderColor=[UIColor colorWithHexString:@"f5f5f5"].CGColor;
     
-    _addAddressButton.layer.cornerRadius = _addAddressButton.frame.size.height/16*9;
+    _addAddressButton.layer.cornerRadius = _addAddressButton.frame.size.height/16*3;
     
     _addAddressButton.layer.masksToBounds = YES;
     

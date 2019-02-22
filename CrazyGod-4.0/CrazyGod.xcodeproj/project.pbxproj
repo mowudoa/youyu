@@ -298,7 +298,7 @@
 		7147557B21E4833D0032A7B6 /* HZDSChangepassWordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7147557921E4833D0032A7B6 /* HZDSChangepassWordViewController.xib */; };
 		7147557F21E4A1670032A7B6 /* HZDSMIneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7147557D21E4A1670032A7B6 /* HZDSMIneTableViewCell.m */; };
 		7147558021E4A1670032A7B6 /* HZDSMIneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7147557E21E4A1670032A7B6 /* HZDSMIneTableViewCell.xib */; };
-		714DC32F21ED86F00073394D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 714DC32E21ED86F00073394D /* Images.xcassets */; };
+		714E4274221E918B00B7A6C9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 714E4273221E918B00B7A6C9 /* Images.xcassets */; };
 		715E346F21DF083D000679CC /* XTBaseTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 715E346E21DF083D000679CC /* XTBaseTabBar.m */; };
 		715E347821DF0880000679CC /* XTBaseBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 715E347121DF0880000679CC /* XTBaseBackViewController.m */; };
 		715E347921DF0880000679CC /* XTBaseTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 715E347221DF0880000679CC /* XTBaseTabBarViewController.m */; };
@@ -1039,7 +1039,7 @@
 		7147557C21E4A1670032A7B6 /* HZDSMIneTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HZDSMIneTableViewCell.h; sourceTree = "<group>"; };
 		7147557D21E4A1670032A7B6 /* HZDSMIneTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HZDSMIneTableViewCell.m; sourceTree = "<group>"; };
 		7147557E21E4A1670032A7B6 /* HZDSMIneTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HZDSMIneTableViewCell.xib; sourceTree = "<group>"; };
-		714DC32E21ED86F00073394D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		714E4273221E918B00B7A6C9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		715E346D21DF083D000679CC /* XTBaseTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTBaseTabBar.h; sourceTree = "<group>"; };
 		715E346E21DF083D000679CC /* XTBaseTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTBaseTabBar.m; sourceTree = "<group>"; };
 		715E347021DF0880000679CC /* XTBaseBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTBaseBackViewController.h; sourceTree = "<group>"; };
@@ -1385,9 +1385,9 @@
 				7101C94021DDCE6200E5F094 /* ViewController.h */,
 				7101C94121DDCE6200E5F094 /* ViewController.m */,
 				7101C94621DDCE6300E5F094 /* Assets.xcassets */,
+				714E4273221E918B00B7A6C9 /* Images.xcassets */,
 				7101C94B21DDCE6300E5F094 /* Info.plist */,
 				7101C94C21DDCE6300E5F094 /* main.m */,
-				714DC32E21ED86F00073394D /* Images.xcassets */,
 			);
 			path = CrazyGod;
 			sourceTree = "<group>";
@@ -2987,6 +2987,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71776F7D21E6F4BA0056AB99 /* HZDSUploadHeadImageViewController.xib in Resources */,
+				714E4274221E918B00B7A6C9 /* Images.xcassets in Resources */,
 				715E348A21DF0AAD000679CC /* HZDSMineViewController.xib in Resources */,
 				712551AF21E0420A00FF23CF /* HZDSBusinessDetailViewController.xib in Resources */,
 				71982E8621EB0235000D1E4C /* HZDSmyCollectionViewController.xib in Resources */,
@@ -2997,7 +2998,6 @@
 				7105805D21FB0BCD00E7C1B5 /* HZDSEvaluateViewController.xib in Resources */,
 				7133479B21EC2A15002B2EF0 /* HZDSingegralListViewController.xib in Resources */,
 				715E80B821F16F210057D51E /* HZDSMallClassCollectionViewCell.xib in Resources */,
-				714DC32F21ED86F00073394D /* Images.xcassets in Resources */,
 				7180A6D821E89B55003E05D0 /* HZDSmessageTableViewCell.xib in Resources */,
 				713347B421EC6E5B002B2EF0 /* HZDScashHistoryTableViewCell.xib in Resources */,
 				712551C121E0AD8800FF23CF /* HZDSLinkWebViewController.xib in Resources */,

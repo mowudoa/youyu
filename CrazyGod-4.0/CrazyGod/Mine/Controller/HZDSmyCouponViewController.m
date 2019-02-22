@@ -127,8 +127,24 @@ couponBtnDelagate
                 
                 model.couponID = dict1[@"code_id"];
                 model.couponNUm = dict1[@"code"];
-                model.couponTite = dict1[@"title"];
-                model.couponShop = dict1[@"shop_name"];
+
+                if (dict1[@"title"] == NULL || dict1[@"title"] == nil || dict1[@"title"] == [NSNull null]) {
+                    
+                    model.couponTite = @"";
+                    
+                }else{
+                    model.couponTite = dict1[@"title"];
+                    
+                }
+                if (dict1[@"shop_name"] == NULL || dict1[@"shop_name"] == nil || dict1[@"shop_name"] == [NSNull null]) {
+                    
+                    model.couponShop = @"";
+                    
+                }else{
+                    model.couponShop = dict1[@"shop_name"];
+                    
+                }
+                
                 model.couponOrderCode = dict1[@"order_id"];
                 model.couponTime = dict1[@"create_time"];
                 
@@ -184,8 +200,23 @@ couponBtnDelagate
                 
                 model.couponID = dict1[@"code_id"];
                 model.couponNUm = dict1[@"code"];
-                model.couponTite = dict1[@"title"];
-                model.couponShop = dict1[@"shop_name"];
+
+                if (dict1[@"title"] == NULL || dict1[@"title"] == nil || dict1[@"title"] == [NSNull null]) {
+                    
+                    model.couponTite = @"";
+                    
+                }else{
+                    model.couponTite = dict1[@"title"];
+                    
+                }
+                if (dict1[@"shop_name"] == NULL || dict1[@"shop_name"] == nil || dict1[@"shop_name"] == [NSNull null]) {
+                    
+                    model.couponShop = @"";
+                    
+                }else{
+                    model.couponShop = dict1[@"shop_name"];
+
+                }
                 model.couponOrderCode = dict1[@"order_id"];
                 model.couponTime = dict1[@"create_time"];
                 

@@ -52,7 +52,7 @@ UITableViewDataSource
 -(void)initUI
 {
     
-    _payButton.layer.cornerRadius = _payButton.frame.size.height/16*9;
+    _payButton.layer.cornerRadius = _payButton.frame.size.height/16*3;
     
     _payButton.layer.masksToBounds = YES;
 }

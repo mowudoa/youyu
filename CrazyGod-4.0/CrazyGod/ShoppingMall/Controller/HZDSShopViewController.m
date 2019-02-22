@@ -217,7 +217,9 @@ UICollectionViewDelegateFlowLayout
             
         }else{
             
-            
+            [JKToast showWithText:dic[@"datas"][@"error"]];
+
+            [self.navigationController popViewControllerAnimated:YES];
         }
         
         [strongSelf.goodsDataSource addObjectsFromArray:strongSelf.goodsHomeDataSource];

@@ -17,6 +17,7 @@ UITableViewDataSource
 >
 
 @property (weak, nonatomic) IBOutlet UITableView *mallGoodstableView;
+@property (weak, nonatomic) IBOutlet UIView *backGroundView;
 
 @property(nonatomic,strong) NSMutableArray *goodsListArray;
 
@@ -112,6 +113,16 @@ UITableViewDataSource
             
             NSArray *arr = dic[@"datas"][@"list"];
             
+            if (arr.count > 0) {
+                
+                strongSelf.mallGoodstableView.hidden = NO;
+                strongSelf.backGroundView.hidden = YES;
+                
+            }else{
+                
+                strongSelf.mallGoodstableView.hidden = YES;
+                strongSelf.backGroundView.hidden = NO;
+            }
             
             for (NSDictionary *dict1 in arr) {
                 

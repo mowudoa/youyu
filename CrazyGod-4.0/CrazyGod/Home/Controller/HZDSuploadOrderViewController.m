@@ -45,7 +45,7 @@
     _numLabel.layer.borderColor = [UIColor grayColor].CGColor;
     _numLabel.layer.borderWidth = 0.5;
     
-    _uploadButton.layer.cornerRadius = _uploadButton.frame.size.height/16*9;
+    _uploadButton.layer.cornerRadius = _uploadButton.frame.size.height/16*3;
     
     _uploadButton.layer.masksToBounds = YES;
 }

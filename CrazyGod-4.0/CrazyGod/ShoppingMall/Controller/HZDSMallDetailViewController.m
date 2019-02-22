@@ -154,6 +154,7 @@
                 
                 [JKToast showWithText:dic[@"datas"][@"error"]];
 
+                [self.navigationController popViewControllerAnimated:YES];
             }
         
         [self reloadData];

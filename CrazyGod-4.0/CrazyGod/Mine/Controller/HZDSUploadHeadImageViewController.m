@@ -40,7 +40,7 @@ UINavigationControllerDelegate
     
     [_oldImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,[USER_DEFAULT objectForKey:@"face"]]] placeholderImage:[UIImage imageNamed:@"1213per"]];
     
-    _confirmButton.layer.cornerRadius = _confirmButton.frame.size.height/16*9;
+    _confirmButton.layer.cornerRadius = _confirmButton.frame.size.height/16*3;
     
     _confirmButton.layer.masksToBounds = YES;
 }

@@ -17,6 +17,7 @@ UITableViewDataSource,
 UITableViewDelegate
 >
 @property (weak, nonatomic) IBOutlet UITableView *orderListTableView;
+@property (weak, nonatomic) IBOutlet UIView *backGroundView;
 
 @property(nonatomic,strong) NSMutableArray *orderListArray;
 
@@ -107,7 +108,16 @@ UITableViewDelegate
             
             NSArray *arr = dic[@"datas"][@"$list"];
             
-          
+            if (arr.count > 0) {
+                
+                strongSelf.orderListTableView.hidden = NO;
+                strongSelf.backGroundView.hidden = YES;
+                
+            }else{
+                
+                strongSelf.orderListTableView.hidden = YES;
+                strongSelf.backGroundView.hidden = NO;
+            }
             
             for (NSDictionary *dict1 in arr) {
                 

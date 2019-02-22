@@ -34,7 +34,7 @@
 {
     self.navigationItem.title = @"忘记密码";
     
-    _getNewpassButton.layer.cornerRadius = _getNewpassButton.frame.size.height/16*9;
+    _getNewpassButton.layer.cornerRadius = _getNewpassButton.frame.size.height/16*3;
     
     _getNewpassButton.layer.masksToBounds = YES;
     
