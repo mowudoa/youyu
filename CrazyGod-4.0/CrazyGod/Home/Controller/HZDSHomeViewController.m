@@ -68,10 +68,6 @@ cityChoiceDelegate
     [self initNav];
     
     [self registercell];
-
-    
-   
-    
     
 }
 

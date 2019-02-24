@@ -154,8 +154,6 @@ UIActionSheetDelegate
         [_payTypeTableView reloadData];
         
 
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"getUserINfo" object:nil];
-
 }
 #pragma mark - UITableViewDataSource
 

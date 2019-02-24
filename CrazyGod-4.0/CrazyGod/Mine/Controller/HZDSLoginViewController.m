@@ -71,6 +71,9 @@
 
                 [USER_DEFAULT setBool:YES forKey:@"isLogin"];
                 
+                //登录成功获取用户信息
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"getUserINfo" object:nil];
+                
                 [self.navigationController popViewControllerAnimated:YES];
                 
             }else{

@@ -51,7 +51,7 @@
         
         if (dic[@"datas"][@"renzheng"] == NULL || dic[@"datas"][@"renzheng"] == nil ||dic[@"datas"][@"renzheng"] == [NSNull null]) {
             
-            strongSelf.authenticationButton.userInteractionEnabled = YES;
+        strongSelf.authenticationButton.userInteractionEnabled = YES;
             
             [strongSelf.authenticationButton setTitle:@"未认证" forState:UIControlStateNormal];
             
