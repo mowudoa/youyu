@@ -111,8 +111,6 @@ UITableViewDataSource
     
     HZDSEvaluateTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"EvaluateTableViewCell" forIndexPath:indexPath];
     
-    //    [cell.iconImageView sd_setImageWithURL:[NSURL URLWithString:@"http://115.28.133.70/uploads/image/20151009/1444395668.jpg"]];
-    
     [self configureCell:cell atIndexPath:indexPath];
 
     HZDSevaluateModel *model = _evaluateListDataSource[indexPath.row];

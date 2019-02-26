@@ -333,7 +333,7 @@ UIActionSheetDelegate
 }
 -(void)actionsheetSelected:(HZDSOrderModel *)model
 {
-    
+    //单个商品支付和多个商品支付接口不一样,根据商品数量判断调用那个接口
     if ([model.orderTitle isEqualToString:@"微信支付"]) {
         
         _payNameString = @"微信支付";
@@ -597,6 +597,7 @@ UIActionSheetDelegate
 {
     [super viewWillAppear:animated];
     
+    //选择地址有三个位置,直接购买选择,订单位置(地址不能更改),个人中心查看地址列表,须加以判断
     if ([[USER_DEFAULT objectForKey:@"choiceAddress"] isEqualToString:@"1"] || [[USER_DEFAULT objectForKey:@"choiceAddress"] isEqualToString:@"2"]) {
         
         

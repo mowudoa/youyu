@@ -128,6 +128,7 @@
             
             NSArray *picArr = dict[@"pics"];
             
+            //轮播图为photo+pics里面的图片总和
             if (picArr.count > 0) {
              
                 [strongSelf.headerScrImgArray addObjectsFromArray:dict[@"pics"] ];
@@ -209,7 +210,7 @@
     label.textColor = [UIColor redColor];
     
     
-  
+  //接口返回为html字符串,所以详情用label富文本加载html数据
     UILabel *label1 = [[UILabel alloc] init];
 
     
@@ -308,7 +309,6 @@
     if (_headScrollView == nil) {
         _headScrollView = [[scrollPhotos alloc]initWithFrame:CGRectMake(0 , 0, SCREEN_WIDTH, SCREEN_WIDTH/8*5)];
         _headScrollView.delegate = self;
-        
         
         _headScrollView.photos = _headerScrImgArray;
         

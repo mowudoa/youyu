@@ -32,6 +32,7 @@
     
     [_goodIconImage sd_setImageWithURL: [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,_homeModel.goodsIcon]]];
  
+    //重新获取标签父视图的宽度,直接拿到的为没有加载前xib里面的宽度
     _tagView.width = SCREEN_WIDTH - 34 - (self.height - 28);
     
     

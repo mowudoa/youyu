@@ -82,7 +82,8 @@ UIPickerViewDataSource
 @property (weak, nonatomic) IBOutlet UILabel *taglabel;
 @property (weak, nonatomic) IBOutlet UIView *tagView;
 @property (weak, nonatomic) IBOutlet UIView *AgreementView;
-@property (weak, nonatomic) IBOutlet UIWebView *AgreementWebView;
+@property (weak, nonatomic) IBOutlet UITextView *agreementTextView;
+
 @property (weak, nonatomic) IBOutlet UIView *bankGroundView;
 
 @property(nonatomic,strong) NSMutableArray *businessClassArray;
@@ -187,10 +188,12 @@ UIPickerViewDataSource
     
     self.navigationItem.title = @"线下入驻";
     
-    NSURL *url = [NSURL URLWithString:@"http://www.renrenyouyu.wang/user/apply/hetong"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    // 加载请求
-    [_AgreementWebView loadRequest:request];
+    [self initAgreement];
+}
+-(void)initAgreement
+{
+ _agreementTextView.layoutManager.allowsNonContiguousLayout = NO;
+    
     
 }
 - (UIPickerView *)classPickView {

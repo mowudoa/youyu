@@ -119,7 +119,7 @@
                                   @"scode":_codeTextField.text};
         [CrazyNetWork CrazyRequest_Post:[NSString stringWithFormat:@"%@",LINKUSER_PHONE] parameters:urlDict HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
             
-            LOG(@"获取新密码", dic);
+            LOG(@"绑定新手机", dic);
             
             if (SUCCESS) {
                 

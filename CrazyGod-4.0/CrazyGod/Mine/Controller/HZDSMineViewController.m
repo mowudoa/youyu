@@ -68,6 +68,7 @@ UITableViewDataSource
     [_mineTableView registerNib:nib forCellReuseIdentifier:@"MIneTableViewCell"];
     
 }
+//收藏/余额/优惠券/购物车
 - (IBAction)clickButton:(UIButton *)sender {
 
     if (sender.tag == 200) {
@@ -97,6 +98,7 @@ UITableViewDataSource
     }
 
 }
+//设置
 - (IBAction)setInfoButton:(UIButton *)sender {
 
     HZDSSetInfoViewController *set = [[HZDSSetInfoViewController alloc] init];
@@ -130,6 +132,7 @@ UITableViewDataSource
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
 }
+//点击头像用户信息设置界面
 -(void)tapIconView:(UITapGestureRecognizer *)tap
 {
     HZDSUserInfoViewController *userInfo = [[HZDSUserInfoViewController alloc] init];
@@ -138,6 +141,7 @@ UITableViewDataSource
     
     
 }
+//获取用户信息
 -(void)getUserINfo
 {
 //  [NSString stringWithFormat:@"%@%@",HEADERURL_USER,GETUSERINFO]
@@ -241,6 +245,7 @@ UITableViewDataSource
     }];
     
 }
+//商城订单
 - (IBAction)mallOrderClick:(UIButton *)sender {
 
  

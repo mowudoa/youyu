@@ -29,12 +29,18 @@ UICollectionViewDelegateFlowLayout
 
 @property(strong,nonatomic)UITextField* searchTextField;
 
+//分类
 @property(nonatomic,strong) NSMutableArray *classArray;
+//热门商家
 @property(nonatomic,strong) NSMutableArray *hotListArray;
+//轮播图
 @property(nonatomic,strong) NSMutableArray *advArray;
+//新人专区
 @property(nonatomic,strong) NSMutableArray *userGoodsArray;
 @property(nonatomic,strong) NSMutableArray *userGoodsArray2;
+//优选好物
 @property(nonatomic,strong) NSMutableArray *goodArray;
+//猜你喜欢
 @property(nonatomic,strong) NSMutableArray *likeArray;
 
 @property(nonatomic,strong)scrollPhotos* headView;
@@ -182,9 +188,9 @@ UICollectionViewDelegateFlowLayout
             [strongSelf.hotListArray addObjectsFromArray:List[@"hostList"]];
             //分类
             [strongSelf.classArray addObjectsFromArray:List[@"goodscates"]];
-            //滚动通知
+            //新人专区左半边
             [strongSelf.userGoodsArray addObjectsFromArray:List[@"fuliList"]];
-            //中间广告
+            //新人专区右半边
             [strongSelf.userGoodsArray2 addObjectsFromArray:List[@"zhxList"]];
             
             [self headView];

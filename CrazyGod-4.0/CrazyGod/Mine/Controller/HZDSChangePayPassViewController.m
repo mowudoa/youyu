@@ -57,7 +57,6 @@
         if (SUCCESS) {
             
             
-            
             strongSelf.phoneNumString = dic[@"datas"][@"mobile"];
             
         }else{

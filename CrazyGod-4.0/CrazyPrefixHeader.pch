@@ -91,6 +91,8 @@
 
 #define HOMEINFO         @"index"//首页信息
 
+#define HOME_ADV_DETAIl  @"news/system"//首页广告业详情
+
 #define HOMESEARCH       @"index/search"//首页搜索
 
 #define BUSINESSDETAIL   @"shop/detail"//商家信息

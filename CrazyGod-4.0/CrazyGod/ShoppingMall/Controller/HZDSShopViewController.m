@@ -124,7 +124,7 @@ UICollectionViewDelegateFlowLayout
                 
             }else{
                
-                
+                //首页和商品列表共用
                 NSArray *arr = dict[@"goods"];
                 
               
@@ -154,6 +154,7 @@ UICollectionViewDelegateFlowLayout
                 
             }else{
              
+                //热销
                 NSArray *arr = dict[@"goods_rx"];
                 
                 
@@ -180,7 +181,7 @@ UICollectionViewDelegateFlowLayout
                 
                 
             }else{
-                
+                //上新
                 NSArray *arr = dict[@"goods_sx"];
                 
                 

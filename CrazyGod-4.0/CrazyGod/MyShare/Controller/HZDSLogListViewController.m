@@ -79,7 +79,6 @@ UITableViewDataSource
     NSDictionary *dic = @{@"lastindex":[NSString stringWithFormat:@"%ld",(long)_pageNum]                          };
     
     
-    
     [CrazyNetWork CrazyRequest_Post:MYBALANCE_LOGLIST parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
         LOG(@"余额日志列表", dic);

@@ -499,8 +499,8 @@ cityChoiceDelegate
 
         HZDSLinkWebViewController *web = [[HZDSLinkWebViewController alloc] init];
         
-        web.linkUrl = dic[@"link_url"];
-        web.linkTitle = @"详情";
+        web.adv_id = dic[@"val"];
+
         
         [self.navigationController pushViewController:web animated:YES];
     }

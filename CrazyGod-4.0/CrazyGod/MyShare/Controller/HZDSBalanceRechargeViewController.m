@@ -13,6 +13,8 @@
 #import "HZDSGoRechargeViewController.h"
 #import "HZDSpayTypeTableViewCell.h"
 #import "HZDSOrderModel.h"
+#import "WXApi.h"
+
 
 @interface HZDSBalanceRechargeViewController ()<
 UITableViewDelegate,
@@ -105,6 +107,13 @@ UITableViewDataSource
 //充值
 - (IBAction)recharge:(UIButton *)sender {
 
+    if (![WXApi isWXAppInstalled]) {
+        
+        [JKToast showWithText:@"请安装微信"];
+        
+        return;
+    }
+    
     if ([_moneyTextField.text isEqualToString:@""] || [_moneyTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
         [JKToast showWithText:@"请输入充值金额"];
     }else if (_payTypeString == nil) {

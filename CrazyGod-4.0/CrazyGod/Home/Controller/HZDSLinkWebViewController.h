@@ -14,4 +14,6 @@
 
 @property(copy,nonatomic) NSString *linkTitle;
 
+@property(copy,nonatomic) NSString *adv_id;
+
 @end

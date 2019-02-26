@@ -9,6 +9,7 @@
 #import "HZDSLinkWebViewController.h"
 
 @interface HZDSLinkWebViewController ()
+@property (weak, nonatomic) IBOutlet UIScrollView *backGroundView;
 
 @end
 
@@ -18,16 +19,99 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.navigationItem.title = self.linkTitle;
+    [self initData];
+
+}
+-(void)initData
+{
+    NSDictionary *dic = @{@"content_id":_adv_id};
     
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,SCREEN_HEIGHT - SCREEN_STATUSRECT - SCREEN_NAVRECT)];
-    // 创建需要加载的url
-    NSURL *url = [NSURL URLWithString:_linkUrl];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    // 加载请求
-    [webView loadRequest:request];
-    // 将webview加到视图
-    [self.view addSubview:webView];
+    
+    [CrazyNetWork CrazyRequest_Get:[NSString stringWithFormat:@"%@%@",HEADURL,HOME_ADV_DETAIl] parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
+        
+        LOG(@"广告详情", dic);
+        
+        
+        if (SUCCESS) {
+            
+            [self initUI:dic[@"datas"][@"detail"]];
+            
+        }else{
+            
+            [JKToast showWithText:dic[@"datas"][@"error"]];
+        }
+        
+    } fail:^(NSError *error, NSString *url, NSString *Json) {
+        
+        LOG(@"cuow", Json);
+        
+    }];
+}
+-(void)initUI:(NSDictionary *)dic
+{
+    self.navigationItem.title = dic[@"title"];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20,10,SCREEN_WIDTH - 40,30)];
+    
+    label.text = [NSString stringWithFormat:@"发布日期:%@",[self ConvertStrToTime:dic[@"create_time"]]];
+    
+    label.font = [UIFont systemFontOfSize:13];
+    
+    label.textColor = [UIColor blackColor];
+    
+    [_backGroundView addSubview:label];
+    
+    
+    UILabel *label1 = [[UILabel alloc] init];
+    
+    //  label1.text = rushIntroduce;
+    
+    NSString *infoStr = [NSString stringWithFormat:@"<head><style>img{width:%f !important;height:auto}</style></head>%@",SCREEN_WIDTH - 20,dic[@"contents"]];
+    
+    NSData *data = [infoStr dataUsingEncoding:NSUnicodeStringEncoding];
+    
+    NSDictionary *options = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType};
+    
+    NSAttributedString *html = [[NSAttributedString alloc]initWithData:data
+                                
+                                                               options:options
+                                
+                                                    documentAttributes:nil
+                                
+                                                                 error:nil];
+    
+    
+    label1.attributedText = html;
+    
+    CGSize size = [label1.attributedText boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 20, MAXFLOAT) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil].size;
+    
+    label1.frame = CGRectMake(10,50, SCREEN_WIDTH - 20,size.height);
+    
+    label1.numberOfLines = 0;
+    
+    label1.font  = [UIFont systemFontOfSize:12];
+    
+    [self.backGroundView addSubview:label1];
+    
+    _backGroundView.contentSize = CGSizeMake(0,label1.frame.size.height + 50);
+    
+}
+-(NSString *)ConvertStrToTime:(NSString *)timeStr
+
+{
+    
+    long long time=[timeStr longLongValue];
+    
+    NSDate *d = [[NSDate alloc]initWithTimeIntervalSince1970:time];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+    NSString*timeString=[formatter stringFromDate:d];
+    
+    return timeString;
+    
 }
 
 - (void)didReceiveMemoryWarning {

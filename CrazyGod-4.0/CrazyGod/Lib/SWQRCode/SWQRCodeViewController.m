@@ -8,7 +8,6 @@
 
 #import "SWQRCodeViewController.h"
 #import "SWScannerView.h"
-#import "HZDSLinkWebViewController.h"
 
 @interface SWQRCodeViewController ()<AVCaptureMetadataOutputObjectsDelegate, AVCaptureVideoDataOutputSampleBufferDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -227,13 +226,6 @@
 - (void)sw_handleWithValue:(NSString *)value {
     NSLog(@"sw_handleWithValue === %@", value);
     
-    HZDSLinkWebViewController *link = [[HZDSLinkWebViewController alloc] init];
-    
-    link.linkUrl = value;
-    
-    link.linkTitle = @"商家员工登录";
-
-    [self.navigationController pushViewController:link animated:YES];
 }
 
 /**

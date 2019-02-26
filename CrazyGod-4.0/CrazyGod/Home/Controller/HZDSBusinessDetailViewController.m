@@ -101,12 +101,14 @@ UICollectionViewDataSource
 
             self->_advTitleLabel.text = List[@"ad"][@"title"];
             
+            //标签
             [self->_tagsArray addObjectsFromArray:List[@"tags"]];
             
             for (int i = 0; i < 2; i ++) {
                 
                 HZDSBusinessModel *model = [[HZDSBusinessModel alloc] init];
                 
+                //抢购商品
                 if (i == 0) {
                     
                     if (List[@"tuans"] == nil || List[@"tuans"] == NULL || List[@"tuans"] == [NSNull null]) {
@@ -118,7 +120,7 @@ UICollectionViewDataSource
 
                     }
                     
-                    
+                //展示商品
                 }else{
                     
                     if (List[@"tuandpzs"] == nil || List[@"tuandpzs"] == NULL || List[@"tuandpzs"] == [NSNull null]) {

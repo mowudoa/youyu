@@ -36,7 +36,7 @@
 - (IBAction)changePassWord:(UIButton *)sender {
 
   
-    if ([_oldPassWord.text isEqualToString:@""] || [_passWordTwo.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+    if ([_oldPassWord.text isEqualToString:@""] || [_oldPassWord.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
         [JKToast showWithText:@"旧密码不可为空"];
     }else if ([_passWord.text isEqualToString:@""] || [_passWord.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
         

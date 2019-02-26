@@ -56,9 +56,9 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="chS-rR-nsy">
+                                        <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="chS-rR-nsy">
                                             <rect key="frame" x="0.0" y="150" width="320" height="50"/>
-                                            <color key="backgroundColor" red="0.8901960784313725" green="0.28627450980392155" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="64k-wc-KNa"/>
                                             </constraints>
