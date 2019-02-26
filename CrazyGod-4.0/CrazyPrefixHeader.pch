@@ -78,6 +78,11 @@
 #endif
 
 
+
+#define WXAPPID      @"wx49808c4b9dd22791"
+
+#define WXAPPSECRET  @"3f734907d94847b12e859b68a5082f19"
+
 #define USER_DEFAULT [NSUserDefaults standardUserDefaults]  //实例化
 
 
@@ -98,6 +103,8 @@
 #define BUSINESSDETAIL   @"shop/detail"//商家信息
 
 #define RUSHTOBUYDETAIL           @"tuan/detail"//抢购详情
+
+#define RUSHOBUYEVALUATE   @"tuan/dianping"//抢购评价列表
 
 #define SHOPPING_MALL    @"mall/index"//商城
 
@@ -301,6 +308,10 @@
 
 #define MY_ORDER_DETAIL  @"https://www.renrenyouyu.wang/apiuser/tuan/detail"//我的订单详情
 
+#define MY_ORDER_EVALUATE_INFO   @"http://www.renrenyouyu.wang/apiuser/tuan/dianping"//抢购订单评价页面
+
+#define MY_ORDER_EVALUATE        @"http://www.renrenyouyu.wang/apiuser/tuan/dianping"//抢购提交评价
+
 #define ORDER_PAY     @"https://www.renrenyouyu.wang/api/tuan/pay"//支付
 
 #define ORDER_PAY_UPLOAD  @"https://www.renrenyouyu.wang/api/tuan/pay2"//支付提交
@@ -364,7 +375,7 @@
 #define MALL_MANAGE_EDITGOODS          @"http://www.renrenyouyu.wang/apidis/goods/edit"//编辑商品
 
 
-#define LINKWCHAT             @"https://www.renrenyouyu.wang/api/passport/wxlogin"//绑定微信
+#define LINKWCHAT             @"http://www.renrenyouyu.wang/api/passport/wxAPP"//绑定微信
 
 
 #define MYMARKET_CENTER       @"https://www.renrenyouyu.wang/apiuser/distribution/index"//我的营销中心

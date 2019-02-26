@@ -8,6 +8,7 @@
 
 #import "HZDGoodsDetailSViewController.h"
 #import "HZDSuploadOrderViewController.h"
+#import "HZDSMallEvaluateListViewController.h"
 #import "HZDSLoginViewController.h"
 #import "scrollPhotos.h"
 
@@ -28,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *goodsPrice;
 @property (weak, nonatomic) IBOutlet UILabel *goodsSaleNum;
 
+@property (weak, nonatomic) IBOutlet commentStar *starView;
+@property (weak, nonatomic) IBOutlet UIButton *evaluateNumButton;
 
 @property(nonatomic,strong)scrollPhotos* headView;
 @property (weak, nonatomic) IBOutlet UIView *businessDetailView;
@@ -95,6 +98,12 @@
                 self->_collectImage.image = [UIImage imageNamed:@"星星"];
 
             }
+            
+            self->_starView.numofStar = [dic[@"datas"][@"score"] intValue];
+            
+            self->_starView.selectingenabled = NO;
+            
+            [self->_evaluateNumButton setTitle:[NSString stringWithFormat:@"%@人评价>",dic[@"datas"][@"pingnum"]] forState:UIControlStateNormal];
             
             
         }else{
@@ -237,6 +246,7 @@
     _myScrollView.contentSize = CGSizeMake(0,_backgroundView.frame.size.height);
     
 }
+//立即购买
 - (IBAction)goBuy:(UIButton *)sender {
 
     
@@ -260,6 +270,7 @@
     
 
 }
+//收藏
 - (IBAction)collectGoods:(UIButton *)sender {
 
     NSDictionary *dic = @{@"tuan_id":_tuanID                          };
@@ -287,6 +298,18 @@
     }];
     
 }
+//查看评价
+- (IBAction)evaluate:(UIButton *)sender {
+
+    HZDSMallEvaluateListViewController *evaluate = [[HZDSMallEvaluateListViewController alloc] init];
+    
+    evaluate.goods_id = _goodsID;
+    
+    evaluate.evaluate_url = RUSHOBUYEVALUATE;
+    
+    [self.navigationController pushViewController:evaluate animated:YES];
+}
+
 - (IBAction)seeShopDetail:(UIButton *)sender {
 
     [self.navigationController popViewControllerAnimated:YES];

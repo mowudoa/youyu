@@ -291,8 +291,6 @@ UICollectionViewDelegateFlowLayout
    
         
     return CGSizeMake((_shopGoodsCollectionView.frame.size.width-10)/2-2, ((_shopGoodsCollectionView.frame.size.width-10)/2-2) + 90);
-        
-
     
 }
 

@@ -7,8 +7,9 @@
 //
 
 #import "HZDSmyOrderViewController.h"
-#import "HZDSOrderTableViewCell.h"
 #import "HZDSOrderDetailViewController.h"
+#import "HZDSRushEvaluateViewController.h"
+#import "HZDSOrderTableViewCell.h"
 #import "HZDSPayViewController.h"
 #import "HZDSOrderModel.h"
 
@@ -45,8 +46,6 @@ UITableViewDataSource
     [self initUI];
 
     [self registercell];
-    
-    [self initData];
     
 }
 -(void)initUI
@@ -132,6 +131,8 @@ UITableViewDataSource
                 model.orderPrice = [dict1[@"total_price"] stringValue];
                 model.orderStatus = dict1[@"status"];
 
+                model.orderType = dict1[@"is_dianping"];
+                
                 model.orderTime = dict1[@"create_time"];
                 
                 [strongSelf.orderListDataSource addObject:model];
@@ -179,6 +180,8 @@ UITableViewDataSource
                 model.orderPrice = [dict1[@"total_price"] stringValue];
                 model.orderStatus = dict1[@"status"];
                 
+                model.orderType = dict1[@"is_dianping"];
+
                 model.orderTime = dict1[@"create_time"];
 
                 [strongSelf.orderListDataSource addObject:model];
@@ -410,7 +413,6 @@ UITableViewDataSource
 
         rightBtn.hidden = NO;
         
-        
         [leftBtn setTitle:@"取消抢购" forState:UIControlStateNormal];
         leftBtn.userInteractionEnabled = YES;
         
@@ -432,7 +434,17 @@ UITableViewDataSource
         
         rightBtn.hidden = NO;
         
-        leftBtn.hidden = YES;
+        if ([model.orderType isEqualToString:@"0"]) {
+           
+            [leftBtn setTitle:@"点评" forState:UIControlStateNormal];
+
+        }else if ([model.orderType isEqualToString:@"1"]){
+            
+            
+            [leftBtn setTitle:@"已评价" forState:UIControlStateNormal];
+            
+            leftBtn.backgroundColor = [UIColor colorWithHexString:@"#b5b5b5"];
+        }
     }
     
     
@@ -451,28 +463,43 @@ UITableViewDataSource
     
     HZDSOrderModel *model = _orderListDataSource[sender.tag];
     
-    NSDictionary *dic = @{@"order_id":model.orderID};
-
     
-    [CrazyNetWork CrazyRequest_Post:MY_ORDER_DELETE parameters:dic HUD:NO success:^(NSDictionary *dic, NSString *url, NSString *Json) {
+    if ([sender.currentTitle isEqualToString:@"取消抢购"]) {
+    
+        NSDictionary *dic = @{@"order_id":model.orderID};
         
-        LOG(@"取消抢购", dic);
         
-        if (SUCCESS) {
+        [CrazyNetWork CrazyRequest_Post:MY_ORDER_DELETE parameters:dic HUD:NO success:^(NSDictionary *dic, NSString *url, NSString *Json) {
             
-            [JKToast showWithText:dic[@"datas"][@"msg"]];
-
-            [self initData];
+            LOG(@"取消抢购", dic);
             
-        }else{
+            if (SUCCESS) {
+                
+                [JKToast showWithText:dic[@"datas"][@"msg"]];
+                
+                [self initData];
+                
+            }else{
+                
+                [JKToast showWithText:dic[@"datas"][@"error"]];
+                
+            }
             
-            [JKToast showWithText:dic[@"datas"][@"error"]];
-                        
-        }
+        } fail:^(NSError *error, NSString *url, NSString *Json) {
+            
+        }];
+    }else if ([sender.currentTitle isEqualToString:@"点评"]){
         
-    } fail:^(NSError *error, NSString *url, NSString *Json) {
+        HZDSRushEvaluateViewController *evaluate = [[HZDSRushEvaluateViewController alloc] init];
         
-    }];
+        evaluate.order_id = model.orderID;
+        
+        [self.navigationController pushViewController:evaluate animated:YES];
+        
+    }
+    
+    
+   
 }
 -(void)tapBtn:(UIButton *)sender
 {
@@ -491,7 +518,13 @@ UITableViewDataSource
     }
     
 }
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self initData];
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

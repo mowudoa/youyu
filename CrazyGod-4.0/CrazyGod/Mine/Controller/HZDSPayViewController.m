@@ -161,7 +161,7 @@ UITableViewDataSource
         
         if (![WXApi isWXAppInstalled]) {
             
-            [JKToast showWithText:@"请安装微信"];
+            [JKToast showWithText:@"请安装微信后使用"];
         }
         
     }

@@ -298,6 +298,8 @@
 		7147557B21E4833D0032A7B6 /* HZDSChangepassWordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7147557921E4833D0032A7B6 /* HZDSChangepassWordViewController.xib */; };
 		7147557F21E4A1670032A7B6 /* HZDSMIneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7147557D21E4A1670032A7B6 /* HZDSMIneTableViewCell.m */; };
 		7147558021E4A1670032A7B6 /* HZDSMIneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7147557E21E4A1670032A7B6 /* HZDSMIneTableViewCell.xib */; };
+		714BFDBC22251CC00065726E /* HZDSRushEvaluateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BFDBA22251CC00065726E /* HZDSRushEvaluateViewController.m */; };
+		714BFDBD22251CC00065726E /* HZDSRushEvaluateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 714BFDBB22251CC00065726E /* HZDSRushEvaluateViewController.xib */; };
 		714E4274221E918B00B7A6C9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 714E4273221E918B00B7A6C9 /* Images.xcassets */; };
 		715E346F21DF083D000679CC /* XTBaseTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 715E346E21DF083D000679CC /* XTBaseTabBar.m */; };
 		715E347821DF0880000679CC /* XTBaseBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 715E347121DF0880000679CC /* XTBaseBackViewController.m */; };
@@ -1039,6 +1041,9 @@
 		7147557C21E4A1670032A7B6 /* HZDSMIneTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HZDSMIneTableViewCell.h; sourceTree = "<group>"; };
 		7147557D21E4A1670032A7B6 /* HZDSMIneTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HZDSMIneTableViewCell.m; sourceTree = "<group>"; };
 		7147557E21E4A1670032A7B6 /* HZDSMIneTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HZDSMIneTableViewCell.xib; sourceTree = "<group>"; };
+		714BFDB922251CC00065726E /* HZDSRushEvaluateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HZDSRushEvaluateViewController.h; sourceTree = "<group>"; };
+		714BFDBA22251CC00065726E /* HZDSRushEvaluateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HZDSRushEvaluateViewController.m; sourceTree = "<group>"; };
+		714BFDBB22251CC00065726E /* HZDSRushEvaluateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HZDSRushEvaluateViewController.xib; sourceTree = "<group>"; };
 		714E4273221E918B00B7A6C9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		715E346D21DF083D000679CC /* XTBaseTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTBaseTabBar.h; sourceTree = "<group>"; };
 		715E346E21DF083D000679CC /* XTBaseTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTBaseTabBar.m; sourceTree = "<group>"; };
@@ -2310,6 +2315,9 @@
 				7128460321E9C16B009240CF /* HZDSuploadOrderViewController.h */,
 				7128460421E9C16B009240CF /* HZDSuploadOrderViewController.m */,
 				7128460521E9C16B009240CF /* HZDSuploadOrderViewController.xib */,
+				714BFDB922251CC00065726E /* HZDSRushEvaluateViewController.h */,
+				714BFDBA22251CC00065726E /* HZDSRushEvaluateViewController.m */,
+				714BFDBB22251CC00065726E /* HZDSRushEvaluateViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2876,8 +2884,8 @@
 		7197055E21E32B0800B199B4 /* starView */ = {
 			isa = PBXGroup;
 			children = (
-				7197055F21E32B0800B199B4 /* commentStar.m */,
 				7197056021E32B0800B199B4 /* commentStar.h */,
+				7197055F21E32B0800B199B4 /* commentStar.m */,
 			);
 			path = starView;
 			sourceTree = "<group>";
@@ -3038,6 +3046,7 @@
 				7167C8E42217A3F00062805F /* HZDSMySubordinateViewController.xib in Resources */,
 				7139E92A21F6AE3B0080D480 /* HZDSCartTableViewCell.xib in Resources */,
 				7180A6B421E844E9003E05D0 /* HZDSmyCouponViewController.xib in Resources */,
+				714BFDBD22251CC00065726E /* HZDSRushEvaluateViewController.xib in Resources */,
 				7142875E21F9B22100B48749 /* HZDSMallOrderDetailViewController.xib in Resources */,
 				7197055D21E3273000B199B4 /* HZDSBusinessTableViewCell.xib in Resources */,
 				71776F9121E73B7C0056AB99 /* HZDSmerchantBaseInfoViewController.xib in Resources */,
@@ -3239,6 +3248,7 @@
 				7101CBCA21DDCEE900E5F094 /* UIWebView+BlocksKit.m in Sources */,
 				7101CB7021DDCEE900E5F094 /* ViewController+MASAdditions.m in Sources */,
 				716A219621FE99E6009526F2 /* HZDSMallEvaluateListViewController.m in Sources */,
+				714BFDBC22251CC00065726E /* HZDSRushEvaluateViewController.m in Sources */,
 				7101CB3E21DDCEE900E5F094 /* MJProperty.m in Sources */,
 				7101CB7C21DDCEE900E5F094 /* SVIndefiniteAnimatedView.m in Sources */,
 				7147557F21E4A1670032A7B6 /* HZDSMIneTableViewCell.m in Sources */,

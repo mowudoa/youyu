@@ -36,7 +36,7 @@ WXApiDelegate
     
     [self.window makeKeyAndVisible];
     
-    [WXApi registerApp:@"wx49808c4b9dd22791"];
+    [WXApi registerApp:WXAPPID];
 
     //初始化
     [CrazyConfiguration sharedManager];
@@ -166,23 +166,24 @@ WXApiDelegate
         
         if(req.errCode == 0){
             
-            [self getWxInfo];
+            
+            [self getWxInfo:req.code];
         }
     }
 
 }
 
--(void)getWxInfo
+//获取用户微信信息进行账号绑定
+-(void)getWxInfo:(NSString *)codeString
 {
+    NSDictionary *dict = @{@"code":codeString};
     
-    [CrazyNetWork CrazyRequest_Post:LINKWCHAT parameters:nil HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
+    [CrazyNetWork CrazyRequest_Post:LINKWCHAT parameters:dict HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
         LOG(@"微信绑定", dic);
         
         if (SUCCESS) {
             
-            
-            [self goWX:dic[@"url"]];
             
             
         }else{

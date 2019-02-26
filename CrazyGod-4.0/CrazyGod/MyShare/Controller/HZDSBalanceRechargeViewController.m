@@ -22,6 +22,8 @@ UITableViewDataSource
 >
 @property (weak, nonatomic) IBOutlet UIButton *rechargeButton;
 @property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
+
+@property (weak, nonatomic) IBOutlet UIView *moneyView;
 @property (weak, nonatomic) IBOutlet UITextField *moneyTextField;
 @property (weak, nonatomic) IBOutlet UITableView *payTypeTableView;
 
@@ -106,13 +108,6 @@ UITableViewDataSource
 }
 //充值
 - (IBAction)recharge:(UIButton *)sender {
-
-    if (![WXApi isWXAppInstalled]) {
-        
-        [JKToast showWithText:@"请安装微信"];
-        
-        return;
-    }
     
     if ([_moneyTextField.text isEqualToString:@""] || [_moneyTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
         [JKToast showWithText:@"请输入充值金额"];
@@ -233,7 +228,24 @@ UITableViewDataSource
     
     [self initData];
     
+    
+    
     _moneyTextField.text = @"";
+}
+-(void)checkWchatInstall
+{
+    if (![WXApi isWXAppInstalled]) {
+        
+        _moneyView.hidden = YES;
+        _payTypeTableView.hidden = YES;
+        _rechargeButton.hidden = YES;
+        
+    }else{
+        
+        _moneyView.hidden = NO;
+        _payTypeTableView.hidden = NO;
+        _rechargeButton.hidden = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

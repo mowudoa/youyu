@@ -27,7 +27,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *collectNumLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numLabel;
 @property (weak, nonatomic) IBOutlet UILabel *stockNunLabel;
-@property (weak, nonatomic) IBOutlet UIView *starView;
+@property (weak, nonatomic) IBOutlet commentStar *starView;
 @property (weak, nonatomic) IBOutlet UIScrollView *myScrollView;
 @property (weak, nonatomic) IBOutlet UIView *backGroundView;
 @property (weak, nonatomic) IBOutlet UIView *goodsInfoDetailView;
@@ -135,6 +135,8 @@
 
             }
             
+            strongSelf.starView.numofStar = [dic[@"datas"][@"score"] intValue]/10;
+            strongSelf.starView.selectingenabled = NO;
             
             
             strongSelf.evaluateNumLabel.text = [NSString stringWithFormat:@"%@人评价了该商品",dict[@"pingnum"]];
@@ -341,6 +343,8 @@
 }
 - (IBAction)addShopCart:(UIButton *)sender {
 
+    
+    
     if (![USER_DEFAULT boolForKey:@"isLogin"]){
         
         [JKToast showWithText:@"请先登录"];
@@ -507,6 +511,8 @@
     HZDSMallEvaluateListViewController *evaluate = [[HZDSMallEvaluateListViewController alloc] init];
     
     evaluate.goods_id = _goodsID;
+    
+    evaluate.evaluate_url = SHOPPING_MALL_EVALUATE;
     
     [self.navigationController pushViewController:evaluate animated:YES];
     

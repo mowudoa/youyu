@@ -15,6 +15,7 @@ UITableViewDelegate,
 UITableViewDataSource
 >
 @property (weak, nonatomic) IBOutlet UITableView *evaluateListTableView;
+@property (weak, nonatomic) IBOutlet UIView *backGroundView;
 
 @property(nonatomic,strong) NSMutableArray *evaluateListDataSource;
 @end
@@ -48,9 +49,20 @@ UITableViewDataSource
 {
     __weak typeof(self) weakSelf = self;
     
-    NSDictionary* dic = @{@"goods_id":_goods_id};
+    NSDictionary* dic;
 
-    [CrazyNetWork CrazyRequest_Post:[NSString stringWithFormat:@"%@%@",HEADURL,SHOPPING_MALL_EVALUATE] parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
+    
+    if ([_evaluate_url isEqualToString:RUSHOBUYEVALUATE]) {
+        
+        dic = @{@"tuan_id":_goods_id};
+        
+    }else{
+        
+        dic = @{@"goods_id":_goods_id};
+    }
+    
+
+    [CrazyNetWork CrazyRequest_Post:[NSString stringWithFormat:@"%@%@",HEADURL,_evaluate_url] parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
         LOG(@"点评列表", dic);
         
@@ -61,6 +73,18 @@ UITableViewDataSource
         if (SUCCESS) {
             
             NSArray *arr = dic[@"datas"][@"list"];
+            
+            if (arr.count > 0) {
+                
+            strongSelf.backGroundView.hidden = YES;
+                
+            strongSelf.evaluateListTableView.hidden = NO;
+                
+            }else{
+            strongSelf.backGroundView.hidden = NO;
+                
+            strongSelf.evaluateListTableView.hidden = YES;
+            }
             
             for (NSDictionary *dic1 in arr) {
                 
@@ -90,7 +114,11 @@ UITableViewDataSource
             
             
             
+        }else{
+            
+            [JKToast showWithText:dic[@"datas"][@"error"]];
         }
+        
         [strongSelf.evaluateListTableView reloadData];
     } fail:^(NSError *error, NSString *url, NSString *Json) {
         

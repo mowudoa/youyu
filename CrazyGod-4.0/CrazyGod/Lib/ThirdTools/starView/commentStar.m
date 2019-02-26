@@ -58,7 +58,7 @@
 {
     for (int i = 0; i< 5; i++) {
         UIButton* btn = [UIButton buttonWithType: UIButtonTypeCustom];
-        [btn setFrame:CGRectMake(3+i*(15+3), 5, 15, 15)];
+        [btn setFrame:CGRectMake(i*(15+3), 5, 15, 15)];
         [btn setImage:[UIImage imageNamed:@"star4"] forState:UIControlStateNormal];
         [btn setImage:[UIImage imageNamed:@"star3"] forState:UIControlStateSelected];
         [btn addTarget:self action:@selector(selectStar:) forControlEvents:UIControlEventTouchUpInside];

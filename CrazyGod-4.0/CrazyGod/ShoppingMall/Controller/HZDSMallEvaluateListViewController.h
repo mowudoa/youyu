@@ -11,4 +11,7 @@
 @interface HZDSMallEvaluateListViewController : XTBaseBackViewController
 
 @property(nonatomic,copy) NSString *goods_id;
+
+@property(nonatomic,copy) NSString *evaluate_url;
+
 @end

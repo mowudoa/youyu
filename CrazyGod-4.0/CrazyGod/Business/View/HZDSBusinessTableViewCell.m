@@ -42,6 +42,8 @@
     [WYFTools createTagLabel:[UIFont systemFontOfSize:12] tagArray:_bussinessModel.goodsArray itemSpace:2 itemHeight:20 currentX:0 currentY:0 superView:_businessTagsView];
 
     _stareView.numofStar = [_bussinessModel.businessStarNum intValue];
+    
+    
     _stareView.selectingenabled = NO;
 }
 
