@@ -29,8 +29,7 @@
 @property(copy,nonatomic)NSString* distance; //首页标题
 
 
-@property(assign,nonatomic)float cellHeight; //首页标题
-
+@property(assign,nonatomic) CGFloat cellHeight;//cell高度
 
 
 @property(strong,nonatomic)NSMutableArray *goodsArray;

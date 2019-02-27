@@ -278,6 +278,8 @@ UITableViewDataSource
     cell.priceLabel.text = [NSString stringWithFormat:@"小计:￥%@X%@ = ￥%@",model1.orderPrice,model1.orderNum,model1.orderNeedPayPrice];
     cell.priceLabel.textColor = [UIColor redColor];
     
+    cell.priceLabel.adjustsFontSizeToFitWidth = YES;
+    
     return cell;
 }
 -(NSString *)ConvertStrToTime:(NSString *)timeStr
@@ -317,7 +319,7 @@ UITableViewDataSource
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 143;
+    return HEIGHT(143);
 }
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {

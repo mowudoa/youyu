@@ -108,11 +108,10 @@
         [view removeFromSuperview];
     }
     
-    height = [WYFTools heightWithCreateTagLabel:[UIFont systemFontOfSize:12] tagArray:_hotSearchArray itemSpace:2 itemHeight:20 currentX:0 currentY:0 superView:_hotSearch action:@selector(click:) vc:(id)self];
+    height = [WYFTools heightWithCreateTagLabel:[UIFont systemFontOfSize:12] tagArray:_hotSearchArray itemSpace:2 itemHeight:20 currentX:0 currentY:0 superView:_hotSearch action:@selector(click:) vc:(id)self buttonUserEnable:YES];
 
     
-    height1 = [WYFTools heightWithCreateTagLabel:[UIFont systemFontOfSize:12] tagArray:_historySearchArray itemSpace:2 itemHeight:20 currentX:0 currentY:0 superView:_historySearch action:@selector(click1:) vc:self];
-    
+    height1 = [WYFTools heightWithCreateTagLabel:[UIFont systemFontOfSize:12] tagArray:_historySearchArray itemSpace:2 itemHeight:20 currentX:0 currentY:0 superView:_historySearch action:@selector(click1:) vc:self buttonUserEnable:YES];
     
     //边框宽度
     [_businessBtn.layer setBorderWidth:1.0];

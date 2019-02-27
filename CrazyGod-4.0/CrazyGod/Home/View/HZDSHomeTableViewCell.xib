@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,13 +22,13 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ns5-ma-Iz5">
                         <rect key="frame" x="16" y="25" width="84" height="84"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="ns5-ma-Iz5" secondAttribute="height" multiplier="1:1" id="wSi-10-bDn"/>
+                            <constraint firstAttribute="width" secondItem="ns5-ma-Iz5" secondAttribute="height" multiplier="1:1" id="Rjw-B7-N15"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSz-G5-Snl">
                         <rect key="frame" x="114" y="25" width="156" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="Inp-1a-4AY"/>
+                            <constraint firstAttribute="height" constant="21" id="XL6-OY-OwD"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <nil key="textColor"/>
@@ -39,7 +37,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHO-Cp-WWV">
                         <rect key="frame" x="117" y="87" width="153" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="dRr-Cr-uDx"/>
+                            <constraint firstAttribute="height" constant="21" id="qNn-de-QkH"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.34509803921568627" green="0.34509803921568627" blue="0.34509803921568627" alpha="1" colorSpace="calibratedRGB"/>
@@ -50,19 +48,19 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="xAV-gT-GNY" firstAttribute="leading" secondItem="ns5-ma-Iz5" secondAttribute="trailing" constant="14" id="4AI-g4-KWa"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="hHO-Cp-WWV" secondAttribute="trailing" constant="30" id="7Wt-ve-GEX"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="tSz-G5-Snl" secondAttribute="trailing" constant="30" id="Bj3-DU-Jhg"/>
-                    <constraint firstItem="tSz-G5-Snl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="14" id="CZf-7c-asO"/>
-                    <constraint firstItem="ns5-ma-Iz5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Dkc-7x-ZNI"/>
-                    <constraint firstItem="xAV-gT-GNY" firstAttribute="top" secondItem="tSz-G5-Snl" secondAttribute="bottom" constant="8" id="Dsw-Va-IH1"/>
-                    <constraint firstItem="ns5-ma-Iz5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="14" id="EFv-Na-hZ8"/>
-                    <constraint firstItem="tSz-G5-Snl" firstAttribute="leading" secondItem="ns5-ma-Iz5" secondAttribute="trailing" constant="14" id="JtK-L3-OM6"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="xAV-gT-GNY" secondAttribute="trailing" constant="20" id="UTC-Vi-uhC"/>
-                    <constraint firstItem="hHO-Cp-WWV" firstAttribute="top" secondItem="xAV-gT-GNY" secondAttribute="bottom" constant="8" id="ZMx-Cm-kzm"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="ns5-ma-Iz5" secondAttribute="bottom" constant="14" id="jTX-41-Cch"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="hHO-Cp-WWV" secondAttribute="bottom" constant="15" id="lfK-3V-N3c"/>
-                    <constraint firstItem="hHO-Cp-WWV" firstAttribute="leading" secondItem="ns5-ma-Iz5" secondAttribute="trailing" constant="17" id="vqS-v3-NWG"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="hHO-Cp-WWV" secondAttribute="trailing" constant="30" id="3jq-XB-vGJ"/>
+                    <constraint firstItem="xAV-gT-GNY" firstAttribute="top" secondItem="tSz-G5-Snl" secondAttribute="bottom" constant="8" id="92q-EN-KfX"/>
+                    <constraint firstItem="hHO-Cp-WWV" firstAttribute="top" secondItem="xAV-gT-GNY" secondAttribute="bottom" constant="8" id="DyE-Jx-TVx"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="tSz-G5-Snl" secondAttribute="trailing" constant="30" id="Qo6-Ak-9F4"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="hHO-Cp-WWV" secondAttribute="bottom" constant="15" id="UuM-ai-0xZ"/>
+                    <constraint firstItem="ns5-ma-Iz5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ZBb-br-aMF"/>
+                    <constraint firstItem="tSz-G5-Snl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="14" id="eO8-mq-3mw"/>
+                    <constraint firstItem="ns5-ma-Iz5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="14" id="kKg-8n-vtX"/>
+                    <constraint firstItem="hHO-Cp-WWV" firstAttribute="leading" secondItem="ns5-ma-Iz5" secondAttribute="trailing" constant="17" id="pJz-Vr-Lyt"/>
+                    <constraint firstItem="tSz-G5-Snl" firstAttribute="leading" secondItem="ns5-ma-Iz5" secondAttribute="trailing" constant="14" id="saB-1q-iTf"/>
+                    <constraint firstItem="xAV-gT-GNY" firstAttribute="leading" secondItem="ns5-ma-Iz5" secondAttribute="trailing" constant="14" id="v4H-ul-6y1"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="ns5-ma-Iz5" secondAttribute="bottom" constant="14" id="xgY-3o-4XG"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="xAV-gT-GNY" secondAttribute="trailing" constant="20" id="zq1-Ay-fRt"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="3v2-16-GoB"/>

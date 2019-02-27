@@ -26,6 +26,7 @@
     _couponTime.text = [NSString stringWithFormat:@"生成时间:%@",couponModel.couponTime];
     _timeLabel.text = couponModel.couponTime;
 
+    _couponTime.adjustsFontSizeToFitWidth = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

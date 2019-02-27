@@ -210,9 +210,9 @@ cityChoiceDelegate
         UIImageView *ima = [[UIImageView alloc] initWithFrame:CGRectMake(8,8,14,14)];
       //  ima.image = [UIImage imageNamed:@"searchIma"];
         
-        UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(25,0,100, 30)];
+        UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(20,0,100, 30)];
         
-        label.text = @"搜索商品";
+        label.text = @"你想要的...";
         label.textColor = [UIColor lightGrayColor];
         label.font = [UIFont systemFontOfSize:13];
         label.textAlignment = NSTextAlignmentLeft;
@@ -246,7 +246,7 @@ cityChoiceDelegate
         UIButton* button = [UIButton buttonWithType: UIButtonTypeCustom];;
         [button setFrame:CGRectMake(0, 0, 100, 30)];
       //  [button addTarget:self action:@selector(touchCityList:) forControlEvents:UIControlEventTouchUpInside];
-        button.titleLabel.font = [UIFont systemFontOfSize:15];
+        button.titleLabel.font = [UIFont systemFontOfSize:13];
        // [button setBackgroundImage:[UIImage imageNamed:@"mine_share"] forState:UIControlStateNormal];
         [button setTitle:[NSString stringWithFormat:@"%@℃ | 大同",_locationAndTemperature] forState:UIControlStateNormal];
         
@@ -508,15 +508,30 @@ cityChoiceDelegate
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     if (indexPath.section == 0) {
         
         return _classArray.count/5*75;
+        
     }else if (indexPath.section == 2){
         
         return 164;
+    }else{
+       
+        HomeModel *model;
+        if (_shopArray.count > 0) {
+            
+            model = _shopArray[indexPath.row];
+            
+            return model.cellHeight;
+        }
+        
+     
+        return 103;
+
     }
     
-    return 103;
+    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -555,13 +570,10 @@ cityChoiceDelegate
     
     NSLog(@"index = %ld",index);
     
-    HomeModel *model =[[HomeModel alloc] init];
-    
-    model = _shopArray[index];
-    
     HZDSBusinessDetailViewController *detail = [[HZDSBusinessDetailViewController alloc] init];
     
-    detail.shopID = model.goodsId;
+    detail.shopID = _hotShopArray[index][@"shop_id"];
+    
     [self.navigationController pushViewController:detail animated:YES];
     
     

@@ -28,6 +28,8 @@
     
     _businessPrice.text = [NSString stringWithFormat:@"人均省钱￥%@元",bussinessModel.businessPrice];
 
+    _businessPrice.adjustsFontSizeToFitWidth = YES;
+    
     _businessSaleNum.text = [NSString stringWithFormat:@"月售%@",bussinessModel.businessSaleNum];
 
     
@@ -39,8 +41,12 @@
         [view removeFromSuperview];
     }
     
-    [WYFTools createTagLabel:[UIFont systemFontOfSize:12] tagArray:_bussinessModel.goodsArray itemSpace:2 itemHeight:20 currentX:0 currentY:0 superView:_businessTagsView];
-
+    //布局tagview并计算高度
+    float height = [WYFTools heightWithCreateTagLabel:[UIFont systemFontOfSize:12] tagArray:_bussinessModel.goodsArray itemSpace:2 itemHeight:20 currentX:0 currentY:0 superView:_businessTagsView action:nil vc:self buttonUserEnable:NO];
+    
+    //动态计算当前cell高度
+    _bussinessModel.cellHeight = height + 154;
+    
     _stareView.numofStar = [_bussinessModel.businessStarNum intValue];
     
     

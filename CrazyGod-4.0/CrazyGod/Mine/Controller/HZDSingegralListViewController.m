@@ -121,7 +121,16 @@ UITableViewDataSource
                 
                 model.orderID = dict1[@"money_id"];
                 model.orderTitle = dict1[@"type"];
-                model.orderPrice = [dict1[@"money"] stringValue];
+                if (strongSelf.myLogType == moneyLogType) {
+                    
+                    model.orderPrice = dict1[@"money"];
+                    
+                    
+                }else if (strongSelf.myLogType == integralLogType){
+                    
+                    model.orderPrice = [dict1[@"money"] stringValue];
+                    
+                }
                 model.orderStatus = dict1[@"intro"];
                 
                 model.orderTime = dict1[@"create_time"];
@@ -165,8 +174,18 @@ UITableViewDataSource
                 
                 model.orderID = dict1[@"money_id"];
                 model.orderTitle = dict1[@"type"];
-                model.orderPrice = [dict1[@"money"] stringValue];
                 model.orderStatus = dict1[@"intro"];
+                
+                if (strongSelf.myLogType == moneyLogType) {
+                    
+                    model.orderPrice = dict1[@"money"];
+
+                    
+                }else if (strongSelf.myLogType == integralLogType){
+                    
+                    model.orderPrice = [dict1[@"money"] stringValue];
+
+                }
                 
                 model.orderTime = dict1[@"create_time"];
                 

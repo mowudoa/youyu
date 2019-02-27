@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *businessSaleNum;
 @property (weak, nonatomic) IBOutlet UILabel *businessPrice;
 
+
+
 @property(nonatomic,strong) HZDSBusinessModel *bussinessModel;
 
 @end

@@ -578,9 +578,11 @@ UITableViewDataSource
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    HZDSBusinessModel *model = _businessArray[indexPath.row];
+    
     if (tableView == _businessListTableView) {
        
-        return 180;
+        return model.cellHeight;
 
     }else{
         
@@ -598,7 +600,7 @@ UITableViewDataSource
         _searchImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH*0.8, 30)];
         _searchImage.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
         
-        UIImageView *ima = [[UIImageView alloc] initWithFrame:CGRectMake(8,8,14,14)];
+        UIImageView *ima = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH*0.8 - 30,8,14,14)];
         ima.image = [UIImage imageNamed:@"searchIma"];
         
         UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(25,0,100, 30)];
@@ -623,9 +625,9 @@ UITableViewDataSource
 -(UITextField*)searchTextField
 {
     if (_searchTextField == nil) {
-        _searchTextField = [[UITextField alloc]initWithFrame:CGRectMake(30, 0, SCREEN_WIDTH * 0.75 - 30, 30)];
+        _searchTextField = [[UITextField alloc]initWithFrame:CGRectMake(20, 0, SCREEN_WIDTH * 0.75 - 20, 30)];
         //        [_textField setBackground:[UIImage imageNamed:@"searchbar"]];
-        _searchTextField.placeholder = @" 输入商家关键字";
+        _searchTextField.placeholder = @"输入商家关键字";
         [_searchTextField setValue:[UIColor colorWithHexString:@"b5b5b5"] forKeyPath:@"_placeholderLabel.textColor"];
         _searchTextField.borderStyle = UITextBorderStyleNone;
         _searchTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;

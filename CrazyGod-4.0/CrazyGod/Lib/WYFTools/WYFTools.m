@@ -187,7 +187,7 @@ static WYFTools *god = nil;
     }
     
 }
-+(float)heightWithCreateTagLabel:(UIFont *)font tagArray:(NSArray *)array itemSpace:(float)itemSpace itemHeight:(float)itemHeight currentX:(float)currentX currentY:(float)currentY superView:(UIView *)myView action:(SEL)action vc:(id)vc
++(float)heightWithCreateTagLabel:(UIFont *)font tagArray:(NSArray *)array itemSpace:(float)itemSpace itemHeight:(float)itemHeight currentX:(float)currentX currentY:(float)currentY superView:(UIView *)myView action:(SEL)action vc:(id)vc buttonUserEnable:(BOOL)enable
 {
     float height = 0.0;
     
@@ -228,7 +228,7 @@ static WYFTools *god = nil;
         button.titleLabel.font = font;
         currentX += size.width + 10;
         [button addTarget:vc action:action forControlEvents:UIControlEventTouchUpInside];
-        
+        button.userInteractionEnabled = enable;
         
         [myView addSubview:button];
         

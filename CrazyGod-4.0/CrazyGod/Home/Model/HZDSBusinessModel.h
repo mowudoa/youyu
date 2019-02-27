@@ -35,7 +35,7 @@
 
 @property(copy,nonatomic)NSString* businessPhone; //电话
 
-
+@property(assign,nonatomic) CGFloat cellHeight;//cell高度
 
 @property(strong,nonatomic)NSMutableArray *goodsArray;
 

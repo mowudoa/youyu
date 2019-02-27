@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gZ3-Eh-bFZ">
-                        <rect key="frame" x="16" y="22" width="115" height="115"/>
+                        <rect key="frame" x="16" y="22.5" width="115" height="115"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="115" id="5PA-O6-5bn"/>
                             <constraint firstAttribute="height" constant="115" id="kkF-5Q-bzg"/>
@@ -37,9 +36,6 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cT-aF-nQi">
                         <rect key="frame" x="151" y="63" width="143" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="LLM-48-9dl"/>
-                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.70588235290000001" green="0.7061727686" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -65,7 +61,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7QF-eG-xBc">
-                        <rect key="frame" x="0.0" y="159" width="320" height="1"/>
+                        <rect key="frame" x="0.0" y="158.5" width="320" height="1"/>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="DVs-na-ifD"/>
@@ -76,14 +72,15 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="saO-LL-fWE" firstAttribute="top" secondItem="4cT-aF-nQi" secondAttribute="bottom" constant="30" id="DhY-wI-s5U"/>
+                    <constraint firstItem="saO-LL-fWE" firstAttribute="top" secondItem="4cT-aF-nQi" secondAttribute="bottom" constant="30" id="373-PN-iRx"/>
+                    <constraint firstItem="7QF-eG-xBc" firstAttribute="top" secondItem="ubs-Tx-lcE" secondAttribute="bottom" constant="23.5" id="F1w-Zn-zE1"/>
                     <constraint firstAttribute="bottom" secondItem="7QF-eG-xBc" secondAttribute="bottom" id="JVN-8m-YMe"/>
                     <constraint firstItem="Ld6-84-gnf" firstAttribute="leading" secondItem="gZ3-Eh-bFZ" secondAttribute="trailing" constant="20" id="Jd0-no-2iT"/>
                     <constraint firstItem="gZ3-Eh-bFZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="V0y-L4-yJx"/>
                     <constraint firstItem="Ld6-84-gnf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="11" id="ZAf-mI-UXj"/>
                     <constraint firstItem="7QF-eG-xBc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ZbN-gB-nPo"/>
+                    <constraint firstItem="7QF-eG-xBc" firstAttribute="top" secondItem="saO-LL-fWE" secondAttribute="bottom" constant="23.5" id="aNT-jN-kr9"/>
                     <constraint firstItem="4cT-aF-nQi" firstAttribute="leading" secondItem="gZ3-Eh-bFZ" secondAttribute="trailing" constant="20" id="aUt-dN-f2r"/>
-                    <constraint firstItem="ubs-Tx-lcE" firstAttribute="top" secondItem="4cT-aF-nQi" secondAttribute="bottom" constant="30" id="cND-Rz-2Ym"/>
                     <constraint firstItem="ubs-Tx-lcE" firstAttribute="leading" secondItem="saO-LL-fWE" secondAttribute="trailing" constant="19" id="dz5-bb-wrs"/>
                     <constraint firstItem="saO-LL-fWE" firstAttribute="leading" secondItem="gZ3-Eh-bFZ" secondAttribute="trailing" constant="20" id="rxu-Oi-IjG"/>
                     <constraint firstItem="4cT-aF-nQi" firstAttribute="top" secondItem="Ld6-84-gnf" secondAttribute="bottom" constant="20" id="tkI-jM-u4N"/>

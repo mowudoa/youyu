@@ -38,7 +38,7 @@
 //给textview添加placeholder
 +(void)CreateTextPlaceHolder:(NSString *)placeString WithFont:(UIFont *)font WithSuperView:(UIView *)superView;
 
-+(float)heightWithCreateTagLabel:(UIFont *)font tagArray:(NSArray *)array itemSpace:(float)itemSpace itemHeight:(float)itemHeight currentX:(float)currentX currentY:(float)currentY superView:(UIView *)myView action:(SEL)action vc:(id)vc;
++(float)heightWithCreateTagLabel:(UIFont *)font tagArray:(NSArray *)array itemSpace:(float)itemSpace itemHeight:(float)itemHeight currentX:(float)currentX currentY:(float)currentY superView:(UIView *)myView action:(SEL)action vc:(id)vc buttonUserEnable:(BOOL)enable;
 
 //单例
 +(WYFTools *)shardGodlike;

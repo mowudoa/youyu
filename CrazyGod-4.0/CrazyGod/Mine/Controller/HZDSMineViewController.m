@@ -238,13 +238,14 @@ UITableViewDataSource
             [self.navigationController pushViewController:login animated:YES];
         }
         
-        [strongSelf.mineTableView reloadData];
+        [self reloadData];
         
     } fail:^(NSError *error, NSString *url, NSString *Json) {
         
     }];
     
 }
+
 //商城订单
 - (IBAction)mallOrderClick:(UIButton *)sender {
 
@@ -345,7 +346,22 @@ UITableViewDataSource
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return SCREEN_WIDTH/320*45;
+    return HEIGHT(45);
+    
+}
+-(void)reloadData
+{
+    [self.mineTableView reloadData];
+
+    if (_mineTableView.height > _dataSource.count * HEIGHT(45)) {
+        
+        _mineTableView.scrollEnabled = NO;
+        
+    }else{
+        
+        _mineTableView.scrollEnabled = YES;
+
+    }
     
 }
 

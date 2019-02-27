@@ -132,7 +132,17 @@ UITableViewDataSource
     
     HZDSmerchantIMageListModel *model = _imageListDataSource[indexPath.section];
     
-    [cell.Titleiamge sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,model.imageUrl]] placeholderImage:[UIImage imageNamed:@"baseImage.png"]];
+    
+    if (model.imageUrl.length>4 && [[model.imageUrl substringToIndex:4] isEqualToString:@"http"]) {
+        
+        [cell.Titleiamge sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholderImage:[UIImage imageNamed:@"baseImage.png"]];
+
+    }else{
+        
+        [cell.Titleiamge sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,model.imageUrl]] placeholderImage:[UIImage imageNamed:@"baseImage.png"]];
+
+    }
+    
     
     cell.titleLabel.text = [NSString stringWithFormat:@"标题:%@",model.imageTite];
     
@@ -169,7 +179,7 @@ UITableViewDataSource
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 217;
+    return 178;
 }
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {

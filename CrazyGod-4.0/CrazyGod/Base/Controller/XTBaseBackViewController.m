@@ -39,6 +39,11 @@
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     [appDelegate.tabBarControll.tabBar setHidden:YES];
+    
+    //开启侧滑
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.delegate = nil;
+    }
 }
 -(void)viewWillDisappear:(BOOL)animated
 {

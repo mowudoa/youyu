@@ -234,8 +234,8 @@ UICollectionViewDelegateFlowLayout
         _searchImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH*0.8, 30)];
         _searchImage.backgroundColor = [UIColor colorWithHexString:@"ffffff"];
         
-        UIImageView *ima = [[UIImageView alloc] initWithFrame:CGRectMake(8,8,14,14)];
-        //  ima.image = [UIImage imageNamed:@"searchIma"];
+        UIImageView *ima = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH*0.8 -30,8,14,14)];
+        ima.image = [UIImage imageNamed:@"searchIma"];
         
         UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(25,0,100, 30)];
         
@@ -257,9 +257,9 @@ UICollectionViewDelegateFlowLayout
 -(UITextField*)searchTextField
 {
     if (_searchTextField == nil) {
-        _searchTextField = [[UITextField alloc]initWithFrame:CGRectMake(30, 0, SCREEN_WIDTH * 0.75 - 30, 30)];
+        _searchTextField = [[UITextField alloc]initWithFrame:CGRectMake(20, 0, SCREEN_WIDTH * 0.75 - 20, 30)];
         //        [_textField setBackground:[UIImage imageNamed:@"searchbar"]];
-        _searchTextField.placeholder = @"你想要的";
+        _searchTextField.placeholder = @"你想要的...";
         [_searchTextField setValue:[UIColor redColor] forKeyPath:@"_placeholderLabel.textColor"];
         _searchTextField.borderStyle = UITextBorderStyleNone;
         _searchTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;

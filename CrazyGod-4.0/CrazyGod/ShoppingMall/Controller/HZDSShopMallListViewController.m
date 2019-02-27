@@ -706,7 +706,7 @@ UITableViewDataSource
 {
     if (tableView == _mallListTableView) {
         
-        return 160;
+        return HEIGHT(160);
         
     }else{
         

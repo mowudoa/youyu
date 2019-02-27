@@ -2596,8 +2596,8 @@
 		715E346621DF0826000679CC /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				715E349921DF3263000679CC /* Model */,
 				715E346721DF0826000679CC /* Controller */,
+				715E349921DF3263000679CC /* Model */,
 				715E346821DF0826000679CC /* View */,
 			);
 			path = Base;

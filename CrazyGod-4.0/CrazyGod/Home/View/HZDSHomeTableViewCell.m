@@ -36,9 +36,10 @@
     _tagView.width = SCREEN_WIDTH - 34 - (self.height - 28);
     
     
+    float height = [WYFTools heightWithCreateTagLabel:[UIFont systemFontOfSize:12] tagArray:_homeModel.tagArray itemSpace:2 itemHeight:20 currentX:0 currentY:0 superView:_tagView action:nil vc:self buttonUserEnable:NO];
     
-    [WYFTools createTagLabel:[UIFont systemFontOfSize:12] tagArray:_homeModel.tagArray itemSpace:2 itemHeight:20 currentX:0 currentY:0 superView:_tagView];
-
+    //动态计算当前cell高度
+    _homeModel.cellHeight = height + 98;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
