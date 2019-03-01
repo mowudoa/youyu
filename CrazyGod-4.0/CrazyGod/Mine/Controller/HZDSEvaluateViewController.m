@@ -159,7 +159,7 @@ UINavigationControllerDelegate
         
         NSDictionary *dict = @{@"order_id":_order_id,
                                @"data[score]":[NSString stringWithFormat:@"%ld",(long)_starView.currentStar],
-                               @"data[contents]":_evaluateTextView
+                               @"data[contents]":_evaluateTextView.text
                                };
         
         

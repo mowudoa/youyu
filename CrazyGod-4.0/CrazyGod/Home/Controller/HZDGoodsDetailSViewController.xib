@@ -34,7 +34,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="508-Xh-FVU">
-                    <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                    <rect key="frame" x="0.0" y="20" width="320" height="504"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aeE-cZ-9KH">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="999"/>
@@ -377,10 +377,10 @@
                 <constraint firstItem="DWc-y0-PFp" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="4Kr-x4-QSm"/>
                 <constraint firstItem="aeE-cZ-9KH" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="E2s-Ta-NmS"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="508-Xh-FVU" secondAttribute="trailing" id="RWC-6b-ll4"/>
-                <constraint firstAttribute="bottom" secondItem="DWc-y0-PFp" secondAttribute="bottom" id="Z3M-0G-59K"/>
+                <constraint firstItem="DWc-y0-PFp" firstAttribute="bottom" secondItem="Q5M-cg-NOt" secondAttribute="bottom" id="ccb-uR-hw6"/>
                 <constraint firstItem="508-Xh-FVU" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="l9c-cO-8Nb"/>
                 <constraint firstItem="DWc-y0-PFp" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="sZl-mj-CFZ"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="508-Xh-FVU" secondAttribute="bottom" id="w02-Az-HBb"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="508-Xh-FVU" secondAttribute="bottom" constant="44" id="w02-Az-HBb"/>
                 <constraint firstItem="508-Xh-FVU" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="x1I-Ts-2ik"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>

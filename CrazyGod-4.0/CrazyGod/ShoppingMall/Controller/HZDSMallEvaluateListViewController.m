@@ -103,8 +103,16 @@ UITableViewDataSource
                 
                 model.goodsEvaluate = dic1[@"contents"];
                 
-                model.businessReply = dic1[@"reply"];
                
+                if (dic1[@"reply"] == NULL || dic1[@"reply"] == nil ||dic1[@"reply"] == [NSNull null]) {
+                    
+                    model.businessReply = @"";
+                }else{
+                    
+                    model.businessReply = dic1[@"reply"];
+                }
+                
+                
                 model.evaluateTime = dic1[@"create_time"];
                 
                 model.evaluateScore = dic1[@"score"];
@@ -141,6 +149,13 @@ UITableViewDataSource
     
     [self configureCell:cell atIndexPath:indexPath];
 
+  
+    
+    return cell;
+}
+- (void)configureCell:(HZDSEvaluateTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    cell.fd_enforceFrameLayout = NO; // Enable to use "-sizeThatFits:"
+   
     HZDSevaluateModel *model = _evaluateListDataSource[indexPath.row];
     
     [cell.userIcon sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,model.userImageUrl]] placeholderImage:[UIImage imageNamed:@"1213per"]];
@@ -155,12 +170,6 @@ UITableViewDataSource
     cell.timeLabel.text = [self ConvertStrToTime:model.evaluateTime];
     
     cell.businessReply.text = [NSString stringWithFormat:@"商家回复:%@",model.businessReply];
-    
-    return cell;
-}
-- (void)configureCell:(HZDSEvaluateTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    cell.fd_enforceFrameLayout = NO; // Enable to use "-sizeThatFits:"
-    
 }
 
 #pragma mark - UITableViewDelegate
