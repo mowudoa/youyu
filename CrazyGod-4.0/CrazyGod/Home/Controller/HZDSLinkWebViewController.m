@@ -9,6 +9,7 @@
 #import "HZDSLinkWebViewController.h"
 
 @interface HZDSLinkWebViewController ()
+
 @property (weak, nonatomic) IBOutlet UIScrollView *backGroundView;
 
 @end
@@ -63,9 +64,7 @@
     
     
     UILabel *label1 = [[UILabel alloc] init];
-    
-    //  label1.text = rushIntroduce;
-    
+        
     NSString *infoStr = [NSString stringWithFormat:@"<head><style>img{width:%f !important;height:auto}</style></head>%@",SCREEN_WIDTH - 20,dic[@"contents"]];
     
     NSData *data = [infoStr dataUsingEncoding:NSUnicodeStringEncoding];

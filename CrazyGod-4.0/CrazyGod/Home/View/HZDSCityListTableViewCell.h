@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface HZDSCityListTableViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UILabel *cityName;
 
 @end

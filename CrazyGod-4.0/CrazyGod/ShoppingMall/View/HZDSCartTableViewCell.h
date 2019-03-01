@@ -17,11 +17,17 @@
 
 @interface HZDSCartTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIButton *selectedButton;
+
 @property (weak, nonatomic) IBOutlet UIImageView *goodsImage;
+
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *numLabel;
+
 @property (weak, nonatomic) IBOutlet UITextField *numTF;
+
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *specLabel;
 
 @property(strong,nonatomic)HZDSCartModel* carModel;

@@ -7,20 +7,23 @@
 //
 
 #import "HZDSSetInfoViewController.h"
-#import "HZDSChangepassWordViewController.h"
-#import "HZDSlinkUserPhoneViewController.h"
-#import "HZDSBalanceRechargeViewController.h"
-#import "HZDSLogListViewController.h"
 #import "HZDSTransferAccountsViewController.h"
+#import "HZDSBalanceRechargeViewController.h"
+#import "HZDSChangepassWordViewController.h"
 #import "HZDSForgetPassWordViewController.h"
-#import "HZDSChangePayPassViewController.h"
 #import "HZDSAuthenticationViewController.h"
+#import "HZDSChangePayPassViewController.h"
+#import "HZDSlinkUserPhoneViewController.h"
+#import "HZDSLogListViewController.h"
 #import "WXApi.h"
 
 @interface HZDSSetInfoViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *userPhoneButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *linkWChatButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *exitLoginButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *authenticationButton;
 
 @end
@@ -69,26 +72,23 @@
             
             if ([dic[@"datas"][@"bind"] isKindOfClass:[NSArray class]]) {
              
-                strongSelf.linkWChatButton.userInteractionEnabled = YES;
+            strongSelf.linkWChatButton.userInteractionEnabled = YES;
                 
                 [strongSelf.linkWChatButton setTitle:@"未绑定" forState:UIControlStateNormal];
                 
                 [strongSelf.linkWChatButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             }else{
                 
-                strongSelf.linkWChatButton.userInteractionEnabled = NO;
+            strongSelf.linkWChatButton.userInteractionEnabled = NO;
                 
                 [strongSelf.linkWChatButton setTitle:@"已绑定" forState:UIControlStateNormal];
 
                 [strongSelf.linkWChatButton setTitleColor:[UIColor colorWithHexString:@"#1ec46d"] forState:UIControlStateNormal];
             }
             
-            
-            
         }else{
             
             [JKToast showWithText:dic[@"datas"][@"error"]];
-            
             
         }
         
@@ -118,12 +118,14 @@
 - (IBAction)balanceLogList:(UIButton *)sender {
 
     HZDSLogListViewController *logList = [[HZDSLogListViewController alloc] init];
+   
     [self.navigationController pushViewController:logList animated:YES];
 }
 //好友转账
 - (IBAction)TransferAccounts:(UIButton *)sender {
 
     HZDSTransferAccountsViewController *account = [[HZDSTransferAccountsViewController alloc] init];
+    
     [self.navigationController pushViewController:account animated:YES];
 }
 
@@ -147,10 +149,13 @@
     if([WXApi isWXAppInstalled]){//判断用户是否已安装微信App
         
         SendAuthReq *req = [[SendAuthReq alloc] init];
+        
         req.state = @"wx_oauth_authorization_state";//用于保持请求和回调的状态，授权请求或原样带回
+        
         req.scope = @"snsapi_userinfo";//授权作用域：获取用户个人信息
         
         [WXApi sendReq:req];//发起微信授权请求
+    
     }else{
         
      //   [JKToast showWithText:@"请安装微信客户端"];
@@ -197,8 +202,6 @@
             [JKToast showWithText:dic[@"datas"][@"msg"]];
             
             [USER_DEFAULT setBool:NO forKey:@"isLogin"];
-            
-            
 
             [self clearData];
             
@@ -224,12 +227,19 @@
     [USER_DEFAULT removeObjectForKey:@"User_ID"];
     
     [USER_DEFAULT removeObjectForKey:@"nickname"];
+   
     [USER_DEFAULT removeObjectForKey:@"face"];
+    
     [USER_DEFAULT removeObjectForKey:@"HETONG"];
+    
     [USER_DEFAULT removeObjectForKey:@"SHANGHU"];
+    
     [USER_DEFAULT removeObjectForKey:@"LOGO"];
+    
     [USER_DEFAULT removeObjectForKey:@"IDCARDFACE"];
+    
     [USER_DEFAULT removeObjectForKey:@"IDCARDOUTFACE"];
+    
     [USER_DEFAULT removeObjectForKey:@"ZHIZHAO"];
 
     [USER_DEFAULT removeObjectForKey:@"choiceAddress"];

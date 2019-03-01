@@ -9,9 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface HZDScashHistoryTableViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UILabel *moneyNumlabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *bankNameLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *bankNumLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 
 @end

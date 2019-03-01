@@ -9,12 +9,19 @@
 #import <UIKit/UIKit.h>
 
 @interface HZDSMallOrderTableViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UIImageView *goodsIcon;
+
 @property (weak, nonatomic) IBOutlet UILabel *goodsTitle;
+
 @property (weak, nonatomic) IBOutlet UILabel *goodsPrice;
+
 @property (weak, nonatomic) IBOutlet UILabel *goodsTotalPrice;
+
 @property (weak, nonatomic) IBOutlet UILabel *goodsNeedpay;
+
 @property (weak, nonatomic) IBOutlet UILabel *userName;
+
 @property (weak, nonatomic) IBOutlet UILabel *userPhone;
 
 @end

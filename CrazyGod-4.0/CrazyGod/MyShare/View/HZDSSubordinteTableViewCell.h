@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface HZDSSubordinteTableViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UILabel *userAccount;
+
 @property (weak, nonatomic) IBOutlet UILabel *userNickName;
+
 @property (weak, nonatomic) IBOutlet UILabel *userEmail;
 
 @end

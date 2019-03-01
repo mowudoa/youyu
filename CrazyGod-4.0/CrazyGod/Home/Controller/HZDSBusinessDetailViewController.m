@@ -23,15 +23,25 @@ UICollectionViewDataSource
     NSMutableArray *_tagsArray;
 }
 @property (weak, nonatomic) IBOutlet UICollectionView *businessCollectionView;
+
 @property (strong, nonatomic) IBOutlet UIView *headerView;
+
 @property (weak, nonatomic) IBOutlet UIImageView *titleImage;
+
 @property (weak, nonatomic) IBOutlet UIImageView *businessIcon;
+
 @property (weak, nonatomic) IBOutlet UILabel *businessName;
+
 @property (weak, nonatomic) IBOutlet UILabel *businessEvaluate;
+
 @property (weak, nonatomic) IBOutlet UILabel *businessSale;
+
 @property (weak, nonatomic) IBOutlet UIView *tagsView;
+
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *advTitleLabel;
 
 @end
@@ -56,13 +66,12 @@ UICollectionViewDataSource
 {
     
     UINib* cate = [UINib nibWithNibName:@"HZDSbusinessGoodsCollectionViewCell" bundle:nil];
-    [_businessCollectionView registerNib:cate forCellWithReuseIdentifier:@"GoodsCollectionViewCell"];
     
+    [_businessCollectionView registerNib:cate forCellWithReuseIdentifier:@"GoodsCollectionViewCell"];
     
     [_businessCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
     
     [_businessCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header2"];
-
 
 }
 -(void)initData
@@ -90,11 +99,11 @@ UICollectionViewDataSource
             [self->_businessIcon sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,List[@"detail"][@"photo"]]]];
             
             [self->_titleImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,List[@"detail"][@"dianzhao"]]]];
-
             
             self->_businessSale.text = [NSString stringWithFormat:@"月售:%@",List[@"detail"][@"yueshou"]];
             
             self->_businessEvaluate.text = [NSString stringWithFormat:@"%@分",List[@"detail"][@"pingjiafen"]];
+            
             self->_phoneLabel.text = List[@"detail"][@"tel"];
             
             self->_locationLabel.text = List[@"detail"][@"addr"];
@@ -130,7 +139,6 @@ UICollectionViewDataSource
                         [model.goodsArray addObjectsFromArray:List[@"tuandpzs"]];
 
                     }
-                    
 
                 }
              
@@ -167,6 +175,7 @@ UICollectionViewDataSource
     if (section == 0) {
         
         return 0;
+        
     }else{
         
         HZDSBusinessModel *model = [[HZDSBusinessModel alloc] init];
@@ -183,7 +192,6 @@ UICollectionViewDataSource
     
         HZDSbusinessGoodsCollectionViewCell *cell  =[collectionView dequeueReusableCellWithReuseIdentifier:@"GoodsCollectionViewCell" forIndexPath:indexPath];
     
-    
     if (indexPath.section == 0) {
         
     }else{
@@ -199,6 +207,7 @@ UICollectionViewDataSource
         cell.goodsOldPrice.text = [NSString stringWithFormat:@"原价:￥%@",[model.goodsArray[indexPath.row][@"price"] stringValue]];
 
         cell.goodsPrice.adjustsFontSizeToFitWidth = YES;
+       
         cell.goodsOldPrice.adjustsFontSizeToFitWidth = YES;
         cell.goodsInfo.adjustsFontSizeToFitWidth = YES;
         
@@ -206,9 +215,7 @@ UICollectionViewDataSource
 
     }
     
-        
-        
-        return cell;
+    return cell;
     
 }
 
@@ -231,11 +238,11 @@ UICollectionViewDataSource
         if (indexPath.section == 1) {
            
             good.isHotGoods = YES;
+            
         }else{
             
             good.isHotGoods = NO;
         }
-        
         
         [self.navigationController pushViewController:good animated:YES];
     }
@@ -250,7 +257,6 @@ UICollectionViewDataSource
     if (indexPath.section == 0) {
         
         UICollectionReusableView* reusable = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header" forIndexPath:indexPath];
-        
        
         self.headerView.frame = CGRectMake(0,0,SCREEN_WIDTH,400);
         
@@ -269,8 +275,7 @@ UICollectionViewDataSource
         [reusable2 addSubview:[self createheader2ViewWithSection:indexPath.section]];
         
         return  reusable2;
-        
-        
+    
     }
     
 }
@@ -312,9 +317,11 @@ UICollectionViewDataSource
 -(UIView*)createheader2ViewWithSection:(NSInteger)section
 {
     UIView * subTitleView = [[UIView alloc] initWithFrame:CGRectMake(0 ,0, SCREEN_WIDTH, SCREEN_WIDTH/10)];
-    //    headSubView2.backgroundColor = [UIColor colorWithHexString:@"#EA494E"];
+
     subTitleView.alpha = 0.8;
+
     subTitleView.userInteractionEnabled = YES;
+
     UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2-35, 0, 70, SCREEN_WIDTH/10)];
     
     if (section == 1) {
@@ -327,9 +334,11 @@ UICollectionViewDataSource
 
     }
     label.textColor = [UIColor blackColor];
+   
     label.font = [UIFont boldSystemFontOfSize:13];
+    
     label.textAlignment = NSTextAlignmentCenter;
-    //    label.backgroundColor = [UIColor redColor];
+
     [subTitleView addSubview:label];
     
     return subTitleView;
@@ -337,6 +346,7 @@ UICollectionViewDataSource
 -(void)reloadData
 {
     _businessIcon.layer.cornerRadius = _businessIcon.frame.size.height/2;
+    
     _businessIcon.layer.masksToBounds = YES;
     
     [WYFTools createTagLabel:[UIFont systemFontOfSize:12] tagArray:_tagsArray itemSpace:2 itemHeight:20 currentX:0 currentY:0 superView:_tagsView];
@@ -347,6 +357,7 @@ UICollectionViewDataSource
 - (IBAction)callPhone:(UIButton *)sender {
 
     NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel:%@",_phoneLabel.text];
+   
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 }
 

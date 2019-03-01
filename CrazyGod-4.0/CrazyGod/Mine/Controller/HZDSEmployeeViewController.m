@@ -19,6 +19,7 @@ UITableViewDataSource
 @property(strong,nonatomic)UIBarButtonItem* rightItem;
 
 @property(nonatomic,strong) NSMutableArray *employeeDataSource;
+
 @property (weak, nonatomic) IBOutlet UIView *backGroundView;
 
 @property(nonatomic,assign) NSInteger pageNum;
@@ -32,9 +33,7 @@ UITableViewDataSource
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    
     _employeeDataSource = [[NSMutableArray alloc] init];
-
     
     [self registercell];
     
@@ -47,9 +46,9 @@ UITableViewDataSource
     
     _totalPage = 1;
     
-    
     // 下拉加载
     self.enmloyeeListTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+       
         [self initData];
     }];
     
@@ -67,6 +66,7 @@ UITableViewDataSource
     }];
     
     self.navigationItem.title = @"员工设置";
+    
     self.navigationItem.rightBarButtonItem = self.rightItem;
 }
 -(UIBarButtonItem*)rightItem
@@ -74,11 +74,17 @@ UITableViewDataSource
     if (_rightItem == nil) {
         
         UIButton* btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        
         [btn setFrame:CGRectMake(0, 0, 30, 30)];
+        
         [btn setTitle:@"添加" forState:UIControlStateNormal];
+        
         btn.titleLabel.font = [UIFont systemFontOfSize:13];
+        
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        
         [btn addTarget:self action:@selector(rightAction:) forControlEvents:UIControlEventTouchUpInside];
+        
         _rightItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
     }
     return _rightItem;
@@ -128,23 +134,30 @@ UITableViewDataSource
                 strongSelf.backGroundView.hidden = NO;
             }
             
-            
             for (NSDictionary *dict1 in arr) {
                 
                 HZDSemployeeListModel *model = [[HZDSemployeeListModel alloc] init];
                 
                 model.employeeID = dict1[@"worker_id"];
+                
                 model.employeeName = dict1[@"name"];
+                
                 model.employeeQQ = dict1[@"qq"];
+                
                 model.employeeWchat = dict1[@"weixin"];
+                
                 model.employeeJob = dict1[@"work"];
+                
                 model.userID = dict1[@"user_id"];
 
                 model.employeeTel  =dict1[@"tel"];
+                
                 model.employeeAddress = dict1[@"addr"];
+                
                 model.employeePhone  =dict1[@"mobile"];
 
                 model.employeePower = dict1[@"tuan"];
+                
                 model.createTime = dict1[@"last_time"];
                 
                 [strongSelf.employeeDataSource addObject:model];
@@ -188,15 +201,23 @@ UITableViewDataSource
                 HZDSemployeeListModel *model = [[HZDSemployeeListModel alloc] init];
                 
                 model.employeeID = dict1[@"worker_id"];
+                
                 model.employeeName = dict1[@"name"];
+                
                 model.employeeQQ = dict1[@"qq"];
+                
                 model.employeeWchat = dict1[@"weixin"];
+                
                 model.employeeJob = dict1[@"work"];
+                
                 model.userID = dict1[@"user_id"];
 
                 model.employeeTel  =dict1[@"tel"];
+                
                 model.employeeAddress = dict1[@"addr"];
+                
                 model.employeePhone  =dict1[@"mobile"];
+                
                 model.employeePower = dict1[@"tuan"];
 
                 model.createTime = dict1[@"last_time"];
@@ -228,6 +249,7 @@ UITableViewDataSource
 {
     
     UINib* nib = [UINib nibWithNibName:@"HZDSemployeeListTableViewCell" bundle:nil];
+    
     [_enmloyeeListTableView registerNib:nib forCellReuseIdentifier:@"employeeListTableViewCell"];
 }
 #pragma  mark ===TbaleViewDateSource
@@ -246,7 +268,6 @@ UITableViewDataSource
     HZDSemployeeListTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"employeeListTableViewCell" forIndexPath:indexPath];
     
     HZDSemployeeListModel *model = _employeeDataSource[indexPath.section];
-    
     
     cell.nameLabel.text = [NSString stringWithFormat:@"员工姓名:%@",model.employeeName];
     
@@ -283,13 +304,6 @@ UITableViewDataSource
     
 }
 
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    
-}
-
 #pragma mark - UITableViewDelegate
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -304,58 +318,75 @@ UITableViewDataSource
 -(UIView*)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     
-    
     UIView* view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
     
     UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,0,SCREEN_WIDTH - 20,1)];
+    
     lineLabel.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
+    
     [view addSubview:lineLabel];
     
     UILabel* zongjia = [[UILabel alloc]initWithFrame:CGRectMake(15, 13,100, 20)];
+    
     zongjia.font=[UIFont systemFontOfSize:14];
+    
     zongjia.textAlignment = NSTextAlignmentLeft;
+    
     zongjia.textColor = [UIColor colorWithHexString:@"BEC2C9"];
-    //  zongjia.text = [NSString stringWithFormat:@"共%ld件商品",(long)goodsNum];
     
     [view addSubview:zongjia];
     
     UILabel* price = [[UILabel alloc]initWithFrame:CGRectMake(120, 13,SCREEN_WIDTH - 120 -75 -5, 20)];
+   
     [view addSubview:price];
     
-    //  price.text =  [NSString stringWithFormat:@"合计 :￥%.2f",goodstotalPirce];
     price.tag = section;
+    
     price.textColor = [UIColor colorWithHexString:@"#BEC2C9"];
+    
     price.font=[UIFont systemFontOfSize:14];
+    
     price.textAlignment = NSTextAlignmentLeft;
-    // price.adjustsFontSizeToFitWidth = YES;
-    
-    
-    //    UILabel* postLabel = [UILabel alloc]initWithFrame:CGRectMake(150, 5, <#CGFloat width#>, <#CGFloat height#>)
     
     UIButton* leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+   
     [leftBtn setFrame:CGRectMake(SCREEN_WIDTH-75-75, 8, 70, 25)];
+    
     [leftBtn setTitle:@"编辑" forState:UIControlStateNormal];
+    
     leftBtn.layer.cornerRadius = 3;
+    
     leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    
     leftBtn.layer.masksToBounds = YES;
+    
     leftBtn.backgroundColor = [UIColor redColor];
-   // leftBtn.layer.borderWidth = 0.5;
+   
     leftBtn.tag = section;
+    
     [leftBtn addTarget:self action:@selector(tapLeftBtn:) forControlEvents:UIControlEventTouchUpInside];
+   
     [view addSubview:leftBtn];
     
     UIButton* rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [rightBtn setFrame:CGRectMake(SCREEN_WIDTH-75, 8, 70, 25)];
-    rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-    [rightBtn setTitle:@"删除" forState:UIControlStateNormal];
-    //    [rightBtn setBackgroundImage:[UIImage imageNamed:@"exitlogin.png"] forState:UIControlStateNormal];
-    rightBtn.backgroundColor = [UIColor colorWithHexString:@"46a0fc"];
-    rightBtn.layer.cornerRadius = 3;
-    rightBtn.layer.masksToBounds = YES;
-    rightBtn.tag = section;
-    [rightBtn addTarget:self action:@selector(tapRightBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:rightBtn];
     
+    [rightBtn setFrame:CGRectMake(SCREEN_WIDTH-75, 8, 70, 25)];
+    
+    rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    
+    [rightBtn setTitle:@"删除" forState:UIControlStateNormal];
+    
+    rightBtn.backgroundColor = [UIColor colorWithHexString:@"46a0fc"];
+    
+    rightBtn.layer.cornerRadius = 3;
+    
+    rightBtn.layer.masksToBounds = YES;
+    
+    rightBtn.tag = section;
+    
+    [rightBtn addTarget:self action:@selector(tapRightBtn:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [view addSubview:rightBtn];
     
     view.backgroundColor=[UIColor whiteColor];
     
@@ -372,6 +403,7 @@ UITableViewDataSource
     HZDSaddEmployeeViewController *add = [[HZDSaddEmployeeViewController alloc] init];
     
     HZDSemployeeListModel *model = [[HZDSemployeeListModel alloc] init];
+    
     model = _employeeDataSource[sender.tag];
     
     add.addUrl = EMPLOYEE_EDIT;
@@ -386,6 +418,7 @@ UITableViewDataSource
 -(void)tapRightBtn:(UIButton *)sender
 {
     HZDSemployeeListModel *model = [[HZDSemployeeListModel alloc] init];
+    
     model = _employeeDataSource[sender.tag];
     
     NSDictionary *dic = @{@"worker_id":model.employeeID
@@ -420,7 +453,6 @@ UITableViewDataSource
     [super viewWillAppear:animated];
     
     [self initData];
-    
     
 }
 

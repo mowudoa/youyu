@@ -11,10 +11,15 @@
 #import "WXApi.h"
 
 @interface HZDSGoPayViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *payId;
+
 @property (weak, nonatomic) IBOutlet UILabel *payReason;
+
 @property (weak, nonatomic) IBOutlet UILabel *payTypeLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *payMoney;
+
 @property (weak, nonatomic) IBOutlet UIButton *payButton;
 
 @end
@@ -49,7 +54,6 @@
 
     if ([_payTypeLabel.text isEqualToString:@"微信支付"]){
         
-    
         NSDictionary *dict = @{@"log_id":_payTypeID
                                };
         
@@ -63,13 +67,19 @@
                 
                 
                 PayReq *req  = [[PayReq alloc] init];
+                
                 req.openID = dic[@"datas"][@"pay"][@"appid"];
+                
                 req.partnerId = dic[@"datas"][@"pay"][@"partnerid"];
+                
                 req.prepayId = dic[@"datas"][@"pay"][@"prepayid"];
                 
                 req.package = dic[@"datas"][@"pay"][@"package"];
+                
                 req.nonceStr = dic[@"datas"][@"pay"][@"noncestr"];
+                
                 req.timeStamp = [dic[@"datas"][@"pay"][@"timestamp"] intValue];
+                
                 req.sign = dic[@"datas"][@"pay"][@"sign"];
                 
                 //调起微信支付
@@ -78,8 +88,6 @@
                     
                     [USER_DEFAULT setObject:@"0" forKey:@"payGoodsOrMall"];
                 }
-
-                
                 
             }else{
                 
@@ -90,7 +98,6 @@
         } fail:^(NSError *error, NSString *url, NSString *Json) {
             
         }];
-        
         
     }
 
@@ -109,9 +116,7 @@
 -(void)zhifushibai:(NSNotification*)userinfo
 {
     [JKToast showWithText:@"支付失败"];
-    
-  //  [self.navigationController popToRootViewControllerAnimated:YES];
-    
+        
 }
 
 - (void)didReceiveMemoryWarning {

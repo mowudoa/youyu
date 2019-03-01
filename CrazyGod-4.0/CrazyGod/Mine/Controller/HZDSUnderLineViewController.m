@@ -7,9 +7,9 @@
 //
 
 #import "HZDSUnderLineViewController.h"
+#import "AFHTTPSessionManager.h"
 #import "HZDSBusinessModel.h"
 #import "HZDSCityListModel.h"
-#import "AFHTTPSessionManager.h"
 
 
 @interface HZDSUnderLineViewController ()<
@@ -24,64 +24,100 @@ UIPickerViewDataSource
     NSString *choiceID;
     
     NSString *classFatherID;
+    
     NSString *classSubID;
     
     NSString *classFatherName;
-    NSString *classSubName;
-
     
+    NSString *classSubName;
     
     NSString *areaOneID;
+    
     NSString *areaTwoID;
+    
     NSString *areaThressID;
     
     NSString *areaOneName;
-    NSString *areaTwoName;
-    NSString *areaThressName;
-
     
+    NSString *areaTwoName;
+    
+    NSString *areaThressName;
     
 }
 @property (weak, nonatomic) IBOutlet UIView *myView;
+
 @property (weak, nonatomic) IBOutlet UIView *backGroundView;
+
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollview;
+
 @property (weak, nonatomic) IBOutlet UIImageView *contractImage;
+
 @property (weak, nonatomic) IBOutlet UIImageView *businessImage;
+
 @property (weak, nonatomic) IBOutlet UIImageView *logoImage;
+
 @property (weak, nonatomic) IBOutlet UIImageView *idCardFace;
+
 @property (weak, nonatomic) IBOutlet UIImageView *idCardOpposite;
+
 @property (weak, nonatomic) IBOutlet UIImageView *BusinessLicense;
+
 @property (weak, nonatomic) IBOutlet UITextField *businessNameTF;
+
 @property (weak, nonatomic) IBOutlet UITextField *businessRecommendUserTF;
+
 @property (weak, nonatomic) IBOutlet UITextField *businessShopNameTF;
+
 @property (weak, nonatomic) IBOutlet UITextField *legalPersonTF;
+
 @property (weak, nonatomic) IBOutlet UITextField *legalPersonPhoneTF;
+
 @property (weak, nonatomic) IBOutlet UITextField *ShopProportionTF;
+
 @property (weak, nonatomic) IBOutlet UIButton *businessClassButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *businessAreaButton;
+
 @property (weak, nonatomic) IBOutlet UITextField *businessPhoneTF;
+
 @property (weak, nonatomic) IBOutlet UITextField *businessUserNameTF;
+
 @property (weak, nonatomic) IBOutlet UITextField *businessShopPhoneTF;
+
 @property (weak, nonatomic) IBOutlet UITextField *businessAddressTF;
+
 @property (weak, nonatomic) IBOutlet UILabel *businessCoordinateLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *businessCoordinateLabelY;
+
 @property (weak, nonatomic) IBOutlet UIButton *addressButton;
 
 @property (weak, nonatomic) IBOutlet UITextField *businessHoursTF;
+
 @property (weak, nonatomic) IBOutlet UITextView *businessInfoTextView;
+
 @property (weak, nonatomic) IBOutlet UIButton *SettledButton;
+
 @property (weak, nonatomic) IBOutlet UITextField *SettlementPhoneTF;
 
 @property (weak, nonatomic) IBOutlet UIView *contractView;//合同照片view
+
 @property (weak, nonatomic) IBOutlet UIView *businessIconView;//商户形象view
+
 @property (weak, nonatomic) IBOutlet UIView *logoView;//LOGO
+
 @property (weak, nonatomic) IBOutlet UIView *idCardView;//身份证正面照
+
 @property (weak, nonatomic) IBOutlet UIView *idCardOutFaceView;//身份证反面照
+
 @property (weak, nonatomic) IBOutlet UIView *businessLIcenseView;//营业执照
 
 @property (weak, nonatomic) IBOutlet UILabel *taglabel;
+
 @property (weak, nonatomic) IBOutlet UIView *tagView;
+
 @property (weak, nonatomic) IBOutlet UIView *AgreementView;
+
 @property (weak, nonatomic) IBOutlet UITextView *agreementTextView;
 
 @property (weak, nonatomic) IBOutlet UIView *bankGroundView;
@@ -108,14 +144,8 @@ UIPickerViewDataSource
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-//    [_myView.layer setMasksToBounds:YES];
-//    [_myView.layer setCornerRadius:5]; //设置矩形四个圆角半径
-//    //边框宽度
-//    [_myView.layer setBorderWidth:1.0];
-//    //设置边框颜色有两种方法：第一种如下:
-//    _myView.layer.borderColor=[UIColor grayColor].CGColor;
-    
     _businessClassArray = [[NSMutableArray alloc] init];
+    
     _businessCityArray = [[NSMutableArray alloc] init];
     
     [self initUI];
@@ -129,6 +159,7 @@ UIPickerViewDataSource
 {
  
     [_contractView.layer setMasksToBounds:YES];
+    
     [_contractView.layer setCornerRadius:5]; //设置矩形四个圆角半径
         //边框宽度
     [_contractView.layer setBorderWidth:1.0];
@@ -136,6 +167,7 @@ UIPickerViewDataSource
     _contractView.layer.borderColor=[UIColor colorWithHexString:@"f5f5f5"].CGColor;
     
     [_businessIconView.layer setMasksToBounds:YES];
+    
     [_businessIconView.layer setCornerRadius:5]; //设置矩形四个圆角半径
     //边框宽度
     [_businessIconView.layer setBorderWidth:1.0];
@@ -143,6 +175,7 @@ UIPickerViewDataSource
     _businessIconView.layer.borderColor=[UIColor colorWithHexString:@"f5f5f5"].CGColor;
     
     [_logoView.layer setMasksToBounds:YES];
+    
     [_logoView.layer setCornerRadius:5]; //设置矩形四个圆角半径
     //边框宽度
     [_logoView.layer setBorderWidth:1.0];
@@ -150,6 +183,7 @@ UIPickerViewDataSource
     _logoView.layer.borderColor=[UIColor colorWithHexString:@"f5f5f5"].CGColor;
     
     [_idCardView.layer setMasksToBounds:YES];
+    
     [_idCardView.layer setCornerRadius:5]; //设置矩形四个圆角半径
     //边框宽度
     [_idCardView.layer setBorderWidth:1.0];
@@ -157,6 +191,7 @@ UIPickerViewDataSource
     _idCardView.layer.borderColor=[UIColor colorWithHexString:@"f5f5f5"].CGColor;
     
     [_idCardOutFaceView.layer setMasksToBounds:YES];
+   
     [_idCardOutFaceView.layer setCornerRadius:5]; //设置矩形四个圆角半径
     //边框宽度
     [_idCardOutFaceView.layer setBorderWidth:1.0];
@@ -164,6 +199,7 @@ UIPickerViewDataSource
     _idCardOutFaceView.layer.borderColor=[UIColor colorWithHexString:@"f5f5f5"].CGColor;
     
     [_businessLIcenseView.layer setMasksToBounds:YES];
+    
     [_businessLIcenseView.layer setCornerRadius:5]; //设置矩形四个圆角半径
     //边框宽度
     [_businessLIcenseView.layer setBorderWidth:1.0];
@@ -172,6 +208,7 @@ UIPickerViewDataSource
     
     
     [_businessInfoTextView.layer setMasksToBounds:YES];
+    
     [_businessInfoTextView.layer setCornerRadius:5]; //设置矩形四个圆角半径
     //边框宽度
     [_businessInfoTextView.layer setBorderWidth:1.0];
@@ -199,12 +236,13 @@ UIPickerViewDataSource
 - (UIPickerView *)classPickView {
     if (!_classPickView) {
         _classPickView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 44,SCREEN_WIDTH, 320)];
+        
         _classPickView.delegate = self;
+        
         _classPickView.dataSource = self;
         
         _classPickView.backgroundColor = [UIColor redColor];
         
-//        _pickerView.showsSelectionIndicator = YES;
     }
     return _classPickView;
     
@@ -218,23 +256,28 @@ UIPickerViewDataSource
         _myPickView.backgroundColor = [UIColor grayColor];
     
         UIButton *rightSureBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+        
         rightSureBtn.frame = CGRectMake(SCREEN_WIDTH - 54, 0, 44, 44);
+        
         [rightSureBtn setTitle:@"确定" forState:UIControlStateNormal];
+        
         [rightSureBtn addTarget:self action:@selector(rightButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        
         [_myPickView addSubview:rightSureBtn];
         
         
         // 左边取消按钮
         UIButton *leftCancleButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        
         leftCancleButton.frame = CGRectMake(10, 0, 44, 44);
+        
         [leftCancleButton setTitle:@"取消" forState:UIControlStateNormal];
+        
         [leftCancleButton addTarget:self action:@selector(leftButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        
         [_myPickView addSubview:leftCancleButton];
         
-        
-    
     }
-    
     
     return _myPickView;
 }
@@ -276,9 +319,6 @@ UIPickerViewDataSource
         
         [_businessAreaButton setTitle:str1 forState:UIControlStateNormal];
     }
-    
-  NSLog(@"%@%@%@",areaOneName,areaTwoName,areaThressName);
-    NSLog(@"%@%@",classFatherName,classSubName);
     
 }
 -(void)leftButtonClick:(UIButton *)sender
@@ -328,15 +368,18 @@ UIPickerViewDataSource
             if (List == nil) {
                
                 strongSelf.tagView.hidden = NO;
+                
                 strongSelf.mainScrollview.hidden = YES;
                 
                 strongSelf.taglabel.text = dic[@"datas"][@"msg"];
             }else{
                 
                 strongSelf.tagView.hidden = YES;
+               
                 strongSelf.mainScrollview.hidden = NO;
                 
                 strongSelf.bankGroundView.hidden = NO;
+                
                 strongSelf.AgreementView.hidden = NO;
                 
             }
@@ -346,10 +389,10 @@ UIPickerViewDataSource
                 HZDSBusinessModel *model = [[HZDSBusinessModel alloc] init];
                 
                 model.businessId = dict[@"cate_id"];
+                
                 model.businessName = dict[@"cate_name"];
                 
                 [model.goodsArray addObjectsFromArray:dict[@"son"]];
-                
                 
                 [strongSelf.businessClassArray addObject:model];
             }
@@ -394,6 +437,7 @@ UIPickerViewDataSource
                 HZDSBusinessModel *model = [[HZDSBusinessModel alloc] init];
                 
                 model.businessId = dict[@"city_id"];
+                
                 model.businessName = dict[@"name"];
                 
                 NSArray *areaArr = dict[@"area"];
@@ -403,6 +447,7 @@ UIPickerViewDataSource
                     HZDSCityListModel *model2 = [[HZDSCityListModel alloc] init];
                     
                     model2.citysId = dict1[@"area_id"];
+                   
                     model2.citysName = dict1[@"area_name"];
                     
                     [model2.cityListArray addObjectsFromArray:dict1[@"business"]];
@@ -428,6 +473,7 @@ UIPickerViewDataSource
         LOG(@"cuow", Json);
         
         NSData *jsonData = [Json dataUsingEncoding:NSUTF8StringEncoding];
+        
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
         
         NSArray* List = dic[@"city"];
@@ -437,6 +483,7 @@ UIPickerViewDataSource
             HZDSBusinessModel *model = [[HZDSBusinessModel alloc] init];
             
             model.businessId = dict[@"city_id"];
+            
             model.businessName = dict[@"name"];
             
             NSArray *areaArr = dict[@"area"];
@@ -446,6 +493,7 @@ UIPickerViewDataSource
                 HZDSCityListModel *model2 = [[HZDSCityListModel alloc] init];
                 
                 model2.citysId = dict1[@"area_id"];
+               
                 model2.citysName = dict1[@"area_name"];
                 
                 [model2.cityListArray addObjectsFromArray:dict1[@"business"]];
@@ -465,7 +513,9 @@ UIPickerViewDataSource
 {
     if (_imagePicker == nil) {
         _imagePicker = [[UIImagePickerController alloc] init];
+        
         _imagePicker.modalPresentationStyle = UIModalPresentationOverFullScreen;
+        
         _imagePicker.allowsEditing = YES;
         
         _imagePicker.delegate = self;
@@ -532,11 +582,16 @@ UIPickerViewDataSource
     [manager POST:UPLOADIMAGE parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         
         NSData *imageDatas = UIImageJPEGRepresentation(image,0.4);
+        
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        
         formatter.dateFormat = @"yyyyMMddHHmmss";
+        
         NSString *str = [formatter stringFromDate:[NSDate date]];
+        
         NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
         //上传的参数(上传图片，以文件流的格式)
+        
         [formData appendPartWithFileData:imageDatas
                                     name:@"file"
                                 fileName:fileName
@@ -545,12 +600,6 @@ UIPickerViewDataSource
     } success:^(NSURLSessionDataTask *task, id responseObject) {
         
         NSLog(@"====成功====");
-        
-        
-//        NSData *jsonData = [responseObject dataUsingEncoding:NSUTF8StringEncoding];
-//        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
-//
-//        NSLog(@"上传成功%@",dic);
         
         [self saveUrl:responseObject withImage:image];
         
@@ -714,36 +763,6 @@ UIPickerViewDataSource
     
 }
 
-
-
-// 自定义指定列的每行的视图，即指定列的每行的视图行为一致
-
-//- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
-//
-//    if (!view){
-//
-//        view = [[UIView alloc]init];
-//
-//    }
-//
-//    UILabel *text = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width/3, 20)];
-//
-//    text.textAlignment = NSTextAlignmentCenter;
-//
-//    text.text = [_nameArray objectAtIndex:row];
-//
-//    [view addSubview:text];
-//
-//    //隐藏上下直线
-//
-//    　　[self.pickerView.subviews objectAtIndex:1].backgroundColor = [UIColor clearColor];
-//
-//    [self.pickerView.subviews objectAtIndex:2].backgroundColor = [UIColor clearColor];
-//
-//    return view;
-//
-//}
-
 //显示的标题
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
@@ -780,7 +799,6 @@ UIPickerViewDataSource
             
             NSInteger selectRow = [pickerView selectedRowInComponent:0];
             
-            
             HZDSBusinessModel *model = _businessCityArray[selectRow];
             
             HZDSCityListModel *model1 = model.goodsArray[row];
@@ -793,9 +811,7 @@ UIPickerViewDataSource
             
             NSInteger selectRow1 = [pickerView selectedRowInComponent:0];
             
-            
             HZDSBusinessModel *model = _businessCityArray[selectRow1];
-            
             
             HZDSCityListModel *model1 = model.goodsArray[selectRow];
             
@@ -812,20 +828,21 @@ UIPickerViewDataSource
 {
     
     if ([choiceID isEqualToString:@"100"]) {
-    
-        
         
         if (component == 0) {
             
             [pickerView reloadComponent:1];
             
             classFatherID = nil;
+            
             classFatherName = nil;
             
             NSInteger selectRow = [pickerView selectedRowInComponent:0];
             
             HZDSBusinessModel *model= _businessClassArray[selectRow];
+            
             classFatherID = model.businessId;
+            
             classFatherName = model.businessName;
             
             [pickerView selectRow:0 inComponent:1 animated:YES];
@@ -834,16 +851,15 @@ UIPickerViewDataSource
             
             classSubID = [model.goodsArray[0] objectForKey:@"cate_id"];
             
-            
         }else if (component == 1){
          
             classSubID = nil;
+           
             classSubName = nil;
             
             NSInteger selectRow = [pickerView selectedRowInComponent:0];
             
             NSInteger selectRow1 = [pickerView selectedRowInComponent:1];
-
             
             HZDSBusinessModel *model = _businessClassArray[selectRow];
             
@@ -853,22 +869,25 @@ UIPickerViewDataSource
 
         }else{
             
-            
         }
     }else{
         
         if (component == 0) {
             
             areaOneID = nil;
+           
             areaOneName = nil;
             
             [pickerView reloadComponent:1];
+           
             [pickerView reloadComponent:2];
             
             NSInteger selectRow = [pickerView selectedRowInComponent:0];
             
             HZDSBusinessModel *model= _businessCityArray[selectRow];
+            
             areaOneID = model.businessId;
+            
             areaOneName = model.businessName;
             
             if (model.goodsArray.count > 0) {
@@ -876,6 +895,7 @@ UIPickerViewDataSource
                 HZDSCityListModel *model1 = model.goodsArray[0];
                 
                 areaTwoID = model1.citysId;
+                
                 areaTwoName = model1.citysName;
                 
                 if (model1.cityListArray.count > 0) {
@@ -889,6 +909,7 @@ UIPickerViewDataSource
                 }else{
                     
                     areaThressName = nil;
+                   
                     areaThressID = nil;
                     
                 }
@@ -897,14 +918,18 @@ UIPickerViewDataSource
             }else{
                
                 areaTwoName = nil;
+                
                 areaTwoID = nil;
+                
                 areaThressName = nil;
+                
                 areaThressID = nil;
             }
             
         }else if (component == 1){
             
             areaTwoName = nil;
+            
             areaTwoID = nil;
             
             [pickerView reloadComponent:2];
@@ -913,13 +938,13 @@ UIPickerViewDataSource
             NSInteger selectRow = [pickerView selectedRowInComponent:0];
             
             NSInteger selectRow1 = [pickerView selectedRowInComponent:1];
-
             
             HZDSBusinessModel *model = _businessCityArray[selectRow];
             
             HZDSCityListModel *model1 = model.goodsArray[selectRow1];
 
             areaTwoID = model1.citysId;
+            
             areaTwoName = model1.citysName;
             
             
@@ -933,6 +958,7 @@ UIPickerViewDataSource
             }else{
                 
                 areaThressName = nil;
+                
                 areaThressID = nil;
             }
             
@@ -941,15 +967,14 @@ UIPickerViewDataSource
         }else{
           
             areaThressName = nil;
+            
             areaThressID = nil;
             
             NSInteger selectRow = [pickerView selectedRowInComponent:1];
             
             NSInteger selectRow1 = [pickerView selectedRowInComponent:0];
             
-            
             HZDSBusinessModel *model = _businessCityArray[selectRow1];
-            
             
             HZDSCityListModel *model1 = model.goodsArray[selectRow];
 
@@ -1021,7 +1046,9 @@ UIPickerViewDataSource
     
     
     if ([_businessNameTF.text isEqualToString:@""] || [_businessNameTF.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+        
         [JKToast showWithText:@"商户名不可为空"];
+   
     }else if ([_businessShopNameTF.text isEqualToString:@""] || [_businessShopNameTF.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
         
         [JKToast showWithText:@"企业名称不可为空"];
@@ -1084,8 +1111,8 @@ UIPickerViewDataSource
         
         
     }else if ([USER_DEFAULT objectForKey:@"LOGO"] == nil){
+       
         [JKToast showWithText:@"请上传LOGO"];
-        
         
     }else if ([USER_DEFAULT objectForKey:@"IDCARDFACE"] == nil){
         
@@ -1159,15 +1186,14 @@ UIPickerViewDataSource
     
     
     if ([_businessAddressTF.text isEqualToString:@""] || [_businessAddressTF.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+        
         [JKToast showWithText:@"地址不可为空"];
+    
     }else{
        
         __weak typeof(self) weakSelf = self;
-        
-        
-        
+  
         NSDictionary *urlDict = @{@"address":_businessAddressTF.text};
-        
         
         [CrazyNetWork CrazyRequest_Post:ADDRESS_COORDINATE parameters:urlDict HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
             
@@ -1178,6 +1204,7 @@ UIPickerViewDataSource
             if (SUCCESS) {
                
                 strongSelf.businessCoordinateLabel.text = [dic[@"datas"][@"data"][@"lng"] stringValue];
+                
                 strongSelf.businessCoordinateLabelY.text = [dic[@"datas"][@"data"][@"lat"] stringValue];
                 
             }else{
@@ -1216,7 +1243,9 @@ UIPickerViewDataSource
     [pickView reloadAllComponents];
 
     HZDSBusinessModel *model= _businessCityArray[0];
+    
     areaOneID = model.businessId;
+    
     areaOneName = model.businessName;
     
     if (model.goodsArray.count > 0) {
@@ -1224,6 +1253,7 @@ UIPickerViewDataSource
         HZDSCityListModel *model1 = model.goodsArray[0];
         
         areaTwoID = model1.citysId;
+        
         areaTwoName = model1.citysName;
         
         if (model1.cityListArray.count > 0) {
@@ -1239,18 +1269,17 @@ UIPickerViewDataSource
 {
    
     UIPickerView *pickView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 44,SCREEN_WIDTH, 200)];
+    
     pickView.delegate = self;
+    
     pickView.dataSource = self;
     
-   // pickView.backgroundColor = [UIColor blueColor];
-
     return pickView;
 }
 
 - (IBAction)businessClass:(UIButton *)sender {
 
     choiceID = @"100";
-    
     
     for (UIView *view in self.myPickView.subviews) {
         
@@ -1271,7 +1300,9 @@ UIPickerViewDataSource
     [pickView reloadAllComponents];
     
     HZDSBusinessModel *model= _businessClassArray[0];
+    
     classFatherID = model.businessId;
+    
     classFatherName = model.businessName;
     
     if (model.goodsArray.count > 0) {

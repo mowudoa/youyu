@@ -16,7 +16,6 @@
 
 @property(copy,nonatomic)NSString* classcont; //子类别数量
 
-
 @property(strong,nonatomic)NSMutableArray *subClassArray;
 
 @end

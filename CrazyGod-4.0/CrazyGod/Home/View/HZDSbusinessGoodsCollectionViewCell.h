@@ -10,8 +10,11 @@
 
 @interface HZDSbusinessGoodsCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *goodsImage;
+
 @property (weak, nonatomic) IBOutlet UILabel *goodsPrice;
+
 @property (weak, nonatomic) IBOutlet UILabel *goodsOldPrice;
+
 @property (weak, nonatomic) IBOutlet UILabel *goodsInfo;
 
 @end

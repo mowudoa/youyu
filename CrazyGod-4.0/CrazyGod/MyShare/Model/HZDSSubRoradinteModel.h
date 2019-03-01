@@ -17,6 +17,7 @@
 @property(copy,nonatomic)NSString* email; //email
 
 @property(copy,nonatomic)NSString* SubRoradinteID; //下属id
+
 @property(copy,nonatomic)NSString* registerTime; //注册时间
 
 @end

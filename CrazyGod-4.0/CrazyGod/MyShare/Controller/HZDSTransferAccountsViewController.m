@@ -10,14 +10,21 @@
 
 @interface HZDSTransferAccountsViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *transAccountInfo;
+
 @property (weak, nonatomic) IBOutlet UITextField *phonneTextField;
+
 @property (weak, nonatomic) IBOutlet UIButton *checkPhoneButton;
+
 @property (weak, nonatomic) IBOutlet UITextField *moneyNumTextField;
+
 @property (weak, nonatomic) IBOutlet UITextField *codeTextField;
 
 @property (weak, nonatomic) IBOutlet UIButton *getCodeButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *transAccountButton;
+
 @property (weak, nonatomic) IBOutlet UILabel *tipsLabel;
 
 @property(nonatomic,copy) NSString *phoneNumString;
@@ -86,9 +93,10 @@
 - (IBAction)checkPhone:(id)sender {
 
     if ([_phonneTextField.text isEqualToString:@""] || [_phonneTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+       
         [JKToast showWithText:@"手机号不可为空"];
-    }else{
         
+    }else{
         
         NSDictionary *dic = @{@"mobile":_phonneTextField.text};
         
@@ -123,7 +131,6 @@
 
     __weak typeof(self) weakSelf = self;
     
-    
     NSDictionary *urlDic = @{@"mobile":_phoneNumString};
     [CrazyNetWork CrazyRequest_Post:TRANSACCOUNT_GETCODE parameters:urlDic HUD:NO success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
@@ -137,8 +144,10 @@
             [JKToast showWithText:dic[@"datas"][@"msg"]];
             
             strongSelf.num = 60;
+            
             [strongSelf.getCodeButton setTitle:[NSString stringWithFormat:@"(%ld)",(long)(strongSelf.num)] forState:UIControlStateNormal];
             strongSelf.getCodeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+            
             strongSelf.getCodeButton.enabled = NO;
             
             [self jishiTimer];
@@ -155,7 +164,9 @@
 - (IBAction)transAccount:(UIButton *)sender {
 
     if ([_phonneTextField.text isEqualToString:@""] || [_phonneTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+       
         [JKToast showWithText:@"手机号不可为空"];
+        
     }else if ([_moneyNumTextField.text isEqualToString:@""] || [_moneyNumTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
         
         [JKToast showWithText:@"转账数额不可为空"];
@@ -219,20 +230,23 @@
     _num--;
     if (_num<1) {
         _getCodeButton.enabled = YES;
+        
         [_getCodeButton setTitle:[NSString stringWithFormat:@"立即获取"] forState:UIControlStateNormal];
-        //  [_codeButton setBackgroundImage:[UIImage imageNamed:@"QPHyanzhengma"] forState:UIControlStateNormal];
         
         [_getCodeButton setBackgroundColor:[UIColor redColor]];
         
         return;
+        
     }else
     {
         _getCodeButton.enabled = NO;
+        
         [_getCodeButton setTitle:[NSString stringWithFormat:@"(%ldS)",(long)_num] forState:UIControlStateNormal];
-        // [_codeButton setBackgroundImage:[UIImage imageNamed:@"QPHyzmHui"] forState:UIControlStateNormal];
+        
         [_getCodeButton setBackgroundColor:[UIColor colorWithHexString:@"808080"]];
         
         [self performSelector:@selector(jishiTimer) withObject:nil afterDelay:1.0f];
+        
         return;
     }
     

@@ -10,9 +10,13 @@
 
 @interface HZDSMyLeaderViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *headerImage;
+
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *qqLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 
 @end
@@ -51,13 +55,11 @@
             
             if (dic[@"datas"][@"site"][@"title"] == NULL || dic[@"datas"][@"site"][@"title"] == nil ||dic[@"datas"][@"site"][@"title"] == [NSNull null]) {
                 
-                
             }else{
                 
                 strongSelf.titleLabel.text = dic[@"datas"][@"site"][@"title"];
                 
             }
-            
             
             if (dic[@"datas"][@"site"][@"logo"] == NULL || dic[@"datas"][@"site"][@"logo"] == nil ||dic[@"datas"][@"site"][@"logo"] == [NSNull null]) {
                 
@@ -66,7 +68,6 @@
             }else{
                 
                 [strongSelf.headerImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,dic[@"datas"][@"site"][@"logo"]]] placeholderImage:[UIImage imageNamed:@"1213per"]];
-                
                 
             }
             

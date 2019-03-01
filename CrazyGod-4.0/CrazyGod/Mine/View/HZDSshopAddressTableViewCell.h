@@ -19,15 +19,20 @@
 
 
 @interface HZDSshopAddressTableViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *defaultButton;
 
 @property(strong,nonatomic)HZDSAddressModel* addressmodel;
-
 
 @property (nonatomic, weak) id<deleteBtnDelagate> delegate;
 

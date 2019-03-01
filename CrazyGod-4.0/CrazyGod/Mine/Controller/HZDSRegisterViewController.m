@@ -15,10 +15,15 @@
     NSTimer* timer;
 }
 @property (weak, nonatomic) IBOutlet UIButton *codeButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *registerButton;
+
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
+
 @property (weak, nonatomic) IBOutlet UITextField *codeTextField;
+
 @property (weak, nonatomic) IBOutlet UITextField *passWordTextField;
+
 @property (weak, nonatomic) IBOutlet UITextField *passWordTwo;
 
 @property(nonatomic,assign) NSInteger num;
@@ -49,28 +54,31 @@
 - (IBAction)getCode:(UIButton *)sender {
 
     if ([_phoneTextField.text isEqualToString:@""] || [_phoneTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+       
         [JKToast showWithText:@"手机号不可为空"];
+    
     }else {
         
         __weak typeof(self) weakSelf = self;
-
         
         NSDictionary *urlDic = @{@"mobile":_phoneTextField.text};
+       
         [CrazyNetWork CrazyRequest_Post:[NSString stringWithFormat:@"%@%@",HEADURL,REGISTER_CODE] parameters:urlDic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
             
             LOG(@"获取验证码", dic);
             
             __strong typeof(weakSelf) strongSelf = weakSelf;
-
             
             if (SUCCESS) {
                 
                 [JKToast showWithText:dic[@"datas"][@"msg"]];
                 
                 strongSelf.num = 60;
+                
                 [strongSelf.codeButton setTitle:[NSString stringWithFormat:@"(%ld)",(long)(strongSelf.num)] forState:UIControlStateNormal];
-                strongSelf.codeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-                    strongSelf.codeButton.enabled = NO;
+            strongSelf.codeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+                
+                strongSelf.codeButton.enabled = NO;
                 
                 [self jishiTimer];
                 
@@ -83,22 +91,31 @@
             
         }];
         
-        
     }
 
 }
 - (IBAction)ClickRegister:(UIButton *)sender {
 
     if ([_phoneTextField.text isEqualToString:@""] || [_phoneTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+        
         [JKToast showWithText:@"手机号不可为空"];
+    
     }else if (_codeTextField.text == nil) {
+      
         [JKToast showWithText:@"请先获取验证码"];
+    
     }else if ([_codeTextField.text isEqualToString:@""] || [_codeTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+       
         [JKToast showWithText:@"验证码不可为空"];
+    
     }else if ([_passWordTextField.text isEqualToString:@""] || [_passWordTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+        
         [JKToast showWithText:@"密码不可为空"];
+    
     }else if ([_passWordTwo.text isEqualToString:@""] || [_passWordTwo.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+       
         [JKToast showWithText:@"确认密码不可为空"];
+    
     }else {
         
         [self regisnUser];
@@ -108,12 +125,11 @@
 }
 -(void)regisnUser
 {
-//    NSString* passwords = [[MyMD5 md5:_passWordTF.text] lowercaseString];
-    
     NSDictionary *urlDic = @{@"account":_phoneTextField.text,
                              @"password":_passWordTextField.text,
                              @"password2":_passWordTwo.text,
                              @"scode":_codeTextField.text};
+    
     [CrazyNetWork CrazyRequest_Post:[NSString stringWithFormat:@"%@%@",HEADURL,REGISTER_IF] parameters:urlDic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
         LOG(@"注册", dic);
@@ -141,9 +157,10 @@
 {
     _num--;
     if (_num<1) {
+        
         _codeButton.enabled = YES;
+        
         [_codeButton setTitle:[NSString stringWithFormat:@"立即获取"] forState:UIControlStateNormal];
-      //  [_codeButton setBackgroundImage:[UIImage imageNamed:@"QPHyanzhengma"] forState:UIControlStateNormal];
         
         [_codeButton setBackgroundColor:[UIColor redColor]];
         
@@ -151,11 +168,13 @@
     }else
     {
         _codeButton.enabled = NO;
+        
         [_codeButton setTitle:[NSString stringWithFormat:@"(%ldS)",(long)_num] forState:UIControlStateNormal];
-       // [_codeButton setBackgroundImage:[UIImage imageNamed:@"QPHyzmHui"] forState:UIControlStateNormal];
+        
         [_codeButton setBackgroundColor:[UIColor colorWithHexString:@"808080"]];
         
         [self performSelector:@selector(jishiTimer) withObject:nil afterDelay:1.0f];
+        
         return;
     }
     

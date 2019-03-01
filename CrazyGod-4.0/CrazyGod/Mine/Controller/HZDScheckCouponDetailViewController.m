@@ -9,11 +9,17 @@
 #import "HZDScheckCouponDetailViewController.h"
 
 @interface HZDScheckCouponDetailViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *counponIDLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *couponNumLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *createTimeLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *usedTimeLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *userPhoneLabel;
 
 @end
@@ -34,8 +40,6 @@
 }
 -(void)initData
 {
-    
-    
     NSDictionary *dic = @{@"code_id":_couponId};
     
     __weak typeof(self) weakSelf = self;
@@ -59,9 +63,7 @@
             
             strongSelf.userNameLabel.text = dic[@"datas"][@"users"][@"nickname"];
             
-            strongSelf.userPhoneLabel.text = dic[@"datas"][@"users"][@"mobile"];
-            
-            
+            strongSelf.userPhoneLabel.text = dic[@"datas"][@"users"][@"mobile"];            
             
         }else{
             

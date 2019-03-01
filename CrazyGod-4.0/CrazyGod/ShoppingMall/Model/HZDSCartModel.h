@@ -11,14 +11,20 @@
 @interface HZDSCartModel : rootModel
 
 @property(copy,nonatomic)NSString* goodsnum;
-@property(copy,nonatomic)NSString* goodssalesprice;
-@property(copy,nonatomic)NSString* goodstitle;
-@property(copy,nonatomic)NSString* goodsId;
-@property(copy,nonatomic)NSString* goodsImageUrl;
-@property(copy,nonatomic)NSString* goodsSpec;
-@property(copy,nonatomic)NSString* goodsStockNum;
-@property(copy,nonatomic)NSString* goodsIdAndSpec;
 
+@property(copy,nonatomic)NSString* goodssalesprice;
+
+@property(copy,nonatomic)NSString* goodstitle;
+
+@property(copy,nonatomic)NSString* goodsId;
+
+@property(copy,nonatomic)NSString* goodsImageUrl;
+
+@property(copy,nonatomic)NSString* goodsSpec;
+
+@property(copy,nonatomic)NSString* goodsStockNum;
+
+@property(copy,nonatomic)NSString* goodsIdAndSpec;
 
 @property(assign,nonatomic)BOOL isSelect;
 

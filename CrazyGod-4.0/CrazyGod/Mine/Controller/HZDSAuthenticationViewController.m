@@ -14,16 +14,22 @@ UIImagePickerControllerDelegate,
 UINavigationControllerDelegate
 >
 @property (weak, nonatomic) IBOutlet UIImageView *icCardImage;
+
 @property (weak, nonatomic) IBOutlet UITextField *accountName;
+
 @property (weak, nonatomic) IBOutlet UITextField *accontPhone;
+
 @property (weak, nonatomic) IBOutlet UITextField *accountIDCard;
+
 @property (weak, nonatomic) IBOutlet UITextView *detailAddress;
+
 @property (weak, nonatomic) IBOutlet UIButton *authenticationButton;
 
 
 @property(strong,nonatomic) UIImagePickerController* imagePicker;
 
 @property(nonatomic,copy) NSString *idCardImageString;
+
 @end
 
 @implementation HZDSAuthenticationViewController
@@ -47,10 +53,12 @@ UINavigationControllerDelegate
     _authenticationButton.layer.masksToBounds = YES;
     
     [_detailAddress.layer setMasksToBounds:YES];
+   
     [_detailAddress.layer setCornerRadius:5]; //设置矩形四个圆角半径
     //边框宽度
     [_detailAddress.layer setBorderWidth:1.0];
     //设置边框颜色有两种方法：第一种如下:
+    
     _detailAddress.layer.borderColor=[UIColor colorWithHexString:@"f5f5f5"].CGColor;
     
 
@@ -59,7 +67,9 @@ UINavigationControllerDelegate
 {
     if (_imagePicker == nil) {
         _imagePicker = [[UIImagePickerController alloc] init];
+        
         _imagePicker.modalPresentationStyle = UIModalPresentationOverFullScreen;
+        
         _imagePicker.allowsEditing = YES;
         
         _imagePicker.delegate = self;
@@ -78,7 +88,6 @@ UINavigationControllerDelegate
         LOG(@"获取认证用户信息", dic);
         
         __strong typeof(weakSelf) strongSelf = weakSelf;
-        
         
         if (SUCCESS) {
             
@@ -145,19 +154,25 @@ UINavigationControllerDelegate
 
     
     if ([_accountName.text isEqualToString:@""] || [_accountName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+       
         [JKToast showWithText:@"姓名不可为空"];
+    
     }else if ([_accontPhone.text isEqualToString:@""] || [_accontPhone.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
         
         [JKToast showWithText:@"手机号不可为空"];
+    
     }else if ([_accountIDCard.text isEqualToString:@""] || [_accountIDCard.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
         
         [JKToast showWithText:@"身份证号不可为空"];
+    
     }else if ([_detailAddress.text isEqualToString:@""] || [_detailAddress.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
         
         [JKToast showWithText:@"地址不可为空"];
+    
     }else if (_idCardImageString == nil){
         
         [JKToast showWithText:@"f身份证照片不可为空"];
+    
     }else{
     
         NSDictionary *urlDic = @{@"data[card_photo]":_idCardImageString,
@@ -219,9 +234,13 @@ UINavigationControllerDelegate
     [manager POST:UPLOADIMAGE parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         
         NSData *imageDatas = UIImageJPEGRepresentation(image,0.4);
+        
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        
         formatter.dateFormat = @"yyyyMMddHHmmss";
+        
         NSString *str = [formatter stringFromDate:[NSDate date]];
+        
         NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
         //上传的参数(上传图片，以文件流的格式)
         [formData appendPartWithFileData:imageDatas

@@ -7,20 +7,24 @@
 //
 
 #import "HZDSMyShareViewController.h"
-#import "HZDSLoginViewController.h"
-#import "HZDSMyLeaderViewController.h"
 #import "HZDSBalanceRechargeViewController.h"
-#import "HZDSMyShareQRCodeViewController.h"
 #import "HZDSMySubordinateViewController.h"
+#import "HZDSMyShareQRCodeViewController.h"
 #import "HZDSMyProfitListViewController.h"
+#import "HZDSMyLeaderViewController.h"
+#import "HZDSLoginViewController.h"
 
 @interface HZDSMyShareViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *headerImage;
+
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *vipRank;
 
 @property (weak, nonatomic) IBOutlet UILabel *myBalance;
+
 @property (weak, nonatomic) IBOutlet UILabel *myReward;
+
 @property (weak, nonatomic) IBOutlet UILabel *myCancleReward;
 
 @property(nonatomic,copy) NSString *user_id;
@@ -73,7 +77,6 @@
                 strongSelf.userNameLabel.text = dic[@"datas"][@"MEMBER"][@"nickname"];
                 
             }
-            
             
             if (dic[@"datas"][@"MEMBER"][@"face"] == NULL || dic[@"datas"][@"MEMBER"][@"face"] == nil ||dic[@"datas"][@"MEMBER"][@"face"] == [NSNull null]) {
                 

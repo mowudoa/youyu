@@ -8,11 +8,11 @@
 
 #import "HZDSMallOrderListViewController.h"
 #import "HZDSMallOrderDetailViewController.h"
-#import "HZDSEvaluateViewController.h"
 #import "HZDSShopOrderViewController.h"
+#import "HZDSEvaluateViewController.h"
 #import "HZDSOrderTableViewCell.h"
-#import "HZDSOrderModel.h"
 #import "HZDSShopMallModel.h"
+#import "HZDSOrderModel.h"
 
 @interface HZDSMallOrderListViewController ()<
 UITableViewDelegate,
@@ -22,7 +22,9 @@ UITableViewDataSource
     
     NSString *mallOrderStatus;
 }
+
 @property (weak, nonatomic) IBOutlet UITableView *mallOrderListTableView;
+
 @property (weak, nonatomic) IBOutlet UIView *backGroudView;
 
 @property(nonatomic,strong) NSMutableArray *mallOrderDataSource;
@@ -59,7 +61,9 @@ UITableViewDataSource
     
     // 下拉加载
     self.mallOrderListTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+   
         [self initData];
+    
     }];
     
     __weak __typeof(self) weakSelf = self;
@@ -78,17 +82,19 @@ UITableViewDataSource
     self.navigationItem.title = @"商城订单";
     
     _lineLabel=[[UILabel alloc] initWithFrame:CGRectMake(1,41,(SCREEN_WIDTH - 2)/6,2)];
+   
     _lineLabel.backgroundColor=[UIColor colorWithHexString:@"FF0270"];
+    
     [self.view addSubview:_lineLabel];
 }
 -(void)registercell
 {
     UINib* nib = [UINib nibWithNibName:@"HZDSOrderTableViewCell" bundle:nil];
+    
     [_mallOrderListTableView registerNib:nib forCellReuseIdentifier:@"OrderTableViewCell"];
 }
 -(void)initData
 {
- 
     
     __weak typeof(self) weakSelf = self;
     
@@ -113,13 +119,15 @@ UITableViewDataSource
             
             if (arr.count > 0) {
                 
-               strongSelf.mallOrderListTableView.hidden = NO;
-                strongSelf.backGroudView.hidden = YES;
+            strongSelf.mallOrderListTableView.hidden = NO;
+               
+            strongSelf.backGroudView.hidden = YES;
                 
             }else{
                 
-                strongSelf.mallOrderListTableView.hidden = YES;
-                strongSelf.backGroudView.hidden = NO;
+            strongSelf.mallOrderListTableView.hidden = YES;
+            
+            strongSelf.backGroudView.hidden = NO;
             }
             
             
@@ -128,11 +136,12 @@ UITableViewDataSource
                 HZDSShopMallModel *model = [[HZDSShopMallModel alloc] init];
                 
                 model.orderID = dict1[@"order_id"];
+                
                 model.orderPrice = [dict1[@"total_price"] stringValue];
+               
                 model.orderStatus = dict1[@"status"];
                 
                 model.orderType = dict1[@"is_dianping"];
-
                 
                 model.orderTime = dict1[@"create_time"];
                 
@@ -143,12 +152,17 @@ UITableViewDataSource
                     HZDSOrderModel *model1 = [[HZDSOrderModel alloc] init];
                     
                     model1.orderID = dic1[@"id"];
+                   
                     model1.orderImage = dic1[@"photo"];
+                    
                     model1.orderTitle = dic1[@"title"];
+                    
                     model1.orderNeedPayPrice = [dic1[@"total_price"] stringValue];
+                    
                     model1.orderPrice = [dic1[@"price"] stringValue];
 
                     model1.orderNum = dic1[@"num"];
+                    
                     model1.orderStatus = dic1[@"status"];
                     
                     model1.orderTime = dic1[@"create_time"];
@@ -199,13 +213,14 @@ UITableViewDataSource
                 HZDSShopMallModel *model = [[HZDSShopMallModel alloc] init];
                 
                 model.orderID = dict1[@"order_id"];
+               
                 model.orderPrice = [dict1[@"total_price"] stringValue];
+                
                 model.orderStatus = dict1[@"status"];
                 
                 model.orderTime = dict1[@"create_time"];
                 
                 model.orderType = dict1[@"is_dianping"];
-
                 
                 NSArray *goodsArr = dict1[@"goods"];
                 
@@ -214,19 +229,23 @@ UITableViewDataSource
                     HZDSOrderModel *model1 = [[HZDSOrderModel alloc] init];
                     
                     model1.orderID = dic1[@"id"];
+                    
                     model1.orderImage = dic1[@"photo"];
+                    
                     model1.orderTitle = dic1[@"title"];
+                    
                     model1.orderNeedPayPrice = [dic1[@"total_price"] stringValue];
+                    
                     model1.orderPrice = [dic1[@"price"] stringValue];
                     
                     model1.orderNum = dic1[@"num"];
+                    
                     model1.orderStatus = dic1[@"status"];
                     
                     model1.orderTime = dic1[@"create_time"];
                     
                     [model.mallGoodsArray addObject:model1];
                 }
-                
                 
                 [strongSelf.mallOrderDataSource addObject:model];
             }
@@ -276,6 +295,7 @@ UITableViewDataSource
     cell.titleLabel.text = model1.orderTitle;
     
     cell.priceLabel.text = [NSString stringWithFormat:@"小计:￥%@X%@ = ￥%@",model1.orderPrice,model1.orderNum,model1.orderNeedPayPrice];
+   
     cell.priceLabel.textColor = [UIColor redColor];
     
     cell.priceLabel.adjustsFontSizeToFitWidth = YES;
@@ -325,6 +345,7 @@ UITableViewDataSource
 {
     
     HZDSShopMallModel *model = [[HZDSShopMallModel alloc] init];
+   
     model = _mallOrderDataSource[section];
     
     UIView* backView = [[UIView alloc]initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, 31)];
@@ -332,29 +353,38 @@ UITableViewDataSource
     backView.backgroundColor = [UIColor whiteColor];
     
     UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,30,SCREEN_WIDTH,1)];
+   
     lineLabel.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
+    
     [backView addSubview:lineLabel];
     
     UIView* view = [[UIView alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-5, 30)];
+   
     [backView addSubview:view];
     
     UILabel* shanghu = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-5-5, 20)];
     shanghu.text = [NSString stringWithFormat:@"ID:%@",model.orderID];
     
     shanghu.textAlignment = NSTextAlignmentLeft;
+    
     shanghu.font=[UIFont systemFontOfSize:12];
+    
     shanghu.adjustsFontSizeToFitWidth = YES;
+    
     [view addSubview:shanghu];
     
     UIView* view1 = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2, 5, SCREEN_WIDTH/2-10, 30)];
+    
     [backView addSubview:view1];
+    
     UILabel* dingdantime = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-10, 20)];
+    
     dingdantime.text =[NSString stringWithFormat:@"下单时间:%@",[self ConvertStrToTime:model.orderTime]];
     
     dingdantime.textAlignment = NSTextAlignmentRight;
+    
     dingdantime.font = [UIFont systemFontOfSize:12];
-    // dingdantime.textColor = [UIColor colorWithHexString:@"f5f5f5"];
-    // dingdantime.adjustsFontSizeToFitWidth = YES;
+
     [view1 addSubview:dingdantime];
     
     return backView;
@@ -367,72 +397,91 @@ UITableViewDataSource
 {
     
     HZDSShopMallModel *model = [[HZDSShopMallModel alloc] init];
+   
     model = _mallOrderDataSource[section];
     
     UIView* view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
     
     UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,39,SCREEN_WIDTH,1)];
+    
     lineLabel.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
+    
     [view addSubview:lineLabel];
     
     UILabel* zongjia = [[UILabel alloc]initWithFrame:CGRectMake(15, 13,100, 20)];
+    
     zongjia.font=[UIFont systemFontOfSize:14];
+    
     zongjia.textAlignment = NSTextAlignmentLeft;
+    
     zongjia.textColor = [UIColor colorWithHexString:@"BEC2C9"];
-    //  zongjia.text = [NSString stringWithFormat:@"共%ld件商品",(long)goodsNum];
     
     [view addSubview:zongjia];
     
     UILabel* price = [[UILabel alloc]initWithFrame:CGRectMake(120, 13,SCREEN_WIDTH - 120 -75 -5, 20)];
+   
     [view addSubview:price];
     
-    //  price.text =  [NSString stringWithFormat:@"合计 :￥%.2f",goodstotalPirce];
     price.tag = section;
+
     price.textColor = [UIColor colorWithHexString:@"#BEC2C9"];
+    
     price.font=[UIFont systemFontOfSize:14];
+    
     price.textAlignment = NSTextAlignmentLeft;
-    // price.adjustsFontSizeToFitWidth = YES;
-    
-    
-    //    UILabel* postLabel = [UILabel alloc]initWithFrame:CGRectMake(150, 5, <#CGFloat width#>, <#CGFloat height#>)
     
     UIButton* leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+   
     [leftBtn setFrame:CGRectMake(SCREEN_WIDTH-75-75, 8, 70, 25)];
+    
     [leftBtn setTitle:@"" forState:UIControlStateNormal];
+    
     leftBtn.layer.cornerRadius = 3;
+    
     leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+   
     leftBtn.layer.masksToBounds = YES;
+    
     leftBtn.backgroundColor = [UIColor colorWithHexString:@"#ff9980"];
-    //  leftBtn.layer.borderWidth = 0.5;
+
     leftBtn.tag = section;
+
     [leftBtn addTarget:self action:@selector(tapleftBtn:) forControlEvents:UIControlEventTouchUpInside];
+
     [view addSubview:leftBtn];
     
     UIButton* rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
     [rightBtn setFrame:CGRectMake(SCREEN_WIDTH-75, 8, 70, 25)];
+    
     rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    
     [rightBtn setTitle:@"" forState:UIControlStateNormal];
-    //    [rightBtn setBackgroundImage:[UIImage imageNamed:@"exitlogin.png"] forState:UIControlStateNormal];
+
     rightBtn.backgroundColor = [UIColor colorWithHexString:@"#ff9980"];
+
     rightBtn.layer.cornerRadius = 3;
+
     rightBtn.layer.masksToBounds = YES;
+
     rightBtn.tag = section;
+
     [rightBtn addTarget:self action:@selector(tapBtn:) forControlEvents:UIControlEventTouchUpInside];
+
     [view addSubview:rightBtn];
     
-    
     view.backgroundColor=[UIColor whiteColor];
-    
     
     if ([model.orderStatus isEqualToString:@"0"]) {
         
         [rightBtn setTitle:@"付款" forState:UIControlStateNormal];
+       
         rightBtn.userInteractionEnabled = YES;
         
         rightBtn.hidden = NO;
         
-        
         [leftBtn setTitle:@"取消订单" forState:UIControlStateNormal];
+       
         leftBtn.userInteractionEnabled = YES;
         
         leftBtn.hidden = NO;
@@ -440,25 +489,29 @@ UITableViewDataSource
     }else if ([model.orderStatus isEqualToString:@"1"]){
         
         [rightBtn setTitle:@"申请退款" forState:UIControlStateNormal];
+       
         rightBtn.userInteractionEnabled = YES;
         
         rightBtn.hidden = NO;
         
         [leftBtn setTitle:@"已付款" forState:UIControlStateNormal];
+       
         leftBtn.userInteractionEnabled = NO;
         
         leftBtn.backgroundColor = [UIColor colorWithHexString:@"#b5b5b5"];
-
         
         leftBtn.hidden = NO;
+        
     }else if ([model.orderStatus isEqualToString:@"2"]){
         
         [rightBtn setTitle:@"确认收货" forState:UIControlStateNormal];
+       
         rightBtn.userInteractionEnabled = YES;
         
         rightBtn.hidden = NO;
         
         leftBtn.hidden = YES;
+        
     }else if ([model.orderStatus isEqualToString:@"8"]){
         
         if ([model.orderType isEqualToString:@"0"]) {
@@ -490,15 +543,11 @@ UITableViewDataSource
         
     }else if ([model.orderStatus isEqualToString:@"5"]){
         
-        
         rightBtn.hidden = YES;
         
         leftBtn.hidden = YES;
     }
-    
-    
-    
-    
+
     return view;
 }
 
@@ -618,7 +667,6 @@ UITableViewDataSource
 
     NSInteger num = sender.tag - 500;
     
-    
     [self moveLineLabel:num];
     
 }
@@ -651,12 +699,6 @@ UITableViewDataSource
     }
     
     [self moveLineLabel:num];
-    //
-    //    UIButton* btn = (UIButton*)[self.view viewWithTag:num + 10];
-    //    btn.selected = YES;
-    
-    
-    
     
 }
 -(void)moveLineLabel:(NSInteger)index

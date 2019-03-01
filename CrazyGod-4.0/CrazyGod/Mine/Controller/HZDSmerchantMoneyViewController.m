@@ -8,15 +8,21 @@
 
 #import "HZDSmerchantMoneyViewController.h"
 #import "HZDSintegralCashViewController.h"
-#import "HZDScashHistoryViewController.h"
 #import "HZDSingegralListViewController.h"
+#import "HZDScashHistoryViewController.h"
 
 @interface HZDSmerchantMoneyViewController ()
+
 @property (weak, nonatomic) IBOutlet UIImageView *merchantIcon;
+
 @property (weak, nonatomic) IBOutlet UILabel *merchantID;
+
 @property (weak, nonatomic) IBOutlet UILabel *merchantglod;
+
 @property (weak, nonatomic) IBOutlet UILabel *totalMoney;
+
 @property (weak, nonatomic) IBOutlet UILabel *todayMoney;
+
 @property (weak, nonatomic) IBOutlet UILabel *yesterdayMoney;
 
 @end
@@ -26,6 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+   
     [self initUI];
 
     [self initData];
@@ -80,12 +87,11 @@
 - (IBAction)clickBtn:(UIButton *)sender {
 
     if (sender.tag == 101) {
-     
         
         HZDSingegralListViewController *list = [[HZDSingegralListViewController alloc] init];
         
-        
         list.myLogType = moneyLogType;
+        
         list.logUrl = MERCHANT_MONEY_LIST;
         
         [self.navigationController pushViewController:list animated:YES];

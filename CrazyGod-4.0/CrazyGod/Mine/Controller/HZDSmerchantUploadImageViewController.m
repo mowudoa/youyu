@@ -11,12 +11,14 @@
 
 @interface HZDSmerchantUploadImageViewController()<
 UINavigationControllerDelegate,
-UIImagePickerControllerDelegate,
-UIActionSheetDelegate
+UIImagePickerControllerDelegate
 >
 @property (weak, nonatomic) IBOutlet UIButton *imageButton;
+
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
+
 @property (weak, nonatomic) IBOutlet UITextField *sortTextField;
+
 @property (weak, nonatomic) IBOutlet UIButton *addImageButton;
 
 @property(strong,nonatomic) UIImagePickerController* imagePicker;
@@ -44,7 +46,9 @@ UIActionSheetDelegate
 {
     if (_imagePicker == nil) {
         _imagePicker = [[UIImagePickerController alloc] init];
+        
         _imagePicker.modalPresentationStyle = UIModalPresentationOverFullScreen;
+        
         _imagePicker.allowsEditing = YES;
         
         _imagePicker.delegate = self;
@@ -56,7 +60,9 @@ UIActionSheetDelegate
 
     
     if ([_titleTextField.text isEqualToString:@""] || [_titleTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+    
         [JKToast showWithText:@"标题不可为空"];
+    
     }else if ([_sortTextField.text isEqualToString:@""] || [_sortTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
         
         [JKToast showWithText:@"排序不可为空"];
@@ -68,8 +74,8 @@ UIActionSheetDelegate
     }else{
 
         NSDictionary *dic = @{@"photo":_imageUrlString,
-                              @"title":_titleTextField.text,
-                              @"orderby":_sortTextField.text
+                           @"title":_titleTextField.text,
+                           @"orderby":_sortTextField.text
                               };
         
         [CrazyNetWork CrazyRequest_Post:MERCHANT_IMAGE_ADD parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
@@ -86,7 +92,6 @@ UIActionSheetDelegate
                 
                 [JKToast showWithText:dic[@"datas"][@"error"]];
                 
-                
             }
             
         } fail:^(NSError *error, NSString *url, NSString *Json) {
@@ -100,17 +105,14 @@ UIActionSheetDelegate
 }
 - (IBAction)choiceImage:(UIButton *)sender {
 
-    UIActionSheet *acSheet = [[UIActionSheet alloc] initWithTitle:@"上传头像" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"相册", nil];
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"上传图片" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
-    acSheet.tag = sender.tag;
-    
-    [acSheet showInView:self.view];
-}
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 0) {
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
-        NSLog(@"访问相机拍照");
+    }]];
+    
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
             
             self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -118,25 +120,26 @@ UIActionSheetDelegate
             [self presentViewController:self.imagePicker animated:YES completion:NULL];
             
         }
+    }]];
+    
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
-    }else if (buttonIndex == 1){
-        
-        NSLog(@"相册选择");
         self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         
-        [self presentViewController:_imagePicker animated:YES completion:NULL];
+        [self presentViewController:self.imagePicker animated:YES completion:NULL];
         
-    }else if (buttonIndex == 2){
-        
-        NSLog(@"取消");
-    }
+    }]];
     
+    [self presentViewController:actionSheet animated:YES completion:nil];
+
 }
+
 #pragma mark ==== UIImagePickerControllerDelegate
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
     UIImage *orgImage = info[UIImagePickerControllerEditedImage];
+    
     [picker dismissViewControllerAnimated:YES completion:nil];
     
     [self performSelector:@selector(changePhoto:) withObject:orgImage afterDelay:0.1];
@@ -163,9 +166,13 @@ UIActionSheetDelegate
     [manager POST:UPLOADIMAGE parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         
         NSData *imageDatas = UIImageJPEGRepresentation(image,0.4);
+        
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        
         formatter.dateFormat = @"yyyyMMddHHmmss";
+        
         NSString *str = [formatter stringFromDate:[NSDate date]];
+        
         NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
         //上传的参数(上传图片，以文件流的格式)
         [formData appendPartWithFileData:imageDatas
@@ -177,12 +184,13 @@ UIActionSheetDelegate
         
         NSLog(@"====成功====");
         
-        
         [self saveUrl:responseObject withImage:image];
         
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
         NSLog(@"======失败======");
+    
     }];
     
     

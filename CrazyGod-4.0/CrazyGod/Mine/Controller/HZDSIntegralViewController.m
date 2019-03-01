@@ -12,11 +12,17 @@
 #import "HZDScashHistoryViewController.h"
 
 @interface HZDSIntegralViewController ()
+
 @property (weak, nonatomic) IBOutlet UIImageView *headerIcon;
+
 @property (weak, nonatomic) IBOutlet UILabel *meichantID;
+
 @property (weak, nonatomic) IBOutlet UILabel *integralCurrent;
+
 @property (weak, nonatomic) IBOutlet UILabel *totalIntegral;
+
 @property (weak, nonatomic) IBOutlet UILabel *yesterdayIntegral;
+
 @property (weak, nonatomic) IBOutlet UILabel *todayIntegral;
 
 @end
@@ -26,6 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+
     [self initUI];
     
     [self initData];
@@ -50,7 +57,6 @@
         __strong typeof(weakSelf) strongSelf = weakSelf;
         
         if (SUCCESS) {
-            
             
             [strongSelf.headerIcon sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,dic[@"datas"][@"SHOP"][@"photo"]]]];
             
@@ -82,8 +88,8 @@
     
         HZDSingegralListViewController *list = [[HZDSingegralListViewController alloc] init];
         
-        
         list.myLogType = integralLogType;
+      
         list.logUrl = INTEGRAL_LIST;
         
         [self.navigationController pushViewController:list animated:YES];
@@ -97,10 +103,13 @@
         cash.logUrl = INTEGRSL_CASH_LIST;
         
         [self.navigationController pushViewController:cash animated:YES];
+   
     }else if (sender.tag == 103){
+        
         HZDSintegralCashViewController *cash = [[HZDSintegralCashViewController alloc] init];
         
         cash.myCashType = integralCashType;
+       
         [self.navigationController pushViewController:cash animated:YES];
     }
 }

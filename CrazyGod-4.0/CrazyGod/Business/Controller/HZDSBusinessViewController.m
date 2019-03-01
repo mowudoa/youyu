@@ -7,10 +7,9 @@
 //
 
 #import "HZDSBusinessViewController.h"
-#import "HZDSBusinessTableViewCell.h"
 #import "HZDSBusinessDetailViewController.h"
+#import "HZDSBusinessTableViewCell.h"
 #import "HZDSSubClassTableViewCell.h"
-
 #import "HZDSBusinessModel.h"
 #import "HZDSClassifyModel.h"
 #import "HZDSSubClassModel.h"
@@ -28,11 +27,17 @@ UITableViewDataSource
     NSString *choiceString;
     
 }
+
 @property (weak, nonatomic) IBOutlet UIView *headerClassView;
+
 @property (weak, nonatomic) IBOutlet UITableView *businessListTableView;
+
 @property (weak, nonatomic) IBOutlet UITableView *subClassTableView;
+
 @property (weak, nonatomic) IBOutlet UITableView *subAreaTableView;
+
 @property (weak, nonatomic) IBOutlet UITableView *selectedTableView;
+
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
 
 @property(strong,nonatomic)UIView* headerView;
@@ -68,9 +73,13 @@ UITableViewDataSource
     [self registercell];
     
     _businessArray = [[NSMutableArray alloc] init];
+    
     _classArray = [[NSMutableArray alloc] init];
+    
     _areaArray = [[NSMutableArray alloc] init];
+    
     _choiceArray = [[NSMutableArray alloc] init];
+    
     _subClassArray = [[NSMutableArray alloc] init];
     
     [self initData];
@@ -105,19 +114,26 @@ UITableViewDataSource
 -(void)initBackButton
 {
     UIButton* backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+   
     [backBtn setFrame:CGRectMake(0, 0, 20, 20)];
+    
     [backBtn addTarget:self action:@selector(backBtn:) forControlEvents:UIControlEventTouchUpInside];
+    
     [backBtn setImage:[UIImage imageNamed:@"小于号"] forState:UIControlStateNormal];
+    
     UIBarButtonItem* im = [[UIBarButtonItem alloc]initWithCustomView:backBtn];
+    
     self.navigationItem.leftBarButtonItem = im;
 }
 -(void)registercell
 {
 
     UINib* nib = [UINib nibWithNibName:@"HZDSBusinessTableViewCell" bundle:nil];
+   
     [_businessListTableView registerNib:nib forCellReuseIdentifier:@"BusinessTableViewCell"];
 
     UINib* nib1 = [UINib nibWithNibName:@"HZDSSubClassTableViewCell" bundle:nil];
+  
     [_subClassTableView registerNib:nib1 forCellReuseIdentifier:@"SubClassTableViewCell"];
     
     [_subAreaTableView registerNib:nib1 forCellReuseIdentifier:@"SubClassTableViewCell"];
@@ -165,15 +181,14 @@ UITableViewDataSource
             
             if (arr.count > 0) {
                 
-                strongSelf.backGroundView.hidden = YES;
-                
-                strongSelf.businessListTableView.hidden = NO;
+             strongSelf.backGroundView.hidden = YES;
+             strongSelf.businessListTableView.hidden = NO;
                 
             }else{
                 
-                strongSelf.backGroundView.hidden = NO;
+             strongSelf.backGroundView.hidden = NO;
                 
-                strongSelf.businessListTableView.hidden = YES;
+             strongSelf.businessListTableView.hidden = YES;
             }
             
             
@@ -226,7 +241,9 @@ UITableViewDataSource
         __strong typeof(weakSelf) strongSelf = weakSelf;
         
         [strongSelf.classArray removeAllObjects];
+        
         [strongSelf.areaArray removeAllObjects];
+        
         [strongSelf.choiceArray removeAllObjects];
         
         if (SUCCESS) {
@@ -268,7 +285,6 @@ UITableViewDataSource
             }
             
             [strongSelf.areaArray addObject:@"全部地区"];
-
             
             NSArray *areaArray = dic[@"datas"][@"areas"];
             
@@ -295,9 +311,6 @@ UITableViewDataSource
                     [model.subClassArray addObject:model1];
                     
                 }
-                
-                
-            //    [model.subClassArray addObjectsFromArray:subArea];
                 
                 [strongSelf.areaArray addObject:model];
             }
@@ -449,7 +462,9 @@ UITableViewDataSource
         if (indexPath.row == 0) {
          
             _subClassTableView.hidden = YES;
+          
             _subAreaTableView.hidden = YES;
+            
             _backgroundView.hidden = YES;
             
             if ([classString isEqualToString:@"1"]) {
@@ -475,9 +490,6 @@ UITableViewDataSource
 
                 [self initData];
             }
-            
-
-            
             
         }else{
          
@@ -549,7 +561,6 @@ UITableViewDataSource
         UIButton *btn = [self.headerView viewWithTag:12];
         
         HZDSClassifyModel *model = _choiceArray[indexPath.row];
-
         
         [btn setTitle:model.className forState:UIControlStateNormal];
         
@@ -564,7 +575,6 @@ UITableViewDataSource
         
     }else{
         
-    
         HZDSBusinessDetailViewController *detail = [[HZDSBusinessDetailViewController alloc] init];
         
         HZDSBusinessModel *model = _businessArray[indexPath.row];
@@ -597,24 +607,31 @@ UITableViewDataSource
 -(UIImageView*)searchImage
 {
     if (_searchImage == nil) {
+        
         _searchImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH*0.8, 30)];
+      
         _searchImage.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
         
         UIImageView *ima = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH*0.8 - 30,8,14,14)];
+       
         ima.image = [UIImage imageNamed:@"searchIma"];
         
         UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(25,0,100, 30)];
         
         label.text = @"搜索商品";
+       
         label.textColor = [UIColor lightGrayColor];
+        
         label.font = [UIFont systemFontOfSize:13];
+        
         label.textAlignment = NSTextAlignmentLeft;
-        // label.backgroundColor = [UIColor redColor];
-        //   [_searchImage addSubview:label];
         
         _searchImage.layer.cornerRadius = _searchImage.frame.size.height/2;
+       
         _searchImage.userInteractionEnabled = YES;
+        
         [_searchImage addSubview:self.searchTextField];
+       
         [_searchImage addSubview:ima];
         
     }
@@ -625,44 +642,66 @@ UITableViewDataSource
 -(UITextField*)searchTextField
 {
     if (_searchTextField == nil) {
+        
         _searchTextField = [[UITextField alloc]initWithFrame:CGRectMake(20, 0, SCREEN_WIDTH * 0.75 - 20, 30)];
-        //        [_textField setBackground:[UIImage imageNamed:@"searchbar"]];
+        
         _searchTextField.placeholder = @"输入商家关键字";
+        
         [_searchTextField setValue:[UIColor colorWithHexString:@"b5b5b5"] forKeyPath:@"_placeholderLabel.textColor"];
+       
         _searchTextField.borderStyle = UITextBorderStyleNone;
+        
         _searchTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        
         _searchTextField.font = [UIFont systemFontOfSize:12];
+        
         _searchTextField.delegate = self;
+        
         _searchTextField.tag = 60001;
+        
         _searchTextField.textColor = [UIColor lightGrayColor];
     }
+    
     return _searchTextField;
 }
 
 -(UIView*)headerView
 {
     if (_headerView == nil) {
+        
         _headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 30)];
         
         for (int i = 0 ; i < 3; i++) {
+          
             NSArray* arr = @[@"选择分类",@"选择地区",@"选择排序"];
+            
             UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+            
             [button setFrame:CGRectMake(i*SCREEN_WIDTH/3 , 5, SCREEN_WIDTH/3, 30)];
-          //  button.center = CGPointMake((3*i+1)*SCREEN_WIDTH/4-10, 20);
+
             [button setTitle:arr[i] forState:UIControlStateNormal];
+
             button.titleLabel.font = [UIFont systemFontOfSize:15];
+
             [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+
             [button setTitleColor:[UIColor colorWithHexString:@"#FF6E9A"] forState:UIControlStateSelected];
+           
             [button setBackgroundImage:[UIImage imageNamed:@"arrdown"] forState:UIControlStateNormal];
+            
             [button setBackgroundImage:[UIImage imageNamed:@"arrup"] forState:UIControlStateSelected];
+            
             button.tag = i+10;
             _headerView.userInteractionEnabled = YES;
+           
             [button addTarget:self action:@selector(touchheaderView:) forControlEvents:UIControlEventTouchUpInside];
+            
             [_headerView addSubview:button];
             
         }
         
     }
+    
     return _headerView;
 }
 -(void)touchheaderView:(UIButton *)sender
@@ -671,11 +710,16 @@ UITableViewDataSource
     
     NSArray* arr = [_headerView subviews];
     for (id obj in arr) {
+        
         if ([obj isKindOfClass:[UIButton class]]) {
+           
             UIButton* btn = (UIButton*)obj;
+            
             if (btn.tag != sender.tag) {
+            
                 btn.selected = NO;
             }
+            
         }
     }
     
@@ -686,7 +730,9 @@ UITableViewDataSource
             classString = @"1";
             
             _subClassTableView.hidden = !sender.selected;
+            
             _selectedTableView.hidden = YES;
+            
             _subAreaTableView.hidden = YES;
             
             [_subClassTableView reloadData];
@@ -696,7 +742,9 @@ UITableViewDataSource
             classString = @"2";
             
             _subClassTableView.hidden = !sender.selected;
+           
             _selectedTableView.hidden = YES;
+            
             _subAreaTableView.hidden = YES;
 
             [_subClassTableView reloadData];
@@ -708,6 +756,7 @@ UITableViewDataSource
             classString = @"3";
             
             _subClassTableView.hidden = YES;
+            
             _subAreaTableView.hidden = YES;
 
             _selectedTableView.hidden = !sender.selected;
@@ -746,13 +795,17 @@ UITableViewDataSource
     [super viewWillAppear:animated];
     
     _classIDString = nil;
+   
     areaIdString = nil;
+    
     choiceString = nil;
+    
     _classNameString = nil;
     
     if (_isRootNav) {
         
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+       
         [appDelegate.tabBarControll.tabBar setHidden:YES];
     }
     [self initView];
@@ -765,6 +818,7 @@ UITableViewDataSource
     if (_isRootNav) {
         
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+       
         [appDelegate.tabBarControll.tabBar setHidden:NO];
     }
     
@@ -784,13 +838,18 @@ UITableViewDataSource
 {
  
     _subClassTableView.hidden = YES;
+   
     _subAreaTableView.hidden = YES;
+    
     _selectedTableView.hidden = YES;
+    
     _backgroundView.hidden = YES;
     
     NSArray* arr = [_headerView subviews];
     for (id obj in arr) {
+       
         if ([obj isKindOfClass:[UIButton class]]) {
+        
             UIButton* btn = (UIButton*)obj;
             
             btn.selected = NO;

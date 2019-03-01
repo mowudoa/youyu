@@ -9,15 +9,25 @@
 #import "HZDSMallOrderDetailViewController.h"
 
 @interface HZDSMallOrderDetailViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *orderCode;
+
 @property (weak, nonatomic) IBOutlet UILabel *orderMoney;
+
 @property (weak, nonatomic) IBOutlet UILabel *sendMoney;
+
 @property (weak, nonatomic) IBOutlet UILabel *needPay;
+
 @property (weak, nonatomic) IBOutlet UILabel *orderTime;
+
 @property (weak, nonatomic) IBOutlet UILabel *userName;
+
 @property (weak, nonatomic) IBOutlet UILabel *phoneNum;
+
 @property (weak, nonatomic) IBOutlet UILabel *sendAddress;
+
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *expressLabel;
 
 @end
@@ -79,6 +89,7 @@
             strongSelf.sendAddress.text = [NSString stringWithFormat:@"%@%@",dic[@"datas"][@"addarres"][@"area_str"],dic[@"datas"][@"addarres"][@"info"]];
 
             NSString *expressName = nil;
+       
             NSString *expressNum = nil;
 
             
@@ -189,7 +200,6 @@
     if ([_orderPay isEqualToString:@"OrderPay"]) {
      
         NSArray *arr = self.navigationController.viewControllers;
-        
         
         [self.navigationController popToViewController:arr[arr.count - 3] animated:YES];
     }else{

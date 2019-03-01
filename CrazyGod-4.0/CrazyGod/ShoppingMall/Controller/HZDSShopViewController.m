@@ -17,10 +17,15 @@ UICollectionViewDataSource,
 UICollectionViewDelegateFlowLayout
 >
 @property (weak, nonatomic) IBOutlet UICollectionView *shopGoodsCollectionView;
+
 @property (weak, nonatomic) IBOutlet UILabel *shopTitle;
+
 @property (weak, nonatomic) IBOutlet UILabel *followNum;
+
 @property (weak, nonatomic) IBOutlet UIButton *followButton;
+
 @property (weak, nonatomic) IBOutlet UIImageView *shopIconImage;
+
 @property (weak, nonatomic) IBOutlet UIView *backGroundView;
 
 @property(nonatomic,strong) UILabel *lineLabel;
@@ -61,6 +66,7 @@ UICollectionViewDelegateFlowLayout
  
     
     _lineLabel=[[UILabel alloc] initWithFrame:CGRectMake(0,169,SCREEN_WIDTH/8,2)];
+    
     _lineLabel.backgroundColor=[UIColor colorWithHexString:@"#FF0270"];
     
     _lineLabel.centerX = SCREEN_WIDTH/8;
@@ -75,13 +81,13 @@ UICollectionViewDelegateFlowLayout
 {
     
     UINib* cate = [UINib nibWithNibName:@"HZDSlikeGoodsCollectionViewCell" bundle:nil];
+    
     [_shopGoodsCollectionView registerNib:cate forCellWithReuseIdentifier:@"likeGoodsCollectionViewCell"];
-    
-    
-    
+
     self.shopGoodsCollectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         
         [JKToast showWithText:@"没有更多了"];
+        
         [self.shopGoodsCollectionView.mj_footer endRefreshing];
         
     }];
@@ -93,7 +99,6 @@ UICollectionViewDelegateFlowLayout
     
     NSDictionary* dic = @{@"shop_id":_shop_id};
     
-    
     [CrazyNetWork CrazyRequest_Post:[NSString stringWithFormat:@"%@%@",HEADURL,SHOP_DETAIL] parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
         LOG(@"店铺", dic);
@@ -101,8 +106,11 @@ UICollectionViewDelegateFlowLayout
         __strong typeof(weakSelf) strongSelf = weakSelf;
         
         [strongSelf.goodsHomeDataSource removeAllObjects];
+        
         [strongSelf.goodsNewDataSource removeAllObjects];
+        
         [strongSelf.goodsHotDataSource removeAllObjects];
+        
         [strongSelf.goodsDataSource removeAllObjects];
         
         if (SUCCESS) {
@@ -117,8 +125,6 @@ UICollectionViewDelegateFlowLayout
             
             [strongSelf.shopIconImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,weidianArr[0][@"logo"]]]];
 
-            
-            
             if (dict[@"goods"] == NULL || dict[@"goods"] == nil ||dict[@"goods"] == [NSNull null]) {
                 
                 
@@ -127,7 +133,6 @@ UICollectionViewDelegateFlowLayout
                 //首页和商品列表共用
                 NSArray *arr = dict[@"goods"];
                 
-              
                 for (NSDictionary *dictlist in arr) {
                     
                     HomeModel *model = [[HomeModel alloc] init];
@@ -157,7 +162,6 @@ UICollectionViewDelegateFlowLayout
                 //热销
                 NSArray *arr = dict[@"goods_rx"];
                 
-                
                 for (NSDictionary *dictlist in arr) {
                     
                     HomeModel *model = [[HomeModel alloc] init];
@@ -184,7 +188,6 @@ UICollectionViewDelegateFlowLayout
                 //上新
                 NSArray *arr = dict[@"goods_sx"];
                 
-                
                 for (NSDictionary *dictlist in arr) {
                     
                     HomeModel *model = [[HomeModel alloc] init];
@@ -198,7 +201,6 @@ UICollectionViewDelegateFlowLayout
                     model.goodsId = dictlist[@"goods_id"];
                     
                     model.goodsPrice = [dictlist[@"mall_price"] stringValue];
-                    
                     
                     [strongSelf.goodsNewDataSource addObject:model];
                 }
@@ -245,10 +247,8 @@ UICollectionViewDelegateFlowLayout
 }
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-   
-        
+    
     HZDSlikeGoodsCollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"likeGoodsCollectionViewCell" forIndexPath:indexPath];
-        
         
         HomeModel *model = _goodsDataSource[indexPath.row];
         
@@ -268,8 +268,7 @@ UICollectionViewDelegateFlowLayout
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-   
-        
+    
         HomeModel *model = _goodsDataSource[indexPath.row];
         
         HZDSMallDetailViewController *detail = [[HZDSMallDetailViewController alloc] init];
@@ -288,8 +287,7 @@ UICollectionViewDelegateFlowLayout
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-   
-        
+    
     return CGSizeMake((_shopGoodsCollectionView.frame.size.width-10)/2-2, ((_shopGoodsCollectionView.frame.size.width-10)/2-2) + 90);
     
 }
@@ -346,7 +344,6 @@ UICollectionViewDelegateFlowLayout
     
     [UIView animateWithDuration:0.3 animations:^{
         
-        
         self->_lineLabel.frame = lineFrame;
         
         self->_lineLabel.centerX = (index * 2 + 1) * SCREEN_WIDTH / 8;
@@ -355,7 +352,6 @@ UICollectionViewDelegateFlowLayout
     [self reloadData];
 }
 - (IBAction)followShop:(UIButton *)sender {
-
    
     NSDictionary *dic = @{@"shop_id":_shop_id                         };
     

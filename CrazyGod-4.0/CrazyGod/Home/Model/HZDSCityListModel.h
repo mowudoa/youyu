@@ -10,13 +10,12 @@
 
 @interface HZDSCityListModel : rootModel
 
-
 @property(copy,nonatomic)NSString* citysFirstKey; //首字母
 
 @property(copy,nonatomic)NSString* citysId; //id
 
 @property(copy,nonatomic)NSString* citysName; //名字
 
-@property(strong,nonatomic)NSMutableArray *cityListArray;
+@property(strong,nonatomic)NSMutableArray *cityListArray;//城市列表
 
 @end

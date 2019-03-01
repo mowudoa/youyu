@@ -7,13 +7,13 @@
 //
 
 #import "HZDSShopOrderViewController.h"
-#import "HZDSshopAddressViewController.h"
 #import "HZDSMallOrderDetailViewController.h"
+#import "HZDSshopAddressViewController.h"
 #import "HZDSpayTypeTableViewCell.h"
 #import "HZDSOrderTableViewCell.h"
 #import "HZDSShoopTypeModel.h"
-#import "HZDSOrderModel.h"
 #import "HZDSClassifyModel.h"
+#import "HZDSOrderModel.h"
 #import "WXApi.h"
 
 
@@ -23,19 +23,22 @@ UITableViewDataSource,
 UIActionSheetDelegate
 >
 @property (weak, nonatomic) IBOutlet UIButton *uploadOrderButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *selecteAddressButton;
+
 @property (weak, nonatomic) IBOutlet UITableView *payTypeTableView;
+
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *userPhoneLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *userdetailLabel;
 
 @property(nonatomic,strong) NSMutableArray *payTypeDataSource;
 
 @property(nonatomic,strong) NSMutableArray *payTypeArray;
 
-
 @property(nonatomic,strong) NSMutableArray *shopNameArray;
-
 
 @property(nonatomic,copy) NSString *payTypeString;
 
@@ -76,6 +79,7 @@ UIActionSheetDelegate
 {
     
     UINib* nib = [UINib nibWithNibName:@"HZDSOrderTableViewCell" bundle:nil];
+    
     [_payTypeTableView registerNib:nib forCellReuseIdentifier:@"OrderTableViewCell"];
     
 }
@@ -83,6 +87,7 @@ UIActionSheetDelegate
 {
         
         [_shopNameArray removeAllObjects];
+    
         [_payTypeDataSource removeAllObjects];
     
     if ([_orderDic[@"datas"][@"defaultAddress"] isKindOfClass:[NSDictionary class]]) {
@@ -100,8 +105,6 @@ UIActionSheetDelegate
         [_uploadOrderButton setTitle:@"选择收货地址" forState:UIControlStateNormal];
     }
             
-    
-            
             NSArray *keysarr = [_orderDic[@"datas"][@"ordergoods"] allKeys];
             
             for (NSString *keyStr in keysarr) {
@@ -118,8 +121,11 @@ UIActionSheetDelegate
                     HZDSOrderModel *order = [[HZDSOrderModel alloc] init];
                     
                     order.orderID = dict1[@"goods_id"];
+                    
                     order.orderNum = dict1[@"num"];
+                    
                     order.orderPrice = [dict1[@"price"] stringValue];
+                    
                     order.orderImage = dict1[@"photo"];
                     
                     order.orderTitle = dict1[@"goods_name"];
@@ -128,11 +134,8 @@ UIActionSheetDelegate
                     
                     [model.goodsArray addObject:order];
                 }
-                
-                
-                
+
                 [_payTypeDataSource addObject:model];
-                
                 
             }
             
@@ -145,6 +148,7 @@ UIActionSheetDelegate
                 HZDSClassifyModel *model2 = [[HZDSClassifyModel alloc] init];
                 
                 model2.classId = str1;
+                
                 model2.className = shopDic[str1];
                 
                 [_shopNameArray addObject:model2];
@@ -168,7 +172,6 @@ UIActionSheetDelegate
 {
     HZDSShoopTypeModel *model = _payTypeDataSource[section];
     
-    
     return model.goodsArray.count;
 }
 
@@ -179,8 +182,6 @@ UIActionSheetDelegate
     HZDSShoopTypeModel *order = _payTypeDataSource[indexPath.section];
     
     HZDSOrderModel *model = order.goodsArray[indexPath.row];
-    
-  //  cell.payName.text = order.orderTitle;
     
     [cell.iconImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,model.orderImage]]];
     
@@ -203,7 +204,9 @@ UIActionSheetDelegate
     backView.backgroundColor = [UIColor whiteColor];
     
     UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,30,SCREEN_WIDTH,1)];
+    
     lineLabel.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
+    
     [backView addSubview:lineLabel];
     
     UILabel* shanghu = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, SCREEN_WIDTH - 20,20)];
@@ -218,19 +221,17 @@ UIActionSheetDelegate
     }
     
     shanghu.textAlignment = NSTextAlignmentLeft;
+    
     shanghu.font=[UIFont systemFontOfSize:12];
+    
     shanghu.adjustsFontSizeToFitWidth = YES;
+    
     [backView addSubview:shanghu];
     
     return backView;
 }
 #pragma mark - UITableViewDelegate
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    
-}
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return HEIGHT(143);
@@ -261,8 +262,6 @@ UIActionSheetDelegate
             
             if (SUCCESS) {
                 
-                
-                
                 NSArray *arr = dic[@"datas"][@"payment"];
                 
                 for (NSDictionary *dict1 in arr) {
@@ -270,8 +269,11 @@ UIActionSheetDelegate
                     HZDSOrderModel *order = [[HZDSOrderModel alloc] init];
                     
                     order.orderID = dict1[@"payment_id"];
+                    
                     order.orderTitle = dict1[@"name"];
+                    
                     order.orderStatus = dict1[@"code"];
+                    
                     order.orderImage = dict1[@"mobile_logo"];
                     
                     [strongSelf.payTypeArray addObject:order];
@@ -293,7 +295,6 @@ UIActionSheetDelegate
     }else if ([sender.currentTitle isEqualToString:@"选择收货地址"]){
         
         HZDSshopAddressViewController *address = [[HZDSshopAddressViewController alloc] init];
-        
         
         [USER_DEFAULT setObject:@"1" forKey:@"choiceAddress"];
         
@@ -345,7 +346,6 @@ UIActionSheetDelegate
             return;
         }
         
-        
         if (_orderId != nil) {
             
             [self payOneGoods:model.orderStatus];
@@ -354,7 +354,6 @@ UIActionSheetDelegate
             
             [self payMoreGoods:model.orderStatus];
         }
-        
         
     }else if ([model.orderTitle isEqualToString:@"余额支付"]){
         
@@ -375,7 +374,6 @@ UIActionSheetDelegate
 -(void)payOneGoods:(NSString *)code
 {
  
-    
     NSDictionary *dic = @{@"order_id":_orderId,
                           @"code":code
                           };
@@ -384,11 +382,9 @@ UIActionSheetDelegate
         
         LOG(@"支付", dic);
         
-        
         if (SUCCESS) {
             
             [self gopay:[dic[@"datas"][@"log_id"] stringValue]];
-
             
         }else{
             
@@ -439,15 +435,20 @@ UIActionSheetDelegate
             
             if (SUCCESS) {
                 
-                
                 PayReq *req  = [[PayReq alloc] init];
+                
                 req.openID = dic[@"datas"][@"pay"][@"appid"];
+                
                 req.partnerId = dic[@"datas"][@"pay"][@"partnerid"];
+                
                 req.prepayId = dic[@"datas"][@"pay"][@"prepayid"];
                 
                 req.package = dic[@"datas"][@"pay"][@"package"];
+                
                 req.nonceStr = dic[@"datas"][@"pay"][@"noncestr"];
+                
                 req.timeStamp = [dic[@"datas"][@"pay"][@"timestamp"] intValue];
+                
                 req.sign = dic[@"datas"][@"pay"][@"sign"];
                 
                 //调起微信支付
@@ -456,7 +457,6 @@ UIActionSheetDelegate
                     
                     [USER_DEFAULT setObject:@"1" forKey:@"payGoodsOrMall"];
                 }
-                
                 
             }else{
                 
@@ -512,6 +512,7 @@ UIActionSheetDelegate
             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
             
             [alertController addAction:okAction];
+        
             [alertController addAction:cancelAction];
             
             [self presentViewController:alertController animated:YES completion:^{
@@ -571,13 +572,10 @@ UIActionSheetDelegate
 {
     [JKToast showWithText:@"支付失败"];
     
-    //  [self.navigationController popToRootViewControllerAnimated:YES];
-    
 }
 - (IBAction)choiceAddress:(UIButton *)sender {
 
     HZDSshopAddressViewController *address = [[HZDSshopAddressViewController alloc] init];
-    
     
     [USER_DEFAULT setObject:@"1" forKey:@"choiceAddress"];
     
@@ -599,7 +597,6 @@ UIActionSheetDelegate
     
     //选择地址有三个位置,直接购买选择,订单位置(地址不能更改),个人中心查看地址列表,须加以判断
     if ([[USER_DEFAULT objectForKey:@"choiceAddress"] isEqualToString:@"1"] || [[USER_DEFAULT objectForKey:@"choiceAddress"] isEqualToString:@"2"]) {
-        
         
         if ([[USER_DEFAULT objectForKey:@"choiceAddress"] isEqualToString:@"2"]) {
            
@@ -648,6 +645,7 @@ UIActionSheetDelegate
         __strong typeof(weakSelf) strongSelf = weakSelf;
 
         [strongSelf.shopNameArray removeAllObjects];
+        
         [strongSelf.payTypeDataSource removeAllObjects];
         
         if (SUCCESS) {
@@ -676,8 +674,11 @@ UIActionSheetDelegate
                     HZDSOrderModel *order = [[HZDSOrderModel alloc] init];
                     
                     order.orderID = dict1[@"goods_id"];
+                    
                     order.orderNum = dict1[@"num"];
+                    
                     order.orderPrice = [dict1[@"price"] stringValue];
+                    
                     order.orderImage = dict1[@"photo"];
                     
                     order.orderTitle = dict1[@"goods_name"];
@@ -690,7 +691,6 @@ UIActionSheetDelegate
                 
                 [strongSelf.payTypeDataSource addObject:model];
                 
-                
             }
             
             NSDictionary *shopDic = dic[@"datas"][@"shop"];
@@ -702,6 +702,7 @@ UIActionSheetDelegate
                 HZDSClassifyModel *model2 = [[HZDSClassifyModel alloc] init];
                 
                 model2.classId = str1;
+                
                 model2.className = shopDic[str1];
                 
                 [strongSelf.shopNameArray addObject:model2];
@@ -709,7 +710,6 @@ UIActionSheetDelegate
             }
             
             [strongSelf.payTypeTableView reloadData];
-            
             
         }else{
             

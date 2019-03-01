@@ -40,6 +40,8 @@
 
 +(float)heightWithCreateTagLabel:(UIFont *)font tagArray:(NSArray *)array itemSpace:(float)itemSpace itemHeight:(float)itemHeight currentX:(float)currentX currentY:(float)currentY superView:(UIView *)myView action:(SEL)action vc:(id)vc buttonUserEnable:(BOOL)enable;
 
+//创建加载HTML富文本的label
++(UILabel *)createLabelLoadHtml:(NSString *)htmlString withFont:(UIFont *)font;
 //单例
 +(WYFTools *)shardGodlike;
 @property(nonatomic,copy) NSString *str;

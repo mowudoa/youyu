@@ -15,6 +15,7 @@ UITableViewDelegate,
 UITableViewDataSource
 >
 @property (weak, nonatomic) IBOutlet UITableView *cityListTableView;
+
 @property (weak, nonatomic) IBOutlet UITextField *keyWordTexfField;
 
 @property(nonatomic,strong) NSMutableArray *cityListDataSource;
@@ -38,13 +39,13 @@ UITableViewDataSource
 -(void)registercell
 {
     UINib* order = [UINib nibWithNibName:@"HZDSCityListTableViewCell" bundle:nil];
+    
     [_cityListTableView registerNib:order forCellReuseIdentifier:@"CityListTableViewCell"];
     
 }
 -(void)initData
 {
     NSMutableDictionary *keyDic = [[NSMutableDictionary alloc] init];
-
     
     if ([_keyWordTexfField.text isEqualToString:@""] || [_keyWordTexfField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
 
@@ -197,13 +198,18 @@ UITableViewDataSource
     keyLabel.text = model.citysFirstKey;
     
     keyLabel.textAlignment = NSTextAlignmentLeft;
+    
     keyLabel.font=[UIFont systemFontOfSize:13];
+    
     keyLabel.adjustsFontSizeToFitWidth = YES;
+    
     [backView addSubview:keyLabel];
     
     
     UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,34,SCREEN_WIDTH,1)];
+    
     lineLabel.backgroundColor = [UIColor colorWithHexString:@"f5f5f5"];
+    
     [backView addSubview:lineLabel];
     
     return backView;

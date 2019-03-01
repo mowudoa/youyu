@@ -15,6 +15,7 @@ UITableViewDelegate,
 UITableViewDataSource
 >
 @property (weak, nonatomic) IBOutlet UITableView *evaluateListTableView;
+
 @property (weak, nonatomic) IBOutlet UIView *backGroundView;
 
 @property(nonatomic,strong) NSMutableArray *evaluateListDataSource;
@@ -43,6 +44,7 @@ UITableViewDataSource
 {
     
     UINib* nib = [UINib nibWithNibName:@"HZDSEvaluateTableViewCell" bundle:nil];
+    
     [_evaluateListTableView registerNib:nib forCellReuseIdentifier:@"EvaluateTableViewCell"];
 }
 -(void)initData
@@ -51,7 +53,6 @@ UITableViewDataSource
     
     NSDictionary* dic;
 
-    
     if ([_evaluate_url isEqualToString:RUSHOBUYEVALUATE]) {
         
         dic = @{@"tuan_id":_goods_id};
@@ -91,6 +92,7 @@ UITableViewDataSource
                 HZDSevaluateModel *model = [[HZDSevaluateModel alloc] init];
                 
                 model.goodsId = dic1[@"goods_id"];
+                
                 model.userName = dic1[@"nickname"];
                 
                 if (dic1[@"face"] == NULL || dic1[@"face"] == nil ||dic1[@"face"] == [NSNull null]) {
@@ -154,6 +156,7 @@ UITableViewDataSource
     return cell;
 }
 - (void)configureCell:(HZDSEvaluateTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    
     cell.fd_enforceFrameLayout = NO; // Enable to use "-sizeThatFits:"
    
     HZDSevaluateModel *model = _evaluateListDataSource[indexPath.row];
@@ -183,7 +186,10 @@ UITableViewDataSource
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return [tableView fd_heightForCellWithIdentifier:@"EvaluateTableViewCell" cacheByIndexPath:indexPath configuration:^(HZDSEvaluateTableViewCell *cell) {
-        [self configureCell:cell atIndexPath:indexPath];}];
+        
+        [self configureCell:cell atIndexPath:indexPath];
+        
+    }];
     
 }
 

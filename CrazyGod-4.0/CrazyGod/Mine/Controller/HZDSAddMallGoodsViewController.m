@@ -22,33 +22,58 @@ UINavigationControllerDelegate
     HZDSSubClassModel* _subClassModel;
     HZDSSubClassModel* _freightModel;
 }
+
 @property (weak, nonatomic) IBOutlet UIScrollView *backGroundScrollview;
+
 @property (weak, nonatomic) IBOutlet UITableView *freightTypeTableView;
+
 @property (weak, nonatomic) IBOutlet UITableView *classOneTableiew;
+
 @property (weak, nonatomic) IBOutlet UITableView *classTwoTableView;
+
 @property (weak, nonatomic) IBOutlet UIButton *thumbButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *bannerButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *bannerButton1;
+
 @property (weak, nonatomic) IBOutlet UIButton *bannerButton2;
 
 
 @property (weak, nonatomic) IBOutlet UITextField *businessTitle;
+
 @property (weak, nonatomic) IBOutlet UITextField *businesssubTitle;
+
 @property (weak, nonatomic) IBOutlet UITextField *goodsSpec;
+
 @property (weak, nonatomic) IBOutlet UITextField *goodsStockNum;
+
 @property (weak, nonatomic) IBOutlet UIButton *yesButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *noButton;
+
 @property (weak, nonatomic) IBOutlet UITextField *goodsWeight;
+
 @property (weak, nonatomic) IBOutlet UIButton *freightButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *classOneButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *classTwoButton;
+
 @property (weak, nonatomic) IBOutlet UITextField *goodsPrice;
+
 @property (weak, nonatomic) IBOutlet UITextField *goodsMallPrice;
+
 @property (weak, nonatomic) IBOutlet UIButton *endDateButton;
+
 @property (weak, nonatomic) IBOutlet UITextView *buyInfoTextView;
+
 @property (weak, nonatomic) IBOutlet UITextView *goodsInfoTextView;
+
 @property (weak, nonatomic) IBOutlet UIButton *addGoodsButton;
+
 @property (weak, nonatomic) IBOutlet UIView *dateView;
+
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePickerView;
 
 @property(strong,nonatomic) UIImagePickerController* imagePicker;
@@ -78,6 +103,7 @@ UINavigationControllerDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+   
     _classTypeDataSource = [[NSMutableArray alloc] init];
     
     _subClassTypeDataSource = [[NSMutableArray alloc] init];
@@ -119,34 +145,16 @@ UINavigationControllerDelegate
 -(void)initUI
 {
     
-    UILabel *placeHolderLabel = [[UILabel alloc] init];
-    placeHolderLabel.text = @"购买须知,建议不超过100字";
-    placeHolderLabel.numberOfLines = 0;
-    placeHolderLabel.textColor = [UIColor lightGrayColor];
-    [placeHolderLabel sizeToFit];
-    [_buyInfoTextView addSubview:placeHolderLabel];
+    [WYFTools CreateTextPlaceHolder:@"购买须知,建议不超过100字" WithFont:[UIFont systemFontOfSize:14] WithSuperView:_buyInfoTextView];
     
-    // same font
-    placeHolderLabel.font = [UIFont systemFontOfSize:14.f];
-    
-    [_buyInfoTextView setValue:placeHolderLabel forKey:@"_placeholderLabel"];
-    
-    UILabel *placeHolderLabel1 = [[UILabel alloc] init];
-    placeHolderLabel1.text = @"添加商品详情,建议不超过200字,如需上传文章详情图,建议使用电脑端";
-    placeHolderLabel1.numberOfLines = 0;
-    placeHolderLabel1.textColor = [UIColor lightGrayColor];
-    [placeHolderLabel1 sizeToFit];
-    [_goodsInfoTextView addSubview:placeHolderLabel1];
-    
-    // same font
-    placeHolderLabel1.font = [UIFont systemFontOfSize:14.f];
-    
-    [_goodsInfoTextView setValue:placeHolderLabel1 forKey:@"_placeholderLabel"];
+    [WYFTools CreateTextPlaceHolder:@"添加商品详情,建议不超过200字,如需上传文章详情图,建议使用电脑端" WithFont:[UIFont systemFontOfSize:14] WithSuperView:_goodsInfoTextView];
     
     [_addGoodsButton.layer setMasksToBounds:YES];
+    
     [_addGoodsButton.layer setCornerRadius:5];
     
     [_buyInfoTextView.layer setMasksToBounds:YES];
+    
     [_buyInfoTextView.layer setCornerRadius:5]; //设置矩形四个圆角半径
     //边框宽度
     [_buyInfoTextView.layer setBorderWidth:1.0];
@@ -155,6 +163,7 @@ UINavigationControllerDelegate
     
     
     [_goodsInfoTextView.layer setMasksToBounds:YES];
+    
     [_goodsInfoTextView.layer setCornerRadius:5]; //设置矩形四个圆角半径
     //边框宽度
     [_goodsInfoTextView.layer setBorderWidth:1.0];
@@ -165,6 +174,7 @@ UINavigationControllerDelegate
 {
     
     UINib* nib1 = [UINib nibWithNibName:@"HZDSSubClassTableViewCell" bundle:nil];
+   
     [_classOneTableiew registerNib:nib1 forCellReuseIdentifier:@"SubClassTableViewCell"];
     
     [_classTwoTableView registerNib:nib1 forCellReuseIdentifier:@"SubClassTableViewCell"];
@@ -184,6 +194,7 @@ UINavigationControllerDelegate
         __strong typeof(weakSelf) strongSelf = weakSelf;
         
         [strongSelf.classTypeDataSource removeAllObjects];
+       
         [strongSelf.freightTypeDataSource removeAllObjects];
         
         if (SUCCESS) {
@@ -198,7 +209,6 @@ UINavigationControllerDelegate
                 model.classId = classDic[@"cate_id"];
                 
                 model.className = classDic[@"cate_name"];
-                
                 
                 NSArray *subClassArr = classDic[@"son"];
                 
@@ -251,6 +261,7 @@ UINavigationControllerDelegate
         __strong typeof(weakSelf) strongSelf = weakSelf;
         
         [strongSelf.classTypeDataSource removeAllObjects];
+       
         [strongSelf.freightTypeDataSource removeAllObjects];
         
         if (SUCCESS) {
@@ -318,12 +329,14 @@ UINavigationControllerDelegate
             if ([dic[@"datas"][@"detail"][@"is_reight"] isEqualToString:@"0"]) {
                
                 strongSelf.yesButton.selected = YES;
+                
                 strongSelf.noButton.selected = NO;
                 
                 strongSelf.choiceString = @"0";
             }else{
                 
                 strongSelf.yesButton.selected = NO;
+               
                 strongSelf.noButton.selected = YES;
                 
                 strongSelf.choiceString = @"1";
@@ -353,17 +366,20 @@ UINavigationControllerDelegate
         if (i == 0) {
             
             [_bannerButton sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,bannerArr[i][@"photo"]]] forState:UIControlStateNormal];
+           
             _bannerUrlString = bannerArr[i][@"photo"];
         }
         if (i == 1) {
             
             [_bannerButton1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,bannerArr[i][@"photo"]]] forState:UIControlStateNormal];
+           
             _bannerUrlString2 = bannerArr[i][@"photo"];
 
         }
         if (i == 2) {
             
             [_bannerButton2 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,bannerArr[i][@"photo"]]] forState:UIControlStateNormal];
+            
             _bannerUrlString3 = bannerArr[i][@"photo"];
 
         }
@@ -376,12 +392,14 @@ UINavigationControllerDelegate
     if (sender.tag == 100) {
         
         _yesButton.selected = YES;
+        
         _noButton.selected = NO;
         
         _choiceString = @"0";
     }else{
         
         _yesButton.selected = NO;
+       
         _noButton.selected = YES;
         
         _choiceString = @"1";
@@ -428,7 +446,6 @@ UINavigationControllerDelegate
             return;
         }
         
-        
         _classTwoTableView.hidden = !sender.selected;
         
         _classOneTableiew.hidden = YES;
@@ -445,15 +462,19 @@ UINavigationControllerDelegate
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (tableView == _classOneTableiew) {
+        
         return _classTypeDataSource.count;
+        
     }else if (tableView == _classTwoTableView)
     {
         
         return _subClassTypeDataSource.count;
+        
     }else
     {
         
         return _freightTypeDataSource.count;
+        
     }
 }
 
@@ -480,7 +501,6 @@ UINavigationControllerDelegate
     {
         
         HZDSSubClassModel *model = _freightTypeDataSource[indexPath.row];
-        
         
         cell.nameLabel.text = model.className;
 
@@ -547,7 +567,9 @@ UINavigationControllerDelegate
     self.dateView.hidden = NO;
     
     [UIView animateWithDuration:0.5f animations:^{
+        
         self.dateView.frame = CGRectMake(0,SCREEN_HEIGHT-300,SCREEN_WIDTH,300);
+        
     } completion:^(BOOL finished) {
     }];
 }
@@ -570,26 +592,35 @@ UINavigationControllerDelegate
 {
     
     if ([_businessTitle.text isEqualToString:@""] || [_businessTitle.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+        
         [JKToast showWithText:@"商品名字不可为空"];
+        
     }else if ([_businesssubTitle.text isEqualToString:@""] || [_businesssubTitle.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
+       
         [JKToast showWithText:@"商品简介不可为空"];
         
     }else if ([_goodsSpec.text isEqualToString:@""] || [_goodsSpec.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
+       
         [JKToast showWithText:@"商品规格不可为空"];
         
     }else if ([_goodsStockNum.text isEqualToString:@""] || [_goodsStockNum.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
+       
         [JKToast showWithText:@"商品库存不可为空"];
         
     }else if ([_goodsWeight.text isEqualToString:@""] || [_goodsWeight.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
+       
         [JKToast showWithText:@"商品重量不可为空"];
         
     }else if ([_buyInfoTextView.text isEqualToString:@""] || [_buyInfoTextView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
+      
         [JKToast showWithText:@"购买须知不可为空"];
         
     }else if ([_goodsInfoTextView.text isEqualToString:@""] || [_goodsInfoTextView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
+      
         [JKToast showWithText:@"商品信息不可为空"];
         
     }else if ([_endDateButton.currentTitle isEqualToString:@"请选择"]){
+      
         [JKToast showWithText:@"过期时间不可为空"];
         
     }else if (_thumbUrlString == nil){
@@ -605,9 +636,11 @@ UINavigationControllerDelegate
         [JKToast showWithText:@"请选择分类"];
         
     }else if ([_classTwoButton.currentTitle isEqualToString:@"请选择"]){
+      
         [JKToast showWithText:@"请选择子分类"];
         
     }else if ([_freightButton.currentTitle isEqualToString:@"请选择"]){
+       
         [JKToast showWithText:@"请选择快递模板"];
         
     }else{
@@ -668,20 +701,27 @@ UINavigationControllerDelegate
 -(void)editMallGoods
 {
     if ([_businessTitle.text isEqualToString:@""] || [_businessTitle.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+        
         [JKToast showWithText:@"商品名字不可为空"];
+        
     }else if ([_businesssubTitle.text isEqualToString:@""] || [_businesssubTitle.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
+        
         [JKToast showWithText:@"商品简介不可为空"];
         
     }else if ([_goodsSpec.text isEqualToString:@""] || [_goodsSpec.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
+        
         [JKToast showWithText:@"商品规格不可为空"];
         
     }else if ([_goodsStockNum.text isEqualToString:@""] || [_goodsStockNum.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
+        
         [JKToast showWithText:@"商品库存不可为空"];
         
     }else if ([_goodsWeight.text isEqualToString:@""] || [_goodsWeight.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
+        
         [JKToast showWithText:@"商品重量不可为空"];
         
     }else if ([_endDateButton.currentTitle isEqualToString:@"请选择"]){
+        
         [JKToast showWithText:@"过期时间不可为空"];
         
     }else if (_thumbUrlString == nil){
@@ -734,7 +774,6 @@ UINavigationControllerDelegate
             
         }
         
-        
         [CrazyNetWork CrazyRequest_Post:MALL_MANAGE_EDITGOODS parameters:dic1 HUD:NO success:^(NSDictionary *dic, NSString *url, NSString *Json) {
             
             LOG(@"编辑商品", dic);
@@ -762,7 +801,6 @@ UINavigationControllerDelegate
     UIView* conView = (UIView*)[_backGroundScrollview viewWithTag:2048];
     
     UIView* conView1 = (UIView*)[_backGroundScrollview viewWithTag:1024];
-
     
     if (_addgoodsType == editMallGoodsType){
         
@@ -770,12 +808,12 @@ UINavigationControllerDelegate
         
     }
     
-    
     _backGroundScrollview.contentSize = CGSizeMake(0, conView.frame.origin.y+conView.frame.size.height + 10);
 
     [UIView animateWithDuration:0.5f animations:^{
         
         self.dateView.frame = CGRectMake(0,SCREEN_HEIGHT,0.01, 0.01);
+        
     } completion:^(BOOL finished) {
         self.dateView.hidden = YES;
     }];
@@ -804,16 +842,22 @@ UINavigationControllerDelegate
     [_endDateButton setTitle:destDateString forState:UIControlStateNormal];
     
     [UIView animateWithDuration:0.5f animations:^{
+       
         self.dateView.frame = CGRectMake(0,SCREEN_HEIGHT,0.01, 0.01);
+        
     } completion:^(BOOL finished) {
+        
         self.dateView.hidden = YES;
+        
     }];
 }
 -(UIImagePickerController *)imagePicker
 {
     if (_imagePicker == nil) {
         _imagePicker = [[UIImagePickerController alloc] init];
+       
         _imagePicker.modalPresentationStyle = UIModalPresentationOverFullScreen;
+        
         _imagePicker.allowsEditing = YES;
         
         _imagePicker.delegate = self;
@@ -900,9 +944,13 @@ UINavigationControllerDelegate
     [manager POST:UPLOADIMAGE parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         
         NSData *imageDatas = UIImageJPEGRepresentation(image,0.4);
+    
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        
         formatter.dateFormat = @"yyyyMMddHHmmss";
+        
         NSString *str = [formatter stringFromDate:[NSDate date]];
+        
         NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
         //上传的参数(上传图片，以文件流的格式)
         [formData appendPartWithFileData:imageDatas
@@ -913,7 +961,6 @@ UINavigationControllerDelegate
     } success:^(NSURLSessionDataTask *task, id responseObject) {
         
         NSLog(@"====成功====");
-        
         
         [self saveUrl:responseObject withImage:image];
         
@@ -926,9 +973,6 @@ UINavigationControllerDelegate
 }
 -(void)saveUrl:(NSDictionary *)dic withImage:(UIImage *)image
 {
-//    [_uploadImageButton setImage:image forState:UIControlStateNormal];
-    
-//    _imageString = dic[@"url"];
     
     if ([_choiceImageString isEqualToString:@"1"]) {
         

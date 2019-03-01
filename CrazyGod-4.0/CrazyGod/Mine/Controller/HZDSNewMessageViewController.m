@@ -7,8 +7,8 @@
 //
 
 #import "HZDSNewMessageViewController.h"
-#import "HZDSmessageTableViewCell.h"
 #import "HZDSmyMessageDetailViewController.h"
+#import "HZDSmessageTableViewCell.h"
 #import "HZDSMessageModel.h"
 
 @interface HZDSNewMessageViewController ()<
@@ -17,6 +17,7 @@ UITableViewDataSource
 >
 
 @property (weak, nonatomic) IBOutlet UITableView *messageListTableView;
+
 @property (weak, nonatomic) IBOutlet UIView *backGroundView;
 
 @property(nonatomic,strong) NSMutableArray *messageDataSource;
@@ -31,6 +32,7 @@ UITableViewDataSource
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+   
     _messageDataSource = [[NSMutableArray alloc] init];
     
     [self initUI];
@@ -45,10 +47,11 @@ UITableViewDataSource
     
     _totalPage = 1;
     
-    
     // 下拉加载
     self.messageListTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
         [self initData];
+    
     }];
     
     __weak __typeof(self) weakSelf = self;
@@ -70,6 +73,7 @@ UITableViewDataSource
 -(void)registercell
 {
     UINib* nib = [UINib nibWithNibName:@"HZDSmessageTableViewCell" bundle:nil];
+   
     [_messageListTableView registerNib:nib forCellReuseIdentifier:@"messageTableViewCell"];
 }
 -(void)initData
@@ -80,7 +84,6 @@ UITableViewDataSource
     _pageNum = 1;
     
     NSDictionary *dic = @{@"lastindex":[NSString stringWithFormat:@"%ld",(long)_pageNum]                          };
-    
     
     [CrazyNetWork CrazyRequest_Post:_messageUrl parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
@@ -97,11 +100,13 @@ UITableViewDataSource
             if (arr.count > 0) {
                 
                 strongSelf.messageListTableView.hidden = NO;
+                
                 strongSelf.backGroundView.hidden = YES;
                 
             }else{
                 
                 strongSelf.messageListTableView.hidden = YES;
+                
                 strongSelf.backGroundView.hidden = NO;
             }
             
@@ -110,6 +115,7 @@ UITableViewDataSource
                 HZDSMessageModel *model = [[HZDSMessageModel alloc] init];
                 
                 model.messageID = dict1[@"msg_id"];
+               
                 model.messageTime = dict1[@"create_time"];
                 
                 if (dict1[@"link_url"] == NULL || dict1[@"link_url"] == nil ||dict1[@"link_url"] == [NSNull null]) {
@@ -120,7 +126,6 @@ UITableViewDataSource
                     model.messageUrl = dict1[@"link_url"];
 
                 }
-                
                 
                 model.messageTitle = dict1[@"title"];
                 
@@ -147,7 +152,6 @@ UITableViewDataSource
     
     NSDictionary *dic = @{@"lastindex":[NSString stringWithFormat:@"%ld",(long)_pageNum]                          };
     
-    
     [CrazyNetWork CrazyRequest_Post:_messageUrl parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
         LOG(@"消息列表", dic);
@@ -163,6 +167,7 @@ UITableViewDataSource
                 HZDSMessageModel *model = [[HZDSMessageModel alloc] init];
                 
                 model.messageID = dict1[@"msg_id"];
+                
                 model.messageTime = dict1[@"create_time"];
                 
                 if (dict1[@"link_url"] == NULL || dict1[@"link_url"] == nil ||dict1[@"link_url"] == [NSNull null]) {
@@ -221,12 +226,6 @@ UITableViewDataSource
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    
-}
-
 #pragma mark - UITableViewDelegate
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -245,54 +244,68 @@ UITableViewDataSource
     UIView* view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
     
     UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,39,SCREEN_WIDTH,1)];
+    
     lineLabel.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
+    
     [view addSubview:lineLabel];
     
     UILabel* zongjia = [[UILabel alloc]initWithFrame:CGRectMake(15, 13,100, 20)];
+    
     zongjia.font=[UIFont systemFontOfSize:14];
+    
     zongjia.textAlignment = NSTextAlignmentLeft;
+    
     zongjia.textColor = [UIColor colorWithHexString:@"BEC2C9"];
-    //  zongjia.text = [NSString stringWithFormat:@"共%ld件商品",(long)goodsNum];
     
     [view addSubview:zongjia];
     
     UILabel* price = [[UILabel alloc]initWithFrame:CGRectMake(120, 13,SCREEN_WIDTH - 120 -75 -5, 20)];
+    
     [view addSubview:price];
     
-    //  price.text =  [NSString stringWithFormat:@"合计 :￥%.2f",goodstotalPirce];
     price.tag = section;
+
     price.textColor = [UIColor colorWithHexString:@"#BEC2C9"];
+
     price.font=[UIFont systemFontOfSize:14];
+
     price.textAlignment = NSTextAlignmentLeft;
-    // price.adjustsFontSizeToFitWidth = YES;
-    
-    
-    //    UILabel* postLabel = [UILabel alloc]initWithFrame:CGRectMake(150, 5, <#CGFloat width#>, <#CGFloat height#>)
     
     UIButton* leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+  
     [leftBtn setFrame:CGRectMake(SCREEN_WIDTH-75-75, 8, 70, 25)];
+    
     [leftBtn setTitle:@"详细" forState:UIControlStateNormal];
+    
     leftBtn.layer.cornerRadius = 3;
+    
     leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    
     leftBtn.layer.masksToBounds = YES;
+    
     leftBtn.backgroundColor = [UIColor colorWithHexString:@"#ff9980"];
-   // leftBtn.layer.borderWidth = 0.5;
+
     leftBtn.tag = section;
-  //  [leftBtn addTarget:self action:@selector(tapLeftBtn:) forControlEvents:UIControlEventTouchUpInside];
-  //  [view addSubview:leftBtn];
     
     UIButton* rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [rightBtn setFrame:CGRectMake(SCREEN_WIDTH-75, 8, 70, 25)];
-    rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-    [rightBtn setTitle:@"详细" forState:UIControlStateNormal];
-    //    [rightBtn setBackgroundImage:[UIImage imageNamed:@"exitlogin.png"] forState:UIControlStateNormal];
-    rightBtn.backgroundColor = [UIColor colorWithHexString:@"46a0fc"];
-    rightBtn.layer.cornerRadius = 3;
-    rightBtn.layer.masksToBounds = YES;
-    rightBtn.tag = section;
-    [rightBtn addTarget:self action:@selector(tapRightBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:rightBtn];
     
+    [rightBtn setFrame:CGRectMake(SCREEN_WIDTH-75, 8, 70, 25)];
+    
+    rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    
+    [rightBtn setTitle:@"详细" forState:UIControlStateNormal];
+
+    rightBtn.backgroundColor = [UIColor colorWithHexString:@"46a0fc"];
+
+    rightBtn.layer.cornerRadius = 3;
+
+    rightBtn.layer.masksToBounds = YES;
+
+    rightBtn.tag = section;
+
+    [rightBtn addTarget:self action:@selector(tapRightBtn:) forControlEvents:UIControlEventTouchUpInside];
+
+    [view addSubview:rightBtn];
     
     view.backgroundColor=[UIColor whiteColor];
     
@@ -344,8 +357,8 @@ UITableViewDataSource
     }
     
     detail.messageID = model.messageID;
-    [self.navigationController pushViewController:detail animated:YES];
     
+    [self.navigationController pushViewController:detail animated:YES];
     
 }
 - (void)didReceiveMemoryWarning {

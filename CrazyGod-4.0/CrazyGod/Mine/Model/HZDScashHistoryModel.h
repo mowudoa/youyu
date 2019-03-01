@@ -10,7 +10,6 @@
 
 @interface HZDScashHistoryModel : rootModel
 
-
 @property(copy,nonatomic)NSString* cashID; //提现编号
 
 @property(copy,nonatomic)NSString* cashNum; //提现金额

@@ -10,12 +10,13 @@
 #import "AFHTTPSessionManager.h"
 
 @interface HZDSUploadHeadImageViewController ()<
-UIActionSheetDelegate,
 UIImagePickerControllerDelegate,
 UINavigationControllerDelegate
 >
 @property (weak, nonatomic) IBOutlet UIButton *addImageButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *confirmButton;
+
 @property (weak, nonatomic) IBOutlet UIImageView *oldImage;
 
 @property(strong,nonatomic) UIImagePickerController* imagePicker;
@@ -47,8 +48,11 @@ UINavigationControllerDelegate
 -(UIImagePickerController *)imagePicker
 {
     if (_imagePicker == nil) {
+        
         _imagePicker = [[UIImagePickerController alloc] init];
+        
         _imagePicker.modalPresentationStyle = UIModalPresentationOverFullScreen;
+        
         _imagePicker.allowsEditing = YES;
         
         _imagePicker.delegate = self;
@@ -59,12 +63,33 @@ UINavigationControllerDelegate
 
 - (IBAction)uploadNewIcon:(UIButton *)sender {
 
-    UIActionSheet *acSheet = [[UIActionSheet alloc] initWithTitle:@"上传头像" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"相册", nil];
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"上传图片" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
-    acSheet.tag = sender.tag;
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
     
-    [acSheet showInView:self.view];
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            
+            self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            
+            [self presentViewController:self.imagePicker animated:YES completion:NULL];
+            
+        }
+    }]];
     
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        
+        [self presentViewController:self.imagePicker animated:YES completion:NULL];
+        
+    }]];
+    
+    [self presentViewController:actionSheet animated:YES completion:nil];
+
 }
 - (IBAction)UserNewIcon:(UIButton *)sender {
 
@@ -89,7 +114,6 @@ UINavigationControllerDelegate
                 
                 [JKToast showWithText:dic[@"datas"][@"error"]];
                 
-                
             }
             
         } fail:^(NSError *error, NSString *url, NSString *Json) {
@@ -98,42 +122,14 @@ UINavigationControllerDelegate
         
     }
     
-   
-
 }
-#pragma  mark ==== UIActionSheetDelegate
 
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 0) {
-        
-        NSLog(@"访问相机拍照");
-        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-            
-            self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-            
-            [self presentViewController:self.imagePicker animated:YES completion:NULL];
-            
-        }
-        
-    }else if (buttonIndex == 1){
-        
-        NSLog(@"相册选择");
-        self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        
-        [self presentViewController:_imagePicker animated:YES completion:NULL];
-        
-    }else if (buttonIndex == 2){
-        
-        NSLog(@"取消");
-    }
-    
-}
 #pragma mark ==== UIImagePickerControllerDelegate
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
     UIImage *orgImage = info[UIImagePickerControllerEditedImage];
+    
     [picker dismissViewControllerAnimated:YES completion:nil];
     
     [self performSelector:@selector(changePhoto:) withObject:orgImage afterDelay:0.1];
@@ -160,9 +156,13 @@ UINavigationControllerDelegate
     [manager POST:UPLOADIMAGE parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         
         NSData *imageDatas = UIImageJPEGRepresentation(image,0.4);
+       
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        
         formatter.dateFormat = @"yyyyMMddHHmmss";
+        
         NSString *str = [formatter stringFromDate:[NSDate date]];
+       
         NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
         //上传的参数(上传图片，以文件流的格式)
         [formData appendPartWithFileData:imageDatas

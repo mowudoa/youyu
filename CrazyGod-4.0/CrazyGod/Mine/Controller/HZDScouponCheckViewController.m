@@ -10,8 +10,11 @@
 #import "HZDScheckCouponHistoryViewController.h"
 
 @interface HZDScouponCheckViewController ()
+
 @property (weak, nonatomic) IBOutlet UITextField *couponNumTextField;
+
 @property (weak, nonatomic) IBOutlet UIButton *checkButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *checkHistoryButton;
 
 @end
@@ -40,7 +43,9 @@
 
     
     if ([_couponNumTextField.text isEqualToString:@""] || [_couponNumTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+      
         [JKToast showWithText:@"抢购码不可为空"];
+    
     }else{
      
         NSDictionary *dic = @{@"code":_couponNumTextField.text};
@@ -53,11 +58,9 @@
                 
                 [JKToast showWithText:dic[@"datas"][@"msg"]];
                 
-                
             }else{
                 
                 [JKToast showWithText:dic[@"datas"][@"error"]];
-                
                 
             }
             
@@ -82,7 +85,6 @@
         
         history.checkHistoryUrl = EMPLOYEE_COUPON_CHECK_HISTORY;
     }
-    
     
     [self.navigationController pushViewController:history animated:YES];
     

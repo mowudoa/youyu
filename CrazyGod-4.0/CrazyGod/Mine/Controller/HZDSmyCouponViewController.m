@@ -21,15 +21,19 @@ couponBtnDelagate
     NSString *couponStatus;
 }
 @property(nonatomic,strong) UILabel *lineLabel;
+
 @property (weak, nonatomic) IBOutlet UIView *headerView;
+
 @property (weak, nonatomic) IBOutlet UITableView *couponListTableView;
 
 @property(nonatomic,strong) NSMutableArray *couponListDataSource;
+
 @property (weak, nonatomic) IBOutlet UIView *backGroundView;
 
 @property(nonatomic,assign) NSInteger pageNum;
 
 @property(nonatomic,assign) NSInteger totalPage;
+
 @end
 
 @implementation HZDSmyCouponViewController
@@ -57,6 +61,7 @@ couponBtnDelagate
     
     // 下拉加载
     self.couponListTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
         [self initData];
     }];
     
@@ -76,7 +81,9 @@ couponBtnDelagate
     self.navigationItem.title = @"消费券";
     
     _lineLabel=[[UILabel alloc] initWithFrame:CGRectMake(0,45,SCREEN_WIDTH/3,2)];
+    
     _lineLabel.backgroundColor=[UIColor colorWithHexString:@"FF0270"];
+    
     [self.view addSubview:_lineLabel];
 }
 -(void)initData
@@ -112,11 +119,13 @@ couponBtnDelagate
             if (arr.count > 0) {
                
                 strongSelf.couponListTableView.hidden = NO;
+                
                 strongSelf.backGroundView.hidden = YES;
                 
             }else{
                 
                 strongSelf.couponListTableView.hidden = YES;
+                
                 strongSelf.backGroundView.hidden = NO;
             }
             
@@ -126,6 +135,7 @@ couponBtnDelagate
                 HZDScouponModel *model = [[HZDScouponModel alloc] init];
                 
                 model.couponID = dict1[@"code_id"];
+                
                 model.couponNUm = dict1[@"code"];
 
                 if (dict1[@"title"] == NULL || dict1[@"title"] == nil || dict1[@"title"] == [NSNull null]) {
@@ -133,6 +143,7 @@ couponBtnDelagate
                     model.couponTite = @"";
                     
                 }else{
+                    
                     model.couponTite = dict1[@"title"];
                     
                 }
@@ -141,11 +152,13 @@ couponBtnDelagate
                     model.couponShop = @"";
                     
                 }else{
+                    
                     model.couponShop = dict1[@"shop_name"];
                     
                 }
                 
                 model.couponOrderCode = dict1[@"order_id"];
+                
                 model.couponTime = dict1[@"create_time"];
                 
                 model.couponStatus = dict1[@"is_used"];
@@ -199,6 +212,7 @@ couponBtnDelagate
                 HZDScouponModel *model = [[HZDScouponModel alloc] init];
                 
                 model.couponID = dict1[@"code_id"];
+                
                 model.couponNUm = dict1[@"code"];
 
                 if (dict1[@"title"] == NULL || dict1[@"title"] == nil || dict1[@"title"] == [NSNull null]) {
@@ -206,6 +220,7 @@ couponBtnDelagate
                     model.couponTite = @"";
                     
                 }else{
+                    
                     model.couponTite = dict1[@"title"];
                     
                 }
@@ -214,10 +229,12 @@ couponBtnDelagate
                     model.couponShop = @"";
                     
                 }else{
+                    
                     model.couponShop = dict1[@"shop_name"];
 
                 }
                 model.couponOrderCode = dict1[@"order_id"];
+                
                 model.couponTime = dict1[@"create_time"];
                 
                 model.couponStatus = dict1[@"is_used"];
@@ -247,6 +264,7 @@ couponBtnDelagate
 -(void)registercell
 {
     UINib* nib = [UINib nibWithNibName:@"HZDSMyCouponTableViewCell" bundle:nil];
+    
     [_couponListTableView registerNib:nib forCellReuseIdentifier:@"CouponTableViewCell"];
 }
 -(void)moveLineLabel:(NSInteger)index
@@ -300,7 +318,6 @@ couponBtnDelagate
 {
     
     HZDSMyCouponTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CouponTableViewCell" forIndexPath:indexPath];
-    
     
     cell.delegate = self;
     

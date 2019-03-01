@@ -10,7 +10,6 @@
 
 @interface HZDSShopMallModel : rootModel
 
-
 @property(copy,nonatomic)NSString* orderID; //订单id
 
 @property(copy,nonatomic)NSString* orderTitle; //订单名字

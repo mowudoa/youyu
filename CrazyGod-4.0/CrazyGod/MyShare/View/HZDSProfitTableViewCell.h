@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface HZDSProfitTableViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UILabel *profitType;
+
 @property (weak, nonatomic) IBOutlet UILabel *profitInfo;
 
 @end

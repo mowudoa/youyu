@@ -13,14 +13,23 @@
 UIImagePickerControllerDelegate,
 UINavigationControllerDelegate
 >
+
 @property (weak, nonatomic) IBOutlet UILabel *headerTitleLabel;
+
 @property (weak, nonatomic) IBOutlet UIImageView *goodsImage;
+
 @property (weak, nonatomic) IBOutlet UILabel *goodsTitleLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *goodsMoneyLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *goodsIntegralLabel;
+
 @property (weak, nonatomic) IBOutlet commentStar *starView;
+
 @property (weak, nonatomic) IBOutlet UITextView *evaluateTextView;
+
 @property (weak, nonatomic) IBOutlet UIButton *uploadImageButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *evaluateButton;
 
 @property(strong,nonatomic) UIImagePickerController* imagePicker;
@@ -34,6 +43,7 @@ UINavigationControllerDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+  
     [self initUI];
     
     [self initData];
@@ -53,18 +63,7 @@ UINavigationControllerDelegate
     
     self.navigationItem.title = @"商品点评";
     
-    
-    UILabel *placeHolderLabel = [[UILabel alloc] init];
-    placeHolderLabel.text = @"还记得这家店吗?写点评记录生活,分享体验";
-    placeHolderLabel.numberOfLines = 0;
-    placeHolderLabel.textColor = [UIColor lightGrayColor];
-    [placeHolderLabel sizeToFit];
-    [_evaluateTextView addSubview:placeHolderLabel];
-    
-    // same font
-    placeHolderLabel.font = [UIFont systemFontOfSize:14.f];
-    
-    [_evaluateTextView setValue:placeHolderLabel forKey:@"_placeholderLabel"];
+    [WYFTools CreateTextPlaceHolder:@"还记得这家店吗?写点评记录生活,分享体验" WithFont:[UIFont systemFontOfSize:14] WithSuperView:_evaluateTextView];
 }
 -(void)initData
 {
@@ -107,7 +106,9 @@ UINavigationControllerDelegate
 {
     if (_imagePicker == nil) {
         _imagePicker = [[UIImagePickerController alloc] init];
+        
         _imagePicker.modalPresentationStyle = UIModalPresentationOverFullScreen;
+        
         _imagePicker.allowsEditing = YES;
         
         _imagePicker.delegate = self;
@@ -119,9 +120,7 @@ UINavigationControllerDelegate
 - (IBAction)uploadImage:(UIButton *)sender {
 
     UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"上传图片" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    
-    
-    
+
     [actionSheet addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
     }]];
@@ -152,7 +151,9 @@ UINavigationControllerDelegate
 - (IBAction)evaluate:(UIButton *)sender {
 
     if ([_evaluateTextView.text isEqualToString:@""] || [_evaluateTextView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+        
         [JKToast showWithText:@"评价内容不可为空"];
+    
     }else{
     
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
@@ -201,6 +202,7 @@ UINavigationControllerDelegate
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
     UIImage *orgImage = info[UIImagePickerControllerEditedImage];
+   
     [picker dismissViewControllerAnimated:YES completion:nil];
     
     [self performSelector:@selector(changePhoto:) withObject:orgImage afterDelay:0.1];
@@ -227,9 +229,13 @@ UINavigationControllerDelegate
     [manager POST:UPLOADIMAGE parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         
         NSData *imageDatas = UIImageJPEGRepresentation(image,0.4);
+       
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        
         formatter.dateFormat = @"yyyyMMddHHmmss";
+        
         NSString *str = [formatter stringFromDate:[NSDate date]];
+        
         NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
         //上传的参数(上传图片，以文件流的格式)
         [formData appendPartWithFileData:imageDatas
@@ -240,7 +246,6 @@ UINavigationControllerDelegate
     } success:^(NSURLSessionDataTask *task, id responseObject) {
         
         NSLog(@"====成功====");
-        
         
         [self saveUrl:responseObject withImage:image];
         

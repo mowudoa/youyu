@@ -10,10 +10,15 @@
 
 @interface HZDSChangePayPassViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *oldPayPassWordTF;
+
 @property (weak, nonatomic) IBOutlet UITextField *payPassWordTF;
+
 @property (weak, nonatomic) IBOutlet UITextField *payPassWordTwo;
+
 @property (weak, nonatomic) IBOutlet UIButton *getCodeButton;
+
 @property (weak, nonatomic) IBOutlet UITextField *codeTextField;
+
 @property (weak, nonatomic) IBOutlet UIButton *changeButton;
 
 @property(nonatomic,copy) NSString *phoneNumString;
@@ -88,8 +93,10 @@
             [JKToast showWithText:dic[@"datas"][@"msg"]];
             
             strongSelf.num = 60;
+            
             [strongSelf.getCodeButton setTitle:[NSString stringWithFormat:@"(%ld)",(long)(strongSelf.num)] forState:UIControlStateNormal];
-            strongSelf.getCodeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+        strongSelf.getCodeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+            
             strongSelf.getCodeButton.enabled = NO;
             
             [self jishiTimer];
@@ -109,8 +116,8 @@
     _num--;
     if (_num<1) {
         _getCodeButton.enabled = YES;
+       
         [_getCodeButton setTitle:[NSString stringWithFormat:@"立即获取"] forState:UIControlStateNormal];
-        //  [_codeButton setBackgroundImage:[UIImage imageNamed:@"QPHyanzhengma"] forState:UIControlStateNormal];
         
         [_getCodeButton setBackgroundColor:[UIColor redColor]];
         
@@ -118,8 +125,9 @@
     }else
     {
         _getCodeButton.enabled = NO;
+       
         [_getCodeButton setTitle:[NSString stringWithFormat:@"(%ldS)",(long)_num] forState:UIControlStateNormal];
-        // [_codeButton setBackgroundImage:[UIImage imageNamed:@"QPHyzmHui"] forState:UIControlStateNormal];
+        
         [_getCodeButton setBackgroundColor:[UIColor colorWithHexString:@"808080"]];
         
         [self performSelector:@selector(jishiTimer) withObject:nil afterDelay:1.0f];
@@ -131,10 +139,13 @@
 - (IBAction)cahngePayPass:(UIButton *)sender {
 
     if ([_oldPayPassWordTF.text isEqualToString:@""] || [_oldPayPassWordTF.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+       
         [JKToast showWithText:@"旧密码不可为空"];
+        
     }else if ([_payPassWordTF.text isEqualToString:@""] || [_payPassWordTF.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
         
         [JKToast showWithText:@"新密码不可为空"];
+    
     }else if ([_payPassWordTwo.text isEqualToString:@""] || [_payPassWordTwo.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
         
         [JKToast showWithText:@"密码不可为空"];
@@ -142,6 +153,7 @@
     }else if ([_codeTextField.text isEqualToString:@""] || [_codeTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
         
         [JKToast showWithText:@"验证码不可为空"];
+    
     }else{
      
         NSDictionary *urlDic = @{@"type":@"1",
@@ -149,6 +161,7 @@
                                  @"new_pay_password":_payPassWordTF.text,
                                  @"new_pay_password2":_payPassWordTwo.text,
                                  @"yzm":_codeTextField.text};
+       
         [CrazyNetWork CrazyRequest_Post:CHANGEPAYPASSWORD parameters:urlDic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
             
             LOG(@"修改密码", dic);

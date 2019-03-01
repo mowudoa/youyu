@@ -10,8 +10,11 @@
 #import "HZDSgoAgreeMessageViewController.h"
 
 @interface HZDSmyMessageDetailViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *clickButton;
 
 @property(nonatomic,copy) NSString *agreeUrl;
@@ -25,9 +28,7 @@
     // Do any additional setup after loading the view from its nib.
     
     [self initUI];
-    
-    
-    
+
 }
 -(void)initUI
 {
@@ -147,7 +148,7 @@
     
             HZDSgoAgreeMessageViewController *agree = [[HZDSgoAgreeMessageViewController alloc] init];
             
-            agree.workerID = _agreeUrl;
+            agree.workerID = self->_agreeUrl;
             
             [self.navigationController pushViewController:agree animated:YES];
             
@@ -172,6 +173,7 @@
     }else if (_messageType == merchantMessageType)
     {
         [self initmechantMessageData];
+        
     }else if (_messageType == employeeMessageType)
     {
         [self initEmployeeMessageData];

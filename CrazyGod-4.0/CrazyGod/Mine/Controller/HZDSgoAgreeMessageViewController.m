@@ -9,14 +9,23 @@
 #import "HZDSgoAgreeMessageViewController.h"
 
 @interface HZDSgoAgreeMessageViewController ()
+
 @property (weak, nonatomic) IBOutlet UIButton *agreeBUtton;
+
 @property (weak, nonatomic) IBOutlet UIButton *refuseBUtton;
+
 @property (weak, nonatomic) IBOutlet UILabel *shopName;
+
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *jobLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *mobileLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *qqLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *wChatLabel;
 
 @end
@@ -34,9 +43,11 @@
 -(void)initUI
 {
     _agreeBUtton.layer.cornerRadius = 3;
+    
     _agreeBUtton.layer.masksToBounds = YES;
     
     _refuseBUtton.layer.cornerRadius = 3;
+    
     _refuseBUtton.layer.masksToBounds = YES;
     
     self.navigationItem.title = @"通知详情";
@@ -111,8 +122,7 @@
 
     
     NSDictionary *dic = @{@"worker_id":_workerID                          };
-    
-    
+        
     [CrazyNetWork CrazyRequest_Post:MESSAGE_REFUSE parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
         LOG(@"拒绝", dic);

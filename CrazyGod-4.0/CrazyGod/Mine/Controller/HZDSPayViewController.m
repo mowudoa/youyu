@@ -17,12 +17,19 @@ UITableViewDelegate,
 UITableViewDataSource
 >
 @property (weak, nonatomic) IBOutlet UIButton *payButton;
+
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *totalPrice;
+
 @property (weak, nonatomic) IBOutlet UILabel *price;
+
 @property (weak, nonatomic) IBOutlet UILabel *numLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *needPay;
+
 @property (weak, nonatomic) IBOutlet UITableView *payTypeTableView;
 
 @property(nonatomic,strong) NSMutableArray *payTypeDataSource;
@@ -89,8 +96,11 @@ UITableViewDataSource
                 HZDSOrderModel *order = [[HZDSOrderModel alloc] init];
                 
                 order.orderID = dict1[@"payment_id"];
+               
                 order.orderTitle = dict1[@"name"];
+                
                 order.orderStatus = dict1[@"code"];
+                
                 order.orderImage = dict1[@"mobile_logo"];
                 
                 [strongSelf.payTypeDataSource addObject:order];
@@ -113,6 +123,7 @@ UITableViewDataSource
 {
     
     UINib* nib = [UINib nibWithNibName:@"HZDSpayTypeTableViewCell" bundle:nil];
+  
     [_payTypeTableView registerNib:nib forCellReuseIdentifier:@"payTypeTableViewCell"];
     
 }
@@ -121,6 +132,7 @@ UITableViewDataSource
     if (_payTypeString == nil) {
         
         [JKToast showWithText:@"请选择支付方式"];
+    
     }else{
         
         NSDictionary *dict = @{@"order_id":_orderId,
@@ -135,10 +147,7 @@ UITableViewDataSource
               
             [JKToast showWithText:dic[@"datas"][@"msg"]];
                 
-                
-                
                 [self gopay:[dic[@"datas"][@"log_id"] stringValue]];
-                
                 
             }else{
                 
@@ -207,7 +216,6 @@ UITableViewDataSource
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     
     HZDSpayTypeTableViewCell *celled = [tableView cellForRowAtIndexPath:indexPath];
 

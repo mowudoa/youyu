@@ -312,29 +312,39 @@ UITableViewDataSource
     backView.backgroundColor = [UIColor whiteColor];
     
     UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,30,SCREEN_WIDTH,1)];
+    
     lineLabel.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
+    
     [backView addSubview:lineLabel];
     
     UIView* view = [[UIView alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-5, 30)];
+    
     [backView addSubview:view];
     
     UILabel* shanghu = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-5-5, 20)];
+    
     shanghu.text = [NSString stringWithFormat:@"ID:%@",model.orderID];
     
     shanghu.textAlignment = NSTextAlignmentLeft;
+    
     shanghu.font=[UIFont systemFontOfSize:12];
+    
     shanghu.adjustsFontSizeToFitWidth = YES;
+    
     [view addSubview:shanghu];
     
     UIView* view1 = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2, 5, SCREEN_WIDTH/2-10, 30)];
+    
     [backView addSubview:view1];
+    
     UILabel* dingdantime = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-10, 20)];
+    
     dingdantime.text =[NSString stringWithFormat:@"下单时间:%@",model.orderTime];
     
     dingdantime.textAlignment = NSTextAlignmentRight;
+    
     dingdantime.font = [UIFont systemFontOfSize:12];
-    // dingdantime.textColor = [UIColor colorWithHexString:@"f5f5f5"];
-    // dingdantime.adjustsFontSizeToFitWidth = YES;
+
     [view1 addSubview:dingdantime];
     
     return backView;
@@ -347,66 +357,85 @@ UITableViewDataSource
 {
     
     HZDSOrderModel *model = [[HZDSOrderModel alloc] init];
+    
     model = _orderListDataSource[section];
     
     UIView* view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
     
     UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,39,SCREEN_WIDTH,1)];
+    
     lineLabel.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
+    
     [view addSubview:lineLabel];
     
     UILabel* zongjia = [[UILabel alloc]initWithFrame:CGRectMake(15, 13,100, 20)];
+    
     zongjia.font=[UIFont systemFontOfSize:14];
+    
     zongjia.textAlignment = NSTextAlignmentLeft;
+    
     zongjia.textColor = [UIColor colorWithHexString:@"BEC2C9"];
-    //  zongjia.text = [NSString stringWithFormat:@"共%ld件商品",(long)goodsNum];
     
     [view addSubview:zongjia];
     
     UILabel* price = [[UILabel alloc]initWithFrame:CGRectMake(120, 13,SCREEN_WIDTH - 120 -75 -5, 20)];
+    
     [view addSubview:price];
     
-    //  price.text =  [NSString stringWithFormat:@"合计 :￥%.2f",goodstotalPirce];
     price.tag = section;
+    
     price.textColor = [UIColor colorWithHexString:@"#BEC2C9"];
+    
     price.font=[UIFont systemFontOfSize:14];
+    
     price.textAlignment = NSTextAlignmentLeft;
-    // price.adjustsFontSizeToFitWidth = YES;
-    
-    
-    //    UILabel* postLabel = [UILabel alloc]initWithFrame:CGRectMake(150, 5, <#CGFloat width#>, <#CGFloat height#>)
     
     UIButton* leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
     [leftBtn setFrame:CGRectMake(SCREEN_WIDTH-75-75, 8, 70, 25)];
+    
     [leftBtn setTitle:@"" forState:UIControlStateNormal];
+    
     leftBtn.layer.cornerRadius = 3;
+    
     leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    
     leftBtn.layer.masksToBounds = YES;
+    
     leftBtn.backgroundColor = [UIColor colorWithHexString:@"#ff9980"];
-  //  leftBtn.layer.borderWidth = 0.5;
+    
     leftBtn.tag = section;
+    
     [leftBtn addTarget:self action:@selector(tapleftBtn:) forControlEvents:UIControlEventTouchUpInside];
+    
     [view addSubview:leftBtn];
     
     UIButton* rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
     [rightBtn setFrame:CGRectMake(SCREEN_WIDTH-75, 8, 70, 25)];
+    
     rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    
     [rightBtn setTitle:@"" forState:UIControlStateNormal];
-    //    [rightBtn setBackgroundImage:[UIImage imageNamed:@"exitlogin.png"] forState:UIControlStateNormal];
+
     rightBtn.backgroundColor = [UIColor colorWithHexString:@"#b5b5b5"];
+
     rightBtn.layer.cornerRadius = 3;
+
     rightBtn.layer.masksToBounds = YES;
+
     rightBtn.tag = section;
+
     [rightBtn addTarget:self action:@selector(tapBtn:) forControlEvents:UIControlEventTouchUpInside];
+
     [view addSubview:rightBtn];
     
-    
     view.backgroundColor=[UIColor whiteColor];
-    
     
     if ([model.orderStatus isEqualToString:@"0"]) {
         
         [rightBtn setTitle:@"付款" forState:UIControlStateNormal];
+       
         rightBtn.userInteractionEnabled = YES;
         
         rightBtn.backgroundColor = [UIColor colorWithHexString:@"#ff9980"];
@@ -414,6 +443,7 @@ UITableViewDataSource
         rightBtn.hidden = NO;
         
         [leftBtn setTitle:@"取消抢购" forState:UIControlStateNormal];
+        
         leftBtn.userInteractionEnabled = YES;
         
         leftBtn.hidden = NO;
@@ -421,6 +451,7 @@ UITableViewDataSource
     }else if ([model.orderStatus isEqualToString:@"1"]){
         
         [rightBtn setTitle:@"已付款" forState:UIControlStateNormal];
+       
         rightBtn.userInteractionEnabled = NO;
         
         rightBtn.hidden = NO;
@@ -430,6 +461,7 @@ UITableViewDataSource
     }else if ([model.orderStatus isEqualToString:@"8"]){
      
         [rightBtn setTitle:@"已完成" forState:UIControlStateNormal];
+        
         rightBtn.userInteractionEnabled = NO;
         
         rightBtn.hidden = NO;
@@ -463,11 +495,9 @@ UITableViewDataSource
     
     HZDSOrderModel *model = _orderListDataSource[sender.tag];
     
-    
     if ([sender.currentTitle isEqualToString:@"取消抢购"]) {
     
         NSDictionary *dic = @{@"order_id":model.orderID};
-        
         
         [CrazyNetWork CrazyRequest_Post:MY_ORDER_DELETE parameters:dic HUD:NO success:^(NSDictionary *dic, NSString *url, NSString *Json) {
             
@@ -503,9 +533,7 @@ UITableViewDataSource
 }
 -(void)tapBtn:(UIButton *)sender
 {
- 
-    
-    
+
      HZDSOrderModel *model = _orderListDataSource[sender.tag];
     
     if ([sender.currentTitle isEqualToString:@"付款"]) {

@@ -82,10 +82,15 @@
     //    bgView.backgroundColor = [UIColor clearColor];
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
     btn.frame = CGRectMake((self.frame.size.width)/itemCount*index, 0, (self.frame.size.width)/itemCount, self.frame.size.height);
+    
     btn.backgroundColor = [UIColor clearColor];
+    
     [btn addTarget:classObject action:sel forControlEvents:UIControlEventTouchUpInside];
+    
     btn.tag = index;
+    
     [self addSubview:btn];
     
     //    UIImageView *lineV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0.7)];
@@ -94,19 +99,31 @@
     
     //3.设置按钮
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    
     button.frame = CGRectMake((self.frame.size.width/itemCount-imageSize.width)/2, 5, imageSize.width, imageSize.height);
+    
     [button setImage:[UIImage imageNamed: itemImageName] forState:UIControlStateNormal];
+    
     [button setImage:[UIImage imageNamed: itemSelectImageName ] forState:UIControlStateSelected];
+    
     button.userInteractionEnabled = NO;
+   
     [btn addSubview:button];
     //4.设置label
     UILabel *label = [[UILabel alloc] init];
+    
     label.frame = CGRectMake(0, imageSize.height+8, btn.frame.size.width, 20);
+    
     label.text = itemTitle;
-   // label.backgroundColor = [UIColor greenColor];
+   
+    // label.backgroundColor = [UIColor greenColor];
+    
     label.textColor = [UIColor colorWithRed:50/255.0 green:50/255.0 blue:50/255.0 alpha:1];
+    
     label.textAlignment = NSTextAlignmentCenter;
+    
     label.font = [UIFont systemFontOfSize:12];
+    
     [btn addSubview:label];
     
     if (index == 0) {
@@ -120,10 +137,15 @@
 -(void)createBackgroundImageWithImageViewName:(NSString *)imageName
 {
     UIImageView *imageView = [[UIImageView alloc] init];
+   
     imageView.image = [UIImage imageNamed:imageName];
+    
     imageView.backgroundColor = [UIColor whiteColor];
+    
     imageView.alpha = 0.f;
+    
     imageView.frame = self.bounds;
+    
     [self addSubview:imageView];
     
 }
@@ -133,10 +155,13 @@
         if([view isKindOfClass:[UIButton class]])
         {
             ((UIButton *)[view.subviews objectAtIndex:0]).selected = NO;
+            
             ((UILabel *)[view.subviews objectAtIndex:1]).textColor = [UIColor colorWithRed:50/255.0 green:50/255.0 blue:50/255.0 alpha:1];
         }
     }
+    
     ((UIButton *)[sender.subviews objectAtIndex:0]).selected = YES;
+    
     ((UILabel *)[sender.subviews objectAtIndex:1]).textColor = [UIColor colorWithRed:249/255.0 green:58/255.0 blue:101/255.0 alpha:1];
     
     // self.selectedIndex = sender.tag;

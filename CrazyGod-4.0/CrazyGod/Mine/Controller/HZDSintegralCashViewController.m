@@ -9,18 +9,31 @@
 #import "HZDSintegralCashViewController.h"
 
 @interface HZDSintegralCashViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *tagLabel;
+
 @property (weak, nonatomic) IBOutlet UITextField *codeTextField;
+
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
+
 @property (weak, nonatomic) IBOutlet UITextField *bankUserTextField;
+
 @property (weak, nonatomic) IBOutlet UITextField *bankAddress;
+
 @property (weak, nonatomic) IBOutlet UITextField *bankNum;
+
 @property (weak, nonatomic) IBOutlet UITextField *bankName;
+
 @property (weak, nonatomic) IBOutlet UITextField *cashNum;
+
 @property (weak, nonatomic) IBOutlet UILabel *shopUserName;
+
 @property (weak, nonatomic) IBOutlet UILabel *shopName;
+
 @property (weak, nonatomic) IBOutlet UILabel *shopIntegral;
+
 @property (weak, nonatomic) IBOutlet UIButton *codeButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *applyButton;
 
 
@@ -33,6 +46,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
     [self initUI];
     
 }
@@ -50,6 +64,7 @@
     if (_myCashType == moneyCashType) {
      
         [self initDataWithMoney];
+       
         self.navigationItem.title = @"资金提现";
 
     }else{
@@ -84,7 +99,6 @@
             
             strongSelf.tagLabel.text = [NSString stringWithFormat:@"单笔最少:%@,最多%@",dic[@"datas"][@"cash_money"],dic[@"datas"][@"cash_money_big"]];
             
-            
         }else{
             
             [JKToast showWithText:dic[@"datas"][@"error"]];
@@ -109,17 +123,13 @@
         
         if (SUCCESS) {
             
-            
             strongSelf.shopUserName.text = [NSString stringWithFormat:@"您好:%@", dic[@"datas"][@"account"]];
             
             strongSelf.shopName.text = [NSString stringWithFormat:@"您的店铺:%@",dic[@"datas"][@"shop_name"] ];
             
             strongSelf.shopIntegral.text = [NSString stringWithFormat:@"可提现余额:%@",[dic[@"datas"][@"gold"] stringValue]];
             
-         //   strongSelf.phoneTextField.text = dic[@"datas"][@"account"];
-            
             strongSelf.tagLabel.text = [NSString stringWithFormat:@"单笔最少:%@,最多%@",dic[@"datas"][@"cash_money"],dic[@"datas"][@"cash_money_big"]];
-            
             
         }else{
             
@@ -134,13 +144,15 @@
 - (IBAction)getCode:(UIButton *)sender {
 
     if ([_phoneTextField.text isEqualToString:@""] || [_phoneTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+       
         [JKToast showWithText:@"手机号不可为空"];
+    
     }else {
         
         __weak typeof(self) weakSelf = self;
         
-        
         NSDictionary *urlDic = @{@"mobile":_phoneTextField.text};
+       
         [CrazyNetWork CrazyRequest_Post:[NSString stringWithFormat:@"%@",CASH_SENDCODE] parameters:urlDic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
             
             LOG(@"获取验证码", dic);
@@ -153,8 +165,10 @@
                 [JKToast showWithText:dic[@"datas"][@"msg"]];
                 
                 strongSelf.num = 60;
+                
                 [strongSelf.codeButton setTitle:[NSString stringWithFormat:@"(%ld)",(long)(strongSelf.num)] forState:UIControlStateNormal];
-                strongSelf.codeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+            strongSelf.codeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+                
                 strongSelf.codeButton.enabled = NO;
                 
                 [self jishiTimer];
@@ -175,8 +189,6 @@
 
 - (IBAction)applySubmit:(UIButton *)sender {
 
-    
-    
     if (_myCashType == moneyCashType) {
         
         [self applySubmitWithMoney];
@@ -187,28 +199,32 @@
         
     }
     
-    
 }
 //倒计时
 -(void)jishiTimer
 {
     _num--;
+    
     if (_num<1) {
+        
         _codeButton.enabled = YES;
+       
         [_codeButton setTitle:[NSString stringWithFormat:@"立即获取"] forState:UIControlStateNormal];
-        //  [_codeButton setBackgroundImage:[UIImage imageNamed:@"QPHyanzhengma"] forState:UIControlStateNormal];
         
         [_codeButton setBackgroundColor:[UIColor redColor]];
         
         return;
+        
     }else
     {
         _codeButton.enabled = NO;
+
         [_codeButton setTitle:[NSString stringWithFormat:@"(%ldS)",(long)_num] forState:UIControlStateNormal];
-        // [_codeButton setBackgroundImage:[UIImage imageNamed:@"QPHyzmHui"] forState:UIControlStateNormal];
+
         [_codeButton setBackgroundColor:[UIColor colorWithHexString:@"808080"]];
         
         [self performSelector:@selector(jishiTimer) withObject:nil afterDelay:1.0f];
+
         return;
     }
     
@@ -217,30 +233,32 @@
 {
     
     if ([_cashNum.text isEqualToString:@""] || [_cashNum.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+       
         [JKToast showWithText:@"提现金额不可为空"];
+    
     }else if ([_bankName.text isEqualToString:@""] || [_bankName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
+        
         [JKToast showWithText:@"开户银行不可为空"];
         
-        
     }else if ([_bankNum.text isEqualToString:@""] || [_bankNum.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
+        
         [JKToast showWithText:@"银行账号不可为空"];
         
-        
     }else if ([_bankAddress.text isEqualToString:@""] || [_bankAddress.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
+        
         [JKToast showWithText:@"具体支行 不可为空"];
         
-        
     }else if ([_bankUserTextField.text isEqualToString:@""] || [_bankUserTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
+        
         [JKToast showWithText:@"开户名不可为空"];
         
-        
     }else if ([_phoneTextField.text isEqualToString:@""] || [_phoneTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
+        
         [JKToast showWithText:@"手机号不可为空"];
         
-        
     }else if ([_codeTextField.text isEqualToString:@""] || [_codeTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
-        [JKToast showWithText:@"验证码不可为空"];
         
+        [JKToast showWithText:@"验证码不可为空"];
         
     }else{
         
@@ -279,29 +297,30 @@
     
     if ([_cashNum.text isEqualToString:@""] || [_cashNum.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
         [JKToast showWithText:@"提现金额不可为空"];
+        
     }else if ([_bankName.text isEqualToString:@""] || [_bankName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
+
         [JKToast showWithText:@"开户银行不可为空"];
         
-        
     }else if ([_bankNum.text isEqualToString:@""] || [_bankNum.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
+      
         [JKToast showWithText:@"银行账号不可为空"];
         
-        
     }else if ([_bankAddress.text isEqualToString:@""] || [_bankAddress.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
+        
         [JKToast showWithText:@"具体支行 不可为空"];
         
-        
     }else if ([_bankUserTextField.text isEqualToString:@""] || [_bankUserTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
+        
         [JKToast showWithText:@"开户名不可为空"];
         
-        
     }else if ([_phoneTextField.text isEqualToString:@""] || [_phoneTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
+        
         [JKToast showWithText:@"手机号不可为空"];
         
-        
     }else if ([_codeTextField.text isEqualToString:@""] || [_codeTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
-        [JKToast showWithText:@"验证码不可为空"];
         
+        [JKToast showWithText:@"验证码不可为空"];
         
     }else{
         

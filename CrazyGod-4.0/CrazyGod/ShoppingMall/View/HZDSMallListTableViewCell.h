@@ -10,9 +10,13 @@
 
 @interface HZDSMallListTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *soldNumLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *oldPriceLabel;
+
 @property (weak, nonatomic) IBOutlet UIImageView *titileIcon;
 
 @end

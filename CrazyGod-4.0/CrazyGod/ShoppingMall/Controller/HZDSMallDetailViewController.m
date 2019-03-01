@@ -7,11 +7,11 @@
 //
 
 #import "HZDSMallDetailViewController.h"
-#import "HZDSShopCartViewController.h"
-#import "HZDSShopViewController.h"
-#import "HZDSShopOrderViewController.h"
-#import "HZDSLoginViewController.h"
 #import "HZDSMallEvaluateListViewController.h"
+#import "HZDSShopOrderViewController.h"
+#import "HZDSShopCartViewController.h"
+#import "HZDSLoginViewController.h"
+#import "HZDSShopViewController.h"
 #import "scrollPhotos.h"
 
 @interface HZDSMallDetailViewController ()
@@ -20,20 +20,33 @@
 
 }
 @property (weak, nonatomic) IBOutlet UIView *headerView;
+
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *oldPriceLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *soldNumPrice;
+
 @property (weak, nonatomic) IBOutlet UILabel *collectNumLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *numLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *stockNunLabel;
+
 @property (weak, nonatomic) IBOutlet commentStar *starView;
+
 @property (weak, nonatomic) IBOutlet UIScrollView *myScrollView;
+
 @property (weak, nonatomic) IBOutlet UIView *backGroundView;
+
 @property (weak, nonatomic) IBOutlet UIView *goodsInfoDetailView;
+
 @property (weak, nonatomic) IBOutlet UIImageView *collectionImage;
 
 @property (weak, nonatomic) IBOutlet UILabel *evaluateNumLabel;
+
 @property(nonatomic,strong)scrollPhotos* headScrollView;
 
 @property(nonatomic,copy) NSString *goodsInfo;
@@ -141,7 +154,6 @@
             
             strongSelf.evaluateNumLabel.text = [NSString stringWithFormat:@"%@人评价了该商品",dict[@"pingnum"]];
             
-            
             if (dic[@"datas"][@"goodsfavorites"] == NULL || dic[@"datas"][@"goodsfavorites"] == nil ||dic[@"datas"][@"goodsfavorites"] == [NSNull null]) {
                 
                 strongSelf.collectionImage.image = [UIImage imageNamed:@"星星x"];
@@ -175,10 +187,14 @@
 {
     if (_rightItem == nil) {
         
-        UIButton* button = [UIButton buttonWithType: UIButtonTypeCustom];;
+        UIButton* button = [UIButton buttonWithType: UIButtonTypeCustom];
+        
         [button setFrame:CGRectMake(0, 0, 25, 25)];
+        
         [button addTarget:self action:@selector(goShopCart:) forControlEvents:UIControlEventTouchUpInside];
+        
         button.titleLabel.font = [UIFont systemFontOfSize:15];
+        
         [button setBackgroundImage:[UIImage imageNamed:@"gouwuche"] forState:UIControlStateNormal];
         
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -196,7 +212,6 @@
 {
     [self.headerView addSubview:self.headScrollView];
     
-    
     UIView *view = [[UIView alloc] init];
     
     view.backgroundColor = [UIColor whiteColor];
@@ -212,43 +227,15 @@
     label.textColor = [UIColor redColor];
     
     
-  //接口返回为html字符串,所以详情用label富文本加载html数据
-    UILabel *label1 = [[UILabel alloc] init];
+//  //接口返回为html字符串,所以详情用label富文本加载html数据
+    UILabel *label1 = [WYFTools createLabelLoadHtml:_goodsInfo withFont:[UIFont systemFontOfSize:12]];
 
-    
-  //  label1.text = _goodsInfo;
-    
-    NSString *infoStr = [NSString stringWithFormat:@"<head><style>img{width:%f !important;height:auto}</style></head>%@",SCREEN_WIDTH - 40,_goodsInfo];
-
-    
-    NSData *data = [infoStr dataUsingEncoding:NSUnicodeStringEncoding];
-    
-    NSDictionary *options = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType};
-    
-    NSAttributedString *html = [[NSAttributedString alloc]initWithData:data
-                                
-                                                               options:options
-                                
-                                                    documentAttributes:nil
-                                
-                                                                 error:nil];
-    
-    if (_goodsInfo != nil && _goodsInfo != NULL) {
-     
-        label1.attributedText = html;
-
-    }
-    
     CGSize size = [label1.attributedText boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 40, MAXFLOAT) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil].size;
     
     label1.frame = CGRectMake(20,label.mj_y + label.height, SCREEN_WIDTH - 40,size.height);
     
-    
-    label1.numberOfLines = 0;
-    
-    label1.font  = [UIFont systemFontOfSize:12];
-    
     [_backGroundView addSubview:label];
+    
     [_backGroundView addSubview:label1];
     
     
@@ -260,43 +247,14 @@
     
     label2.textColor = [UIColor redColor];
     
+    UILabel *label3 = [WYFTools createLabelLoadHtml:_goodsDetail withFont:[UIFont systemFontOfSize:12]];
     
-    UILabel *label3 = [[UILabel alloc] init];
-    
-   // label3.text = _goodsDetail;
-    
-    
-    //修改html样式
-    NSString *detailStr = [NSString stringWithFormat:@"<head><style>img{width:%f !important;height:auto}</style></head>%@",SCREEN_WIDTH - 40,_goodsDetail];
-    
-    
-    NSData *data1 = [detailStr dataUsingEncoding:NSUnicodeStringEncoding];
-    
-    NSDictionary *options1 = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType};
-    
-    NSAttributedString *html1 = [[NSAttributedString alloc]initWithData:data1
-                                
-                                                               options:options1
-                                
-                                                    documentAttributes:nil
-                                
-                                                                 error:nil];
-
-    if (_goodsDetail != nil && _goodsDetail != NULL) {
-     
-        label3.attributedText = html1;
-
-    }
-
     CGSize size1 = [label3.attributedText boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 40, MAXFLOAT) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil].size;
 
     label3.frame = CGRectMake(20,label2.mj_y + label2.height, SCREEN_WIDTH - 40,size1.height);
     
-    label3.numberOfLines = 0;
-    
-    label3.font  = [UIFont systemFontOfSize:12];
-    
     [_backGroundView addSubview:label2];
+    
     [_backGroundView addSubview:label3];
     
     _backGroundView.frame = CGRectMake(0,0,SCREEN_WIDTH, label3.frame.origin.y+label3.frame.size.height+44 + 10);
@@ -314,10 +272,7 @@
         
         _headScrollView.photos = _headerScrImgArray;
         
-        
-        // [_headView addSubview:self.searchImage];
     }
-    
     
     return _headScrollView;
 }
@@ -327,9 +282,11 @@
         if (![self.numLabel.text isEqualToString:@"1"]) {
             
             num --;
+            
         }else{
             
             [JKToast showWithText:@"商品数不能少于1"];
+            
             return;
         }
     }else
@@ -339,11 +296,8 @@
     
     _numLabel.text = [NSString stringWithFormat:@"%ld",(long)num];
     
-    
 }
 - (IBAction)addShopCart:(UIButton *)sender {
-
-    
     
     if (![USER_DEFAULT boolForKey:@"isLogin"]){
         
@@ -370,8 +324,6 @@
                 
                 [JKToast showWithText:dic[@"datas"][@"msg"]];
                 
-                
-                
             }else{
                 
                 [JKToast showWithText:dic[@"datas"][@"error"]];
@@ -382,10 +334,7 @@
             
         }];
     }
-    
-    
-  
-    
+
 }
 - (IBAction)buyNow:(UIButton *)sender {
 
@@ -402,10 +351,7 @@
      
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
         
-        
         [dict setObject:_numLabel.text forKey:[NSString stringWithFormat:@"num[%@|%@]",_goodsID,_goodsSpec]];
-        
-        
         
         [CrazyNetWork CrazyRequest_Post:[NSString stringWithFormat:@"%@%@",HEADURL,SHOPPING_MALL_UPLOADORDER] parameters:dict HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
             
@@ -414,7 +360,6 @@
             if (SUCCESS) {
                 
                 [JKToast showWithText:dic[@"datas"][@"msg"]];
-                
                 
                 HZDSShopOrderViewController *order = [[HZDSShopOrderViewController alloc] init];
                 
@@ -450,7 +395,6 @@
         }];
         
     }
-    
   
 }
 -(void)jumpShopCart
@@ -461,7 +405,6 @@
 }
 //收藏
 - (IBAction)collectionGoods:(UIButton *)sender {
-
     
     NSDictionary *dic = @{@"goods_id":_goodsID                         };
     

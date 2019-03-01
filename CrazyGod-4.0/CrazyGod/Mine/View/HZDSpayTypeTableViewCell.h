@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface HZDSpayTypeTableViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UIImageView *payImage;
 
 @property (weak, nonatomic) IBOutlet UILabel *payName;
+
 @property (weak, nonatomic) IBOutlet UIButton *payButton;
 @end

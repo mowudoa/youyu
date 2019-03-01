@@ -10,8 +10,11 @@
 
 @interface HZDSlinkUserPhoneViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *getCodeButton;
+
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
+
 @property (weak, nonatomic) IBOutlet UITextField *codeTextField;
+
 @property (weak, nonatomic) IBOutlet UIButton *linkButton;
 
 @property(nonatomic,assign) NSInteger num;
@@ -42,7 +45,9 @@
 - (IBAction)getCode:(UIButton *)sender {
 
     if ([_phoneTextField.text isEqualToString:@""] || [_phoneTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+       
         [JKToast showWithText:@"手机号不可为空"];
+    
     }else {
         
         __weak typeof(self) weakSelf = self;
@@ -61,8 +66,9 @@
                 [JKToast showWithText:dic[@"datas"][@"msg"]];
                 
                 strongSelf.num = 60;
+                
                 [strongSelf.getCodeButton setTitle:[NSString stringWithFormat:@"(%ld)",(long)(strongSelf.num)] forState:UIControlStateNormal];
-                strongSelf.getCodeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+            strongSelf.getCodeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
                 
                 [self jishiTimer];
                 
@@ -86,9 +92,10 @@
     
     _num--;
     if (_num<1) {
+        
         _getCodeButton.enabled = YES;
+        
         [_getCodeButton setTitle:[NSString stringWithFormat:@"获取验证码"] forState:UIControlStateNormal];
-        //  [_codeButton setBackgroundImage:[UIImage imageNamed:@"QPHyanzhengma"] forState:UIControlStateNormal];
         
         [_getCodeButton setBackgroundColor:[UIColor redColor]];
         
@@ -96,11 +103,13 @@
     }else
     {
         _getCodeButton.enabled = NO;
+
         [_getCodeButton setTitle:[NSString stringWithFormat:@"(%ldS)",(long)_num] forState:UIControlStateNormal];
-        // [_codeButton setBackgroundImage:[UIImage imageNamed:@"QPHyzmHui"] forState:UIControlStateNormal];
+
         [_getCodeButton setBackgroundColor:[UIColor colorWithHexString:@"808080"]];
         
         [self performSelector:@selector(jishiTimer) withObject:nil afterDelay:1.0f];
+       
         return;
     }
     
@@ -109,10 +118,13 @@
 - (IBAction)linkUserPhone:(UIButton *)sender {
 
     if ([_phoneTextField.text isEqualToString:@""] || [_phoneTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+       
         [JKToast showWithText:@"帐号不可为空"];
+    
     }else if ([_codeTextField.text isEqualToString:@""] || [_codeTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
         
         [JKToast showWithText:@"验证码不可为空"];
+   
     }else{
         
         NSDictionary *urlDict = @{@"mobile":_phoneTextField.text,

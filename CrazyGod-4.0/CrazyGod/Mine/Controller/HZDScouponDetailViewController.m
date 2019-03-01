@@ -10,7 +10,9 @@
 
 @interface HZDScouponDetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *couponNum;
+
 @property (weak, nonatomic) IBOutlet UILabel *counponPrice;
+
 @property (weak, nonatomic) IBOutlet UIImageView *couponCode;
 
 @end
@@ -20,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
     [self initUI];
     
     [self initData];
@@ -50,9 +53,7 @@
 
             NSString *urlStr = dic[@"datas"][@"file"];
             
-            
             [strongSelf.couponCode sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ImageURL_CODE,urlStr]]];
-
             
         }else{
             

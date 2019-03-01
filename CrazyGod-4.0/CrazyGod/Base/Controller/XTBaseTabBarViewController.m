@@ -46,19 +46,25 @@ XTBaseTabBarDelegate
     
     NSMutableArray *ViewControllers = [[NSMutableArray alloc] init];
     for (int i = 0 ; i<controllers.count ;i++) {
+        
         NSString* str = controllers[i];
+        
         NSString* controllerName = [NSString stringWithFormat:@"%@ViewController",str];
+        
         Class className = NSClassFromString(controllerName);
+        
         UIViewController* VC = [[className alloc]init];
         
         XTBaseNavController* nav = [[XTBaseNavController alloc]initWithRootViewController:VC];
         
         [nav.navigationBar setBarTintColor:[UIColor redColor]];
+        
         [nav.navigationBar setTintColor:[UIColor whiteColor]];
         
         [nav.navigationBar setTitleTextAttributes:
          @{NSForegroundColorAttributeName: [UIColor whiteColor],
            NSFontAttributeName : [UIFont systemFontOfSize:16]}];
+        
         [ViewControllers addObject:nav];
         
     }

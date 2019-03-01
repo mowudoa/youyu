@@ -19,11 +19,17 @@
     _couponModel = couponModel;
     
     _titleLabel.text = [NSString stringWithFormat:@"名称:%@",couponModel.couponTite];
+    
     _shopName.text = [NSString stringWithFormat:@"商家名称:%@",couponModel.couponShop];
+    
     _couponID.text = [NSString stringWithFormat:@"消费券编号:%@",couponModel.couponID];
+    
     _orderId.text = [NSString stringWithFormat:@"订单ID:%@",couponModel.couponOrderCode];
+    
     _couponNum.text = [NSString stringWithFormat:@"消费码:%@",couponModel.couponNUm];
+    
     _couponTime.text = [NSString stringWithFormat:@"生成时间:%@",couponModel.couponTime];
+    
     _timeLabel.text = couponModel.couponTime;
 
     _couponTime.adjustsFontSizeToFitWidth = YES;

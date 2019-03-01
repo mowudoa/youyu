@@ -8,19 +8,23 @@
 
 #import "HZDSshopAddressViewController.h"
 #import "HZDSshopAddressTableViewCell.h"
+#import "HZDSAddAddressViewController.h"
+#import "HZDSAddAddressViewController.h"
 #import "HZDSAddressModel.h"
-#import "HZDSAddAddressViewController.h"
-#import "HZDSAddAddressViewController.h"
+
 
 @interface HZDSshopAddressViewController ()<
 UITableViewDelegate,
 UITableViewDataSource,
 deleteBtnDelagate
 >
+
 @property (weak, nonatomic) IBOutlet UITableView *addressListTableView;
+
 @property (weak, nonatomic) IBOutlet UIButton *addAddressbutton;
 
 @property(nonatomic,strong) NSMutableArray *addressListArray;
+
 @end
 
 @implementation HZDSshopAddressViewController
@@ -45,8 +49,8 @@ deleteBtnDelagate
     
     _addressListTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    
     UINib* nib   =[UINib nibWithNibName:@"HZDSshopAddressTableViewCell" bundle:nil];
+  
     [_addressListTableView registerNib:nib forCellReuseIdentifier:@"AddressTableViewCell"];
     
     _addAddressbutton.layer.cornerRadius = _addAddressbutton.frame.size.height/16*3;
@@ -90,10 +94,15 @@ deleteBtnDelagate
                 HZDSAddressModel *model = [[HZDSAddressModel alloc] init];
                 
                 model.addressId = dic1[@"id"];
+              
                 model.addressDetail = dic1[@"info"];
+                
                 model.address = dic1[@"area_str"];
+                
                 model.userName = dic1[@"xm"];
+                
                 model.userPhone = dic1[@"tel"];
+                
                 model.is_default = dic1[@"default"];
                
                 [strongSelf.addressListArray addObject:model];
@@ -111,10 +120,15 @@ deleteBtnDelagate
                     HZDSAddressModel *model = [[HZDSAddressModel alloc] init];
                     
                     model.addressId = dic2[@"id"];
+                   
                     model.addressDetail = dic2[@"info"];
+                    
                     model.address = dic2[@"area_str"];
+                    
                     model.userName = dic2[@"xm"];
+                    
                     model.userPhone = dic2[@"tel"];
+                    
                     model.is_default = dic2[@"default"];
                     
                     [strongSelf.addressListArray addObject:model];
@@ -122,7 +136,6 @@ deleteBtnDelagate
                 }
                 
             }
-            
             
             [strongSelf.addressListTableView reloadData];
             
@@ -287,7 +300,6 @@ deleteBtnDelagate
             
             
             [JKToast showWithText:dic[@"datas"][@"msg"]];
-            
 
             [self requestData];
             
@@ -322,7 +334,6 @@ deleteBtnDelagate
       
         add.LogID = _LogID;
     }
-    
     
     [self.navigationController pushViewController:add animated:YES];
  

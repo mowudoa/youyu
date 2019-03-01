@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *expressNum;
 
 @property (weak, nonatomic) IBOutlet UIButton *sendGoodsButton;
+
 @property (weak, nonatomic) IBOutlet UILabel *expressName;
 
 @property(nonatomic,strong) NSMutableArray *logisticsArray;
@@ -31,6 +32,7 @@
     self.navigationItem.title = @"确认发货";
     
     [_sendGoodsButton.layer setMasksToBounds:YES];
+   
     [_sendGoodsButton.layer setCornerRadius:5];
     
 }
@@ -85,9 +87,13 @@
 - (IBAction)sendGoods:(UIButton *)sender {
 
     if ([_expressName.text isEqualToString:@""] || [_expressName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+       
         [JKToast showWithText:@"请选择快递"];
+  
     }else if ([_expressNum.text isEqualToString:@""] || [_expressNum.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+      
         [JKToast showWithText:@"请填写快递单号"];
+   
     }else{
         
         NSDictionary *dic = @{@"order_id":_orderId,

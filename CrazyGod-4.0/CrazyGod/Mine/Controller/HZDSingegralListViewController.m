@@ -16,6 +16,7 @@ UITableViewDataSource
 >
 
 @property (weak, nonatomic) IBOutlet UITableView *integralListTableView;
+
 @property (weak, nonatomic) IBOutlet UIView *backGroundView;
 
 @property(nonatomic,strong) NSMutableArray *integralArray;
@@ -45,10 +46,11 @@ UITableViewDataSource
     
     _totalPage = 1;
     
-    
     // 下拉加载
     self.integralListTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+      
         [self initData];
+    
     }];
     
     __weak __typeof(self) weakSelf = self;
@@ -79,6 +81,7 @@ UITableViewDataSource
 -(void)registercell
 {
     UINib* nib = [UINib nibWithNibName:@"HZDSintegralListTableViewCell" bundle:nil];
+   
     [_integralListTableView registerNib:nib forCellReuseIdentifier:@"integralListTableViewCell"];
 }
 -(void)initData
@@ -89,8 +92,6 @@ UITableViewDataSource
     _pageNum = 1;
     
     NSDictionary *dic = @{@"lastindex":[NSString stringWithFormat:@"%ld",(long)_pageNum]                          };
-    
-    
     
     [CrazyNetWork CrazyRequest_Post:_logUrl parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
@@ -107,11 +108,13 @@ UITableViewDataSource
             if (arr.count > 0) {
                 
                 strongSelf.integralListTableView.hidden = NO;
+               
                 strongSelf.backGroundView.hidden = YES;
                 
             }else{
                 
                 strongSelf.integralListTableView.hidden = YES;
+                
                 strongSelf.backGroundView.hidden = NO;
             }
             
@@ -120,11 +123,11 @@ UITableViewDataSource
                 HZDSOrderModel *model = [[HZDSOrderModel alloc] init];
                 
                 model.orderID = dict1[@"money_id"];
+                
                 model.orderTitle = dict1[@"type"];
                 if (strongSelf.myLogType == moneyLogType) {
                     
                     model.orderPrice = dict1[@"money"];
-                    
                     
                 }else if (strongSelf.myLogType == integralLogType){
                     
@@ -142,8 +145,8 @@ UITableViewDataSource
             
         }else{
             
-            
         }
+        
         [strongSelf.integralListTableView.mj_header endRefreshing];
         
     } fail:^(NSError *error, NSString *url, NSString *Json) {
@@ -173,13 +176,14 @@ UITableViewDataSource
                 HZDSOrderModel *model = [[HZDSOrderModel alloc] init];
                 
                 model.orderID = dict1[@"money_id"];
+              
                 model.orderTitle = dict1[@"type"];
+                
                 model.orderStatus = dict1[@"intro"];
                 
                 if (strongSelf.myLogType == moneyLogType) {
                     
                     model.orderPrice = dict1[@"money"];
-
                     
                 }else if (strongSelf.myLogType == integralLogType){
                     
@@ -228,10 +232,8 @@ UITableViewDataSource
     
     HZDSOrderModel *model = _integralArray[indexPath.section];
     
-    
     if (_myLogType == moneyLogType) {
      
-        
         cell.integralNum.text = [NSString stringWithFormat:@"资金:%@",model.orderPrice];
         
     }else{
@@ -240,12 +242,10 @@ UITableViewDataSource
         cell.integralNum.text = [NSString stringWithFormat:@"积分:%@",model.orderPrice];
         
     }
-    
   
     cell.integralType.text = [NSString stringWithFormat:@"类型:%@",model.orderTitle];
     
     cell.ingegralInfo.text = [NSString stringWithFormat:@"结算说明:%@",model.orderStatus];
-    
     
     cell.integralTime.text = [NSString stringWithFormat:@"日期:%@",[self ConvertStrToTime:model.orderTime]];
     
@@ -268,12 +268,6 @@ UITableViewDataSource
     
     return timeString;
     
-}
-
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-   
 }
 
 #pragma mark - UITableViewDelegate

@@ -7,20 +7,18 @@
 //
 
 #import "HZDSHomeViewController.h"
-#import "scrollPhotos.h"
-#import "DCCycleScrollView.h"
-#import "HZDSHomeTableViewCell.h"
+#import "HZDSBusinessDetailViewController.h"
+#import "HZDSBusinessViewController.h"
+#import "HZDSCityListViewController.h"
+#import "HZDSLinkWebViewController.h"
+#import "HZDSSearchViewController.h"
 #import "HZDSClassTableViewCell.h"
 #import "HZDSImageTableViewCell.h"
-#import "HZDSBusinessDetailViewController.h"
-#import "HZDSLinkWebViewController.h"
-#import "HZDSCityListViewController.h"
-#import "HZDSSearchViewController.h"
-#import "HZDSBusinessViewController.h"
-#import "SWQRCode.h"
-
-
+#import "HZDSHomeTableViewCell.h"
+#import "DCCycleScrollView.h"
+#import "scrollPhotos.h"
 #import "HomeModel.h"
+#import "SWQRCode.h"
 
 @interface HZDSHomeViewController ()<
 UITableViewDelegate,
@@ -76,12 +74,6 @@ cityChoiceDelegate
     
       self.navigationItem.titleView = self.searchImage;
     
-    
-    //  self.navigationItem.rightBarButtonItem = self.rightItem;
-//        self.GoodsCollectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-//            [self requestData];
-//        }];
-    
     _hotShopArray = [[NSMutableArray alloc] init];
     
     _shopArray = [[NSMutableArray alloc] init];
@@ -104,10 +96,15 @@ cityChoiceDelegate
         LOG(@"首页", dic);
         
         [self->_shopArray removeAllObjects];
+        
         [self->_hotShopArray removeAllObjects];
+        
         [self->_classArray removeAllObjects];
+        
         [self->_bannerArray removeAllObjects];
+        
         [self->_titleArray removeAllObjects];
+        
         [self->_advArray removeAllObjects];
         
         if (SUCCESS) {
@@ -130,7 +127,6 @@ cityChoiceDelegate
                 model.goodsId = dictlist[@"shop_id"];
                 
                 [model.tagArray addObjectsFromArray:dictlist[@"tags"]];
-                
                 
                 [self->_shopArray addObject:model];
             }
@@ -182,20 +178,19 @@ cityChoiceDelegate
     
     
     UINib* nib = [UINib nibWithNibName:@"HZDSHomeTableViewCell" bundle:nil];
+    
     [_homeTableView registerNib:nib forCellReuseIdentifier:@"HomeTableViewCell"];
     
-    
-    
     UINib* nib1 = [UINib nibWithNibName:@"HZDSClassTableViewCell" bundle:nil];
+   
     [_homeTableView registerNib:nib1 forCellReuseIdentifier:@"ClassTableViewCell"];
     
-    
-    
     UINib* nib2 = [UINib nibWithNibName:@"HZDSImageTableViewCell" bundle:nil];
+    
     [_homeTableView registerNib:nib2 forCellReuseIdentifier:@"ImageTableViewCell"];
     
-    
     self.homeTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
         [self initData];
     }];
 }
@@ -204,32 +199,41 @@ cityChoiceDelegate
 -(UIImageView*)searchImage
 {
     if (_searchImage == nil) {
+        
         _searchImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH*0.8, 30)];
+        
         _searchImage.backgroundColor = [UIColor colorWithHexString:@"ffffff"];
         
         UIImageView *ima = [[UIImageView alloc] initWithFrame:CGRectMake(8,8,14,14)];
-      //  ima.image = [UIImage imageNamed:@"searchIma"];
         
         UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(20,0,100, 30)];
         
         label.text = @"你想要的...";
+        
         label.textColor = [UIColor lightGrayColor];
+        
         label.font = [UIFont systemFontOfSize:13];
+        
         label.textAlignment = NSTextAlignmentLeft;
-        // label.backgroundColor = [UIColor redColor];
+
         [_searchImage addSubview:label];
         
         _searchImage.layer.cornerRadius = _searchImage.frame.size.height/2;
+
         _searchImage.userInteractionEnabled = YES;
-       // [_searchImage addSubview:self.searchTextField];
+
         [_searchImage addSubview:ima];
         
         UIButton* rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+       
         [rightBtn setFrame:CGRectMake(0, 0,self.searchImage.frame.size.width,self.searchImage.frame.size.height)];
         
         [rightBtn setTitle:@"" forState:UIControlStateNormal];
+       
         rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+        
         [rightBtn setTitleColor:[UIColor colorWithHexString:@"#949494"] forState:UIControlStateNormal];
+       
         [rightBtn addTarget:self action:@selector(touchsearch:) forControlEvents:UIControlEventTouchUpInside];
         
         [_searchImage addSubview:rightBtn];
@@ -244,10 +248,13 @@ cityChoiceDelegate
         
         
         UIButton* button = [UIButton buttonWithType: UIButtonTypeCustom];;
+       
         [button setFrame:CGRectMake(0, 0, 100, 30)];
-      //  [button addTarget:self action:@selector(touchCityList:) forControlEvents:UIControlEventTouchUpInside];
+      
+        //  [button addTarget:self action:@selector(touchCityList:) forControlEvents:UIControlEventTouchUpInside];
+        
         button.titleLabel.font = [UIFont systemFontOfSize:13];
-       // [button setBackgroundImage:[UIImage imageNamed:@"mine_share"] forState:UIControlStateNormal];
+        
         [button setTitle:[NSString stringWithFormat:@"%@℃ | 大同",_locationAndTemperature] forState:UIControlStateNormal];
         
         [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
@@ -269,15 +276,16 @@ cityChoiceDelegate
     if (_rightItem == nil) {
         
         UIButton* button = [UIButton buttonWithType: UIButtonTypeCustom];;
+        
         [button setFrame:CGRectMake(0, 5, 25, 25)];
+        
         [button addTarget:self action:@selector(touchScan:) forControlEvents:UIControlEventTouchUpInside];
+        
         button.titleLabel.font = [UIFont systemFontOfSize:15];
-         [button setBackgroundImage:[UIImage imageNamed:@"addbtn"] forState:UIControlStateNormal];
-      //  [button setTitle:@"+" forState:UIControlStateNormal];
         
-        
+        [button setBackgroundImage:[UIImage imageNamed:@"addbtn"] forState:UIControlStateNormal];
+
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        
         
         _rightItem = [[UIBarButtonItem alloc]initWithCustomView:button];
     }
@@ -286,17 +294,14 @@ cityChoiceDelegate
 -(UIView*)headView
 {
     if (_headView == nil) {
-        _headView = [[scrollPhotos alloc]initWithFrame:CGRectMake(0 , 0, SCREEN_WIDTH, SCREEN_WIDTH/2)];
-        _headView.delegate = self;
         
-     //   HomeModel *model = [[HomeModel alloc] init];
-
+        _headView = [[scrollPhotos alloc]initWithFrame:CGRectMake(0 , 0, SCREEN_WIDTH, SCREEN_WIDTH/2)];
+        
+        _headView.delegate = self;
         
         _headView.photos = _bannerArray;
         
-        // [_headView addSubview:self.searchImage];
     }
-    
     
     return _headView;
 }
@@ -305,22 +310,24 @@ cityChoiceDelegate
     
     if (_scrollImageView == nil) {
         
-        
-     //   [_scrollViewSource addObjectsFromArray:_hotShopArray];
-        
         _scrollImageView = [DCCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 30, SCREEN_WIDTH,(SCREEN_WIDTH - 100)/2) shouldInfiniteLoop:YES imageGroups:_hotShopArray];
-        //    banner.placeholderImage = [UIImage imageNamed:@"placeholderImage"];
-        //    banner.cellPlaceholderImage = [UIImage imageNamed:@"placeholderImage"];
+       
         _scrollImageView.backgroundColor = [UIColor whiteColor];
+       
         _scrollImageView.autoScrollTimeInterval = 5;
+        
         _scrollImageView.autoScroll = YES;
+        
         _scrollImageView.isZoom = YES;
+        
         _scrollImageView.itemSpace = 0;
+        
         _scrollImageView.imgCornerRadius = self.view.frame.size.width/40;
+        
         _scrollImageView.itemWidth = self.view.frame.size.width - 100;
+        
         _scrollImageView.delegate = self;
     }
-    
     
     return _scrollImageView;
 }
@@ -342,10 +349,13 @@ cityChoiceDelegate
 -(void)touchScan:(UIButton *) sender
 {
     SWQRCodeConfig *config = [[SWQRCodeConfig alloc]init];
+    
     config.scannerType = SWScannerTypeBoth;
     
     SWQRCodeViewController *qrcodeVC = [[SWQRCodeViewController alloc]init];
+    
     qrcodeVC.codeConfig = config;
+    
     [self.navigationController pushViewController:qrcodeVC animated:YES];
 }
 
@@ -361,6 +371,7 @@ cityChoiceDelegate
     if (section == 0) {
         
         return _classArray.count/5;
+        
     }else if (section == 1){
         
         return _advArray.count;
@@ -406,11 +417,8 @@ cityChoiceDelegate
         
     }else{
 
-        
-       
         label.text = @"附近商家";
         
-    
     }
     return view;
 
@@ -428,6 +436,7 @@ cityChoiceDelegate
         [cell setClassArray:_classArray];
         
         return cell;
+        
     }else if (indexPath.section == 1){
       
         HZDSImageTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"ImageTableViewCell" forIndexPath:indexPath];
@@ -441,10 +450,6 @@ cityChoiceDelegate
     }
     
     HZDSHomeTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"HomeTableViewCell" forIndexPath:indexPath];
-    
-    //    [cell.iconImageView sd_setImageWithURL:[NSURL URLWithString:@"http://115.28.133.70/uploads/image/20151009/1444395668.jpg"]];
-    
- //   [cell setCarModel:_cartArray[indexPath.row]];
     
     if (_shopArray.count > 0) {
      
@@ -492,7 +497,9 @@ cityChoiceDelegate
         HZDSBusinessDetailViewController *detail = [[HZDSBusinessDetailViewController alloc] init];
         
         detail.shopID = model.goodsId;
+        
         [self.navigationController pushViewController:detail animated:YES];
+   
     }else if (indexPath.section == 1){
         
         NSDictionary *dic = _advArray[indexPath.row][indexPath.row];
@@ -516,21 +523,21 @@ cityChoiceDelegate
     }else if (indexPath.section == 2){
         
         return 164;
+        
     }else{
        
         HomeModel *model;
+        
         if (_shopArray.count > 0) {
             
             model = _shopArray[indexPath.row];
             
             return model.cellHeight;
         }
-        
      
         return 103;
 
     }
-    
     
 }
 
@@ -539,6 +546,7 @@ cityChoiceDelegate
     if (section == 0) {
         
         return 30;
+        
     }else if (section == 1){
         
         if (_hotShopArray.count > 0) {
@@ -605,18 +613,20 @@ cityChoiceDelegate
         LOG(@"首页", dic);
         
         [self->_shopArray removeAllObjects];
+       
         [self->_hotShopArray removeAllObjects];
+        
         [self->_classArray removeAllObjects];
+        
         [self->_bannerArray removeAllObjects];
+        
         [self->_titleArray removeAllObjects];
+        
         [self->_advArray removeAllObjects];
         
         if (SUCCESS) {
             
-            // [JKToast showWithText:@"购物车列表"];
-            
             NSDictionary* List = dic[@"datas"];
-            
             
             for (NSDictionary *dictlist in List[@"ele"]) {
                 
@@ -632,10 +642,8 @@ cityChoiceDelegate
                 
                 [model.tagArray addObjectsFromArray:dictlist[@"tags"]];
                 
-                
                 [self->_shopArray addObject:model];
             }
-            
             
             [self->_bannerArray addObjectsFromArray:List[@"slide"]];
             
@@ -650,7 +658,6 @@ cityChoiceDelegate
             self->_locationAndTemperature = List[@"wendu"];
             
             self.navigationItem.leftBarButtonItem = self.leftItem;
-            
             
             [self reloadData];
         }else{

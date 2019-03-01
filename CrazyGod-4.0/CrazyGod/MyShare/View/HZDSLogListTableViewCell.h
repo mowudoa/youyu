@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface HZDSLogListTableViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UILabel *logMoneyInfo;
+
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 @end

@@ -7,12 +7,14 @@
 //
 
 #import "HZDSLoginViewController.h"
-#import "HZDSRegisterViewController.h"
 #import "HZDSForgetPassWordViewController.h"
+#import "HZDSRegisterViewController.h"
 #import "WXApi.h"
 
 @interface HZDSLoginViewController ()
+
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
+
 @property (weak, nonatomic) IBOutlet UITextField *passWordTextField;
 
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
@@ -52,15 +54,18 @@
 
 
     if ([_phoneTextField.text isEqualToString:@""] || [_phoneTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+       
         [JKToast showWithText:@"帐号不可为空"];
+    
     }else if ([_passWordTextField.text isEqualToString:@""] || [_passWordTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
         
         [JKToast showWithText:@"密码不可为空"];
+        
     }else{
         
         NSDictionary *urlDict = @{@"account":_phoneTextField.text,
                                   @"password":_passWordTextField.text};
-//        [USER_DEFAULT setObject:_passWordTextField.text forKey:@"userPass"];
+        
         [CrazyNetWork CrazyRequest_Post:[NSString stringWithFormat:@"%@%@",HEADURL,LOGIN] parameters:urlDict HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
             
             LOG(@"登录", dic);
@@ -109,8 +114,8 @@
         SendAuthReq *req = [[SendAuthReq alloc] init];
         req.state = @"wx_oauth_authorization_state";//用于保持请求和回调的状态，授权请求或原样带回
         req.scope = @"snsapi_userinfo";//授权作用域：获取用户个人信息
-        
         [WXApi sendReq:req];//发起微信授权请求
+        
     }else{
         
         [JKToast showWithText:@"请安装微信客户端"];
@@ -118,7 +123,6 @@
     }
 
 }
-
 
 
 - (void)didReceiveMemoryWarning {

@@ -9,8 +9,8 @@
 #import "HZDSBalanceRechargeViewController.h"
 #import "HZDScashHistoryViewController.h"
 #import "HZDSBalanceCashViewController.h"
-#import "HZDSLogListViewController.h"
 #import "HZDSGoRechargeViewController.h"
+#import "HZDSLogListViewController.h"
 #import "HZDSpayTypeTableViewCell.h"
 #import "HZDSOrderModel.h"
 #import "WXApi.h"
@@ -59,6 +59,7 @@ UITableViewDataSource
 {
     
     UINib* nib = [UINib nibWithNibName:@"HZDSpayTypeTableViewCell" bundle:nil];
+    
     [_payTypeTableView registerNib:nib forCellReuseIdentifier:@"payTypeTableViewCell"];
     
 }
@@ -86,14 +87,16 @@ UITableViewDataSource
                 HZDSOrderModel *order = [[HZDSOrderModel alloc] init];
                 
                 order.orderID = dict1[@"payment_id"];
+                
                 order.orderTitle = dict1[@"name"];
+                
                 order.orderStatus = dict1[@"code"];
+                
                 order.orderImage = dict1[@"mobile_logo"];
                 
                 [strongSelf.payTypeDataSource addObject:order];
                 
             }
-            
             
         }else{
             
@@ -111,9 +114,11 @@ UITableViewDataSource
     
     if ([_moneyTextField.text isEqualToString:@""] || [_moneyTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
         [JKToast showWithText:@"请输入充值金额"];
+        
     }else if (_payTypeString == nil) {
         
         [JKToast showWithText:@"请选择支付方式"];
+        
     }else{
         
         NSDictionary *dict = @{@"money":_moneyTextField.text,
@@ -227,8 +232,8 @@ UITableViewDataSource
     [super viewWillAppear:animated];
     
     [self initData];
-    
-    
+
+    [self checkWchatInstall];
     
     _moneyTextField.text = @"";
 }
@@ -237,13 +242,17 @@ UITableViewDataSource
     if (![WXApi isWXAppInstalled]) {
         
         _moneyView.hidden = YES;
+        
         _payTypeTableView.hidden = YES;
+        
         _rechargeButton.hidden = YES;
         
     }else{
         
         _moneyView.hidden = NO;
+        
         _payTypeTableView.hidden = NO;
+        
         _rechargeButton.hidden = NO;
     }
 }

@@ -30,6 +30,7 @@
         HZDSmerchantBaseInfoViewController *base = [[HZDSmerchantBaseInfoViewController alloc] init];
         
         [self.navigationController pushViewController:base animated:YES];
+    
     }else if (sender.tag == 201){
        
         HZDSEmployeeViewController *employee = [[HZDSEmployeeViewController alloc] init];

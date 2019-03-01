@@ -24,9 +24,13 @@
 {
     UIButton* backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [backBtn setFrame:CGRectMake(0, 0, 20, 20)];
+    
     [backBtn addTarget:self action:@selector(backBtn:) forControlEvents:UIControlEventTouchUpInside];
+    
     [backBtn setImage:[UIImage imageNamed:@"小于号"] forState:UIControlStateNormal];
+    
     UIBarButtonItem* im = [[UIBarButtonItem alloc]initWithCustomView:backBtn];
+    
     self.navigationItem.leftBarButtonItem = im;
 }
 -(void)backBtn:(UIButton*)sender
@@ -38,18 +42,16 @@
     [super viewWillAppear:animated];
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+   
     [appDelegate.tabBarControll.tabBar setHidden:YES];
     
-    //开启侧滑
-    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
-        self.navigationController.interactivePopGestureRecognizer.delegate = nil;
-    }
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    
     [appDelegate.tabBarControll.tabBar setHidden:NO];
     
 }

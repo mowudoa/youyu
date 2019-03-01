@@ -12,6 +12,7 @@
 #import "HZDSshopAddressViewController.h"
 
 @interface HZDSUserInfoViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 
 @end
@@ -31,29 +32,6 @@
     NSString *userStr = [NSString stringWithFormat:@"%@ ID:%@",[USER_DEFAULT objectForKey:@"nickname"],[USER_DEFAULT objectForKey:@"User_ID"]];
     
     _userName.text = userStr;
-    
-//    __weak typeof(self) weakSelf = self;
-//    
-//    [CrazyNetWork CrazyRequest_Post:GETUSERINFO parameters:nil HUD:NO success:^(NSDictionary *dic, NSString *url, NSString *Json) {
-//        
-//        LOG(@"获取用户信息", dic);
-//        
-//        __strong typeof(weakSelf) strongSelf = weakSelf;
-//        
-//        
-//        if (SUCCESS) {
-//            
-//            
-//            
-//            
-//        }else{
-//            
-//            
-//        }
-//        
-//    } fail:^(NSError *error, NSString *url, NSString *Json) {
-//        
-//    }];
     
 }
 - (IBAction)uploadHeadImage:(UIButton *)sender {

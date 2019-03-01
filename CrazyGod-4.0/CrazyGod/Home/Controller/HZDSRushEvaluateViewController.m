@@ -15,19 +15,29 @@ UINavigationControllerDelegate
 >
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
+
 @property (weak, nonatomic) IBOutlet UIImageView *titleImage;
+
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+
 @property (weak, nonatomic) IBOutlet commentStar *starView;
+
 @property (weak, nonatomic) IBOutlet UITextField *consumeMoney;
+
 @property (weak, nonatomic) IBOutlet UITextView *evaluateTextView;
+
 @property (weak, nonatomic) IBOutlet UIButton *addImageButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *evaluateButton;
 
 @property(strong,nonatomic) UIImagePickerController* imagePicker;
 
 @property(copy,nonatomic) NSString *imageString;
+
 @end
 
 @implementation HZDSRushEvaluateViewController
@@ -45,8 +55,11 @@ UINavigationControllerDelegate
 -(UIImagePickerController *)imagePicker
 {
     if (_imagePicker == nil) {
+        
         _imagePicker = [[UIImagePickerController alloc] init];
+        
         _imagePicker.modalPresentationStyle = UIModalPresentationOverFullScreen;
+        
         _imagePicker.allowsEditing = YES;
         
         _imagePicker.delegate = self;
@@ -58,6 +71,7 @@ UINavigationControllerDelegate
 {
   
     [_evaluateTextView.layer setMasksToBounds:YES];
+    
     [_evaluateTextView.layer setCornerRadius:5]; //设置矩形四个圆角半径
     //边框宽度
     [_evaluateTextView.layer setBorderWidth:1.0];
@@ -65,22 +79,12 @@ UINavigationControllerDelegate
     _evaluateTextView.layer.borderColor=[UIColor colorWithHexString:@"f5f5f5"].CGColor;
     
     [_evaluateButton.layer setMasksToBounds:YES];
+   
     [_evaluateButton.layer setCornerRadius:5];
     
     self.navigationItem.title = @"商品点评";
     
-    
-    UILabel *placeHolderLabel = [[UILabel alloc] init];
-    placeHolderLabel.text = @"还记得这家店吗?写点评记录生活,分享体验";
-    placeHolderLabel.numberOfLines = 0;
-    placeHolderLabel.textColor = [UIColor lightGrayColor];
-    [placeHolderLabel sizeToFit];
-    [_evaluateTextView addSubview:placeHolderLabel];
-    
-    // same font
-    placeHolderLabel.font = [UIFont systemFontOfSize:14.f];
-    
-    [_evaluateTextView setValue:placeHolderLabel forKey:@"_placeholderLabel"];
+    [WYFTools CreateTextPlaceHolder:@"还记得这家店吗?写点评记录生活,分享体验" WithFont:[UIFont systemFontOfSize:14] WithSuperView:_evaluateTextView];
 }
 -(void)initData
 {
@@ -119,8 +123,6 @@ UINavigationControllerDelegate
 
     UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"上传图片" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
-    
-    
     [actionSheet addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
     }]];
@@ -151,7 +153,9 @@ UINavigationControllerDelegate
 - (IBAction)evaluate:(UIButton *)sender {
 
     if ([_evaluateTextView.text isEqualToString:@""] || [_evaluateTextView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+      
         [JKToast showWithText:@"评价内容不可为空"];
+        
     }else{
         
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
@@ -240,10 +244,15 @@ UINavigationControllerDelegate
     [manager POST:UPLOADIMAGE parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         
         NSData *imageDatas = UIImageJPEGRepresentation(image,0.4);
+        
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        
         formatter.dateFormat = @"yyyyMMddHHmmss";
+        
         NSString *str = [formatter stringFromDate:[NSDate date]];
+        
         NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
+        
         //上传的参数(上传图片，以文件流的格式)
         [formData appendPartWithFileData:imageDatas
                                     name:@"file"

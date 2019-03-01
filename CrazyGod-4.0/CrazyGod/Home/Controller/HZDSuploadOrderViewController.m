@@ -15,13 +15,21 @@
     NSInteger num;
 }
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *totalMoneyLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *numLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *reduceButton;
+
 @property (weak, nonatomic) IBOutlet UILabel *oldPriceLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *uploadButton;
 
 @property(nonatomic,copy) NSString *price;
@@ -43,6 +51,7 @@
     self.navigationItem.title = @"提交订单";
 
     _numLabel.layer.borderColor = [UIColor grayColor].CGColor;
+   
     _numLabel.layer.borderWidth = 0.5;
     
     _uploadButton.layer.cornerRadius = _uploadButton.frame.size.height/16*3;
@@ -70,9 +79,13 @@
             NSDictionary* List = dic[@"datas"][@"detail"];
             
             strongSelf.titleLabel.text = List[@"title"];
+            
             strongSelf.oldPriceLabel.text = [NSString stringWithFormat:@"%@元",[List[@"price"] stringValue]];
+            
             strongSelf.oldPriceLabel.text = [NSString stringWithFormat:@"%@元",[List[@"price"] stringValue]];
+            
             strongSelf.priceLabel.text = [NSString stringWithFormat:@"%@元",[List[@"tuan_price"] stringValue]];
+            
             strongSelf.totalMoneyLabel.text = [NSString stringWithFormat:@"%@元",[List[@"tuan_price"] stringValue]];
             
             strongSelf.numLabel.text = @"1";
@@ -134,6 +147,7 @@
 - (IBAction)numaddOrReduce:(UIButton *)sender {
 
     if (sender.tag == 10) {
+        
         if (![self.numLabel.text isEqualToString:@"1"]) {
             
             num --;
@@ -148,7 +162,6 @@
     }
 
     _numLabel.text = [NSString stringWithFormat:@"%ld",(long)num];
-    
     
     _totalMoneyLabel.text = [NSString stringWithFormat:@"%.f元",num *[_price doubleValue]];
 }

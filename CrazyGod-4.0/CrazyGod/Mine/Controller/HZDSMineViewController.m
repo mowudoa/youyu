@@ -7,28 +7,31 @@
 //
 
 #import "HZDSMineViewController.h"
-#import "HZDSMyShareViewController.h"
-#import "HZDSLoginViewController.h"
-#import "HZDSSetInfoViewController.h"
-#import "HZDSMIneTableViewCell.h"
+#import "HZDSBalanceRechargeViewController.h"
+#import "HZDSemployeeCenterViewController.h"
+#import "HZDSMallOrderListViewController.h"
+#import "HZDSmyCollectionViewController.h"
+#import "HZDSNewMessageViewController.h"
 #import "HZDSUnderLineViewController.h"
+#import "HZDSShopCartViewController.h"
 #import "HZDSUserInfoViewController.h"
 #import "HZDSMerchantViewController.h"
 #import "HZDSmyCouponViewController.h"
+#import "HZDSMyShareViewController.h"
+#import "HZDSSetInfoViewController.h"
 #import "HZDSmyOrderViewController.h"
-#import "HZDSNewMessageViewController.h"
-#import "HZDSemployeeCenterViewController.h"
-#import "HZDSmyCollectionViewController.h"
-#import "HZDSShopCartViewController.h"
-#import "HZDSMallOrderListViewController.h"
-#import "HZDSBalanceRechargeViewController.h"
+#import "HZDSLoginViewController.h"
+#import "HZDSMIneTableViewCell.h"
+
 
 @interface HZDSMineViewController ()<
 UITableViewDelegate,
 UITableViewDataSource
 >
 @property (weak, nonatomic) IBOutlet UIImageView *UserHeaderIcon;
+
 @property (weak, nonatomic) IBOutlet UILabel *userPhone;
+
 @property (weak, nonatomic) IBOutlet UITableView *mineTableView;
 
 @property(nonatomic,strong) NSMutableArray *dataSource;
@@ -65,6 +68,7 @@ UITableViewDataSource
 {
     
     UINib* nib = [UINib nibWithNibName:@"HZDSMIneTableViewCell" bundle:nil];
+    
     [_mineTableView registerNib:nib forCellReuseIdentifier:@"MIneTableViewCell"];
     
 }
@@ -146,7 +150,6 @@ UITableViewDataSource
 {
 //  [NSString stringWithFormat:@"%@%@",HEADERURL_USER,GETUSERINFO]
     
-    
     __weak typeof(self) weakSelf = self;
     
     [CrazyNetWork CrazyRequest_Post:GETUSERINFO_MINE parameters:nil HUD:NO success:^(NSDictionary *dic, NSString *url, NSString *Json) {
@@ -191,7 +194,6 @@ UITableViewDataSource
             if (dic[@"datas"][@"xianshang"] == NULL || dic[@"datas"][@"xianshang"] == nil ||dic[@"datas"][@"xianshang"] == [NSNull null]) {
                 
                 [strongSelf.dataSource addObject:@"线上入驻"];
-                
 
             }else{
              
@@ -206,9 +208,7 @@ UITableViewDataSource
                 
             }
             
-            
             if (dic[@"datas"][@"is_shop"] == NULL || dic[@"datas"][@"is_shop"] == nil ||dic[@"datas"][@"is_shop"] == [NSNull null]) {
-                
                 
                 
             }else{
@@ -219,15 +219,11 @@ UITableViewDataSource
             
             if (dic[@"datas"][@"worker"] == NULL || dic[@"datas"][@"worker"] == nil ||dic[@"datas"][@"worker"] == [NSNull null]) {
                 
-                
-                
             }else{
                 
                 [strongSelf.dataSource addObject:@"店员中心"];
 
             }
-            
-            
             
         }else{
             
@@ -249,7 +245,6 @@ UITableViewDataSource
 //商城订单
 - (IBAction)mallOrderClick:(UIButton *)sender {
 
- 
     HZDSMallOrderListViewController *myOrder = [[HZDSMallOrderListViewController alloc] init];
     
     if (sender.tag == 200) {
@@ -273,7 +268,6 @@ UITableViewDataSource
         myOrder.orderType = WXMyOrderUnRefund;
         
     }
-    
     
     [self.navigationController pushViewController:myOrder animated:YES];
 }
@@ -327,6 +321,7 @@ UITableViewDataSource
     }else if ([_dataSource[indexPath.row] isEqualToString:@"店员中心"]){
         
         HZDSemployeeCenterViewController *employee = [[HZDSemployeeCenterViewController alloc] init];
+        
         [self.navigationController pushViewController:employee animated:YES];
         
     }else if ([_dataSource[indexPath.row] isEqualToString:@"线上入驻"]){
@@ -334,7 +329,6 @@ UITableViewDataSource
         [JKToast showWithText:@"请前往pc端进行线上入驻操作"];
         
     }else if ([_dataSource[indexPath.row] isEqualToString:@"营销管理"]){
-        
 
         HZDSMyShareViewController *share = [[HZDSMyShareViewController alloc] init];
         

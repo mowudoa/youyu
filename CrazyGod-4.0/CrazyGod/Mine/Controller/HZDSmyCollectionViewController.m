@@ -7,8 +7,8 @@
 //
 
 #import "HZDSmyCollectionViewController.h"
-#import "HZDSMallDetailViewController.h"
 #import "HZDGoodsDetailSViewController.h"
+#import "HZDSMallDetailViewController.h"
 #import "HZDSShopViewController.h"
 #import "HZDSOrderTableViewCell.h"
 #import "HZDSOrderModel.h"
@@ -19,6 +19,7 @@ UITableViewDataSource
 >
 
 @property (weak, nonatomic) IBOutlet UITableView *collectionTableView;
+
 @property (weak, nonatomic) IBOutlet UIView *backGroundView;
 
 @property(nonatomic,strong) NSMutableArray *collectionListArray;
@@ -46,7 +47,9 @@ UITableViewDataSource
     // Do any additional setup after loading the view from its nib.
     
     _collectionListArray = [[NSMutableArray alloc] init];
+   
     _collectionShopListArray = [[NSMutableArray alloc] init];
+    
     _collectionMallGoodsListArray = [[NSMutableArray alloc] init];
     
     [self initUI];
@@ -61,10 +64,11 @@ UITableViewDataSource
     
     _totalPage = 1;
     
-    
     // 下拉加载
     self.collectionTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
         [self initData];
+        
     }];
     
     __weak __typeof(self) weakSelf = self;
@@ -81,16 +85,20 @@ UITableViewDataSource
     self.navigationItem.title = @"商品收藏";
     
     _lineLabel=[[UILabel alloc] initWithFrame:CGRectMake(0,40,SCREEN_WIDTH/3,2)];
+   
     _lineLabel.backgroundColor=[UIColor colorWithHexString:@"FF0270"];
+    
     [self.view addSubview:_lineLabel];
     
     _urlString = COLLECTION_MALLGOODS;
+   
     _collectionType = @"0";
     
 }
 -(void)registercell
 {
     UINib* nib = [UINib nibWithNibName:@"HZDSOrderTableViewCell" bundle:nil];
+   
     [_collectionTableView registerNib:nib forCellReuseIdentifier:@"OrderTableViewCell"];
 }
 -(void)initData
@@ -102,8 +110,6 @@ UITableViewDataSource
     
     NSDictionary *dic = @{@"lastindex":[NSString stringWithFormat:@"%ld",(long)_pageNum]                          };
     
-    
-    
     [CrazyNetWork CrazyRequest_Post:_urlString parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
         LOG(@"收藏列表", dic);
@@ -111,7 +117,9 @@ UITableViewDataSource
         __strong typeof(weakSelf) strongSelf = weakSelf;
         
         [strongSelf.collectionListArray removeAllObjects];
+        
         [strongSelf.collectionShopListArray removeAllObjects];
+        
         [strongSelf.collectionMallGoodsListArray removeAllObjects];
         
         if (SUCCESS) {
@@ -121,11 +129,13 @@ UITableViewDataSource
             if (arr.count > 0) {
                 
                 strongSelf.collectionTableView.hidden = NO;
+               
                 strongSelf.backGroundView.hidden = YES;
                 
             }else{
                 
                 strongSelf.collectionTableView.hidden = YES;
+                
                 strongSelf.backGroundView.hidden = NO;
             }
             
@@ -136,7 +146,6 @@ UITableViewDataSource
             }else if ([strongSelf.collectionType isEqualToString:@"1"]){
                 
                 [self getShopList:dic];
-                
                 
             }else if ([strongSelf.collectionType isEqualToString:@"2"]){
                 
@@ -172,7 +181,7 @@ UITableViewDataSource
             
             if (strongSelf.pageNum > [dic[@"currentpgae"] integerValue]) {
              
-                [JKToast showWithText:@"没有更多了"];
+            [JKToast showWithText:@"没有更多了"];
                 
             [strongSelf.collectionTableView.mj_footer endRefreshing];
 
@@ -186,15 +195,12 @@ UITableViewDataSource
             }else if ([strongSelf.collectionType isEqualToString:@"1"]){
                 
                 [self getShopList:dic];
-
                 
             }else if ([strongSelf.collectionType isEqualToString:@"2"]){
                 
                 [self getRushToBuyList:dic];
 
             }
-            
-            
             
         }else{
             
@@ -212,16 +218,20 @@ UITableViewDataSource
  
     NSArray *arr = dic[@"datas"][@"list"];
     
-    
     for (NSDictionary *dict1 in arr) {
         
         HZDSOrderModel *model = [[HZDSOrderModel alloc] init];
         
         model.orderID = dict1[@"favorites_id"];
+        
         model.orderImage = dict1[@"photo"];
+        
         model.orderTitle = dict1[@"title"];
+        
         model.orderPrice = [dict1[@"price"] stringValue];
+        
         model.orderNeedPayPrice = [dict1[@"tuan_price"] stringValue];
+        
         model.orderStatus = dict1[@"tuan_id"];
 
         [_collectionListArray addObject:model];
@@ -236,14 +246,16 @@ UITableViewDataSource
     
     NSArray *arr = dic[@"datas"][@"list"];
     
-    
     for (NSDictionary *dict1 in arr) {
         
         HZDSOrderModel *model = [[HZDSOrderModel alloc] init];
         
         model.orderID = dict1[@"favorites_id"];
+       
         model.orderImage = dict1[@"logo"];
+        
         model.orderTitle = dict1[@"weidian_name"];
+        
         model.orderStatus = dict1[@"shop_id"];
         
         [_collectionShopListArray addObject:model];
@@ -254,20 +266,23 @@ UITableViewDataSource
 //商品列表
 -(void)getMallGoods:(NSDictionary *)dic
 {
-    
  
     NSArray *arr = dic[@"datas"][@"list"];
-    
     
     for (NSDictionary *dict1 in arr) {
         
         HZDSOrderModel *model = [[HZDSOrderModel alloc] init];
         
         model.orderID = dict1[@"favorites_id"];
+        
         model.orderImage = dict1[@"photo"];
+        
         model.orderTitle = dict1[@"title"];
+        
         model.orderPrice = [dict1[@"price"] stringValue];
+        
         model.orderNeedPayPrice = [dict1[@"mall_price"] stringValue];
+        
         model.orderStatus = dict1[@"goods_id"];
 
         [_collectionMallGoodsListArray addObject:model];
@@ -306,7 +321,6 @@ UITableViewDataSource
     
     HZDSOrderTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"OrderTableViewCell" forIndexPath:indexPath];
     
-    
     if ([_collectionType isEqualToString:@"0"]) {
         
         HZDSOrderModel *model = _collectionMallGoodsListArray[indexPath.section];
@@ -334,6 +348,7 @@ UITableViewDataSource
         cell.priceLabel.textColor = [UIColor redColor];
         
         cell.priceLabel.text = @"";
+        
         cell.oldPriceLabel.text = @"";
         
     }else{
@@ -370,6 +385,7 @@ UITableViewDataSource
         detail.goodsId = model.orderStatus;
         
         [self.navigationController pushViewController:detail animated:YES];
+    
     }else if ([_collectionType isEqualToString:@"1"]) {
         
         HZDSShopViewController *shop = [[HZDSShopViewController alloc] init];
@@ -429,58 +445,72 @@ UITableViewDataSource
     UIView* view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
     
     UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,39,SCREEN_WIDTH,1)];
+   
     lineLabel.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
+    
     [view addSubview:lineLabel];
     
     UILabel* zongjia = [[UILabel alloc]initWithFrame:CGRectMake(15, 13,100, 20)];
+    
     zongjia.font=[UIFont systemFontOfSize:14];
+    
     zongjia.textAlignment = NSTextAlignmentLeft;
+    
     zongjia.textColor = [UIColor colorWithHexString:@"BEC2C9"];
-    //  zongjia.text = [NSString stringWithFormat:@"共%ld件商品",(long)goodsNum];
     
     [view addSubview:zongjia];
     
     UILabel* price = [[UILabel alloc]initWithFrame:CGRectMake(120, 13,SCREEN_WIDTH - 120 -75 -5, 20)];
+   
     [view addSubview:price];
     
-    //  price.text =  [NSString stringWithFormat:@"合计 :￥%.2f",goodstotalPirce];
     price.tag = section;
+
     price.textColor = [UIColor colorWithHexString:@"#BEC2C9"];
+
     price.font=[UIFont systemFontOfSize:14];
+
     price.textAlignment = NSTextAlignmentLeft;
-    // price.adjustsFontSizeToFitWidth = YES;
-    
-    
-    //    UILabel* postLabel = [UILabel alloc]initWithFrame:CGRectMake(150, 5, <#CGFloat width#>, <#CGFloat height#>)
     
     UIButton* leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
     [leftBtn setFrame:CGRectMake(SCREEN_WIDTH-75-75, 8, 70, 25)];
+    
     [leftBtn setTitle:@"" forState:UIControlStateNormal];
+    
     leftBtn.layer.cornerRadius = 3;
+    
     leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    
     leftBtn.layer.masksToBounds = YES;
+    
     leftBtn.backgroundColor = [UIColor colorWithHexString:@"#ff9980"];
-    //  leftBtn.layer.borderWidth = 0.5;
+
     leftBtn.tag = section;
+
     [leftBtn addTarget:self action:@selector(tapleftBtn:) forControlEvents:UIControlEventTouchUpInside];
-  //  [view addSubview:leftBtn];
     
     UIButton* rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+
     [rightBtn setFrame:CGRectMake(SCREEN_WIDTH-75, 8, 70, 25)];
+
     rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+
     [rightBtn setTitle:@"删除" forState:UIControlStateNormal];
-    //    [rightBtn setBackgroundImage:[UIImage imageNamed:@"exitlogin.png"] forState:UIControlStateNormal];
+
     rightBtn.backgroundColor = [UIColor redColor];
+
     rightBtn.layer.cornerRadius = 3;
+
     rightBtn.layer.masksToBounds = YES;
+
     rightBtn.tag = section;
+
     [rightBtn addTarget:self action:@selector(tapBtn:) forControlEvents:UIControlEventTouchUpInside];
+
     [view addSubview:rightBtn];
     
-    
     view.backgroundColor=[UIColor whiteColor];
-    
-
     
     return view;
 }
@@ -519,10 +549,7 @@ UITableViewDataSource
         deleteUrl = COLLECTION_DELETE_RUSH;
     }
     
-    
-    
     NSDictionary *dic = @{@"favorites_id":model.orderID};
-    
     
     [CrazyNetWork CrazyRequest_Post:deleteUrl parameters:dic HUD:NO success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
@@ -550,7 +577,6 @@ UITableViewDataSource
 
     NSInteger num = sender.tag - 400;
     
-    
     [self moveLineLabel:num];
 }
 -(void)moveLineLabel:(NSInteger)index
@@ -559,18 +585,27 @@ UITableViewDataSource
     switch (index) {
         case 0:
             _collectionType = @"0";
+            
             _urlString = COLLECTION_MALLGOODS;
+            
             self.navigationItem.title = @"商品收藏";
+            
             break;
         case 1:
+            
             _collectionType = @"1";
+            
             _urlString = COLLECTION_SHOP;
+            
             self.navigationItem.title = @"线上店铺收藏";
 
             break;
         case 2:
+            
             _collectionType = @"2";
+            
             _urlString = COLLECTION_RUSHTOBUY;
+            
             self.navigationItem.title = @"抢购收藏";
 
             break;
@@ -591,6 +626,7 @@ UITableViewDataSource
 }
 
 - (void)didReceiveMemoryWarning {
+  
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }

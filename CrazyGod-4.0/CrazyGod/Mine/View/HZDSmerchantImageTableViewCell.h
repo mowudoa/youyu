@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface HZDSmerchantImageTableViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *sortklabel;
+
 @property (weak, nonatomic) IBOutlet UIImageView *Titleiamge;
 
 @end

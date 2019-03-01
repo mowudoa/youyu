@@ -7,9 +7,9 @@
 //
 
 #import "HZDScheckCouponHistoryViewController.h"
+#import "HZDScheckCouponDetailViewController.h"
 #import "HZDSmerchantOrderTableViewCell.h"
 #import "HZDScouponModel.h"
-#import "HZDScheckCouponDetailViewController.h"
 
 @interface HZDScheckCouponHistoryViewController ()<
 UITableViewDelegate,
@@ -17,6 +17,7 @@ UITableViewDataSource
 >
 
 @property (weak, nonatomic) IBOutlet UITableView *couponHistoryTableView;
+
 @property (weak, nonatomic) IBOutlet UIView *backGroundView;
 
 @property(nonatomic,strong) NSMutableArray *counponListArray;
@@ -47,10 +48,11 @@ UITableViewDataSource
     
     _totalPage = 1;
     
-    
     // 下拉加载
     self.couponHistoryTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+      
         [self initData];
+    
     }];
     
     __weak __typeof(self) weakSelf = self;
@@ -73,6 +75,7 @@ UITableViewDataSource
 -(void)registercell
 {
     UINib* nib = [UINib nibWithNibName:@"HZDSmerchantOrderTableViewCell" bundle:nil];
+    
     [_couponHistoryTableView registerNib:nib forCellReuseIdentifier:@"merchantOrderTableViewCell"];
 }
 -(void)initData
@@ -83,7 +86,6 @@ UITableViewDataSource
     _pageNum = 1;
     
     NSDictionary *dic = @{@"lastindex":[NSString stringWithFormat:@"%ld",(long)_pageNum]                          };
-    
     
     [CrazyNetWork CrazyRequest_Post:_checkHistoryUrl parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
@@ -99,13 +101,16 @@ UITableViewDataSource
             
             if (arr.count > 0) {
                 
-                strongSelf.couponHistoryTableView.hidden = NO;
-                strongSelf.backGroundView.hidden = YES;
+            strongSelf.couponHistoryTableView.hidden = NO;
+            
+            strongSelf.backGroundView.hidden = YES;
                 
             }else{
                 
-                strongSelf.couponHistoryTableView.hidden = YES;
-                strongSelf.backGroundView.hidden = NO;
+            strongSelf.couponHistoryTableView.hidden = YES;
+            
+            strongSelf.backGroundView.hidden = NO;
+            
             }
             
             for (NSDictionary *dict1 in arr) {
@@ -113,6 +118,7 @@ UITableViewDataSource
                 HZDScouponModel *model = [[HZDScouponModel alloc] init];
                 
                 model.couponID = dict1[@"code_id"];
+                
                 model.couponImage = dict1[@"photo"];
                 
                 if (dict1[@"title"] == NULL || dict1[@"title"] == nil || dict1[@"title"] == [NSNull null]) {
@@ -141,6 +147,7 @@ UITableViewDataSource
             
             
         }
+        
         [strongSelf.couponHistoryTableView.mj_header endRefreshing];
         
     } fail:^(NSError *error, NSString *url, NSString *Json) {
@@ -171,6 +178,7 @@ UITableViewDataSource
                 HZDScouponModel *model = [[HZDScouponModel alloc] init];
                 
                 model.couponID = dict1[@"code_id"];
+              
                 model.couponImage = dict1[@"photo"];
 
                 if (dict1[@"title"] == NULL || dict1[@"title"] == nil || dict1[@"title"] == [NSNull null]) {
@@ -230,7 +238,6 @@ UITableViewDataSource
     [cell.orderIcon sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,model.couponImage]] placeholderImage:[UIImage imageNamed:@"baseImage"]];
     
     cell.titleLabel.text = [NSString stringWithFormat:@"名称:%@",model.couponTite];
-    
     
     cell.numLabel.text = [NSString stringWithFormat:@"下单日期:%@",[self ConvertStrToTime:model.couponTime]];
     
@@ -300,29 +307,39 @@ UITableViewDataSource
     backView.backgroundColor = [UIColor whiteColor];
     
     UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,30,SCREEN_WIDTH,1)];
+   
     lineLabel.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
+    
     [backView addSubview:lineLabel];
     
     UIView* view = [[UIView alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-5, 30)];
+   
     [backView addSubview:view];
     
     UILabel* shanghu = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-5-5, 20)];
+    
     shanghu.text = [NSString stringWithFormat:@"ID:%@",model.couponID];
     
     shanghu.textAlignment = NSTextAlignmentLeft;
+    
     shanghu.font=[UIFont systemFontOfSize:12];
+    
     shanghu.adjustsFontSizeToFitWidth = YES;
+    
     [view addSubview:shanghu];
     
     UIView* view1 = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2, 5, SCREEN_WIDTH/2-10, 30)];
+    
     [backView addSubview:view1];
+    
     UILabel* dingdantime = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-10, 20)];
+    
     dingdantime.text =[NSString stringWithFormat:@"验证日期:%@",[self ConvertStrToTime:model.orderTime]];
     
     dingdantime.textAlignment = NSTextAlignmentRight;
+    
     dingdantime.font = [UIFont systemFontOfSize:12];
-    // dingdantime.textColor = [UIColor colorWithHexString:@"f5f5f5"];
-    // dingdantime.adjustsFontSizeToFitWidth = YES;
+
     [view1 addSubview:dingdantime];
     
     return backView;
@@ -335,58 +352,72 @@ UITableViewDataSource
 {
     
     HZDScouponModel *model = [[HZDScouponModel alloc] init];
+    
     model = _counponListArray[section];
     
     UIView* view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
     
     UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,39,SCREEN_WIDTH,1)];
+   
     lineLabel.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
+    
     [view addSubview:lineLabel];
     
     UILabel* zongjia = [[UILabel alloc]initWithFrame:CGRectMake(15, 13,100, 20)];
+    
     zongjia.font=[UIFont systemFontOfSize:14];
+    
     zongjia.textAlignment = NSTextAlignmentLeft;
+    
     zongjia.textColor = [UIColor colorWithHexString:@"BEC2C9"];
-    //  zongjia.text = [NSString stringWithFormat:@"共%ld件商品",(long)goodsNum];
     
     [view addSubview:zongjia];
     
     UILabel* price = [[UILabel alloc]initWithFrame:CGRectMake(120, 13,SCREEN_WIDTH - 120 -75 -5, 20)];
+    
     [view addSubview:price];
     
-    //  price.text =  [NSString stringWithFormat:@"合计 :￥%.2f",goodstotalPirce];
     price.tag = section;
+
     price.textColor = [UIColor colorWithHexString:@"#BEC2C9"];
+
     price.font=[UIFont systemFontOfSize:14];
+
     price.textAlignment = NSTextAlignmentLeft;
-    // price.adjustsFontSizeToFitWidth = YES;
-    
-    
-    //    UILabel* postLabel = [UILabel alloc]initWithFrame:CGRectMake(150, 5, <#CGFloat width#>, <#CGFloat height#>)
     
     UIButton* leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+ 
     [leftBtn setFrame:CGRectMake(SCREEN_WIDTH-75-75, 8, 70, 25)];
+    
     [leftBtn setTitle:@"" forState:UIControlStateNormal];
+    
     leftBtn.layer.cornerRadius = 3;
+    
     leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    
     leftBtn.layer.masksToBounds = YES;
+    
     leftBtn.backgroundColor = [UIColor colorWithHexString:@"#c6c6c6"];
-    //  leftBtn.layer.borderWidth = 0.5;
+
     leftBtn.tag = section;
-    //  [leftBtn addTarget:self action:@selector(tapleftBtn:) forControlEvents:UIControlEventTouchUpInside];
-    //  [view addSubview:leftBtn];
     
     UIButton* rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+   
     [rightBtn setFrame:CGRectMake(SCREEN_WIDTH-75, 8, 70, 25)];
-    rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-    [rightBtn setTitle:[NSString stringWithFormat:@"验证-%@",model.couponChecker] forState:UIControlStateNormal];
-    rightBtn.backgroundColor = [UIColor colorWithHexString:@"#b5b5b5"];
-    rightBtn.layer.cornerRadius = 3;
-    rightBtn.layer.masksToBounds = YES;
-    rightBtn.tag = section;
-    //   [rightBtn addTarget:self action:@selector(tapBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:rightBtn];
     
+    rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    
+    [rightBtn setTitle:[NSString stringWithFormat:@"验证-%@",model.couponChecker] forState:UIControlStateNormal];
+    
+    rightBtn.backgroundColor = [UIColor colorWithHexString:@"#b5b5b5"];
+    
+    rightBtn.layer.cornerRadius = 3;
+    
+    rightBtn.layer.masksToBounds = YES;
+    
+    rightBtn.tag = section;
+
+    [view addSubview:rightBtn];
     
     view.backgroundColor=[UIColor whiteColor];
     

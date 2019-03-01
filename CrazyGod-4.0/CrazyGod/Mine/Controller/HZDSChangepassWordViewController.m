@@ -10,8 +10,11 @@
 
 @interface HZDSChangepassWordViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *changeButton;
+
 @property (weak, nonatomic) IBOutlet UITextField *passWordTwo;
+
 @property (weak, nonatomic) IBOutlet UITextField *passWord;
+
 @property (weak, nonatomic) IBOutlet UITextField *oldPassWord;
 
 @end
@@ -37,7 +40,9 @@
 
   
     if ([_oldPassWord.text isEqualToString:@""] || [_oldPassWord.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+      
         [JKToast showWithText:@"旧密码不可为空"];
+    
     }else if ([_passWord.text isEqualToString:@""] || [_passWord.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
         
         [JKToast showWithText:@"新密码不可为空"];

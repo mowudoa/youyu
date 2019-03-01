@@ -10,11 +10,9 @@
 
 @interface HZDSemployeeListModel : rootModel
 
-
 @property(copy,nonatomic)NSString* employeeID; //员工id
 
 @property(copy,nonatomic)NSString* userID; //用户id
-
 
 @property(copy,nonatomic)NSString* employeeName; //员工名字
 

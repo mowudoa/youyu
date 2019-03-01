@@ -7,14 +7,19 @@
 //
 
 #import "HZDSemployeeCenterViewController.h"
-#import "HZDSNewMessageViewController.h"
-#import "HZDScouponCheckViewController.h"
 #import "HZDSmerchantOrderViewController.h"
+#import "HZDScouponCheckViewController.h"
+#import "HZDSNewMessageViewController.h"
+
 
 @interface HZDSemployeeCenterViewController ()
+
 @property (weak, nonatomic) IBOutlet UIImageView *titleImage;
+
 @property (weak, nonatomic) IBOutlet UILabel *employName;
+
 @property (weak, nonatomic) IBOutlet UILabel *shopName;
+
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
 
 @end
@@ -24,6 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+   
     [self initUI];
     
     [self initData];
@@ -81,6 +87,7 @@
         coupon.checkUrl = EMPLOYEE_COUPON_CHECK;
         
         [self.navigationController pushViewController:coupon animated:YES];
+   
     }else if(sender.tag == 102){
     
         HZDSNewMessageViewController *message = [[HZDSNewMessageViewController alloc] init];

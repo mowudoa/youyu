@@ -7,10 +7,10 @@
 //
 
 #import "HZDSShopCartViewController.h"
-#import "HZDSCartTableViewCell.h"
-#import "HZDSLoginViewController.h"
-#import "HZDSShopOrderViewController.h"
 #import "HZDSshopAddressViewController.h"
+#import "HZDSShopOrderViewController.h"
+#import "HZDSLoginViewController.h"
+#import "HZDSCartTableViewCell.h"
 #import "HZDSCartModel.h"
 
 @interface HZDSShopCartViewController ()<
@@ -25,12 +25,14 @@ deleteBtnDelagate
 
 }
 @property (weak, nonatomic) IBOutlet UITableView *cartListTableView;
-@property (weak, nonatomic) IBOutlet UIView *backGroundView;
-@property (weak, nonatomic) IBOutlet UILabel *tagLabel;
-@property (weak, nonatomic) IBOutlet UILabel *totalPriceLabel;
-@property (weak, nonatomic) IBOutlet UIButton *uploadButton;
 
-@property(strong,nonatomic)UIBarButtonItem* rightItem;
+@property (weak, nonatomic) IBOutlet UIView *backGroundView;
+
+@property (weak, nonatomic) IBOutlet UILabel *tagLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *totalPriceLabel;
+
+@property (weak, nonatomic) IBOutlet UIButton *uploadButton;
 
 @property(nonatomic,strong)NSMutableArray *cartListArray;
 @end
@@ -51,13 +53,12 @@ deleteBtnDelagate
 {
     
     UINib* nib = [UINib nibWithNibName:@"HZDSCartTableViewCell" bundle:nil];
+    
     [_cartListTableView registerNib:nib forCellReuseIdentifier:@"CartTableViewCell"];
 }
 -(void)initUI
 {
     self.navigationItem.title = @"购物车";
-    
-//    self.navigationItem.rightBarButtonItem = self.rightItem;
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getTotalPrice:) name:@"getToalMoney" object:nil];
 
@@ -129,10 +130,8 @@ deleteBtnDelagate
                 
             }else{
                 
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"抱歉,您还没有添加收货地址"
-                                                              delegate:self cancelButtonTitle:@"取消" otherButtonTitles: @"立即前往",nil];
-                [alert show];
-                
+                [self createAlertToAddress];
+
                 [strongSelf.uploadButton setTitle:@"添加地址" forState:UIControlStateNormal];
 
             }
@@ -155,20 +154,6 @@ deleteBtnDelagate
     }];
     
 }
--(UIBarButtonItem*)rightItem
-{
-    if (_rightItem == nil) {
-        
-        UIButton* btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [btn setFrame:CGRectMake(0, 0, 30, 30)];
-        [btn setTitle:@"删除" forState:UIControlStateNormal];
-        btn.titleLabel.font = [UIFont systemFontOfSize:13];
-        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [btn addTarget:self action:@selector(rightAction:) forControlEvents:UIControlEventTouchUpInside];
-        _rightItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
-    }
-    return _rightItem;
-}
 #pragma mark - UITableViewDataSource
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -181,8 +166,6 @@ deleteBtnDelagate
     
     HZDSCartTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CartTableViewCell" forIndexPath:indexPath];
     
-    //    [cell.iconImageView sd_setImageWithURL:[NSURL URLWithString:@"http://115.28.133.70/uploads/image/20151009/1444395668.jpg"]];
-    
     [cell setCarModel:_cartListArray[indexPath.row]];
     
     cell.delegate = self;
@@ -191,7 +174,6 @@ deleteBtnDelagate
 }
 
 #pragma mark - UITableViewDelegate
-
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -209,13 +191,6 @@ deleteBtnDelagate
     return 0.01;
 }
 
-//商品删除
--(void)rightAction:(UIButton*)sender
-{
-   
-    
-    
-}
 -(void)getTotalPrice:(NSNotification*)userinfo
 {
     GoodsPrice = 0;
@@ -304,9 +279,7 @@ deleteBtnDelagate
         
     }else if ([sender.currentTitle isEqualToString:@"添加地址"]){
        
-        HZDSshopAddressViewController *address = [[HZDSshopAddressViewController alloc] init];
-        
-        [self.navigationController pushViewController:address animated:YES];
+        [self goChoiceAddress];
     
     }
     
@@ -340,22 +313,6 @@ deleteBtnDelagate
     
 }
 
-#pragma mark UIALERTVIEWDELEGATE
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 0) {
-      
-       
-        
-    }else if (buttonIndex == 1){
-        
-        HZDSshopAddressViewController *address = [[HZDSshopAddressViewController alloc] init];
-        
-        [self.navigationController pushViewController:address animated:YES];
-    }
-    
-    
-}
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -374,6 +331,33 @@ deleteBtnDelagate
         
         [self.navigationController pushViewController:login animated:YES];
     }
+    
+}
+-(void)createAlertToAddress
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"抱歉,您还没有添加收货地址" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"立即前往" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        [self goChoiceAddress];
+        
+    }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alertController addAction:okAction];
+    [alertController addAction:cancelAction];
+    
+    [self presentViewController:alertController animated:YES completion:^{
+        
+    }];
+}
+//添加地址
+-(void)goChoiceAddress
+{
+    HZDSshopAddressViewController *address = [[HZDSshopAddressViewController alloc] init];
+    
+    [self.navigationController pushViewController:address animated:YES];
     
 }
 - (void)didReceiveMemoryWarning {

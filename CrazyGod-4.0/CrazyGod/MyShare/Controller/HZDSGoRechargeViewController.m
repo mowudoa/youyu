@@ -11,7 +11,9 @@
 
 @interface HZDSGoRechargeViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *orderId;
+
 @property (weak, nonatomic) IBOutlet UILabel *orderMoney;
+
 @property (weak, nonatomic) IBOutlet UIButton *payButton;
 
 @end
@@ -56,13 +58,19 @@
             
             
             PayReq *req  = [[PayReq alloc] init];
+            
             req.openID = dic[@"datas"][@"pay"][@"appid"];
+            
             req.partnerId = dic[@"datas"][@"pay"][@"partnerid"];
+            
             req.prepayId = dic[@"datas"][@"pay"][@"prepayid"];
             
             req.package = dic[@"datas"][@"pay"][@"package"];
+            
             req.nonceStr = dic[@"datas"][@"pay"][@"noncestr"];
+            
             req.timeStamp = [dic[@"datas"][@"pay"][@"timestamp"] intValue];
+            
             req.sign = dic[@"datas"][@"pay"][@"sign"];
             
             //调起微信支付
@@ -71,7 +79,6 @@
                 
                 [USER_DEFAULT setObject:@"3" forKey:@"payGoodsOrMall"];
             }
-            
             
         }else{
             
@@ -94,9 +101,7 @@
 -(void)zhifushibaiWithRecharge:(NSNotification*)userinfo
 {
     [JKToast showWithText:@"支付失败"];
-    
-    //  [self.navigationController popToRootViewControllerAnimated:YES];
-    
+        
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

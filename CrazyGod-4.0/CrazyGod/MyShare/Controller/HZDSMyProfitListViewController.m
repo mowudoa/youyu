@@ -15,6 +15,7 @@ UITableViewDataSource
 >
 
 @property (weak, nonatomic) IBOutlet UITableView *profitListTableView;
+
 @property (weak, nonatomic) IBOutlet UIView *backGroundView;
 
 @property(nonatomic,strong) NSMutableArray *profitListArray;
@@ -65,12 +66,15 @@ UITableViewDataSource
     }];
     
     _lineLabel=[[UILabel alloc] initWithFrame:CGRectMake(0,40,SCREEN_WIDTH/2,2)];
+    
     _lineLabel.backgroundColor=[UIColor colorWithHexString:@"FF0270"];
+    
     [self.view addSubview:_lineLabel];
 }
 -(void)registercell
 {
     UINib* nib = [UINib nibWithNibName:@"HZDSProfitTableViewCell" bundle:nil];
+   
     [_profitListTableView registerNib:nib forCellReuseIdentifier:@"ProfitTableViewCell"];
 }
 -(void)initData
@@ -99,11 +103,13 @@ UITableViewDataSource
             if (arr.count > 0) {
                 
                 strongSelf.profitListTableView.hidden = NO;
+                
                 strongSelf.backGroundView.hidden = YES;
                 
             }else{
                 
                 strongSelf.profitListTableView.hidden = YES;
+                
                 strongSelf.backGroundView.hidden = NO;
             }
             
@@ -112,6 +118,7 @@ UITableViewDataSource
                 HZDSLogListModel *model = [[HZDSLogListModel alloc] init];
                 
                 model.money = dict1[@"money"] ;
+                
                 model.listId = dict1[@"log_id"];
                 
                 model.time = dict1[@"create_time"];
@@ -162,6 +169,7 @@ UITableViewDataSource
                 HZDSLogListModel *model = [[HZDSLogListModel alloc] init];
                 
                 model.money = dict1[@"money"] ;
+               
                 model.listId = dict1[@"log_id"];
                 
                 model.time = dict1[@"create_time"];
@@ -269,10 +277,13 @@ UITableViewDataSource
     if ([model.status isEqualToString:@"0"]) {
         
         profitTypeStr = @"抢购";
+   
     }else if ([model.status isEqualToString:@"1"]){
+       
         profitTypeStr = @"商城";
 
     }else if ([model.status isEqualToString:@"2"]){
+       
         profitTypeStr = @"优惠买单";
 
     }
@@ -283,11 +294,6 @@ UITableViewDataSource
     cell.profitInfo.text = [NSString stringWithFormat:@"收益金额:￥%@元  订单ID:%@",model.money,model.listId2];
     
     return cell;
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
 }
 
 #pragma mark - UITableViewDelegate
@@ -307,29 +313,39 @@ UITableViewDataSource
     backView.backgroundColor = [UIColor whiteColor];
     
     UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,30,SCREEN_WIDTH,1)];
+   
     lineLabel.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
+    
     [backView addSubview:lineLabel];
     
     UIView* view = [[UIView alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-5, 30)];
+   
     [backView addSubview:view];
     
     UILabel* shanghu = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-5-5, 20)];
+    
     shanghu.text = [NSString stringWithFormat:@"编号:%@",model.listId];
     
     shanghu.textAlignment = NSTextAlignmentLeft;
+    
     shanghu.font=[UIFont systemFontOfSize:13];
+    
     shanghu.adjustsFontSizeToFitWidth = YES;
+    
     [view addSubview:shanghu];
     
     UIView* view1 = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2, 5, SCREEN_WIDTH/2-10, 30)];
+    
     [backView addSubview:view1];
+   
     UILabel* dingdantime = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-10, 20)];
+    
     dingdantime.text =[NSString stringWithFormat:@"分成时间:%@",model.time];
     
     dingdantime.textAlignment = NSTextAlignmentRight;
+    
     dingdantime.font = [UIFont systemFontOfSize:13];
-    // dingdantime.textColor = [UIColor colorWithHexString:@"f5f5f5"];
-    // dingdantime.adjustsFontSizeToFitWidth = YES;
+
     [view1 addSubview:dingdantime];
     
     return backView;

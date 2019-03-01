@@ -262,6 +262,39 @@ static WYFTools *god = nil;
     [superView setValue:placeHolderLabel forKey:@"_placeholderLabel"];
 
 }
+//创建Label加载HTML富文本
++(UILabel *)createLabelLoadHtml:(NSString *)htmlString withFont:(UIFont *)font
+{
+    //接口返回为html字符串,所以详情用label富文本加载html数据
+    UILabel *label1 = [[UILabel alloc] init];
+    
+    NSString *infoStr = [NSString stringWithFormat:@"<head><style>img{width:%f !important;height:auto}</style></head>%@",SCREEN_WIDTH - 40,htmlString];
+    
+    NSData *data = [infoStr dataUsingEncoding:NSUnicodeStringEncoding];
+    
+    NSDictionary *options = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType};
+    
+    NSAttributedString *html = [[NSAttributedString alloc]initWithData:data
+                                
+                                                               options:options
+                                
+                                                    documentAttributes:nil
+                                
+                                                                 error:nil];
+    
+    if (htmlString != nil && htmlString != NULL) {
+        
+        label1.attributedText = html;
+        
+    }
+    
+    label1.numberOfLines = 0;
+    
+    label1.font  = font;
+    
+    return label1;
+}
+
 +(void)alertWithMessage:(NSString *)message andDelegate:(id)delegate tag:(NSInteger)tag
 {
     UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];

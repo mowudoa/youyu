@@ -12,8 +12,6 @@
 
 @property(copy,nonatomic)NSString* imageID; //图片ID
 
-
-
 @property(copy,nonatomic)NSString* shopID; //商户id
 
 @property(copy,nonatomic)NSString* imageTite; //图片标题
@@ -21,7 +19,6 @@
 @property(copy,nonatomic)NSString* imageOrderby; //图片排序
 
 @property(copy,nonatomic)NSString* imageUrl; //图片网址
-
 
 @property(copy,nonatomic)NSString* iamgecreateTime; //图片创建时间
 

@@ -17,12 +17,19 @@
 @end
 
 @interface HZDSMyCouponTableViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *shopName;
+
 @property (weak, nonatomic) IBOutlet UILabel *couponID;
+
 @property (weak, nonatomic) IBOutlet UILabel *orderId;
+
 @property (weak, nonatomic) IBOutlet UILabel *couponNum;
+
 @property (weak, nonatomic) IBOutlet UILabel *couponTime;
 
 @property(nonatomic,strong) HZDScouponModel *couponModel;

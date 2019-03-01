@@ -9,13 +9,19 @@
 #import "HZDSOrderDetailViewController.h"
 
 @interface HZDSOrderDetailViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *orderID;
+
 @property (weak, nonatomic) IBOutlet UILabel *orderTimer;
+
 @property (weak, nonatomic) IBOutlet UILabel *orderPrice;
+
 @property (weak, nonatomic) IBOutlet UILabel *orderTotalPrice;
+
 @property (weak, nonatomic) IBOutlet UILabel *orderNeedPay;
 
 @property (weak, nonatomic) IBOutlet UILabel *orderName;
+
 @property (weak, nonatomic) IBOutlet UILabel *orderNum;
 
 @end

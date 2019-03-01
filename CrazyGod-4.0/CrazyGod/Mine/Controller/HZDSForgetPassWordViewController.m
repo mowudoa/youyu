@@ -14,8 +14,11 @@
 
 }
 @property (weak, nonatomic) IBOutlet UIButton *getNewpassButton;
+
 @property (weak, nonatomic) IBOutlet UITextField *codeTextField;
+
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
+
 @property (weak, nonatomic) IBOutlet UIButton *codeButton;
 
 @property(nonatomic,assign) NSInteger num;
@@ -47,11 +50,12 @@
 - (IBAction)getCode:(UIButton *)sender {
 
     if ([_phoneTextField.text isEqualToString:@""] || [_phoneTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+        
         [JKToast showWithText:@"手机号不可为空"];
+    
     }else {
         
         __weak typeof(self) weakSelf = self;
-        
         
         NSDictionary *urlDic = @{@"mobile":_phoneTextField.text};
         
@@ -66,8 +70,9 @@
                 [JKToast showWithText:dic[@"datas"][@"msg"]];
                 
                 strongSelf.num = 60;
+               
                 [strongSelf.codeButton setTitle:[NSString stringWithFormat:@"(%ld)",(long)(strongSelf.num)] forState:UIControlStateNormal];
-                strongSelf.codeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+            strongSelf.codeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
                 
                 [self jishiTimer];
                 
@@ -80,7 +85,6 @@
             
         }];
         
-        
     }
 
 }
@@ -91,9 +95,10 @@
     
     _num--;
     if (_num<1) {
+        
         _codeButton.enabled = YES;
+        
         [_codeButton setTitle:[NSString stringWithFormat:@"获取验证码"] forState:UIControlStateNormal];
-        //  [_codeButton setBackgroundImage:[UIImage imageNamed:@"QPHyanzhengma"] forState:UIControlStateNormal];
         
         [_codeButton setBackgroundColor:[UIColor redColor]];
         
@@ -101,11 +106,13 @@
     }else
     {
         _codeButton.enabled = NO;
+
         [_codeButton setTitle:[NSString stringWithFormat:@"(%ldS)",(long)_num] forState:UIControlStateNormal];
-        // [_codeButton setBackgroundImage:[UIImage imageNamed:@"QPHyzmHui"] forState:UIControlStateNormal];
+
         [_codeButton setBackgroundColor:[UIColor colorWithHexString:@"808080"]];
         
         [self performSelector:@selector(jishiTimer) withObject:nil afterDelay:1.0f];
+        
         return;
     }
     
@@ -114,14 +121,18 @@
 - (IBAction)getNewPassWord:(UIButton *)sender {
 
     if ([_phoneTextField.text isEqualToString:@""] || [_phoneTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+        
         [JKToast showWithText:@"帐号不可为空"];
+    
     }else if ([_codeTextField.text isEqualToString:@""] || [_codeTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
         
         [JKToast showWithText:@"验证码不可为空"];
+    
     }else{
         
         NSDictionary *urlDict = @{@"mobile":_phoneTextField.text,
                                   @"scode":_codeTextField.text};
+       
         [CrazyNetWork CrazyRequest_Post:[NSString stringWithFormat:@"%@%@",HEADURL,_request_url] parameters:urlDict HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
             
             LOG(@"获取新密码", dic);

@@ -10,7 +10,9 @@
 
 @interface HZDSChangeUserNameViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *nickNameTextField;
+
 @property (weak, nonatomic) IBOutlet UILabel *nickNameLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *changeNickNameButton;
 
 @end
@@ -37,7 +39,9 @@
 
     
     if ([_nickNameTextField.text isEqualToString:@""] || [_nickNameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+       
         [JKToast showWithText:@"昵称不可为空"];
+    
     }else{
         
         NSDictionary *dic = @{@"nickname":_nickNameTextField.text};
@@ -93,7 +97,6 @@
         }else{
             
             [JKToast showWithText:dic[@"datas"][@"error"]];
-            
             
         }
         

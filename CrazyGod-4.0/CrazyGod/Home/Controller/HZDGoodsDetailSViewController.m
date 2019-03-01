@@ -7,8 +7,8 @@
 //
 
 #import "HZDGoodsDetailSViewController.h"
-#import "HZDSuploadOrderViewController.h"
 #import "HZDSMallEvaluateListViewController.h"
+#import "HZDSuploadOrderViewController.h"
 #import "HZDSLoginViewController.h"
 #import "scrollPhotos.h"
 
@@ -21,23 +21,35 @@
     NSString *rushInfo;
 }
 @property (weak, nonatomic) IBOutlet UIScrollView *myScrollView;
+
 @property (weak, nonatomic) IBOutlet UIView *headerView;
+
 @property (weak, nonatomic) IBOutlet UILabel *goodsNameLabel;
+
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
+
 @property (weak, nonatomic) IBOutlet UILabel *goodsInfoLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *goodsOldPrice;
+
 @property (weak, nonatomic) IBOutlet UILabel *goodsPrice;
+
 @property (weak, nonatomic) IBOutlet UILabel *goodsSaleNum;
 
 @property (weak, nonatomic) IBOutlet commentStar *starView;
+
 @property (weak, nonatomic) IBOutlet UIButton *evaluateNumButton;
 
 @property(nonatomic,strong)scrollPhotos* headView;
+
 @property (weak, nonatomic) IBOutlet UIView *businessDetailView;
+
 @property (weak, nonatomic) IBOutlet UIImageView *collectImage;
+
 @property (weak, nonatomic) IBOutlet UIButton *collectButton;
 
 @property(nonatomic,copy) NSString *tuanID;
+
 @end
 
 @implementation HZDGoodsDetailSViewController
@@ -70,7 +82,6 @@
             NSDictionary* List = dic[@"datas"];
             
             self->_goodsNameLabel.text = List[@"detail"][@"title"];
-            
             
             self->_goodsPrice.text = [NSString stringWithFormat:@"现价:￥%@",[List[@"detail"][@"tuan_price"] stringValue]];
 
@@ -108,7 +119,6 @@
             
         }else{
             
-            
             [JKToast showWithText:dic[@"datas"][@"error"]];
             
             [self.navigationController popViewControllerAnimated:YES];
@@ -129,23 +139,20 @@
 {
     if (_headView == nil) {
         _headView = [[scrollPhotos alloc]initWithFrame:CGRectMake(0 , 0, SCREEN_WIDTH, SCREEN_WIDTH/8*5)];
+       
         _headView.delegate = self;
         
         _headView.tag = 10001;
         
         _headView.photos = _thumbArray;
         
-        
-        // [_headView addSubview:self.searchImage];
     }
-    
     
     return _headView;
 }
 -(void)reloadData
 {
     [self.headerView addSubview:self.headView];
- 
     
     UIView *view = [[UIView alloc] init];
     
@@ -160,42 +167,17 @@
     label.font = [UIFont systemFontOfSize:13];
     
     label.textColor = [UIColor redColor];
-        
     
-    UILabel *label1 = [[UILabel alloc] init];
-    
-  //  label1.text = rushIntroduce;
-    
-    
-    NSString *rushIntroduceStr = [NSString stringWithFormat:@"<head><style>img{width:%f !important;height:auto}</style></head>%@",SCREEN_WIDTH - 40,rushIntroduce];
-    
-    NSData *data = [rushIntroduceStr dataUsingEncoding:NSUnicodeStringEncoding];
-    
-    NSDictionary *options = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType};
-    
-    NSAttributedString *html = [[NSAttributedString alloc]initWithData:data
-                                
-                                                               options:options
-                                
-                                                    documentAttributes:nil
-                                
-                                                                 error:nil];
-    
-    
-    label1.attributedText = html;
+    UILabel *label1 = [WYFTools createLabelLoadHtml:rushIntroduce withFont:[UIFont systemFontOfSize:12]];
     
     CGSize size = [label1.attributedText boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 40, MAXFLOAT) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil].size;
     
     label1.frame = CGRectMake(20,label.mj_y + label.height, SCREEN_WIDTH - 40,size.height);
     
-    label1.numberOfLines = 0;
-    
-    label1.font  = [UIFont systemFontOfSize:12];
-    
     [_backgroundView addSubview:label];
+    
     [_backgroundView addSubview:label1];
-    
-    
+
     UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(20,label1.mj_y + label1.height,SCREEN_WIDTH - 40,30)];
     
     label2.text = @"抢购须知";
@@ -205,39 +187,15 @@
     label2.textColor = [UIColor redColor];
     
     
-    UILabel *label3 = [[UILabel alloc] init];
-    
-   // label3.text = rushInfo;
-    
-    NSString *rushInfoStr = [NSString stringWithFormat:@"<head><style>img{width:%f !important;height:auto}</style></head>%@",SCREEN_WIDTH - 40,rushInfo];
-
-    
-    NSData *data1 = [rushInfoStr dataUsingEncoding:NSUnicodeStringEncoding];
-    
-    NSDictionary *options1 = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType};
-    
-    NSAttributedString *html1 = [[NSAttributedString alloc]initWithData:data1
-                                 
-                                                                options:options1
-                                 
-                                                     documentAttributes:nil
-                                 
-                                                                  error:nil];
-    
-    
-    
-    label3.attributedText = html1;
+    UILabel *label3 = [WYFTools createLabelLoadHtml:rushInfo withFont:[UIFont systemFontOfSize:12]];
     
     CGSize size1 = [label3.attributedText boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 40, MAXFLOAT) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil].size;
     
     label3.frame = CGRectMake(20,label2.mj_y + label2.height, SCREEN_WIDTH - 40,size1.height);
-    label3.numberOfLines = 0;
-    
-    label3.font  = [UIFont systemFontOfSize:12];
     
     [_backgroundView addSubview:label2];
-    [_backgroundView addSubview:label3];
     
+    [_backgroundView addSubview:label3];
     
     _backgroundView.frame = CGRectMake(0,0,SCREEN_WIDTH, label3.frame.origin.y+label3.frame.size.height+44 + 10);
     
@@ -251,7 +209,6 @@
 
     
     if ([USER_DEFAULT boolForKey:@"isLogin"]) {
-        
      
         HZDSuploadOrderViewController *uplaod = [[HZDSuploadOrderViewController alloc] init];
         
@@ -274,7 +231,6 @@
 - (IBAction)collectGoods:(UIButton *)sender {
 
     NSDictionary *dic = @{@"tuan_id":_tuanID                          };
-    
     
     [CrazyNetWork CrazyRequest_Get:FAVORITES_GOODS parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         

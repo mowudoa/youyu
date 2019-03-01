@@ -7,13 +7,13 @@
 //
 
 #import "HZDSShoppingMallViewController.h"
-#import "HZDSMallDetailViewController.h"
-#import "HZDSShopMallListViewController.h"
-#import "HZDSShopMallListViewController.h"
-#import "HZDSHotGoodsCollectionViewCell.h"
 #import "HZDSgoodGoodsCollectionViewCell.h"
 #import "HZDSMallClassCollectionViewCell.h"
 #import "HZDSlikeGoodsCollectionViewCell.h"
+#import "HZDSShopMallListViewController.h"
+#import "HZDSShopMallListViewController.h"
+#import "HZDSHotGoodsCollectionViewCell.h"
+#import "HZDSMallDetailViewController.h"
 #import "scrollPhotos.h"
 #import "HomeModel.h"
 
@@ -37,6 +37,7 @@ UICollectionViewDelegateFlowLayout
 @property(nonatomic,strong) NSMutableArray *advArray;
 //新人专区
 @property(nonatomic,strong) NSMutableArray *userGoodsArray;
+
 @property(nonatomic,strong) NSMutableArray *userGoodsArray2;
 //优选好物
 @property(nonatomic,strong) NSMutableArray *goodArray;
@@ -44,13 +45,19 @@ UICollectionViewDelegateFlowLayout
 @property(nonatomic,strong) NSMutableArray *likeArray;
 
 @property(nonatomic,strong)scrollPhotos* headView;
+
 @property (strong, nonatomic) IBOutlet UIView *userView;
 
 @property (weak, nonatomic) IBOutlet UIButton *userLeftButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *userRightButton1;
+
 @property (weak, nonatomic) IBOutlet UIButton *userRightButton2;
+
 @property (strong, nonatomic) IBOutlet UIView *likeHeaderView;
+
 @property (strong, nonatomic) IBOutlet UIView *goodHeaderView;
+
 @property (strong, nonatomic) IBOutlet UIView *hotHeaderView;
 
 @end
@@ -222,7 +229,6 @@ UICollectionViewDelegateFlowLayout
         _headView.delegate = self;
         _headView.photos = _advArray;
         
-        // [_headView addSubview:self.searchImage];
     }
     
     
@@ -237,15 +243,6 @@ UICollectionViewDelegateFlowLayout
         UIImageView *ima = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH*0.8 -30,8,14,14)];
         ima.image = [UIImage imageNamed:@"searchIma"];
         
-        UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(25,0,100, 30)];
-        
-      //  label.text = @"你想要的";
-        label.textColor = [UIColor lightGrayColor];
-        label.font = [UIFont systemFontOfSize:13];
-        label.textAlignment = NSTextAlignmentLeft;
-        // label.backgroundColor = [UIColor redColor];
-       // [_searchImage addSubview:label];
-        
         _searchImage.layer.cornerRadius = _searchImage.frame.size.height/2;
         _searchImage.userInteractionEnabled = YES;
         [_searchImage addSubview:self.searchTextField];
@@ -258,7 +255,6 @@ UICollectionViewDelegateFlowLayout
 {
     if (_searchTextField == nil) {
         _searchTextField = [[UITextField alloc]initWithFrame:CGRectMake(20, 0, SCREEN_WIDTH * 0.75 - 20, 30)];
-        //        [_textField setBackground:[UIImage imageNamed:@"searchbar"]];
         _searchTextField.placeholder = @"你想要的...";
         [_searchTextField setValue:[UIColor redColor] forKeyPath:@"_placeholderLabel.textColor"];
         _searchTextField.borderStyle = UITextBorderStyleNone;
@@ -426,7 +422,6 @@ UICollectionViewDelegateFlowLayout
         if (indexPath.section == 0) {
             
             UICollectionReusableView* reusable = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header" forIndexPath:indexPath];
-            
             
             UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,SCREEN_WIDTH/2+ 10)];
             
@@ -601,7 +596,6 @@ UICollectionViewDelegateFlowLayout
     label.textColor = [UIColor blackColor];
     label.font = [UIFont boldSystemFontOfSize:16];
     label.textAlignment = NSTextAlignmentCenter;
-    //    label.backgroundColor = [UIColor redColor];
     [subTitleView addSubview:label];
     
     return subTitleView;
@@ -647,7 +641,6 @@ UICollectionViewDelegateFlowLayout
     [self.navigationController pushViewController:list animated:YES];
 }
 - (void)searchMallGoodsByKeyWords:(NSNotification *)notification{
-    //done按钮的操作
     
     if ([self.searchTextField.text isEqualToString:@""] ||[self.searchTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0 ) {
         

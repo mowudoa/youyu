@@ -10,11 +10,17 @@
 
 @interface HZDSBalanceCashViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *tagInfoLabel;
+
 @property (weak, nonatomic) IBOutlet UITextField *moneyNum;
+
 @property (weak, nonatomic) IBOutlet UITextField *bankName;
+
 @property (weak, nonatomic) IBOutlet UITextField *bankNum;
+
 @property (weak, nonatomic) IBOutlet UITextField *bankAddress;
+
 @property (weak, nonatomic) IBOutlet UITextField *bankUser;
+
 @property (weak, nonatomic) IBOutlet UIButton *cashButton;
 
 @end
@@ -24,8 +30,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    
     
     [self initUI];
     
@@ -68,22 +72,24 @@
 - (IBAction)submitCash:(UIButton *)sender {
 
     if ([_moneyNum.text isEqualToString:@""] || [_moneyNum.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+        
         [JKToast showWithText:@"提现金额不可为空"];
+        
     }else if ([_bankName.text isEqualToString:@""] || [_bankName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
+        
         [JKToast showWithText:@"开户银行不可为空"];
         
-        
     }else if ([_bankNum.text isEqualToString:@""] || [_bankNum.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
+        
         [JKToast showWithText:@"银行账号不可为空"];
         
-        
     }else if ([_bankAddress.text isEqualToString:@""] || [_bankAddress.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
+        
         [JKToast showWithText:@"具体支行 不可为空"];
         
-        
     }else if ([_bankUser.text isEqualToString:@""] || [_bankUser.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
-        [JKToast showWithText:@"开户名不可为空"];
         
+        [JKToast showWithText:@"开户名不可为空"];
         
     }else{
         

@@ -10,14 +10,21 @@
 
 @interface HZDSmerchantBaseInfoViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
+
 @property (weak, nonatomic) IBOutlet UITextView *describeTextView;
+
 @property (weak, nonatomic) IBOutlet UITextField *merchantAddress;
+
 @property (weak, nonatomic) IBOutlet UITextField *merchantPhone;
+
 @property (weak, nonatomic) IBOutlet UITextField *merchantUser;
+
 @property (weak, nonatomic) IBOutlet UITextField *merchantMobile;
+
 @property (weak, nonatomic) IBOutlet UITextField *businessTime;
 
 @property (weak, nonatomic) IBOutlet UITextField *DeliveryTime;
+
 @end
 
 @implementation HZDSmerchantBaseInfoViewController
@@ -35,6 +42,7 @@
     self.navigationItem.title = @"基本设置";
     
     [_describeTextView.layer setMasksToBounds:YES];
+    
     [_describeTextView.layer setCornerRadius:10]; //设置矩形四个圆角半径
     //边框宽度
     [_describeTextView.layer setBorderWidth:1.0];
@@ -45,17 +53,7 @@
     
     _editButton.layer.masksToBounds = YES;
     
-    UILabel *placeHolderLabel = [[UILabel alloc] init];
-    placeHolderLabel.text = @"店铺介绍,建议不超过200字!";
-    placeHolderLabel.numberOfLines = 0;
-    placeHolderLabel.textColor = [UIColor lightGrayColor];
-    [placeHolderLabel sizeToFit];
-    [_describeTextView addSubview:placeHolderLabel];
-    
-    // same font
-    placeHolderLabel.font = [UIFont systemFontOfSize:14.f];
-    
-    [_describeTextView setValue:placeHolderLabel forKey:@"_placeholderLabel"];
+    [WYFTools CreateTextPlaceHolder:@"店铺介绍,建议不超过200字!" WithFont:[UIFont systemFontOfSize:14] WithSuperView:_describeTextView];
 }
 -(void)initData
 {
@@ -80,7 +78,17 @@
 
             strongSelf.businessTime.text = dic[@"datas"][@"ex"][@"business_time"];
 
-            strongSelf.DeliveryTime.text = [dic[@"datas"][@"ex"][@"delivery_time"] stringValue];
+            if ([dic[@"datas"][@"ex"][@"delivery_time"] isKindOfClass:[NSString class]]) {
+             
+                strongSelf.DeliveryTime.text = dic[@"datas"][@"ex"][@"delivery_time"] ;
+
+            }else{
+            
+                strongSelf.DeliveryTime.text = [dic[@"datas"][@"ex"][@"delivery_time"] stringValue];
+
+            }
+            
+            
             
             strongSelf.describeTextView.text = dic[@"datas"][@"ex"][@"details"];
 
@@ -96,7 +104,9 @@
 - (IBAction)goEdit:(UIButton *)sender {
 
     if ([_merchantAddress.text isEqualToString:@""] || [_merchantAddress.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+       
         [JKToast showWithText:@"商户地址不可为空"];
+    
     }else if ([_merchantUser.text isEqualToString:@""] || [_merchantUser.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
         
         [JKToast showWithText:@"联系人不可为空"];
@@ -147,7 +157,6 @@
             }else{
                 
                 [JKToast showWithText:dic[@"datas"][@"error"]];
-                
                 
             }
             

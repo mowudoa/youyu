@@ -27,12 +27,17 @@ UITableViewDataSource
     
 }
 @property (weak, nonatomic) IBOutlet UITableView *mallListTableView;
+
 @property (weak, nonatomic) IBOutlet UITableView *classTableView;
+
 @property (weak, nonatomic) IBOutlet UITableView *subClassTableView;
+
 @property (weak, nonatomic) IBOutlet UITableView *sortTableview;
 
 @property (weak, nonatomic) IBOutlet UIView *headerClassView;
+
 @property (weak, nonatomic) IBOutlet UIView *backGroundView;
+
 @property (weak, nonatomic) IBOutlet UIView *backGroundViewWithNothing;
 
 @property(nonatomic,strong) NSMutableArray *mallListArray;
@@ -137,7 +142,6 @@ UITableViewDataSource
             NSArray* arr = @[@"选择分类",@"选择地区",@"选择排序"];
             UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
             [button setFrame:CGRectMake(i*SCREEN_WIDTH/3 , 5, SCREEN_WIDTH/3, 30)];
-            //  button.center = CGPointMake((3*i+1)*SCREEN_WIDTH/4-10, 20);
             [button setTitle:arr[i] forState:UIControlStateNormal];
             button.titleLabel.font = [UIFont systemFontOfSize:15];
             [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -470,9 +474,9 @@ UITableViewDataSource
         cell.nameLabel.text = model.businessName;
         
         [cell.titileIcon sd_setImageWithURL: [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,model.businessIcon]]];
-
-      //  cell.oldPriceLabel.text = [NSString stringWithFormat:@"￥%@",model.businessOldPrice];
+        
         cell.priceLabel.text = [NSString stringWithFormat:@"￥%@",model.businessPrice];
+        
         cell.soldNumLabel.text = [NSString stringWithFormat:@"已售:%@",model.businessSaleNum];
         
         
@@ -480,14 +484,14 @@ UITableViewDataSource
         
         //中划线
         NSDictionary *attribtDic = @{NSStrikethroughStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleSingle]};
+        
         NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc]initWithString:textStr attributes:attribtDic];
         
         // 赋值
         cell.oldPriceLabel.attributedText = attribtStr;
     
-        
-        
         return cell;
+        
     }else if (tableView == _classTableView)
     {
         HZDSSubClassTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"SubClassTableViewCell" forIndexPath:indexPath];
@@ -526,16 +530,13 @@ UITableViewDataSource
         
         HZDSSubClassTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"SubClassTableViewCell" forIndexPath:indexPath];
         
-        
         HZDSSubClassModel *model1 = [[HZDSSubClassModel alloc] init];
         
         model1 = _subClassArray[indexPath.row];
         
-        
         if ([classString isEqualToString:@"1"]) {
             
             cell.nameLabel.text = [NSString stringWithFormat:@"%@",model1.className];
-            
             
         }else{
             
@@ -549,7 +550,6 @@ UITableViewDataSource
     }else{
         
         HZDSSubClassTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"SubClassTableViewCell" forIndexPath:indexPath];
-        
         
         HZDSClassifyModel *model = _sortArray[indexPath.row];
         
@@ -715,54 +715,7 @@ UITableViewDataSource
     
 }
 
-
-#pragma mark PRIVATE
-
-//-(UIImageView*)searchImage
-//{
-//    if (_searchImage == nil) {
-//        _searchImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH*0.8, 30)];
-//        _searchImage.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
-//
-//        UIImageView *ima = [[UIImageView alloc] initWithFrame:CGRectMake(8,8,14,14)];
-//        ima.image = [UIImage imageNamed:@"searchIma"];
-//
-//        UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(25,0,100, 30)];
-//
-//        label.text = @"搜索商品";
-//        label.textColor = [UIColor lightGrayColor];
-//        label.font = [UIFont systemFontOfSize:13];
-//        label.textAlignment = NSTextAlignmentLeft;
-//        // label.backgroundColor = [UIColor redColor];
-//        //   [_searchImage addSubview:label];
-//
-//        _searchImage.layer.cornerRadius = _searchImage.frame.size.height/2;
-//        _searchImage.userInteractionEnabled = YES;
-//        [_searchImage addSubview:self.searchTextField];
-//        [_searchImage addSubview:ima];
-//
-//    }
-//    return  _searchImage;
-//}
-
-
-//-(UITextField*)searchTextField
-//{
-//    if (_searchTextField == nil) {
-//        _searchTextField = [[UITextField alloc]initWithFrame:CGRectMake(30, 0, SCREEN_WIDTH * 0.75 - 30, 30)];
-//        //        [_textField setBackground:[UIImage imageNamed:@"searchbar"]];
-//        _searchTextField.placeholder = @" 输入商家关键字";
-//        [_searchTextField setValue:[UIColor colorWithHexString:@"b5b5b5"] forKeyPath:@"_placeholderLabel.textColor"];
-//        _searchTextField.borderStyle = UITextBorderStyleNone;
-//        _searchTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-//        _searchTextField.font = [UIFont systemFontOfSize:12];
-//        _searchTextField.delegate = self;
-//        _searchTextField.tag = 60001;
-//        _searchTextField.textColor = [UIColor lightGrayColor];
-//    }
-//    return _searchTextField;
-//}
-
+//分类点击事件
 -(void)touchheaderView:(UIButton *)sender
 {
     sender.selected = !sender.selected;

@@ -16,6 +16,7 @@ UITableViewDataSource
 >
 
 @property (weak, nonatomic) IBOutlet UITableView *logListTableView;
+
 @property (weak, nonatomic) IBOutlet UIView *backGroundView;
 
 @property(nonatomic,strong) NSMutableArray *logListArray;
@@ -46,6 +47,7 @@ UITableViewDataSource
     
     // 下拉加载
     self.logListTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
         [self initData];
     }];
     
@@ -67,7 +69,6 @@ UITableViewDataSource
     UINib* nib = [UINib nibWithNibName:@"HZDSLogListTableViewCell" bundle:nil];
     [_logListTableView registerNib:nib forCellReuseIdentifier:@"LogListTableViewCell"];
     
-    
 }
 -(void)initData
 {
@@ -77,7 +78,6 @@ UITableViewDataSource
     _pageNum = 1;
     
     NSDictionary *dic = @{@"lastindex":[NSString stringWithFormat:@"%ld",(long)_pageNum]                          };
-    
     
     [CrazyNetWork CrazyRequest_Post:MYBALANCE_LOGLIST parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
@@ -94,11 +94,13 @@ UITableViewDataSource
             if (arr.count > 0) {
                 
                 strongSelf.logListTableView.hidden = NO;
+                
                 strongSelf.backGroundView.hidden = YES;
                 
             }else{
                 
                 strongSelf.logListTableView.hidden = YES;
+                
                 strongSelf.backGroundView.hidden = NO;
             }
             
@@ -129,10 +131,8 @@ UITableViewDataSource
 }
 -(void)initMoreData
 {
- 
     
     __weak typeof(self) weakSelf = self;
-    
     
     NSDictionary *dic = @{@"lastindex":[NSString stringWithFormat:@"%ld",(long)_pageNum]                          };
     
@@ -190,7 +190,6 @@ UITableViewDataSource
     
     HZDSLogListModel *model = _logListArray[indexPath.row];
     
-    
     cell.logMoneyInfo.text = [NSString stringWithFormat:@"金额:￥%@元, %@",model.money,model.intro];
     
     cell.timeLabel.text = [NSString stringWithFormat:@"时间:%@",[self ConvertStrToTime:model.time]];
@@ -213,12 +212,6 @@ UITableViewDataSource
     NSString*timeString=[formatter stringFromDate:d];
     
     return timeString;
-    
-}
-
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
     
 }
 

@@ -9,14 +9,23 @@
 #import "HZDmerchantOrderDetailSViewController.h"
 
 @interface HZDmerchantOrderDetailSViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *orderID;
+
 @property (weak, nonatomic) IBOutlet UILabel *orderTIme;
+
 @property (weak, nonatomic) IBOutlet UILabel *orderUserName;
+
 @property (weak, nonatomic) IBOutlet UILabel *orderUserPhone;
+
 @property (weak, nonatomic) IBOutlet UILabel *orderTitle;
+
 @property (weak, nonatomic) IBOutlet UILabel *orderPrice;
+
 @property (weak, nonatomic) IBOutlet UILabel *orderNum;
+
 @property (weak, nonatomic) IBOutlet UILabel *orderTotalPrice;
+
 @property (weak, nonatomic) IBOutlet UILabel *orderNeedPayPrice;
 
 @end
@@ -59,12 +68,10 @@
             strongSelf.orderUserName.text = dic[@"datas"][@"detail"][@"nickname"];
 
             strongSelf.orderUserPhone.text = dic[@"datas"][@"detail"][@"mobile"];
-
             
             strongSelf.orderTotalPrice.text = [NSString stringWithFormat:@"%@元",[dic[@"datas"][@"detail"][@"total_price"] stringValue]];
             
             strongSelf.orderNeedPayPrice.text = [NSString stringWithFormat:@"%@元",[dic[@"datas"][@"detail"][@"need_pay"] stringValue]];
-            
             
         }else{
             
@@ -77,7 +84,6 @@
     }];
 }
 -(NSString *)ConvertStrToTime:(NSString *)timeStr
-
 {
     
     long long time=[timeStr longLongValue];

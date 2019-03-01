@@ -11,15 +11,21 @@
 
 @interface HZDSSearchViewController ()
 @property (weak, nonatomic) IBOutlet UIView *headerView;
+
 @property (weak, nonatomic) IBOutlet UIButton *businessBtn;
+
 @property (weak, nonatomic) IBOutlet UIButton *searchBtn;
+
 @property (weak, nonatomic) IBOutlet UIView *textbackgroundView;
+
 @property (weak, nonatomic) IBOutlet UIView *historySearch;
+
 @property (weak, nonatomic) IBOutlet UIView *hotSearch;
 
 @property(nonatomic,strong) NSMutableArray *historySearchArray;
 
 @property (weak, nonatomic) IBOutlet UITextField *keyWordTextField;
+
 @property(nonatomic,strong) NSMutableArray *hotSearchArray;
 
 
@@ -51,6 +57,7 @@
         __strong typeof(weakSelf) strongSelf = weakSelf;
         
         [strongSelf.historySearchArray removeAllObjects];
+       
         [strongSelf.hotSearchArray removeAllObjects];
         
         if (SUCCESS) {
@@ -67,14 +74,11 @@
                 [strongSelf.historySearchArray addObjectsFromArray:arr];
             }
             
-            
             NSArray *array = [cityList[@"keys"] allKeys];
             
             for (NSString *keyString in array) {
                 
                 NSDictionary *dict = cityList[@"keys"][keyString];
-                
-                
                 
                 [strongSelf.hotSearchArray addObject:dict[@"keyword"]];
                 
@@ -140,7 +144,9 @@
     [_keyWordTextField resignFirstResponder];
     
     if ([_keyWordTextField.text isEqualToString:@""] || [_keyWordTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+        
         [JKToast showWithText:@"关键字不可为空"];
+    
     }else{
         
         [self searchBusinessByKeyWord:_keyWordTextField.text];

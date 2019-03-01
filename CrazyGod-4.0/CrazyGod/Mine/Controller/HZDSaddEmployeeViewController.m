@@ -10,20 +10,33 @@
 
 @interface HZDSaddEmployeeViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *employeeID;
+
 @property (weak, nonatomic) IBOutlet UITextField *employeeName;
+
 @property (weak, nonatomic) IBOutlet UITextField *employeeMobile;
+
 @property (weak, nonatomic) IBOutlet UITextField *employeePhone;
+
 @property (weak, nonatomic) IBOutlet UITextField *employeeQQ;
+
 @property (weak, nonatomic) IBOutlet UITextField *employeeWchat;
+
 @property (weak, nonatomic) IBOutlet UITextField *employeeAddress;
+
 @property (weak, nonatomic) IBOutlet UITextField *employeeJob;
+
 @property (weak, nonatomic) IBOutlet UIButton *yesButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *noButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *checkButton;
 
 @property(nonatomic,copy) NSString *powerString;
+
 @property (weak, nonatomic) IBOutlet UILabel *headerLabel;
+
 @property (weak, nonatomic) IBOutlet UIView *employeeIdView;
 
 @end
@@ -67,7 +80,6 @@
         _addButton.hidden = YES;
     }
     
-    
     _checkButton.layer.cornerRadius = _checkButton.frame.size.height/3;
     
     _checkButton.layer.masksToBounds = YES;
@@ -81,23 +93,30 @@
       
 //        _employeeID.text = _employModel.employeeID;
         _employeeJob.text = _employModel.employeeJob;
+        
         _employeeQQ.text = _employModel.employeeQQ;
+        
         _employeeName.text = _employModel.employeeName;
+        
         _employeePhone.text = _employModel.employeePhone;
+        
         _employeeMobile.text = _employModel.employeeTel;
         
         _employeeWchat.text = _employModel.employeeWchat;
+        
         _employeeAddress.text = _employModel.employeeAddress;
         
         if ([_employModel.employeePower isEqualToString:@"1"]) {
             
             _yesButton.selected = YES;
+            
             _noButton.selected = NO;
             
             _powerString = @"1";
         }else{
             
             _noButton.selected = YES;
+           
             _yesButton.selected = NO;
 
             _powerString = @"0";
@@ -118,15 +137,14 @@
         [self addeToEmployee];
     }
     
-    
-  
-
 }
 -(void)addeToEmployee
 {
     
     if ([_employeeID.text isEqualToString:@""] || [_employeeID.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+    
         [JKToast showWithText:@"员工id不可为空"];
+    
     }else if ([_employeeName.text isEqualToString:@""] || [_employeeName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
         
         [JKToast showWithText:@"员工名字不可为空"];
@@ -189,15 +207,11 @@
                 
                 [JKToast showWithText:dic[@"datas"][@"error"]];
                 
-                
             }
-            
             
         } fail:^(NSError *error, NSString *url, NSString *Json) {
             
         }];
-        
-        
         
     }
 }
@@ -266,9 +280,7 @@
                 
                 [JKToast showWithText:dic[@"datas"][@"error"]];
                 
-                
             }
-            
             
         } fail:^(NSError *error, NSString *url, NSString *Json) {
             
@@ -284,12 +296,14 @@
     if (sender.tag == 101) {
         
         _yesButton.selected = YES;
+       
         _noButton.selected = NO;
         
         _powerString = @"1";
     }else{
         
         _yesButton.selected = NO;
+       
         _noButton.selected = YES;
         
         _powerString = @"0";
@@ -297,17 +311,6 @@
     
 }
 - (IBAction)checkId:(UIButton *)sender {
-
-    
-//    else if ([_sortTextField.text isEqualToString:@""] || [_sortTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
-//
-//        [JKToast showWithText:@"排序不可为空"];
-//
-//    }else if (_imageUrlString == nil){
-//
-//        [JKToast showWithText:@"图片不可为空"];
-//
-//    }
   
     if ([_employeeID.text isEqualToString:@""] || [_employeeID.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
         [JKToast showWithText:@"员工id不可为空"];

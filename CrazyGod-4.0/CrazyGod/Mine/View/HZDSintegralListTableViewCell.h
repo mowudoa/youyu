@@ -9,9 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface HZDSintegralListTableViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UILabel *integralType;
+
 @property (weak, nonatomic) IBOutlet UILabel *integralNum;
+
 @property (weak, nonatomic) IBOutlet UILabel *ingegralInfo;
+
 @property (weak, nonatomic) IBOutlet UILabel *integralTime;
 
 @end

@@ -7,8 +7,8 @@
 //
 
 #import "HZDSMySubordinateViewController.h"
-#import "HZDSSubRoradinteModel.h"
 #import "HZDSSubordinteTableViewCell.h"
+#import "HZDSSubRoradinteModel.h"
 
 @interface HZDSMySubordinateViewController ()<
 UITableViewDelegate,
@@ -16,6 +16,7 @@ UITableViewDataSource
 >
 
 @property (weak, nonatomic) IBOutlet UITableView *mySubordinateTableView;
+
 @property (weak, nonatomic) IBOutlet UIView *backGroundView;
 
 @property(nonatomic,strong) NSMutableArray *subordinateListArray;
@@ -66,12 +67,15 @@ UITableViewDataSource
     }];
     
     _lineLabel=[[UILabel alloc] initWithFrame:CGRectMake(0,40,SCREEN_WIDTH/2,2)];
+    
     _lineLabel.backgroundColor=[UIColor colorWithHexString:@"FF0270"];
+    
     [self.view addSubview:_lineLabel];
 }
 -(void)registercell
 {
     UINib* nib = [UINib nibWithNibName:@"HZDSSubordinteTableViewCell" bundle:nil];
+    
     [_mySubordinateTableView registerNib:nib forCellReuseIdentifier:@"SubordinteTableViewCell"];
 }
 -(void)initData
@@ -83,7 +87,6 @@ UITableViewDataSource
     NSDictionary *dic = @{@"lastindex":[NSString stringWithFormat:@"%ld",(long)_pageNum],
                           @"level":_subordinateLevel
                           };
-    
     
     [CrazyNetWork CrazyRequest_Post:MYSUBORDINATE parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
@@ -100,11 +103,13 @@ UITableViewDataSource
             if (arr.count > 0) {
                 
                 strongSelf.mySubordinateTableView.hidden = NO;
+                
                 strongSelf.backGroundView.hidden = YES;
                 
             }else{
                 
                 strongSelf.mySubordinateTableView.hidden = YES;
+                
                 strongSelf.backGroundView.hidden = NO;
             }
             
@@ -113,12 +118,12 @@ UITableViewDataSource
                 HZDSSubRoradinteModel *model = [[HZDSSubRoradinteModel alloc] init];
                 
                 model.account = dict1[@"account"] ;
+                
                 model.nickName = dict1[@"nickname"];
                 
                 model.registerTime = dict1[@"reg_time"];
                 
                 model.SubRoradinteID = dict1[@"user_id"];
-                
                 
                 if (dict1[@"email"] == NULL || dict1[@"email"] == nil ||dict1[@"email"] == [NSNull null]) {
                     
@@ -128,7 +133,6 @@ UITableViewDataSource
                     
                     model.email = dict1[@"email"];
                 }
-                
                 
                 [strongSelf.subordinateListArray addObject:model];
             }
@@ -170,6 +174,7 @@ UITableViewDataSource
                 HZDSSubRoradinteModel *model = [[HZDSSubRoradinteModel alloc] init];
                 
                 model.account = dict1[@"account"] ;
+                
                 model.nickName = dict1[@"nickname"];
                 
                 model.registerTime = dict1[@"reg_time"];
@@ -237,6 +242,7 @@ UITableViewDataSource
     
     NSInteger num = 0;
     switch (_SubordinateType) {
+            
         case MySubordinateFirst:
             num = 0;
             break;
@@ -285,11 +291,6 @@ UITableViewDataSource
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-}
-
 #pragma mark - UITableViewDelegate
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -300,6 +301,7 @@ UITableViewDataSource
 {
     
     HZDSSubRoradinteModel *model = [[HZDSSubRoradinteModel alloc] init];
+    
     model = _subordinateListArray[section];
     
     UIView* backView = [[UIView alloc]initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, 31)];
@@ -307,29 +309,38 @@ UITableViewDataSource
     backView.backgroundColor = [UIColor whiteColor];
     
     UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,30,SCREEN_WIDTH,1)];
+    
     lineLabel.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
+    
     [backView addSubview:lineLabel];
     
     UIView* view = [[UIView alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-5, 30)];
+    
     [backView addSubview:view];
     
     UILabel* shanghu = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-5-5, 20)];
+    
     shanghu.text = [NSString stringWithFormat:@"ID:%@",model.SubRoradinteID];
     
     shanghu.textAlignment = NSTextAlignmentLeft;
+    
     shanghu.font=[UIFont systemFontOfSize:13];
+    
     shanghu.adjustsFontSizeToFitWidth = YES;
     [view addSubview:shanghu];
     
     UIView* view1 = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2, 5, SCREEN_WIDTH/2-10, 30)];
+    
     [backView addSubview:view1];
+    
     UILabel* dingdantime = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-10, 20)];
+    
     dingdantime.text =[NSString stringWithFormat:@"注册时间:%@",model.registerTime];
     
     dingdantime.textAlignment = NSTextAlignmentRight;
+    
     dingdantime.font = [UIFont systemFontOfSize:13];
-    // dingdantime.textColor = [UIColor colorWithHexString:@"f5f5f5"];
-    // dingdantime.adjustsFontSizeToFitWidth = YES;
+   
     [view1 addSubview:dingdantime];
     
     return backView;

@@ -7,23 +7,32 @@
 //
 
 #import "HZDSMerchantViewController.h"
-#import "HZDSmerchantSetViewController.h"
-#import "HZDSNewMessageViewController.h"
+#import "HZDSMallManagementViewController.h"
 #import "HZDSmerchantMoneyViewController.h"
-#import "HZDSIntegralViewController.h"
 #import "HZDSmerchantOrderViewController.h"
 #import "HZDScouponCheckViewController.h"
-#import "HZDSMallManagementViewController.h"
+#import "HZDSmerchantSetViewController.h"
+#import "HZDSNewMessageViewController.h"
+#import "HZDSIntegralViewController.h"
 
 @interface HZDSMerchantViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *merchangtMoney;
+
 @property (weak, nonatomic) IBOutlet UILabel *todayMoney;
+
 @property (weak, nonatomic) IBOutlet UILabel *yesterdayMoney;
+
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
+
 @property (weak, nonatomic) IBOutlet UIImageView *headerImage;
+
 @property (weak, nonatomic) IBOutlet UILabel *merchantName;
+
 @property (weak, nonatomic) IBOutlet UIView *mallManageView;
+
 @property (weak, nonatomic) IBOutlet UIScrollView *myScrollView;
+
 @property (weak, nonatomic) IBOutlet UIView *backGroundView;
 
 @end
@@ -95,12 +104,13 @@
         HZDSmerchantSetViewController *set = [[HZDSmerchantSetViewController alloc] init];
         
         [self.navigationController pushViewController:set animated:YES];
+        
     }else if (sender.tag == 102){
         
         HZDSNewMessageViewController *message = [[HZDSNewMessageViewController alloc] init];
         
-        
         message.messageUrl = MERCHANT_MESSAGE;
+
         [self.navigationController pushViewController:message animated:YES];
     }else if (sender.tag == 103){
       
@@ -115,6 +125,7 @@
         HZDSIntegralViewController *integral = [[HZDSIntegralViewController alloc] init];
         
         [self.navigationController pushViewController:integral animated:YES];
+    
     }else if (sender.tag == 105){
        
         HZDSmerchantOrderViewController *order = [[HZDSmerchantOrderViewController alloc] init];
