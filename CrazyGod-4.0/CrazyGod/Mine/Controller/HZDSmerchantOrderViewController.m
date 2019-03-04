@@ -76,8 +76,6 @@ UITableViewDelegate
         
         [self initMoreData];
         
-        [self.merchantOrderListTableView.mj_footer endRefreshing];
-
     }];
     
     self.navigationItem.title = @"订单管理";
@@ -119,15 +117,17 @@ UITableViewDelegate
             
             
             if (arr.count > 0) {
+            
             strongSelf.merchantOrderListTableView.hidden = NO;
                 
-                strongSelf.backGroundView.hidden = YES;
+            strongSelf.backGroundView.hidden = YES;
                 
             }else{
                 
             strongSelf.merchantOrderListTableView.hidden = YES;
                
-                strongSelf.backGroundView.hidden = NO;
+            strongSelf.backGroundView.hidden = NO;
+                
             }
             
             for (NSDictionary *dict1 in arr) {
@@ -161,6 +161,7 @@ UITableViewDelegate
             
             
         }
+        
         [strongSelf.merchantOrderListTableView.mj_header endRefreshing];
         
     } fail:^(NSError *error, NSString *url, NSString *Json) {
@@ -212,14 +213,19 @@ UITableViewDelegate
                 [strongSelf.orderListArray addObject:model];
             }
             
-            [strongSelf.merchantOrderListTableView reloadData];
+        [strongSelf.merchantOrderListTableView reloadData];
             
-            if (arr.count > 0) {
+        [strongSelf.merchantOrderListTableView.mj_footer endRefreshing];
+
+        if (arr.count > 0) {
                 
-            }else{
+        }else{
                 
-                [JKToast showWithText:@"没有更多了"];
-            }
+        [JKToast showWithText:NOMOREDATA_STRING];
+                
+        [strongSelf.merchantOrderListTableView.mj_footer endRefreshingWithNoMoreData];
+
+        }
             
         }else{
             
@@ -335,6 +341,7 @@ UITableViewDelegate
 {
     
     HZDSOrderModel *model = [[HZDSOrderModel alloc] init];
+   
     model = _orderListArray[section];
     
     UIView* backView = [[UIView alloc]initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, 31)];
@@ -387,7 +394,9 @@ UITableViewDelegate
 {
     
     HZDSOrderModel *model = [[HZDSOrderModel alloc] init];
+    
     model = _orderListArray[section];
+    
     
     UIView* view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
     
@@ -425,11 +434,9 @@ UITableViewDelegate
     
     [leftBtn setTitle:@"" forState:UIControlStateNormal];
     
-    leftBtn.layer.cornerRadius = 3;
+    [WYFTools viewLayer:3 withView:leftBtn];
     
     leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    
-    leftBtn.layer.masksToBounds = YES;
     
     leftBtn.backgroundColor = [UIColor colorWithHexString:@"#c6c6c6"];
 
@@ -449,9 +456,7 @@ UITableViewDelegate
 
     rightBtn.backgroundColor = [UIColor colorWithHexString:@"46a0fc"];
 
-    rightBtn.layer.cornerRadius = 3;
-
-    rightBtn.layer.masksToBounds = YES;
+    [WYFTools viewLayer:3 withView:rightBtn];
 
     rightBtn.tag = section;
 

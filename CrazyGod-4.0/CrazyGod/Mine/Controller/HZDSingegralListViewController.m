@@ -62,8 +62,6 @@ UITableViewDataSource
         
         [self initMoreData];
         
-        [self.integralListTableView.mj_footer endRefreshing];
-
     }];
     
     if (_myLogType == moneyLogType) {
@@ -199,11 +197,16 @@ UITableViewDataSource
             
             [strongSelf.integralListTableView reloadData];
             
+            [strongSelf.integralListTableView.mj_footer endRefreshing];
+
             if (arr.count > 0) {
                 
             }else{
                 
-                [JKToast showWithText:@"没有更多了"];
+            [JKToast showWithText:NOMOREDATA_STRING];
+                
+            [strongSelf.integralListTableView.mj_footer endRefreshingWithNoMoreData];
+
             }
         }else{
             

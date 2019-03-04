@@ -45,13 +45,9 @@
 {
     self.navigationItem.title = @"我的营销中心";
     
-    _headerImage.layer.cornerRadius = _headerImage.frame.size.height/2;
+    [WYFTools viewLayer:_headerImage.frame.size.height/2 withView:_headerImage];
     
-    _headerImage.layer.masksToBounds = YES;
-    
-    _vipRank.layer.cornerRadius = 3;
-    
-    _vipRank.layer.masksToBounds = YES;
+    [WYFTools viewLayer:3 withView:_vipRank];
 }
 -(void)initData
 {

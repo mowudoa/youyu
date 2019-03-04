@@ -80,16 +80,24 @@ UICollectionViewDelegateFlowLayout
     self.navigationItem.titleView = self.searchImage;
     
     _classArray = [[NSMutableArray alloc] init];
+    
     _advArray = [[NSMutableArray alloc] init];
+    
     _hotListArray = [[NSMutableArray alloc] init];
+    
     _userGoodsArray = [[NSMutableArray alloc] init];
+    
     _userGoodsArray2 = [[NSMutableArray alloc] init];
+    
     _goodArray = [[NSMutableArray alloc] init];
+    
     _likeArray = [[NSMutableArray alloc] init];
 
     self.shoppingMallCollectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-                [self initData];
-            }];
+        
+        [self initData];
+        
+    }];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchMallGoodsByKeyWords:) name:@"searchMallGoods" object:nil];
 
@@ -120,13 +128,12 @@ UICollectionViewDelegateFlowLayout
     [_shoppingMallCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header5"];
 
     [_shoppingMallCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footer"];
-
-    
     
     self.shoppingMallCollectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         
-        [JKToast showWithText:@"没有更多了"];
-        [self.shoppingMallCollectionView.mj_footer endRefreshing];
+        [JKToast showWithText:NOMOREDATA_STRING];
+        
+        [self.shoppingMallCollectionView.mj_footer endRefreshingWithNoMoreData];
         
     }];
 }
@@ -141,11 +148,17 @@ UICollectionViewDelegateFlowLayout
         __strong typeof(weakSelf) strongSelf = weakSelf;
 
         [strongSelf.classArray removeAllObjects];
+        
         [strongSelf.advArray removeAllObjects];
+        
         [strongSelf.hotListArray removeAllObjects];
+        
         [strongSelf.userGoodsArray removeAllObjects];
+        
         [strongSelf.userGoodsArray2 removeAllObjects];
+        
         [strongSelf.likeArray removeAllObjects];
+        
         [strongSelf.goodArray removeAllObjects];
 
         
@@ -206,6 +219,7 @@ UICollectionViewDelegateFlowLayout
             
             [JKToast showWithText:dic[@"datas"][@"error"]];
         }
+        
         [self reloadData];
 
     [strongSelf.shoppingMallCollectionView.mj_header endRefreshing];
@@ -224,9 +238,10 @@ UICollectionViewDelegateFlowLayout
 {
     if (_headView == nil) {
         
-        
         _headView = [[scrollPhotos alloc]initWithFrame:CGRectMake(0 , 0, SCREEN_WIDTH, SCREEN_WIDTH/2)];
+        
         _headView.delegate = self;
+        
         _headView.photos = _advArray;
         
     }
@@ -237,15 +252,21 @@ UICollectionViewDelegateFlowLayout
 -(UIImageView*)searchImage
 {
     if (_searchImage == nil) {
+        
         _searchImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH*0.8, 30)];
+        
         _searchImage.backgroundColor = [UIColor colorWithHexString:@"ffffff"];
         
         UIImageView *ima = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH*0.8 -30,8,14,14)];
+        
         ima.image = [UIImage imageNamed:@"searchIma"];
         
         _searchImage.layer.cornerRadius = _searchImage.frame.size.height/2;
+        
         _searchImage.userInteractionEnabled = YES;
+        
         [_searchImage addSubview:self.searchTextField];
+        
         [_searchImage addSubview:ima];
         
     }
@@ -254,15 +275,25 @@ UICollectionViewDelegateFlowLayout
 -(UITextField*)searchTextField
 {
     if (_searchTextField == nil) {
+        
         _searchTextField = [[UITextField alloc]initWithFrame:CGRectMake(20, 0, SCREEN_WIDTH * 0.75 - 20, 30)];
+        
         _searchTextField.placeholder = @"你想要的...";
+        
         [_searchTextField setValue:[UIColor redColor] forKeyPath:@"_placeholderLabel.textColor"];
+        
         _searchTextField.borderStyle = UITextBorderStyleNone;
+        
         _searchTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        
         _searchTextField.font = [UIFont systemFontOfSize:12];
+        
         _searchTextField.delegate = self;
+        
         _searchTextField.tag = 70001;
+        
         _searchTextField.textColor = [UIColor lightGrayColor];
+        
     }
     return _searchTextField;
 }
@@ -295,18 +326,23 @@ UICollectionViewDelegateFlowLayout
     if (section == 0) {
         
         return _classArray.count;
+        
     }else if (section == 1){
         
         return _hotListArray.count;
+        
     }else if (section == 2){
         
         return 0;
+        
     }else if (section == 3){
         
         return _goodArray.count;
+        
     }else{
         
         return _likeArray.count;
+        
     }
     
     
@@ -323,18 +359,18 @@ UICollectionViewDelegateFlowLayout
         cell.classTitle.text = _classArray[indexPath.row][@"cate_name"];
         
         return cell;
+        
     }else if (indexPath.section == 1){
         
         HZDSHotGoodsCollectionViewCell *cell  =[collectionView dequeueReusableCellWithReuseIdentifier:@"HotGoodsCollectionViewCell" forIndexPath:indexPath];
         
         [cell.hotImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,_hotListArray[indexPath.row][@"photo"]]]];
-
         
         return cell;
+        
     }else if (indexPath.section == 3){
         
         HZDSgoodGoodsCollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"goodGoodsCollectionViewCell" forIndexPath:indexPath];
-        
         
         HomeModel *model = _goodArray[indexPath.row];
         
@@ -342,10 +378,10 @@ UICollectionViewDelegateFlowLayout
         cell.titleLabel.text = model.goodsName;
         
         return cell;
+        
     }else{
         
         HZDSlikeGoodsCollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"likeGoodsCollectionViewCell" forIndexPath:indexPath];
-        
         
         HomeModel *model = _likeArray[indexPath.row];
         
@@ -355,7 +391,6 @@ UICollectionViewDelegateFlowLayout
         cell.goodsInfo.text = [NSString stringWithFormat:@"已售:%@",model.goodsSoldNum];
         
         cell.priceLabel.text = [NSString stringWithFormat:@"￥:%@",model.goodsPrice];
-
         
         return cell;
         
@@ -382,6 +417,7 @@ UICollectionViewDelegateFlowLayout
         
         
         HZDSMallDetailViewController *detail = [[HZDSMallDetailViewController alloc] init];
+        
         detail.goodsId = _hotListArray[indexPath.row][@"val"];
         
         [self.navigationController pushViewController:detail animated:YES];
@@ -396,7 +432,6 @@ UICollectionViewDelegateFlowLayout
         
         HZDSMallDetailViewController *detail = [[HZDSMallDetailViewController alloc] init];
         
-        
         detail.goodsId = model.goodsId;
         
         [self.navigationController pushViewController:detail animated:YES];
@@ -406,6 +441,7 @@ UICollectionViewDelegateFlowLayout
         HomeModel *model = _likeArray[indexPath.row];
 
         HZDSMallDetailViewController *detail = [[HZDSMallDetailViewController alloc] init];
+       
         detail.goodsId = model.goodsId;
         
         [self.navigationController pushViewController:detail animated:YES];
@@ -594,8 +630,11 @@ UICollectionViewDelegateFlowLayout
     }
     
     label.textColor = [UIColor blackColor];
+    
     label.font = [UIFont boldSystemFontOfSize:16];
+    
     label.textAlignment = NSTextAlignmentCenter;
+    
     [subTitleView addSubview:label];
     
     return subTitleView;
@@ -603,7 +642,9 @@ UICollectionViewDelegateFlowLayout
 -(UIView *)createheadSubView2
 {
     UIView * headSubView2 = [[UIView alloc] initWithFrame:CGRectMake(0 ,0, SCREEN_WIDTH,10)];
+    
     headSubView2.backgroundColor = [UIColor colorWithHexString:@"#f5f5f5"];
+    
     headSubView2.userInteractionEnabled = YES;
     
     
@@ -644,11 +685,10 @@ UICollectionViewDelegateFlowLayout
     
     if ([self.searchTextField.text isEqualToString:@""] ||[self.searchTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0 ) {
         
-        
     }else{
         
-        
         [self gosearchByKeyWord:self.searchTextField.text];
+        
     }
     
 }

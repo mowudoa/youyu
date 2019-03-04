@@ -82,6 +82,7 @@ UITableViewDataSource
             strongSelf.evaluateListTableView.hidden = NO;
                 
             }else{
+                
             strongSelf.backGroundView.hidden = NO;
                 
             strongSelf.evaluateListTableView.hidden = YES;
@@ -109,6 +110,7 @@ UITableViewDataSource
                 if (dic1[@"reply"] == NULL || dic1[@"reply"] == nil ||dic1[@"reply"] == [NSNull null]) {
                     
                     model.businessReply = @"";
+                    
                 }else{
                     
                     model.businessReply = dic1[@"reply"];
@@ -130,6 +132,7 @@ UITableViewDataSource
         }
         
         [strongSelf.evaluateListTableView reloadData];
+        
     } fail:^(NSError *error, NSString *url, NSString *Json) {
         
         LOG(@"cuow", Json);

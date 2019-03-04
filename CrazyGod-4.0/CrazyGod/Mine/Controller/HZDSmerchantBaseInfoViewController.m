@@ -41,17 +41,11 @@
 {
     self.navigationItem.title = @"基本设置";
     
-    [_describeTextView.layer setMasksToBounds:YES];
+    [WYFTools viewLayer:10 withView:_describeTextView];
     
-    [_describeTextView.layer setCornerRadius:10]; //设置矩形四个圆角半径
-    //边框宽度
-    [_describeTextView.layer setBorderWidth:1.0];
-    //设置边框颜色有两种方法：第一种如下:
-    _describeTextView.layer.borderColor=[UIColor colorWithHexString:@"f5f5f5"].CGColor;
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_describeTextView];
     
-    _editButton.layer.cornerRadius = _editButton.frame.size.height/16*3;
-    
-    _editButton.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_editButton.frame.size.height/16*3 withView:_editButton];
     
     [WYFTools CreateTextPlaceHolder:@"店铺介绍,建议不超过200字!" WithFont:[UIFont systemFontOfSize:14] WithSuperView:_describeTextView];
 }

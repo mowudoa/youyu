@@ -37,26 +37,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+
+    [self initUI];
+}
+-(void)initUI
+{
     
     if ([_order_Url isEqualToString:MALL_MANAGE_ORDERDETAIL]) {
-     
+        
         [self initMallOrder];
         
     }else if ([_order_Url isEqualToString:SHOPPING_MALL_ORDER_DETAIL]){
         
         [self iniData];
-
+        
     }
     
     self.navigationItem.title = @"订单详情";
+
+    [WYFTools viewLayer:_statusLabel.size.height/16*3 withView:_statusLabel];
 }
+
 -(void)iniData
 {
-    _statusLabel.layer.cornerRadius = _statusLabel.frame.size.height/16*3;
-    
-    _statusLabel.layer.masksToBounds = YES;
-    
   
     NSDictionary *dic = @{@"order_id":_order_Id};
     
@@ -130,10 +133,6 @@
 }
 -(void)initMallOrder
 {
-    _statusLabel.layer.cornerRadius = _statusLabel.frame.size.height/16*3;
-    
-    _statusLabel.layer.masksToBounds = YES;
-    
     
     NSDictionary *dic = @{@"order_id":_order_Id};
     

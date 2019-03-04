@@ -51,13 +51,10 @@
 {
     self.navigationItem.title = @"商户中心";
     
-    _messageLabel.layer.cornerRadius = _messageLabel.frame.size.height/3;
+    [WYFTools viewLayer:_messageLabel.frame.size.height/3 withView:_messageLabel];
     
-    _messageLabel.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_headerImage.frame.size.height/2 withView:_headerImage];
     
-    _headerImage.layer.cornerRadius = _headerImage.frame.size.height/2;
-    
-    _headerImage.layer.masksToBounds = YES;
 }
 -(void)initData
 {
@@ -112,6 +109,7 @@
         message.messageUrl = MERCHANT_MESSAGE;
 
         [self.navigationController pushViewController:message animated:YES];
+        
     }else if (sender.tag == 103){
       
         HZDScouponCheckViewController *coupon = [[HZDScouponCheckViewController alloc] init];

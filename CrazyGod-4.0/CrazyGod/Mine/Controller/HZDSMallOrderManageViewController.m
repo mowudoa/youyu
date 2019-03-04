@@ -79,8 +79,6 @@ UITableViewDelegate
         
         [self initMoreData];
         
-        [self.orderListTableView.mj_footer endRefreshing];
-
     }];
     
     _lineLabel=[[UILabel alloc] initWithFrame:CGRectMake(0,40,SCREEN_WIDTH/2,2)];
@@ -176,6 +174,7 @@ UITableViewDelegate
             
             
         }
+        
         [strongSelf.orderListTableView.mj_header endRefreshing];
         
     } fail:^(NSError *error, NSString *url, NSString *Json) {
@@ -243,11 +242,16 @@ UITableViewDelegate
             
             [strongSelf.orderListTableView reloadData];
             
+            [strongSelf.orderListTableView.mj_footer endRefreshing];
+
             if (arr.count > 0) {
                 
             }else{
                 
-                [JKToast showWithText:@"没有更多了"];
+                [JKToast showWithText:NOMOREDATA_STRING];
+                
+                [strongSelf.orderListTableView.mj_footer endRefreshingWithNoMoreData];
+
             }
             
         }else{
@@ -425,11 +429,9 @@ UITableViewDelegate
     
     [leftBtn setTitle:@"" forState:UIControlStateNormal];
     
-    leftBtn.layer.cornerRadius = 3;
+    [WYFTools viewLayer:3 withView:leftBtn];
     
     leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    
-    leftBtn.layer.masksToBounds = YES;
     
     leftBtn.backgroundColor = [UIColor colorWithHexString:@"#b5b5b5"];
 
@@ -449,9 +451,7 @@ UITableViewDelegate
 
     rightBtn.backgroundColor = [UIColor colorWithHexString:@"#b5b5b5"];
 
-    rightBtn.layer.cornerRadius = 3;
-
-    rightBtn.layer.masksToBounds = YES;
+    [WYFTools viewLayer:3 withView:rightBtn];
 
     rightBtn.tag = section;
 
@@ -589,14 +589,22 @@ UITableViewDelegate
     
     switch (index) {
         case 0:
+            
             _orderStatus = @"1";
+            
             _orderUrl = MALL_MANAGE_ORDER;
+            
             self.navigationItem.title = @"卖出订单";
+           
             break;
         case 1:
+           
             _orderStatus = @"2";
+            
             _orderUrl = MALL_MANAGE_ORDER_PAY;
+            
             self.navigationItem.title = @"付款订单";
+            
             break;
         default:
             break;

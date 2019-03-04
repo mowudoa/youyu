@@ -60,7 +60,6 @@
             
             strongSelf.usedTimeLabel.text = [self ConvertStrToTime:dic[@"datas"][@"detail"][@"used_time"]];
             
-            
             strongSelf.userNameLabel.text = dic[@"datas"][@"users"][@"nickname"];
             
             strongSelf.userPhoneLabel.text = dic[@"datas"][@"users"][@"mobile"];            

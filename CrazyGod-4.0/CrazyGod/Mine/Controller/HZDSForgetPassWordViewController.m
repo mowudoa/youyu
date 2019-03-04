@@ -37,13 +37,9 @@
 {
     self.navigationItem.title = @"忘记密码";
     
-    _getNewpassButton.layer.cornerRadius = _getNewpassButton.frame.size.height/16*3;
+    [WYFTools viewLayer:_getNewpassButton.frame.size.height/16*3 withView:_getNewpassButton];
     
-    _getNewpassButton.layer.masksToBounds = YES;
-    
-    _codeButton.layer.cornerRadius = _codeButton.frame.size.height/6;
-    
-    _codeButton.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_codeButton.frame.size.height/6 withView:_codeButton];
     
 }
 
@@ -72,7 +68,8 @@
                 strongSelf.num = 60;
                
                 [strongSelf.codeButton setTitle:[NSString stringWithFormat:@"(%ld)",(long)(strongSelf.num)] forState:UIControlStateNormal];
-            strongSelf.codeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+            
+                strongSelf.codeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
                 
                 [self jishiTimer];
                 

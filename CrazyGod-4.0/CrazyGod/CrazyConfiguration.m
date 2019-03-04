@@ -15,10 +15,15 @@
 @implementation CrazyConfiguration
 
 + (instancetype)sharedManager {
+    
     static CrazyConfiguration *_sharedManager = nil;
+    
     static dispatch_once_t oncePredicate;
+    
     dispatch_once(&oncePredicate, ^{
+        
         _sharedManager = [[self alloc] init];
+        
     });
     
     return _sharedManager;
@@ -26,8 +31,11 @@
 - (instancetype)init
 {
     self = [super init];
+   
     if (self) {
+    
         [self initCrazyConfiguration];
+        
     }
     return self;
 }
@@ -46,37 +54,54 @@
 -(void)ConfigGuide{
     
     if ([[NSUserDefaults standardUserDefaults]objectForKey:@"Guide"] == nil) {
+      
         CrazyGuideView * guide = [[CrazyGuideView alloc]init];
+        
         guide.pageCtr.hidden = YES;
+        
         [guide createLocationImageArr:@[@"yindao1",@"yindao2",@"yindao3"] block:^{
 //            @"good111",@"good222"
+           
             [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"Guide"];
+            
         }];
     }
 }
 -(void)ConfigBackBtn{
+    
     self.backBtnImage_NAME = @"Tback.png";
+    
     self.backBtnImage_FRAME = CGRectMake(0, 0, 20, 30);
 }
 -(void)ConfigTMCache{
     //几分钟清除缓存
     int time = 600; //秒
+    
     TMCache * cache =[TMCache sharedCache];
+    
     cache.diskCache.ageLimit = time;
+    
     cache.memoryCache.ageLimit =time;
+    
 }
 -(void)ConfigIQKeyboard{
     
     IQKeyboardManager * manager  = [IQKeyboardManager sharedManager];
+    
     manager.enable = YES ;
+    
     manager.shouldResignOnTouchOutside = YES;
+    
     manager.shouldToolbarUsesTextFieldTintColor = YES;
+    
     manager.enableAutoToolbar = YES;
 }
 -(void)ConfigSVProgressHUD{
     
     [SVProgressHUD setDefaultAnimationType:SVProgressHUDAnimationTypeFlat];
+    
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeOpaque];
     
 //    UIView *custumView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];

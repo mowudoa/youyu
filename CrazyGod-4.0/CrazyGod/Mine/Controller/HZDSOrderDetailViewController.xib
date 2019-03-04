@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,6 +17,7 @@
                 <outlet property="orderNeedPay" destination="WnT-X6-lAi" id="0KK-yX-zZM"/>
                 <outlet property="orderNum" destination="zJJ-XR-iBb" id="gEd-b3-9Wo"/>
                 <outlet property="orderPrice" destination="nrq-WE-hgh" id="z0D-Cg-sHi"/>
+                <outlet property="orderStatusLabel" destination="dsJ-Z5-vlo" id="aEr-GZ-6DX"/>
                 <outlet property="orderTimer" destination="db5-Zh-bVu" id="Crb-zi-Jn6"/>
                 <outlet property="orderTotalPrice" destination="v68-u6-sIw" id="aQp-jB-R9R"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -336,6 +336,16 @@
                         <constraint firstItem="WnT-X6-lAi" firstAttribute="leading" secondItem="9nT-Ta-32X" secondAttribute="trailing" constant="10" id="yhA-nD-JF7"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dsJ-Z5-vlo">
+                    <rect key="frame" x="16" y="350" width="288" height="40"/>
+                    <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="dsJ-Z5-vlo" secondAttribute="height" multiplier="36:5" id="sYT-T6-EYO"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -352,16 +362,20 @@
                 <constraint firstItem="qDi-Yg-kF7" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="5" id="O30-eB-KuE"/>
                 <constraint firstItem="ul2-zZ-YV5" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="Rpg-EF-sof"/>
                 <constraint firstItem="qDi-Yg-kF7" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="TRC-bK-5Q0"/>
+                <constraint firstItem="dsJ-Z5-vlo" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="16" id="UbU-OL-47C"/>
                 <constraint firstItem="azw-3Y-XIL" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="ery-Do-Ry6"/>
                 <constraint firstItem="cWT-Cx-avU" firstAttribute="top" secondItem="Ee0-Qc-dph" secondAttribute="bottom" id="f5s-lI-a5d"/>
                 <constraint firstItem="YsF-ZZ-boI" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="hze-r3-6Fl"/>
+                <constraint firstItem="dsJ-Z5-vlo" firstAttribute="top" secondItem="azw-3Y-XIL" secondAttribute="bottom" constant="45" id="i78-4B-y5t"/>
                 <constraint firstItem="JJI-16-fWw" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="n1X-7f-zdz"/>
                 <constraint firstItem="Ee0-Qc-dph" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="qOK-dJ-lOu"/>
                 <constraint firstItem="ul2-zZ-YV5" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="qnd-UN-Rsl"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="dsJ-Z5-vlo" secondAttribute="trailing" constant="16" id="syw-nN-T9S"/>
                 <constraint firstItem="JJI-16-fWw" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="vXD-Es-LQB"/>
                 <constraint firstItem="azw-3Y-XIL" firstAttribute="top" secondItem="ul2-zZ-YV5" secondAttribute="bottom" id="xWG-a2-Fl9"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="95.625" y="143.66197183098592"/>
         </view>
     </objects>
 </document>

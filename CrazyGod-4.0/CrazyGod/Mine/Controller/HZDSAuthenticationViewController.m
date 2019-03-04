@@ -48,24 +48,17 @@ UINavigationControllerDelegate
     
     [WYFTools CreateTextPlaceHolder:@"请输入详细地址" WithFont:[UIFont systemFontOfSize:14.0] WithSuperView:_detailAddress];
     
-    _authenticationButton.layer.cornerRadius = _authenticationButton.frame.size.height/16*3;
+    [WYFTools viewLayer:_authenticationButton.frame.size.height/16*3 withView:_authenticationButton];
     
-    _authenticationButton.layer.masksToBounds = YES;
+    [WYFTools viewLayer:5 withView:_detailAddress];
     
-    [_detailAddress.layer setMasksToBounds:YES];
-   
-    [_detailAddress.layer setCornerRadius:5]; //设置矩形四个圆角半径
-    //边框宽度
-    [_detailAddress.layer setBorderWidth:1.0];
-    //设置边框颜色有两种方法：第一种如下:
-    
-    _detailAddress.layer.borderColor=[UIColor colorWithHexString:@"f5f5f5"].CGColor;
-    
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_detailAddress];
 
 }
 -(UIImagePickerController *)imagePicker
 {
     if (_imagePicker == nil) {
+       
         _imagePicker = [[UIImagePickerController alloc] init];
         
         _imagePicker.modalPresentationStyle = UIModalPresentationOverFullScreen;
@@ -208,6 +201,7 @@ UINavigationControllerDelegate
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
     UIImage *orgImage = info[UIImagePickerControllerEditedImage];
+ 
     [picker dismissViewControllerAnimated:YES completion:nil];
     
     [self performSelector:@selector(changePhoto:) withObject:orgImage afterDelay:0.1];
@@ -257,7 +251,9 @@ UINavigationControllerDelegate
         
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
         NSLog(@"======失败======");
+        
     }];
     
     

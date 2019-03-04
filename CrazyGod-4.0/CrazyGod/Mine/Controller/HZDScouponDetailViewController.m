@@ -7,6 +7,7 @@
 //
 
 #import "HZDScouponDetailViewController.h"
+#import "HZDSOrderDetailViewController.h"
 
 @interface HZDScouponDetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *couponNum;
@@ -15,6 +16,9 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *couponCode;
 
+@property (weak, nonatomic) IBOutlet UIButton *orderDetailButton;
+
+@property (nonatomic,copy) NSString *order_id;
 @end
 
 @implementation HZDScouponDetailViewController
@@ -31,6 +35,8 @@
 -(void)initUI
 {
     self.navigationItem.title = @"我的消费券";
+    
+    [WYFTools viewLayer:3 withView:_orderDetailButton];
 }
 -(void)initData
 {
@@ -53,6 +59,8 @@
 
             NSString *urlStr = dic[@"datas"][@"file"];
             
+            strongSelf.order_id = dic[@"datas"][@"detail"][@"order_id"];
+            
             [strongSelf.couponCode sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ImageURL_CODE,urlStr]]];
             
         }else{
@@ -66,6 +74,17 @@
     }];
     
 }
+//订单详情
+- (IBAction)orderDetail:(UIButton *)sender {
+
+    HZDSOrderDetailViewController *detail = [[HZDSOrderDetailViewController alloc] init];
+    
+    detail.orderId = _order_id;
+    
+    [self.navigationController pushViewController:detail animated:YES];
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

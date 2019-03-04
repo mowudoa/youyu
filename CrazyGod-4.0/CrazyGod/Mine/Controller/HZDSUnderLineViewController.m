@@ -130,6 +130,9 @@ UIPickerViewDataSource
 
 @property(nonatomic,strong) UIPickerView *classPickView;
 
+//选择器背景图
+@property(nonatomic,strong) UIView *backgroundView;
+
 @property(nonatomic,strong) UIView *myPickView;
 
 @property(nonatomic,copy) NSString *parent_id;
@@ -158,70 +161,40 @@ UIPickerViewDataSource
 -(void)initUI
 {
  
-    [_contractView.layer setMasksToBounds:YES];
+    [WYFTools viewLayer:5 withView:_contractView];
     
-    [_contractView.layer setCornerRadius:5]; //设置矩形四个圆角半径
-        //边框宽度
-    [_contractView.layer setBorderWidth:1.0];
-        //设置边框颜色有两种方法：第一种如下:
-    _contractView.layer.borderColor=[UIColor colorWithHexString:@"f5f5f5"].CGColor;
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_contractView];
     
-    [_businessIconView.layer setMasksToBounds:YES];
+    [WYFTools viewLayer:5 withView:_businessIconView];
     
-    [_businessIconView.layer setCornerRadius:5]; //设置矩形四个圆角半径
-    //边框宽度
-    [_businessIconView.layer setBorderWidth:1.0];
-    //设置边框颜色有两种方法：第一种如下:
-    _businessIconView.layer.borderColor=[UIColor colorWithHexString:@"f5f5f5"].CGColor;
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_businessIconView];
     
-    [_logoView.layer setMasksToBounds:YES];
+    [WYFTools viewLayer:5 withView:_logoView];
     
-    [_logoView.layer setCornerRadius:5]; //设置矩形四个圆角半径
-    //边框宽度
-    [_logoView.layer setBorderWidth:1.0];
-    //设置边框颜色有两种方法：第一种如下:
-    _logoView.layer.borderColor=[UIColor colorWithHexString:@"f5f5f5"].CGColor;
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_logoView];
     
-    [_idCardView.layer setMasksToBounds:YES];
+    [WYFTools viewLayer:5 withView:_idCardView];
     
-    [_idCardView.layer setCornerRadius:5]; //设置矩形四个圆角半径
-    //边框宽度
-    [_idCardView.layer setBorderWidth:1.0];
-    //设置边框颜色有两种方法：第一种如下:
-    _idCardView.layer.borderColor=[UIColor colorWithHexString:@"f5f5f5"].CGColor;
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_idCardView];
     
-    [_idCardOutFaceView.layer setMasksToBounds:YES];
-   
-    [_idCardOutFaceView.layer setCornerRadius:5]; //设置矩形四个圆角半径
-    //边框宽度
-    [_idCardOutFaceView.layer setBorderWidth:1.0];
-    //设置边框颜色有两种方法：第一种如下:
-    _idCardOutFaceView.layer.borderColor=[UIColor colorWithHexString:@"f5f5f5"].CGColor;
+    [WYFTools viewLayer:5 withView:_idCardOutFaceView];
     
-    [_businessLIcenseView.layer setMasksToBounds:YES];
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_idCardOutFaceView];
     
-    [_businessLIcenseView.layer setCornerRadius:5]; //设置矩形四个圆角半径
-    //边框宽度
-    [_businessLIcenseView.layer setBorderWidth:1.0];
-    //设置边框颜色有两种方法：第一种如下:
-    _businessLIcenseView.layer.borderColor=[UIColor colorWithHexString:@"f5f5f5"].CGColor;
+    [WYFTools viewLayer:5 withView:_businessLIcenseView];
+    
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_businessLIcenseView];
     
     
-    [_businessInfoTextView.layer setMasksToBounds:YES];
+    [WYFTools viewLayer:5 withView:_businessInfoTextView];
     
-    [_businessInfoTextView.layer setCornerRadius:5]; //设置矩形四个圆角半径
-    //边框宽度
-    [_businessInfoTextView.layer setBorderWidth:1.0];
-    //设置边框颜色有两种方法：第一种如下:
-    _businessInfoTextView.layer.borderColor=[UIColor colorWithHexString:@"f5f5f5"].CGColor;
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_businessInfoTextView];
     
-    _SettledButton.layer.cornerRadius = _SettledButton.frame.size.height/16*3;
+    [WYFTools viewLayer:_SettledButton.frame.size.height/16*3 withView:_SettledButton];
     
-    _SettledButton.layer.masksToBounds = YES;
+    [WYFTools viewLayer:5 withView:_addressButton];
     
-    _addressButton.layer.cornerRadius = 5;
-    
-    _addressButton.layer.masksToBounds = YES;
+    [WYFTools CreateTextPlaceHolder:@"请输入商家简介,建议不超过100字!" WithFont:[UIFont systemFontOfSize:14] WithSuperView:_businessInfoTextView];
     
     self.navigationItem.title = @"线下入驻";
     
@@ -234,7 +207,9 @@ UIPickerViewDataSource
     
 }
 - (UIPickerView *)classPickView {
+    
     if (!_classPickView) {
+        
         _classPickView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 44,SCREEN_WIDTH, 320)];
         
         _classPickView.delegate = self;
@@ -253,7 +228,7 @@ UIPickerViewDataSource
         
         _myPickView = [[UIView alloc] initWithFrame:CGRectMake(0,SCREEN_HEIGHT - 344, SCREEN_WIDTH,344)];
         
-        _myPickView.backgroundColor = [UIColor grayColor];
+        _myPickView.backgroundColor = [UIColor whiteColor];
     
         UIButton *rightSureBtn = [UIButton buttonWithType:UIButtonTypeSystem];
         
@@ -285,6 +260,8 @@ UIPickerViewDataSource
 {
     
     [_myPickView removeFromSuperview];
+    
+    [_backgroundView removeFromSuperview];
     
     if ([choiceID isEqualToString:@"100"]) {
      
@@ -326,6 +303,8 @@ UIPickerViewDataSource
     
     [_myPickView removeFromSuperview];
 
+    [_backgroundView removeFromSuperview];
+    
 }
 -(void)initData
 {
@@ -372,6 +351,7 @@ UIPickerViewDataSource
                 strongSelf.mainScrollview.hidden = YES;
                 
                 strongSelf.taglabel.text = dic[@"datas"][@"msg"];
+                
             }else{
                 
                 strongSelf.tagView.hidden = YES;
@@ -512,6 +492,7 @@ UIPickerViewDataSource
 -(UIImagePickerController *)imagePicker
 {
     if (_imagePicker == nil) {
+        
         _imagePicker = [[UIImagePickerController alloc] init];
         
         _imagePicker.modalPresentationStyle = UIModalPresentationOverFullScreen;
@@ -523,6 +504,23 @@ UIPickerViewDataSource
     
     return _imagePicker;
 }
+//选择器背景图
+//背景图
+-(UIView *)backgroundView
+{
+    if (!_backgroundView) {
+        
+        _backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH,SCREEN_HEIGHT)];
+        
+        _backgroundView.backgroundColor = [UIColor colorWithHexString:@"#bababa"];
+        
+        _backgroundView.alpha = 0.5;
+    }
+    
+    return _backgroundView;
+    
+}
+
 #pragma  mark ==== UIActionSheetDelegate
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -760,6 +758,29 @@ UIPickerViewDataSource
     
     
     return  SCREEN_WIDTH/3;
+    
+}
+
+//字体大小
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
+    
+    UILabel* pickerLabel = (UILabel*)view;
+    
+    if (!pickerLabel){
+        pickerLabel = [[UILabel alloc] init];
+        
+        pickerLabel.font = [UIFont systemFontOfSize:16];
+
+        pickerLabel.adjustsFontSizeToFitWidth = YES;
+        
+        [pickerLabel setTextAlignment:NSTextAlignmentCenter];
+        
+        [pickerLabel setBackgroundColor:[UIColor clearColor]];
+    }
+    
+    pickerLabel.text=[self pickerView:pickerView titleForRow:row forComponent:component];
+    
+    return pickerLabel;
     
 }
 
@@ -1237,6 +1258,8 @@ UIPickerViewDataSource
     
     [self.myPickView addSubview:pickView];
     
+    [self.view addSubview:self.backgroundView];
+    
     [self.view addSubview:self.myPickView];
     
     
@@ -1268,7 +1291,7 @@ UIPickerViewDataSource
 -(UIPickerView *)createPickView
 {
    
-    UIPickerView *pickView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 44,SCREEN_WIDTH, 200)];
+    UIPickerView *pickView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 44,SCREEN_WIDTH, 180)];
     
     pickView.delegate = self;
     
@@ -1294,6 +1317,8 @@ UIPickerViewDataSource
     UIPickerView *pickView = [self createPickView];
     
     [self.myPickView addSubview:pickView];
+    
+    [self.view addSubview:self.backgroundView];
     
     [self.view addSubview:self.myPickView];
     

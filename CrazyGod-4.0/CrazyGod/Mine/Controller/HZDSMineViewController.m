@@ -50,9 +50,7 @@ UITableViewDataSource
 }
 -(void)initUI
 {
-    _UserHeaderIcon.layer.cornerRadius = _UserHeaderIcon.frame.size.height/2;
-    
-    _UserHeaderIcon.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_UserHeaderIcon.frame.size.height/2 withView:_UserHeaderIcon];
     
     _dataSource = [[NSMutableArray alloc] init];
     
@@ -123,7 +121,6 @@ UITableViewDataSource
     
     if ([USER_DEFAULT boolForKey:@"isLogin"]) {
         
-      
         [self getUserINfo];
         
     }else{
@@ -133,6 +130,7 @@ UITableViewDataSource
         [self.navigationController pushViewController:login animated:YES];
         
     }
+    
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
 }
@@ -142,7 +140,6 @@ UITableViewDataSource
     HZDSUserInfoViewController *userInfo = [[HZDSUserInfoViewController alloc] init];
     
     [self.navigationController pushViewController:userInfo animated:YES];
-    
     
 }
 //获取用户信息
@@ -168,10 +165,8 @@ UITableViewDataSource
         if (SUCCESS) {
             
             [USER_DEFAULT setObject:dic[@"datas"][@"user_id"] forKey:@"User_ID"];
-
             
             if (dic[@"datas"][@"MEMBER"][@"nickname"] == NULL || dic[@"datas"][@"MEMBER"][@"nickname"] == nil ||dic[@"datas"][@"MEMBER"][@"nickname"] == [NSNull null]) {
-               
                 
             }else{
                 

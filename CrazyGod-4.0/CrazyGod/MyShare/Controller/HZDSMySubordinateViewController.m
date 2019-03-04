@@ -62,8 +62,6 @@ UITableViewDataSource
         
         [self initMoreData];
         
-        [self.mySubordinateTableView.mj_footer endRefreshing];
-
     }];
     
     _lineLabel=[[UILabel alloc] initWithFrame:CGRectMake(0,40,SCREEN_WIDTH/2,2)];
@@ -143,6 +141,7 @@ UITableViewDataSource
             
             
         }
+        
         [strongSelf.mySubordinateTableView.mj_header endRefreshing];
         
     } fail:^(NSError *error, NSString *url, NSString *Json) {
@@ -186,11 +185,16 @@ UITableViewDataSource
             
             [strongSelf.mySubordinateTableView reloadData];
             
+            [strongSelf.mySubordinateTableView.mj_footer endRefreshing];
+
             if (arr.count > 0) {
                 
             }else{
                 
-                [JKToast showWithText:@"没有更多了"];
+            [JKToast showWithText:NOMOREDATA_STRING];
+                
+            [strongSelf.mySubordinateTableView.mj_footer endRefreshingWithNoMoreData];
+
             }
         }else{
             
@@ -204,8 +208,7 @@ UITableViewDataSource
 - (IBAction)buttonCLick:(UIButton *)sender {
 
     NSInteger num = sender.tag - 400;
-    
-    
+
     [self moveLineLabel:num];
 }
 -(void)moveLineLabel:(NSInteger)index
@@ -213,10 +216,12 @@ UITableViewDataSource
     
     switch (index) {
         case 0:
+            
             _subordinateLevel = @"1";
            
             break;
         case 1:
+            
             _subordinateLevel = @"2";
            
             break;
@@ -327,6 +332,7 @@ UITableViewDataSource
     shanghu.font=[UIFont systemFontOfSize:13];
     
     shanghu.adjustsFontSizeToFitWidth = YES;
+    
     [view addSubview:shanghu];
     
     UIView* view1 = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2, 5, SCREEN_WIDTH/2-10, 30)];

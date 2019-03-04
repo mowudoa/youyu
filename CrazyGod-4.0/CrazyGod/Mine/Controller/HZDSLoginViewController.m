@@ -25,14 +25,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+   
     [self initUI];
     
 }
 -(void)initUI
 {
-    _loginButton.layer.cornerRadius = _loginButton.frame.size.height/16*9;
-    
-    _loginButton.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_loginButton.frame.size.height/16*9 withView:_loginButton];
     
 }
 - (IBAction)clickRegister:(UIButton *)sender {
@@ -112,8 +111,10 @@
     if([WXApi isWXAppInstalled]){//判断用户是否已安装微信App
         
         SendAuthReq *req = [[SendAuthReq alloc] init];
+     
         req.state = @"wx_oauth_authorization_state";//用于保持请求和回调的状态，授权请求或原样带回
         req.scope = @"snsapi_userinfo";//授权作用域：获取用户个人信息
+        
         [WXApi sendReq:req];//发起微信授权请求
         
     }else{

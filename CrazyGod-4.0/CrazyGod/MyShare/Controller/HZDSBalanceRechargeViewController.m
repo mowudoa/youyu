@@ -51,9 +51,7 @@ UITableViewDataSource
     
     _payTypeDataSource = [[NSMutableArray alloc] init];
     
-    _rechargeButton.layer.cornerRadius = _rechargeButton.frame.size.height/16*3;
-    
-    _rechargeButton.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_rechargeButton.frame.size.height/16*3 withView:_rechargeButton];
 }
 -(void)registercell
 {
@@ -103,6 +101,7 @@ UITableViewDataSource
             [JKToast showWithText:dic[@"datas"][@"error"]];
             
         }
+        
         [strongSelf.payTypeTableView reloadData];
         
     } fail:^(NSError *error, NSString *url, NSString *Json) {
@@ -113,6 +112,7 @@ UITableViewDataSource
 - (IBAction)recharge:(UIButton *)sender {
     
     if ([_moneyTextField.text isEqualToString:@""] || [_moneyTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+       
         [JKToast showWithText:@"请输入充值金额"];
         
     }else if (_payTypeString == nil) {

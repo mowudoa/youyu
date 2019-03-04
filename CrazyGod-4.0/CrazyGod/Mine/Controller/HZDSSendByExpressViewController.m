@@ -31,9 +31,7 @@
     
     self.navigationItem.title = @"确认发货";
     
-    [_sendGoodsButton.layer setMasksToBounds:YES];
-   
-    [_sendGoodsButton.layer setCornerRadius:5];
+    [WYFTools viewLayer:5 withView:_sendGoodsButton];
     
 }
 - (IBAction)choiceExpress:(UIButton *)sender {

@@ -42,13 +42,9 @@
 }
 -(void)initUI
 {
-    _agreeBUtton.layer.cornerRadius = 3;
+    [WYFTools viewLayer:3 withView:_agreeBUtton];
     
-    _agreeBUtton.layer.masksToBounds = YES;
-    
-    _refuseBUtton.layer.cornerRadius = 3;
-    
-    _refuseBUtton.layer.masksToBounds = YES;
+    [WYFTools viewLayer:3 withView:_refuseBUtton];
     
     self.navigationItem.title = @"通知详情";
 }
@@ -133,6 +129,7 @@
             [JKToast showWithText:dic[@"datas"][@"msg"]];
             
             [self.navigationController popViewControllerAnimated:YES];
+            
         }else{
             
             [JKToast showWithText:dic[@"datas"][@"error"]];

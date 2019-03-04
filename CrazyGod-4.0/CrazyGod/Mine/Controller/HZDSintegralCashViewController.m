@@ -53,13 +53,9 @@
 -(void)initUI
 {
     
-    _codeButton.layer.cornerRadius = _codeButton.frame.size.height/5;
+    [WYFTools viewLayer:_codeButton.frame.size.height/5 withView:_codeButton];
     
-    _codeButton.layer.masksToBounds = YES;
-    
-    _applyButton.layer.cornerRadius = _applyButton.frame.size.height/16*3;
-    
-    _applyButton.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_codeButton.frame.size.height/5 withView:_codeButton];
     
     if (_myCashType == moneyCashType) {
      
@@ -167,7 +163,8 @@
                 strongSelf.num = 60;
                 
                 [strongSelf.codeButton setTitle:[NSString stringWithFormat:@"(%ld)",(long)(strongSelf.num)] forState:UIControlStateNormal];
-            strongSelf.codeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+            
+                strongSelf.codeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
                 
                 strongSelf.codeButton.enabled = NO;
                 
@@ -181,7 +178,6 @@
         } fail:^(NSError *error, NSString *url, NSString *Json) {
             
         }];
-        
         
     }
     
@@ -296,6 +292,7 @@
 {
     
     if ([_cashNum.text isEqualToString:@""] || [_cashNum.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+       
         [JKToast showWithText:@"提现金额不可为空"];
         
     }else if ([_bankName.text isEqualToString:@""] || [_bankName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){

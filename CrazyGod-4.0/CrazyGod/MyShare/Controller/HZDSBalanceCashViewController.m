@@ -39,9 +39,7 @@
 {
     self.navigationItem.title = @"余额提现";
     
-    _cashButton.layer.cornerRadius = _cashButton.frame.size.height/16*3;
-    
-    _cashButton.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_cashButton.frame.size.height/16*3 withView:_cashButton];
 }
 -(void)initData
 {

@@ -61,8 +61,6 @@ UITableViewDataSource
         
         [self initMoreData];
         
-        [self.enmloyeeListTableView.mj_footer endRefreshing];
-
     }];
     
     self.navigationItem.title = @"员工设置";
@@ -127,6 +125,7 @@ UITableViewDataSource
                 strongSelf.enmloyeeListTableView.hidden = NO;
                 
                 strongSelf.backGroundView.hidden = YES;
+                
             }else{
                 
                 strongSelf.enmloyeeListTableView.hidden = YES;
@@ -170,6 +169,7 @@ UITableViewDataSource
             
             
         }
+        
         [strongSelf.enmloyeeListTableView.mj_header endRefreshing];
 
     } fail:^(NSError *error, NSString *url, NSString *Json) {
@@ -228,11 +228,16 @@ UITableViewDataSource
             
             [strongSelf.enmloyeeListTableView reloadData];
             
+            [strongSelf.enmloyeeListTableView.mj_footer endRefreshing];
+
             if (arr.count > 0) {
                 
             }else{
                 
-                [JKToast showWithText:@"没有更多了"];
+            [JKToast showWithText:NOMOREDATA_STRING];
+                
+            [strongSelf.enmloyeeListTableView.mj_footer endRefreshingWithNoMoreData];
+
             }
         }else{
             
@@ -354,11 +359,10 @@ UITableViewDataSource
     
     [leftBtn setTitle:@"编辑" forState:UIControlStateNormal];
     
-    leftBtn.layer.cornerRadius = 3;
+    [WYFTools viewLayer:3 withView:leftBtn];
     
     leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     
-    leftBtn.layer.masksToBounds = YES;
     
     leftBtn.backgroundColor = [UIColor redColor];
    
@@ -378,9 +382,7 @@ UITableViewDataSource
     
     rightBtn.backgroundColor = [UIColor colorWithHexString:@"46a0fc"];
     
-    rightBtn.layer.cornerRadius = 3;
-    
-    rightBtn.layer.masksToBounds = YES;
+    [WYFTools viewLayer:3 withView:rightBtn];
     
     rightBtn.tag = section;
     

@@ -60,8 +60,6 @@ UITableViewDataSource
         
         [self initMoreData];
         
-        [self.logListTableView.mj_footer endRefreshing];
-
     }];
 }
 -(void)registercell
@@ -109,6 +107,7 @@ UITableViewDataSource
                 HZDSLogListModel *model = [[HZDSLogListModel alloc] init];
                 
                 model.money = [dict1[@"money"] stringValue];
+               
                 model.intro = dict1[@"intro"];
                 
                 model.time = dict1[@"create_time"];
@@ -152,6 +151,7 @@ UITableViewDataSource
                 HZDSLogListModel *model = [[HZDSLogListModel alloc] init];
                 
                 model.money = [dict1[@"money"] stringValue];
+               
                 model.intro = dict1[@"intro"];
                 
                 model.time = dict1[@"create_time"];
@@ -161,12 +161,18 @@ UITableViewDataSource
             
             [strongSelf.logListTableView reloadData];
             
+            [strongSelf.logListTableView.mj_footer endRefreshing];
+
             if (arr.count > 0) {
                 
             }else{
                 
-                [JKToast showWithText:@"没有更多了"];
+                [JKToast showWithText:NOMOREDATA_STRING];
+                
+                [strongSelf.logListTableView.mj_footer endRefreshingWithNoMoreData];
+
             }
+            
         }else{
             
             
@@ -181,7 +187,9 @@ UITableViewDataSource
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    
     return _logListArray.count;
+    
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

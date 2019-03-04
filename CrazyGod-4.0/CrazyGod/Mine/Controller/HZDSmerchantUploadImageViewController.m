@@ -38,13 +38,12 @@ UIImagePickerControllerDelegate
 {
     self.navigationItem.title = @"添加环境图";
     
-    _addImageButton.layer.cornerRadius = _addImageButton.frame.size.height/16*3;
-    
-    _addImageButton.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_addImageButton.frame.size.height/16*3 withView:_addImageButton];
 }
 -(UIImagePickerController *)imagePicker
 {
     if (_imagePicker == nil) {
+       
         _imagePicker = [[UIImagePickerController alloc] init];
         
         _imagePicker.modalPresentationStyle = UIModalPresentationOverFullScreen;

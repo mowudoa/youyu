@@ -62,8 +62,6 @@ UITableViewDelegate
         
         [self initMoreData];
         
-        [self.cahsHistoryTableView.mj_footer endRefreshing];
-
     }];
     
     self.navigationItem.title = @"提现日志";
@@ -145,6 +143,7 @@ UITableViewDelegate
             
             
         }
+        
         [strongSelf.cahsHistoryTableView.mj_header endRefreshing];
         
     } fail:^(NSError *error, NSString *url, NSString *Json) {
@@ -192,11 +191,16 @@ UITableViewDelegate
             
             [strongSelf.cahsHistoryTableView reloadData];
             
+            [strongSelf.cahsHistoryTableView.mj_footer endRefreshing];
+
             if (arr.count > 0) {
                 
             }else{
                 
-                [JKToast showWithText:@"没有更多了"];
+            [JKToast showWithText:NOMOREDATA_STRING];
+                
+            [strongSelf.cahsHistoryTableView.mj_footer endRefreshingWithNoMoreData];
+
             }
             
         }else{
@@ -368,11 +372,9 @@ UITableViewDelegate
     
     [leftBtn setTitle:@"" forState:UIControlStateNormal];
     
-    leftBtn.layer.cornerRadius = 3;
+    [WYFTools viewLayer:3 withView:leftBtn];
     
     leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    
-    leftBtn.layer.masksToBounds = YES;
     
     leftBtn.backgroundColor = [UIColor colorWithHexString:@"#c6c6c6"];
 
@@ -388,9 +390,7 @@ UITableViewDelegate
 
     rightBtn.backgroundColor = [UIColor colorWithHexString:@"#b5b5b5"];
 
-    rightBtn.layer.cornerRadius = 3;
-
-    rightBtn.layer.masksToBounds = YES;
+    [WYFTools viewLayer:3 withView:rightBtn];
 
     rightBtn.tag = section;
 

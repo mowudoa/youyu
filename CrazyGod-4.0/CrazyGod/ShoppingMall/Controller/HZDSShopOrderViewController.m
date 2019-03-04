@@ -53,7 +53,9 @@ UIActionSheetDelegate
     // Do any additional setup after loading the view from its nib.
     
     _payTypeDataSource = [[NSMutableArray alloc] init];
+    
     _shopNameArray = [[NSMutableArray alloc] init];
+    
     _payTypeArray = [[NSMutableArray alloc] init];
     
     [self initUI];
@@ -65,12 +67,9 @@ UIActionSheetDelegate
 {
     self.navigationItem.title = @"订单设定";
     
-    _uploadOrderButton.layer.cornerRadius = _uploadOrderButton.frame.size.height/16*3;
-    
-    _uploadOrderButton.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_uploadOrderButton.frame.size.height/16*3 withView:_uploadOrderButton];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(zhifuchonggongWithMall:) name:@"zhifuchenggongWithMall" object:nil];
-
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(zhifushibaiWithMall:) name:@"zhifushibaiWithall" object:nil];
 
@@ -561,6 +560,7 @@ UIActionSheetDelegate
         
         detail.order_Id = _logId;
     }
+
     detail.order_Url = SHOPPING_MALL_ORDER_DETAIL;
     
     detail.orderPay = @"OrderPay";
@@ -610,7 +610,7 @@ UIActionSheetDelegate
         
         [self getAddressInfo];
         
-    [USER_DEFAULT removeObjectForKey:@"choiceAddress"];
+        [USER_DEFAULT removeObjectForKey:@"choiceAddress"];
         
     }else{
         

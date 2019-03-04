@@ -33,13 +33,9 @@
 {
     self.navigationItem.title = @"绑定手机";
     
-    _linkButton.layer.cornerRadius = _linkButton.frame.size.height/16*3;
+    [WYFTools viewLayer:_linkButton.frame.size.height/16*3 withView:_linkButton];
     
-    _linkButton.layer.masksToBounds = YES;
-    
-    _getCodeButton.layer.cornerRadius = _getCodeButton.frame.size.height/6;
-    
-    _getCodeButton.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_getCodeButton.frame.size.height/6 withView:_getCodeButton];
     
 }
 - (IBAction)getCode:(UIButton *)sender {

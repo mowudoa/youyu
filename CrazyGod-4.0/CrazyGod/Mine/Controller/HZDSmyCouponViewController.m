@@ -74,8 +74,6 @@ couponBtnDelagate
         
         [self initMoreData];
         
-        [self.couponListTableView.mj_footer endRefreshing];
-
     }];
     
     self.navigationItem.title = @"消费券";
@@ -118,15 +116,16 @@ couponBtnDelagate
             
             if (arr.count > 0) {
                
-                strongSelf.couponListTableView.hidden = NO;
+            strongSelf.couponListTableView.hidden = NO;
                 
-                strongSelf.backGroundView.hidden = YES;
+            strongSelf.backGroundView.hidden = YES;
                 
             }else{
                 
-                strongSelf.couponListTableView.hidden = YES;
+            strongSelf.couponListTableView.hidden = YES;
                 
-                strongSelf.backGroundView.hidden = NO;
+            strongSelf.backGroundView.hidden = NO;
+           
             }
             
             
@@ -245,11 +244,16 @@ couponBtnDelagate
             
             [strongSelf.couponListTableView reloadData];
             
+            [strongSelf.couponListTableView.mj_footer endRefreshing];
+
             if (arr.count > 0) {
                 
             }else{
                 
-                [JKToast showWithText:@"没有更多了"];
+                [JKToast showWithText:NOMOREDATA_STRING];
+                
+                [strongSelf.couponListTableView.mj_footer endRefreshingWithNoMoreData];
+
             }
         }else{
             

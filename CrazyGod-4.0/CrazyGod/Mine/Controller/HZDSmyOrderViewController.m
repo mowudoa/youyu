@@ -58,7 +58,9 @@ UITableViewDataSource
     
     // 下拉加载
     self.myOrderListTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+       
         [self initData];
+        
     }];
     __weak __typeof(self) weakSelf = self;
 
@@ -69,19 +71,20 @@ UITableViewDataSource
         
         [self initMoreData];
         
-        [self.myOrderListTableView.mj_footer endRefreshing];
-
     }];
     
     self.navigationItem.title = @"我的订单";
     
     _lineLabel=[[UILabel alloc] initWithFrame:CGRectMake(0,40,SCREEN_WIDTH/3,2)];
+    
     _lineLabel.backgroundColor=[UIColor colorWithHexString:@"FF0270"];
+    
     [self.view addSubview:_lineLabel];
 }
 -(void)registercell
 {
     UINib* nib = [UINib nibWithNibName:@"HZDSOrderTableViewCell" bundle:nil];
+   
     [_myOrderListTableView registerNib:nib forCellReuseIdentifier:@"OrderTableViewCell"];
 }
 -(void)initData
@@ -112,11 +115,13 @@ UITableViewDataSource
             if (arr.count > 0) {
                 
                 strongSelf.myOrderListTableView.hidden = NO;
+               
                 strongSelf.backGroundView.hidden = YES;
                 
             }else{
                 
                 strongSelf.myOrderListTableView.hidden = YES;
+               
                 strongSelf.backGroundView.hidden = NO;
             }
             
@@ -126,9 +131,13 @@ UITableViewDataSource
                 HZDSOrderModel *model = [[HZDSOrderModel alloc] init];
                 
                 model.orderID = dict1[@"order_id"];
+               
                 model.orderImage = dict1[@"photo"];
+                
                 model.orderTitle = dict1[@"title"];
+                
                 model.orderPrice = [dict1[@"total_price"] stringValue];
+                
                 model.orderStatus = dict1[@"status"];
 
                 model.orderType = dict1[@"is_dianping"];
@@ -144,6 +153,7 @@ UITableViewDataSource
             
             
         }
+        
         [strongSelf.myOrderListTableView.mj_header endRefreshing];
         
     } fail:^(NSError *error, NSString *url, NSString *Json) {
@@ -175,9 +185,13 @@ UITableViewDataSource
                 HZDSOrderModel *model = [[HZDSOrderModel alloc] init];
                 
                 model.orderID = dict1[@"order_id"];
+                
                 model.orderImage = dict1[@"photo"];
+                
                 model.orderTitle = dict1[@"title"];
+                
                 model.orderPrice = [dict1[@"total_price"] stringValue];
+                
                 model.orderStatus = dict1[@"status"];
                 
                 model.orderType = dict1[@"is_dianping"];
@@ -189,11 +203,16 @@ UITableViewDataSource
             
             [strongSelf.myOrderListTableView reloadData];
             
+            [strongSelf.myOrderListTableView.mj_footer endRefreshing];
+
             if (arr.count > 0) {
                 
             }else{
                 
-                [JKToast showWithText:@"没有更多了"];
+            [JKToast showWithText:NOMOREDATA_STRING];
+                
+            [strongSelf.myOrderListTableView.mj_footer endRefreshingWithNoMoreData];
+
             }
         }else{
             
@@ -396,11 +415,10 @@ UITableViewDataSource
     
     [leftBtn setTitle:@"" forState:UIControlStateNormal];
     
-    leftBtn.layer.cornerRadius = 3;
+    [WYFTools viewLayer:3 withView:leftBtn];
     
     leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     
-    leftBtn.layer.masksToBounds = YES;
     
     leftBtn.backgroundColor = [UIColor colorWithHexString:@"#ff9980"];
     
@@ -420,9 +438,7 @@ UITableViewDataSource
 
     rightBtn.backgroundColor = [UIColor colorWithHexString:@"#b5b5b5"];
 
-    rightBtn.layer.cornerRadius = 3;
-
-    rightBtn.layer.masksToBounds = YES;
+    [WYFTools viewLayer:3 withView:rightBtn];
 
     rightBtn.tag = section;
 

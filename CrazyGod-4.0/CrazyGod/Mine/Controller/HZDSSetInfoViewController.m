@@ -102,9 +102,7 @@
 {
     self.navigationItem.title = @"账户信息";
     
-    _exitLoginButton.layer.cornerRadius = _exitLoginButton.frame.size.height/16*3;
-    
-    _exitLoginButton.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_exitLoginButton.frame.size.height/16*3 withView:_exitLoginButton];
     
 }
 //余额充值

@@ -75,8 +75,6 @@ UITableViewDataSource
         
         [self initMoreData];
         
-        [self.mallOrderListTableView.mj_footer endRefreshing];
-
     }];
     
     self.navigationItem.title = @"商城订单";
@@ -128,6 +126,7 @@ UITableViewDataSource
             strongSelf.mallOrderListTableView.hidden = YES;
             
             strongSelf.backGroudView.hidden = NO;
+                
             }
             
             
@@ -252,11 +251,15 @@ UITableViewDataSource
             
             [strongSelf.mallOrderListTableView reloadData];
             
+            [strongSelf.mallOrderListTableView.mj_footer endRefreshing];
+
             if (arr.count > 0) {
                 
             }else{
                 
-                [JKToast showWithText:@"没有更多了"];
+            [JKToast showWithText:NOMOREDATA_STRING];
+                
+            [strongSelf.mallOrderListTableView.mj_footer endRefreshingWithNoMoreData];
             }
             
         }else{
@@ -436,11 +439,9 @@ UITableViewDataSource
     
     [leftBtn setTitle:@"" forState:UIControlStateNormal];
     
-    leftBtn.layer.cornerRadius = 3;
+    [WYFTools viewLayer:3 withView:leftBtn];
     
     leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-   
-    leftBtn.layer.masksToBounds = YES;
     
     leftBtn.backgroundColor = [UIColor colorWithHexString:@"#ff9980"];
 
@@ -460,9 +461,7 @@ UITableViewDataSource
 
     rightBtn.backgroundColor = [UIColor colorWithHexString:@"#ff9980"];
 
-    rightBtn.layer.cornerRadius = 3;
-
-    rightBtn.layer.masksToBounds = YES;
+    [WYFTools viewLayer:3 withView:rightBtn];
 
     rightBtn.tag = section;
 

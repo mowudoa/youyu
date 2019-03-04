@@ -65,8 +65,6 @@ UITableViewDataSource
         
         [self initMoreData];
         
-        [self.mallGoodstableView.mj_footer endRefreshing];
-
     }];
 }
 -(UIBarButtonItem*)rightItem
@@ -161,6 +159,7 @@ UITableViewDataSource
             
             
         }
+        
         [strongSelf.mallGoodstableView.mj_header endRefreshing];
         
     } fail:^(NSError *error, NSString *url, NSString *Json) {
@@ -213,11 +212,15 @@ UITableViewDataSource
             
             [strongSelf.mallGoodstableView reloadData];
             
+            [strongSelf.mallGoodstableView.mj_footer endRefreshing];
+
             if (arr.count > 0) {
                 
             }else{
                 
-                [JKToast showWithText:@"没有更多了"];
+                [JKToast showWithText:NOMOREDATA_STRING];
+                
+                [strongSelf.mallGoodstableView.mj_footer endRefreshingWithNoMoreData];
             }
             
         }else{
@@ -286,6 +289,7 @@ UITableViewDataSource
 {
     
     HZDSOrderModel *model = [[HZDSOrderModel alloc] init];
+    
     model = _goodsListArray[section];
     
     UIView* backView = [[UIView alloc]initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, 31)];
@@ -374,11 +378,9 @@ UITableViewDataSource
   
     [leftBtn1 setFrame:CGRectMake(SCREEN_WIDTH-75-75-75, 8, 70, 25)];
 
-    leftBtn1.layer.cornerRadius = 3;
-
+    [WYFTools viewLayer:3 withView:leftBtn1];
+    
     leftBtn1.titleLabel.font = [UIFont systemFontOfSize:14];
-
-    leftBtn1.layer.masksToBounds = YES;
 
     leftBtn1.backgroundColor = [UIColor colorWithHexString:@"#b5b5b5"];
 
@@ -402,11 +404,9 @@ UITableViewDataSource
     
     [leftBtn setTitle:@"编辑" forState:UIControlStateNormal];
     
-    leftBtn.layer.cornerRadius = 3;
+    [WYFTools viewLayer:3 withView:leftBtn];
     
     leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    
-    leftBtn.layer.masksToBounds = YES;
     
     leftBtn.backgroundColor = [UIColor colorWithHexString:@"#ff9980"];
 
@@ -425,9 +425,7 @@ UITableViewDataSource
 
     rightBtn.backgroundColor = [UIColor colorWithHexString:@"#ff9980"];
 
-    rightBtn.layer.cornerRadius = 3;
-
-    rightBtn.layer.masksToBounds = YES;
+    [WYFTools viewLayer:3 withView:rightBtn];
 
     rightBtn.tag = section;
 
@@ -499,6 +497,7 @@ UITableViewDataSource
     add.addgoodsType = addMallGoodsType;
     
     [self.navigationController pushViewController:add animated:YES];
+    
 }
 -(void)viewWillAppear:(BOOL)animated
 {

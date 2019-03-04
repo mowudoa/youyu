@@ -181,7 +181,7 @@ UITableViewDataSource
             
             if (strongSelf.pageNum > [dic[@"currentpgae"] integerValue]) {
              
-            [JKToast showWithText:@"没有更多了"];
+            [JKToast showWithText:NOMOREDATA_STRING];
                 
             [strongSelf.collectionTableView.mj_footer endRefreshing];
 
@@ -478,11 +478,10 @@ UITableViewDataSource
     
     [leftBtn setTitle:@"" forState:UIControlStateNormal];
     
-    leftBtn.layer.cornerRadius = 3;
+    [WYFTools viewLayer:3 withView:leftBtn];
     
     leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     
-    leftBtn.layer.masksToBounds = YES;
     
     leftBtn.backgroundColor = [UIColor colorWithHexString:@"#ff9980"];
 
@@ -500,9 +499,7 @@ UITableViewDataSource
 
     rightBtn.backgroundColor = [UIColor redColor];
 
-    rightBtn.layer.cornerRadius = 3;
-
-    rightBtn.layer.masksToBounds = YES;
+    [WYFTools viewLayer:3 withView:rightBtn];
 
     rightBtn.tag = section;
 

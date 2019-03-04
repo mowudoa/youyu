@@ -24,6 +24,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *orderNum;
 
+@property (weak, nonatomic) IBOutlet UILabel *orderStatusLabel;
+
 @end
 
 @implementation HZDSOrderDetailViewController
@@ -33,6 +35,8 @@
     // Do any additional setup after loading the view from its nib.
     
     self.navigationItem.title = @"订单详情";
+    
+    [WYFTools viewLayer:5 withView:_orderStatusLabel];
     
     [self initData];
 }
@@ -65,6 +69,8 @@
 
             strongSelf.orderNeedPay.text = [NSString stringWithFormat:@"%@元",[dic[@"datas"][@"detail"][@"need_pay"] stringValue]];
 
+            [self initStatusLabel:dic[@"datas"][@"detail"][@"status"]];
+            
         }else{
           
             [JKToast showWithText:dic[@"datas"][@"error"]];
@@ -92,6 +98,24 @@
     return timeString;
     
 }
+-(void)initStatusLabel:(NSString *)orderStatus
+{
+    
+    if ([orderStatus isEqualToString:@"0"]) {
+        
+        _orderStatusLabel.text = @"待付款";
+        
+    }else if ([orderStatus isEqualToString:@"1"]){
+        
+        _orderStatusLabel.text = @"已付款";
+        
+    }else if ([orderStatus isEqualToString:@"8"]){
+        
+        _orderStatusLabel.text = @"已完成";
+    }
+ 
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

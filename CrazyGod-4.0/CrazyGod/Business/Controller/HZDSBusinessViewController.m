@@ -105,7 +105,6 @@ UITableViewDataSource
         
         [self initBackButton];
 
-        
     }else{
         
     }
@@ -182,6 +181,7 @@ UITableViewDataSource
             if (arr.count > 0) {
                 
              strongSelf.backGroundView.hidden = YES;
+             
              strongSelf.businessListTableView.hidden = NO;
                 
             }else{
@@ -219,6 +219,7 @@ UITableViewDataSource
             
             
         }
+        
         [strongSelf.businessListTableView reloadData];
         
     } fail:^(NSError *error, NSString *url, NSString *Json) {
@@ -226,6 +227,7 @@ UITableViewDataSource
         LOG(@"cuow", Json);
         
     }];
+    
     _keyWordString = nil;
     
     _backgroundView.hidden = YES;
@@ -281,6 +283,7 @@ UITableViewDataSource
                     [model.subClassArray addObject:model1];
 
                 }
+                
                 [strongSelf.classArray addObject:model];
             }
             
@@ -325,6 +328,7 @@ UITableViewDataSource
                 HZDSClassifyModel *model2 = [[HZDSClassifyModel alloc] init];
                 
                 model2.classId = str1;
+               
                 model2.className = choiceDic[str1];
                 
                 [strongSelf.choiceArray addObject:model2];
@@ -428,15 +432,12 @@ UITableViewDataSource
         if ([classString isEqualToString:@"1"]) {
           
             cell.nameLabel.text = [NSString stringWithFormat:@"%@(%@)",model1.className,model1.classcont];
-
             
         }else{
             
             cell.nameLabel.text = [NSString stringWithFormat:@"%@",model1.className];
 
         }
-        
-
         
         return cell;
         
@@ -478,6 +479,7 @@ UITableViewDataSource
                 _classIDString = nil;
                 
                 [self initData];
+                
             }else{
                
                 UIButton *btn = [self.headerView viewWithTag:11];
@@ -489,6 +491,7 @@ UITableViewDataSource
                 areaIdString = nil;
 
                 [self initData];
+                
             }
             
         }else{
@@ -551,10 +554,8 @@ UITableViewDataSource
         }
         
         _subClassTableView.hidden = YES;
+        
         _subAreaTableView.hidden = YES;
-        
-        
-        
         
     }else if (tableView == _selectedTableView){
         
@@ -565,7 +566,6 @@ UITableViewDataSource
         [btn setTitle:model.className forState:UIControlStateNormal];
         
         _selectedTableView.hidden = YES;
-        
 
         choiceString = model.classId;
         
@@ -846,6 +846,7 @@ UITableViewDataSource
     _backgroundView.hidden = YES;
     
     NSArray* arr = [_headerView subviews];
+    
     for (id obj in arr) {
        
         if ([obj isKindOfClass:[UIButton class]]) {

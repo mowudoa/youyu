@@ -44,9 +44,7 @@
 
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(zhifushibai:) name:@"zhifushibai" object:nil];
 
-    _payButton.layer.cornerRadius = _payButton.frame.size.height/16*3;
-    
-    _payButton.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_payButton.frame.size.height/16*3 withView:_payButton];
     
     self.navigationItem.title = @"确认支付";
 }

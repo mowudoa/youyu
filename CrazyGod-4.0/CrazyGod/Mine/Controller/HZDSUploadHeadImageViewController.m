@@ -41,9 +41,9 @@ UINavigationControllerDelegate
     
     [_oldImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,[USER_DEFAULT objectForKey:@"face"]]] placeholderImage:[UIImage imageNamed:@"1213per"]];
     
-    _confirmButton.layer.cornerRadius = _confirmButton.frame.size.height/16*3;
+    [WYFTools viewLayer:_oldImage.frame.size.height/2 withView:_oldImage];
     
-    _confirmButton.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_confirmButton.frame.size.height/16*3 withView:_confirmButton];
 }
 -(UIImagePickerController *)imagePicker
 {
@@ -96,6 +96,7 @@ UINavigationControllerDelegate
     if (_headImageString == nil) {
         
         [JKToast showWithText:@"请选择头像图片"];
+        
     }else{
     
         NSDictionary *dic = @{@"avatar":_headImageString};
@@ -179,7 +180,9 @@ UINavigationControllerDelegate
         
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
         NSLog(@"======失败======");
+        
     }];
     
     

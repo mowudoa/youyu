@@ -29,9 +29,7 @@
 {
     self.navigationItem.title = @"修改昵称";
     
-    _changeNickNameButton.layer.cornerRadius = _changeNickNameButton.frame.size.height/16*3;
-    
-    _changeNickNameButton.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_changeNickNameButton.frame.size.height/16*3 withView:_changeNickNameButton];
  
     _nickNameLabel.text = [USER_DEFAULT objectForKey:@"nickname"];
 }
@@ -92,7 +90,6 @@
             [JKToast showWithText:dic[@"datas"][@"msg"]];
             
             [self.navigationController popToRootViewControllerAnimated:YES];
-            
             
         }else{
             

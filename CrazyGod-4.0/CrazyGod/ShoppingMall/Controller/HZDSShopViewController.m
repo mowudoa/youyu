@@ -73,9 +73,7 @@ UICollectionViewDelegateFlowLayout
     
     [self.view addSubview:_lineLabel];
     
-    _followButton.layer.cornerRadius = 10;
-    
-    _followButton.layer.masksToBounds = YES;
+    [WYFTools viewLayer:10 withView:_followButton];
 }
 -(void)registeCell
 {
@@ -86,7 +84,7 @@ UICollectionViewDelegateFlowLayout
 
     self.shopGoodsCollectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         
-        [JKToast showWithText:@"没有更多了"];
+        [JKToast showWithText:NOMOREDATA_STRING];
         
         [self.shopGoodsCollectionView.mj_footer endRefreshing];
         
@@ -272,6 +270,7 @@ UICollectionViewDelegateFlowLayout
         HomeModel *model = _goodsDataSource[indexPath.row];
         
         HZDSMallDetailViewController *detail = [[HZDSMallDetailViewController alloc] init];
+    
         detail.goodsId = model.goodsId;
         
         [self.navigationController pushViewController:detail animated:YES];

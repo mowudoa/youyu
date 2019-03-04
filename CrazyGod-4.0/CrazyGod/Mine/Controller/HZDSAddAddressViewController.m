@@ -44,6 +44,8 @@ UIPickerViewDataSource
 
 @property(nonatomic,strong) UIView *myPickView;
 
+@property(nonatomic,strong) UIView *backGroundView;
+
 @property(nonatomic,strong) NSMutableArray *provinceDataSource;
 
 @property(nonatomic,strong) NSMutableArray *cityDataSource;
@@ -73,16 +75,11 @@ UIPickerViewDataSource
 {
     self.navigationItem.title = @"添加地址";
     
-    [_addressDetailTextView.layer setMasksToBounds:YES];
-    [_addressDetailTextView.layer setCornerRadius:5]; //设置矩形四个圆角半径
-    //边框宽度
-    [_addressDetailTextView.layer setBorderWidth:1.0];
-    //设置边框颜色有两种方法：第一种如下:
-    _addressDetailTextView.layer.borderColor=[UIColor colorWithHexString:@"f5f5f5"].CGColor;
+    [WYFTools viewLayer:5 withView:_addressDetailTextView];
     
-    _addAddressButton.layer.cornerRadius = _addAddressButton.frame.size.height/16*3;
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_addressDetailTextView];
     
-    _addAddressButton.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_addAddressButton.frame.size.height/16*3 withView:_addAddressButton];
     
     if (_addressType == addType) {
         
@@ -93,9 +90,9 @@ UIPickerViewDataSource
         [_addAddressButton setTitle:@"确认编辑" forState:UIControlStateNormal];
 
     }
-    
 
     [WYFTools CreateTextPlaceHolder:@"请填写详细地址" WithFont:[UIFont systemFontOfSize:14] WithSuperView:_addressDetailTextView];
+    
 }
 -(void)initData
 {
@@ -103,6 +100,7 @@ UIPickerViewDataSource
         
         __weak typeof(self) weakSelf = self;
 
+        
         NSDictionary *dic = @{@"address_id":_addressModel.addressId,
                               @"type":@"goods"
                               };
@@ -209,12 +207,14 @@ UIPickerViewDataSource
     
     
 }
+
+//城市分类pickview
 - (UIPickerView *)classPickView {
     
     if (!_classPickView) {
         
-        _classPickView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 44,SCREEN_WIDTH, 200)];
-       
+        _classPickView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 44,SCREEN_WIDTH, 180)];
+        
         _classPickView.delegate = self;
         
         _classPickView.dataSource = self;
@@ -223,13 +223,15 @@ UIPickerViewDataSource
     return _classPickView;
     
 }
+
+//pickview父视图
 -(UIView *)myPickView
 {
     if (!_myPickView) {
         
         _myPickView = [[UIView alloc] initWithFrame:CGRectMake(0,SCREEN_HEIGHT - 344, SCREEN_WIDTH,344)];
         
-        _myPickView.backgroundColor = [UIColor grayColor];
+        _myPickView.backgroundColor = [UIColor whiteColor];
         
         UIButton *rightSureBtn = [UIButton buttonWithType:UIButtonTypeSystem];
        
@@ -250,11 +252,28 @@ UIPickerViewDataSource
         
         [leftCancleButton addTarget:self action:@selector(leftButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         
+        [_myPickView addSubview:leftCancleButton];
+        
         [_myPickView addSubview:self.classPickView];
         
     }
-    
+
     return _myPickView;
+}
+//背景图
+-(UIView *)backGroundView
+{
+    if (!_backGroundView) {
+    
+        _backGroundView = [[UIView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH,SCREEN_HEIGHT)];
+        
+        _backGroundView.backgroundColor = [UIColor colorWithHexString:@"#bababa"];
+        
+        _backGroundView.alpha = 0.5;
+    }
+
+    return _backGroundView;
+    
 }
 - (IBAction)addAddress:(UIButton *)sender {
 
@@ -266,9 +285,6 @@ UIPickerViewDataSource
         
         [self toEditAddress];
     }
-    
-    
-    
 
 }
 - (IBAction)yesOrNo:(UIButton *)sender {
@@ -280,6 +296,7 @@ UIPickerViewDataSource
         _noButton.selected = NO;
         
         _defaultString = @"1";
+        
     }else{
         
         _yesButton.selected = NO;
@@ -316,11 +333,14 @@ UIPickerViewDataSource
     
     [self showPickView:sender.tag - 100];
 
+    [self.view addSubview:self.backGroundView];
+    
     [self.view addSubview:self.myPickView];
  
 }
 -(void)showPickView:(NSInteger)index
 {
+    
     if (index == 0) {
       
         choiceString = @"1";
@@ -341,9 +361,10 @@ UIPickerViewDataSource
                 NSArray* area = dic[@"datas"][@"data"];
                 
                 for (NSDictionary *dict in area) {
+                   
                     HZDSAddressModel* model = [[HZDSAddressModel alloc]init];
                     
-                    model.addressId = [dict[@"id"] stringValue];
+                    model.addressId = dict[@"id"] ;
                     
                     model.address = dict[@"name"];
                     
@@ -351,12 +372,14 @@ UIPickerViewDataSource
                 }
                 
                 [strongSelf.classPickView reloadAllComponents];
+                
+                
             }else{
                 
                 [JKToast showWithText:dic[@"msg"]];
                 
             }
-
+            
             
         } fail:^(NSError *error, NSString *url, NSString *Json) {
             
@@ -368,7 +391,6 @@ UIPickerViewDataSource
     }else if (index == 1){
         
         choiceString = @"2";
-
         
         __weak typeof(self) weakSelf = self;
         
@@ -387,10 +409,11 @@ UIPickerViewDataSource
                 NSArray* area = dic[@"datas"][@"data"];
                 
                 for (NSDictionary *dict in area) {
+                 
                     HZDSAddressModel* model = [[HZDSAddressModel alloc]init];
                     
-                    model.addressId = [dict[@"id"] stringValue];
-                  
+                    model.addressId = dict[@"id"] ;
+
                     model.address = dict[@"name"];
                     
                     [strongSelf.cityDataSource addObject:model];
@@ -434,8 +457,8 @@ UIPickerViewDataSource
                 for (NSDictionary *dict in area) {
                     HZDSAddressModel* model = [[HZDSAddressModel alloc]init];
                     
-                    model.addressId = [dict[@"id"] stringValue];
-                    
+                    model.addressId = dict[@"id"] ;
+
                     model.address = dict[@"name"];
                     
                     [strongSelf.countyDataSource addObject:model];
@@ -456,10 +479,11 @@ UIPickerViewDataSource
         }];
     }
     
-    
 }
-//返回有几列
 
+#define mark PICKVIEWDELEGATE
+
+//返回有几列
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 
 {
@@ -502,6 +526,29 @@ UIPickerViewDataSource
     
 }
 
+//字体大小
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
+    
+    UILabel* pickerLabel = (UILabel*)view;
+    
+    if (!pickerLabel){
+       
+        pickerLabel = [[UILabel alloc] init];
+        
+        pickerLabel.adjustsFontSizeToFitWidth = YES;
+        
+        pickerLabel.font = [UIFont systemFontOfSize:16];
+        
+        [pickerLabel setTextAlignment:NSTextAlignmentCenter];
+        
+        [pickerLabel setBackgroundColor:[UIColor clearColor]];
+    }
+    
+    pickerLabel.text=[self pickerView:pickerView titleForRow:row forComponent:component];
+    
+    return pickerLabel;
+    
+}
 
 //显示的标题
 
@@ -531,7 +578,6 @@ UIPickerViewDataSource
     HZDSAddressModel *model;
   
     if ([choiceString isEqualToString:@"1"]) {
-        
         
         model= _provinceDataSource[row];
         
@@ -567,9 +613,7 @@ UIPickerViewDataSource
 -(void)rightButtonClick:(UIButton *)sender
 {
     
-    
     if ([choiceString isEqualToString:@"1"]) {
-        
         
         if (_provinceModel == nil) {
             
@@ -612,6 +656,9 @@ UIPickerViewDataSource
     }
     
     [_myPickView removeFromSuperview];
+    
+    [self.backGroundView removeFromSuperview];
+
 }
 -(void)leftButtonClick:(UIButton *)sender
 {
@@ -619,7 +666,7 @@ UIPickerViewDataSource
     
     [self.myPickView removeFromSuperview];
     
-    
+    [self.backGroundView removeFromSuperview];
 }
 -(void)toAddAddress
 {
@@ -684,7 +731,6 @@ UIPickerViewDataSource
             
             if (SUCCESS) {
                 
-                
                 [JKToast showWithText:dic[@"datas"][@"msg"]];
                 
                 [self.navigationController popViewControllerAnimated:YES];
@@ -708,6 +754,7 @@ UIPickerViewDataSource
 -(void)toEditAddress
 {
     if ([_userNameTextField.text isEqualToString:@""] || [_userNameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+        
         [JKToast showWithText:@"收货人不可为空"];
     
     }else if ([_phoneTextField.text isEqualToString:@""] || [_phoneTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
@@ -788,6 +835,7 @@ UIPickerViewDataSource
         
     }
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

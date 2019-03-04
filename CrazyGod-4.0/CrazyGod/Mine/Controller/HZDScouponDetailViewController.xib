@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,6 +15,7 @@
                 <outlet property="counponPrice" destination="FaU-6y-NIB" id="3sX-ld-mov"/>
                 <outlet property="couponCode" destination="lNx-A4-lj1" id="FuZ-sK-STS"/>
                 <outlet property="couponNum" destination="8yK-Pn-f80" id="ZWn-jt-1If"/>
+                <outlet property="orderDetailButton" destination="tZN-Go-DhT" id="isM-Ec-bO0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -78,6 +78,21 @@
                     <color key="textColor" red="0.8980392157" green="0.10980392160000001" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZN-Go-DhT">
+                    <rect key="frame" x="109.5" y="470" width="101" height="30"/>
+                    <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="L82-YG-MTJ"/>
+                        <constraint firstAttribute="width" constant="101" id="l3Y-aD-Lt8"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="订单详情">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="orderDetail:" destination="-1" eventType="touchUpInside" id="KdU-fV-Tql"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -92,13 +107,16 @@
                 <constraint firstAttribute="trailing" secondItem="h5G-KH-o7t" secondAttribute="trailing" id="SXj-9e-wo8"/>
                 <constraint firstItem="lNx-A4-lj1" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="c6w-Ex-NKc"/>
                 <constraint firstItem="lNx-A4-lj1" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="35" id="ej1-ak-54M"/>
+                <constraint firstItem="tZN-Go-DhT" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="frg-uT-xfJ"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="8yK-Pn-f80" secondAttribute="trailing" constant="25" id="nlX-dd-fJ3"/>
+                <constraint firstItem="tZN-Go-DhT" firstAttribute="top" secondItem="byy-Cf-Dvf" secondAttribute="bottom" constant="25" id="roQ-rd-ghn"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="lNx-A4-lj1" secondAttribute="trailing" constant="35" id="v5H-ur-Pa6"/>
                 <constraint firstItem="byy-Cf-Dvf" firstAttribute="top" secondItem="lNx-A4-lj1" secondAttribute="bottom" constant="15" id="wz2-jk-alb"/>
                 <constraint firstItem="Myz-Jg-RyW" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="20" id="xG5-ZK-ust"/>
                 <constraint firstItem="Myz-Jg-RyW" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="25" id="yfK-IH-vfe"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="138.75" y="125.70422535211267"/>
         </view>
     </objects>
 </document>

@@ -80,13 +80,9 @@
         _addButton.hidden = YES;
     }
     
-    _checkButton.layer.cornerRadius = _checkButton.frame.size.height/3;
+    [WYFTools viewLayer:_checkButton.frame.size.height/3 withView:_checkButton];
     
-    _checkButton.layer.masksToBounds = YES;
-    
-    _addButton.layer.cornerRadius = _addButton.frame.size.height/16*3;
-    
-    _addButton.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_addButton.frame.size.height/16*3 withView:_addButton];
     
     
     if (_employeeType == editType) {

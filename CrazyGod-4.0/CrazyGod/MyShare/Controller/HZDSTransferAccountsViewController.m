@@ -48,17 +48,12 @@
 {
     self.navigationItem.title = @"转账给好友";
     
-    _transAccountButton.layer.cornerRadius = _transAccountButton.frame.size.height/16*3;
+    [WYFTools viewLayer:_transAccountButton.frame.size.height/16*3 withView:_transAccountButton];
     
-    _transAccountButton.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_getCodeButton.frame.size.height/6 withView:_getCodeButton];
     
-    _getCodeButton.layer.cornerRadius = _getCodeButton.frame.size.height/6;
+    [WYFTools viewLayer:_checkPhoneButton.frame.size.height/6 withView:_checkPhoneButton];
     
-    _getCodeButton.layer.masksToBounds = YES;
-    
-    _checkPhoneButton.layer.cornerRadius = _checkPhoneButton.frame.size.height/6;
-    
-    _checkPhoneButton.layer.masksToBounds = YES;
 }
 -(void)initData
 {
@@ -79,6 +74,7 @@
             strongSelf.phoneNumString = dic[@"datas"][@"MEMBER"][@"mobile"];
             
             strongSelf.formTokenString = dic[@"datas"][@"form_token"];
+            
         }else{
             
             [JKToast showWithText:dic[@"datas"][@"error"]];

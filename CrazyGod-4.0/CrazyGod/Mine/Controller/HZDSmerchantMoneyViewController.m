@@ -41,9 +41,8 @@
 {
     self.navigationItem.title = @"商家资金";
     
-    _merchantIcon.layer.cornerRadius = _merchantIcon.frame.size.height/2;
+    [WYFTools viewLayer:_merchantIcon.frame.size.height/2 withView:_merchantIcon];
     
-    _merchantIcon.layer.masksToBounds = YES;
 }
 -(void)initData
 {
@@ -63,7 +62,6 @@
   
             strongSelf.merchantID.text = [NSString stringWithFormat:@"ID:%@", dic[@"datas"][@"SHOP"][@"shop_id"]];
             
-            
             strongSelf.merchantglod.text = [NSString stringWithFormat:@"当前余额:%@元",[dic[@"datas"][@"MEMBER"][@"gold"] stringValue]];
 
             strongSelf.totalMoney.text = [dic[@"datas"][@"counts"][@"money"] stringValue];
@@ -71,7 +69,6 @@
             strongSelf.yesterdayMoney.text = [dic[@"datas"][@"counts"][@"money_day_yesterday"] stringValue];
 
             strongSelf.todayMoney.text = [dic[@"datas"][@"counts"][@"money_day"] stringValue];
-
             
         }else{
             
@@ -95,7 +92,6 @@
         list.logUrl = MERCHANT_MONEY_LIST;
         
         [self.navigationController pushViewController:list animated:YES];
-        
         
     }else if (sender.tag == 102){
      

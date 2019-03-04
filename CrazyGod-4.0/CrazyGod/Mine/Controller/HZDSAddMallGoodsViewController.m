@@ -149,26 +149,16 @@ UINavigationControllerDelegate
     
     [WYFTools CreateTextPlaceHolder:@"添加商品详情,建议不超过200字,如需上传文章详情图,建议使用电脑端" WithFont:[UIFont systemFontOfSize:14] WithSuperView:_goodsInfoTextView];
     
-    [_addGoodsButton.layer setMasksToBounds:YES];
+    [WYFTools viewLayer:5 withView:_addGoodsButton];
     
-    [_addGoodsButton.layer setCornerRadius:5];
+    [WYFTools viewLayer:5 withView:_buyInfoTextView];
     
-    [_buyInfoTextView.layer setMasksToBounds:YES];
-    
-    [_buyInfoTextView.layer setCornerRadius:5]; //设置矩形四个圆角半径
-    //边框宽度
-    [_buyInfoTextView.layer setBorderWidth:1.0];
-    //设置边框颜色有两种方法：第一种如下:
-    _buyInfoTextView.layer.borderColor=[UIColor colorWithHexString:@"f5f5f5"].CGColor;
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_buyInfoTextView];
     
     
-    [_goodsInfoTextView.layer setMasksToBounds:YES];
+    [WYFTools viewLayer:5 withView:_goodsInfoTextView];
     
-    [_goodsInfoTextView.layer setCornerRadius:5]; //设置矩形四个圆角半径
-    //边框宽度
-    [_goodsInfoTextView.layer setBorderWidth:1.0];
-    //设置边框颜色有两种方法：第一种如下:
-    _goodsInfoTextView.layer.borderColor=[UIColor colorWithHexString:@"f5f5f5"].CGColor;
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_goodsInfoTextView];
 }
 -(void)registercell
 {
@@ -333,6 +323,7 @@ UINavigationControllerDelegate
                 strongSelf.noButton.selected = NO;
                 
                 strongSelf.choiceString = @"0";
+                
             }else{
                 
                 strongSelf.yesButton.selected = NO;
@@ -340,7 +331,9 @@ UINavigationControllerDelegate
                 strongSelf.noButton.selected = YES;
                 
                 strongSelf.choiceString = @"1";
+                
             }
+            
             strongSelf.goodsWeight.text = dic[@"datas"][@"detail"][@"weight"];
 
             strongSelf.goodsMallPrice.text = [dic[@"datas"][@"detail"][@"mall_price"] stringValue];
@@ -854,6 +847,7 @@ UINavigationControllerDelegate
 -(UIImagePickerController *)imagePicker
 {
     if (_imagePicker == nil) {
+        
         _imagePicker = [[UIImagePickerController alloc] init];
        
         _imagePicker.modalPresentationStyle = UIModalPresentationOverFullScreen;
@@ -966,7 +960,9 @@ UINavigationControllerDelegate
         
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+       
         NSLog(@"======失败======");
+        
     }];
     
     

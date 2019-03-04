@@ -83,13 +83,9 @@
     
     self.navigationItem.rightBarButtonItem  =self.rightItem;
     
-    _numLabel.layer.borderColor = [UIColor grayColor].CGColor;
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor grayColor] withView:_numLabel];
     
-    _numLabel.layer.borderWidth = 1;
-    
-    _numLabel.layer.cornerRadius = 3;
-    
-    _numLabel.layer.masksToBounds = YES;
+    [WYFTools viewLayer:3 withView:_numLabel];
     
     _numLabel.text = @"1";
     
@@ -136,8 +132,6 @@
             [strongSelf.headerScrImgArray addObject:@{@"photo":dict[@"detail"][@"photo"]}];
             
             strongSelf.goodsShopID = dict[@"shop"][@"shop_id"];
-
-            
             
             NSArray *picArr = dict[@"pics"];
             
@@ -149,6 +143,7 @@
             }
             
             strongSelf.starView.numofStar = [dic[@"datas"][@"score"] intValue]/10;
+            
             strongSelf.starView.selectingenabled = NO;
             
             
@@ -225,7 +220,6 @@
     label.font = [UIFont systemFontOfSize:13];
     
     label.textColor = [UIColor redColor];
-    
     
 //  //接口返回为html字符串,所以详情用label富文本加载html数据
     UILabel *label1 = [WYFTools createLabelLoadHtml:_goodsInfo withFont:[UIFont systemFontOfSize:12]];

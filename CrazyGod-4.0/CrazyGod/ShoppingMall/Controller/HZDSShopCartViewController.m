@@ -61,14 +61,11 @@ deleteBtnDelagate
     self.navigationItem.title = @"购物车";
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getTotalPrice:) name:@"getToalMoney" object:nil];
-
-    _tagLabel.layer.cornerRadius = _tagLabel.frame.size.height/2;
     
-    _tagLabel.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_tagLabel.frame.size.height/2 withView:_tagLabel];
     
-    _uploadButton.layer.cornerRadius = _uploadButton.frame.size.height/6;
+    [WYFTools viewLayer:_uploadButton.frame.size.height/6 withView:_uploadButton];
     
-    _uploadButton.layer.masksToBounds = YES;
 }
 -(void)initData
 {
@@ -145,6 +142,7 @@ deleteBtnDelagate
             
             strongSelf.cartListTableView.hidden = YES;
         }
+        
         [strongSelf.cartListTableView reloadData];
         
     } fail:^(NSError *error, NSString *url, NSString *Json) {

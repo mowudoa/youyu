@@ -32,9 +32,7 @@
 }
 -(void)initUI
 {
-    _payButton.layer.cornerRadius = _payButton.frame.size.height/16*3;
-    
-    _payButton.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_payButton.frame.size.height/16*3 withView:_payButton];
     
     _orderId.text = [_payInfo[@"log_id"] stringValue];
     

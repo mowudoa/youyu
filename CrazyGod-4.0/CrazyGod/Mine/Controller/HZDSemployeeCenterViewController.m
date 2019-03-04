@@ -38,9 +38,7 @@
 {
     self.navigationItem.title = @"店员中心";
     
-    _titleImage.layer.cornerRadius = _titleImage.frame.size.height/2;
-    
-    _titleImage.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_titleImage.frame.size.height/2 withView:_titleImage];
     
 }
 -(void)initData

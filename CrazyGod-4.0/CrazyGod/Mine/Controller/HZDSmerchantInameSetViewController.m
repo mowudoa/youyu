@@ -58,6 +58,7 @@ UITableViewDataSource
             if (arr.count > 0) {
                
                 strongSelf.imageListTableView.hidden = NO;
+              
                 strongSelf.backgroundView.hidden = YES;
             
             }else{
@@ -282,11 +283,9 @@ UITableViewDataSource
     
     [leftBtn setTitle:@"" forState:UIControlStateNormal];
     
-    leftBtn.layer.cornerRadius = 3;
+    [WYFTools viewLayer:3 withView:leftBtn];
     
     leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    
-    leftBtn.layer.masksToBounds = YES;
     
     leftBtn.backgroundColor = [UIColor colorWithHexString:@"#b5b5b5"];
     
@@ -304,9 +303,7 @@ UITableViewDataSource
 
     rightBtn.backgroundColor = [UIColor colorWithHexString:@"#ff9980"];
 
-    rightBtn.layer.cornerRadius = 3;
-
-    rightBtn.layer.masksToBounds = YES;
+    [WYFTools viewLayer:3 withView:rightBtn];
 
     rightBtn.tag = section;
 

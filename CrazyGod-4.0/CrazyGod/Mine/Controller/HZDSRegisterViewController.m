@@ -37,18 +37,15 @@
     // Do any additional setup after loading the view from its nib.
     
     [self initUI];
+    
 }
 -(void)initUI
 {
     self.navigationItem.title = @"注册";
     
-    _registerButton.layer.cornerRadius = _registerButton.frame.size.height/16*9;
+    [WYFTools viewLayer:_registerButton.frame.size.height/16*9 withView:_registerButton];
     
-    _registerButton.layer.masksToBounds = YES;
-    
-    _codeButton.layer.cornerRadius = _codeButton.frame.size.height/6;
-    
-    _codeButton.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_codeButton.frame.size.height/6 withView:_codeButton];
 
 }
 - (IBAction)getCode:(UIButton *)sender {

@@ -66,9 +66,13 @@ UITableViewDataSource
     // Do any additional setup after loading the view from its nib.
     
     _mallListArray = [[NSMutableArray alloc] init];
+    
     _classArray = [[NSMutableArray alloc] init];
+    
     _areaArray = [[NSMutableArray alloc] init];
+    
     _sortArray = [[NSMutableArray alloc] init];
+    
     _subClassArray = [[NSMutableArray alloc] init];
     
     [self initUI];
@@ -102,7 +106,9 @@ UITableViewDataSource
     // 下拉加载
     self.mallListTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         weakSelf.pageNum = 1;
+       
         [self initData];
+        
     }];
     
     // 上拉刷新
@@ -112,9 +118,8 @@ UITableViewDataSource
 
         [self initMoreData];
 
-        [self.mallListTableView.mj_footer endRefreshing];
-
     }];
+
 }
 
 
@@ -140,17 +145,29 @@ UITableViewDataSource
         
         for (int i = 0 ; i < 3; i++) {
             NSArray* arr = @[@"选择分类",@"选择地区",@"选择排序"];
+            
             UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+           
             [button setFrame:CGRectMake(i*SCREEN_WIDTH/3 , 5, SCREEN_WIDTH/3, 30)];
+            
             [button setTitle:arr[i] forState:UIControlStateNormal];
+            
             button.titleLabel.font = [UIFont systemFontOfSize:15];
+            
             [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            
             [button setTitleColor:[UIColor colorWithHexString:@"#FF6E9A"] forState:UIControlStateSelected];
+            
             [button setBackgroundImage:[UIImage imageNamed:@"arrdown"] forState:UIControlStateNormal];
+            
             [button setBackgroundImage:[UIImage imageNamed:@"arrup"] forState:UIControlStateSelected];
+            
             button.tag = i+10;
+            
             _headerView.userInteractionEnabled = YES;
+            
             [button addTarget:self action:@selector(touchheaderView:) forControlEvents:UIControlEventTouchUpInside];
+            
             [_headerView addSubview:button];
             
         }
@@ -299,22 +316,27 @@ UITableViewDataSource
                 [strongSelf.mallListArray addObject:model];
             }
         
+            [strongSelf.mallListTableView reloadData];
+            
+            [strongSelf.mallListTableView.mj_footer endRefreshing];
+
             if (arr.count > 0) {
                 
             }else{
                 
-                [JKToast showWithText:@"没有更多了"];
+                [JKToast showWithText:NOMOREDATA_STRING];
+
+                [strongSelf.mallListTableView.mj_footer endRefreshingWithNoMoreData];
             }
             
         }
-        [strongSelf.mallListTableView reloadData];
-        
 
     } fail:^(NSError *error, NSString *url, NSString *Json) {
         
         LOG(@"cuow", Json);
         
     }];
+    
     _keyWordString = nil;
     
     _backGroundView.hidden = YES;
@@ -330,7 +352,9 @@ UITableViewDataSource
         __strong typeof(weakSelf) strongSelf = weakSelf;
         
         [strongSelf.classArray removeAllObjects];
+        
         [strongSelf.areaArray removeAllObjects];
+        
         [strongSelf.sortArray removeAllObjects];
         
         if (SUCCESS) {
@@ -365,6 +389,7 @@ UITableViewDataSource
                     [model.subClassArray addObject:model1];
                     
                 }
+                
                 [strongSelf.classArray addObject:model];
             }
             
@@ -400,8 +425,8 @@ UITableViewDataSource
             }
             
         }
-        [self initSortArray];
         
+        [self initSortArray];
         
     } fail:^(NSError *error, NSString *url, NSString *Json) {
         
@@ -583,6 +608,7 @@ UITableViewDataSource
                 _classIDString = nil;
 
                 [self initData];
+                
             }else{
                 
                 UIButton *btn = [self.headerView viewWithTag:11];
@@ -594,10 +620,8 @@ UITableViewDataSource
                 areaIdString = nil;
                 
                 [self initData];
+                
             }
-            
-            
-            
             
         }else{
             
@@ -608,6 +632,7 @@ UITableViewDataSource
             if ([classString isEqualToString:@"1"]) {
                 
                 model =  _classArray[indexPath.row];
+                
             }else{
                 
                 model = _areaArray[indexPath.row];
@@ -659,10 +684,9 @@ UITableViewDataSource
         }
         
         _classTableView.hidden = YES;
+        
         _subClassTableView.hidden = YES;
-        
-        
-        
+    
         
     }else if (tableView == _sortTableview){
         
@@ -678,6 +702,7 @@ UITableViewDataSource
         if ([model.classId isEqualToString:@"0"]) {
             
             choiceString = nil;
+            
         }else{
          
             choiceString = model.classId;
@@ -721,10 +746,15 @@ UITableViewDataSource
     sender.selected = !sender.selected;
     
     NSArray* arr = [_headerView subviews];
+    
     for (id obj in arr) {
+        
         if ([obj isKindOfClass:[UIButton class]]) {
+           
             UIButton* btn = (UIButton*)obj;
+            
             if (btn.tag != sender.tag) {
+            
                 btn.selected = NO;
             }
         }
@@ -737,17 +767,22 @@ UITableViewDataSource
             classString = @"1";
             
             _classTableView.hidden = !sender.selected;
+            
             _sortTableview.hidden = YES;
+            
             _subClassTableView.hidden = YES;
             
             [_classTableView reloadData];
+            
             break;
         case 11:
             
             classString = @"2";
             
             _classTableView.hidden = !sender.selected;
+            
             _sortTableview.hidden = YES;
+            
             _subClassTableView.hidden = YES;
             
             [_classTableView reloadData];
@@ -759,6 +794,7 @@ UITableViewDataSource
             classString = @"3";
             
             _classTableView.hidden = YES;
+            
             _subClassTableView.hidden = YES;
             
             _sortTableview.hidden = !sender.selected;
@@ -769,6 +805,7 @@ UITableViewDataSource
         default:
             break;
     }
+    
     _backGroundView.hidden = !sender.selected;
     
 }
@@ -777,8 +814,11 @@ UITableViewDataSource
     [super viewWillAppear:animated];
     
     _classIDString = nil;
+    
     areaIdString = nil;
+    
     choiceString = nil;
+    
     _classNameString = nil;
     
     [self initView];
@@ -788,13 +828,19 @@ UITableViewDataSource
 {
     
     _subClassTableView.hidden = YES;
+    
     _classTableView.hidden = YES;
+    
     _sortTableview.hidden = YES;
+    
     _backGroundView.hidden = YES;
     
     NSArray* arr = [_headerView subviews];
+    
     for (id obj in arr) {
+        
         if ([obj isKindOfClass:[UIButton class]]) {
+           
             UIButton* btn = (UIButton*)obj;
             
             btn.selected = NO;

@@ -51,15 +51,11 @@ UINavigationControllerDelegate
 -(void)initUI
 {
   
-    [_evaluateTextView.layer setMasksToBounds:YES];
-    [_evaluateTextView.layer setCornerRadius:5]; //设置矩形四个圆角半径
-    //边框宽度
-    [_evaluateTextView.layer setBorderWidth:1.0];
-    //设置边框颜色有两种方法：第一种如下:
-    _evaluateTextView.layer.borderColor=[UIColor colorWithHexString:@"f5f5f5"].CGColor;
+    [WYFTools viewLayer:5 withView:_evaluateTextView];
     
-    [_evaluateButton.layer setMasksToBounds:YES];
-    [_evaluateButton.layer setCornerRadius:5];
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_evaluateTextView];
+    
+    [WYFTools viewLayer:5 withView:_evaluateButton];
     
     self.navigationItem.title = @"商品点评";
     
@@ -105,6 +101,7 @@ UINavigationControllerDelegate
 -(UIImagePickerController *)imagePicker
 {
     if (_imagePicker == nil) {
+      
         _imagePicker = [[UIImagePickerController alloc] init];
         
         _imagePicker.modalPresentationStyle = UIModalPresentationOverFullScreen;
@@ -251,7 +248,9 @@ UINavigationControllerDelegate
         
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+       
         NSLog(@"======失败======");
+        
     }];
     
     

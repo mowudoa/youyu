@@ -268,6 +268,7 @@ cityChoiceDelegate
         [leftCustomView addSubview:button];
         
         _leftItem = [[UIBarButtonItem alloc]initWithCustomView:leftCustomView];
+        
     }
     return _leftItem;
 }
@@ -288,6 +289,7 @@ cityChoiceDelegate
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         
         _rightItem = [[UIBarButtonItem alloc]initWithCustomView:button];
+        
     }
     return _rightItem;
 }
@@ -597,6 +599,7 @@ cityChoiceDelegate
     business.isRootNav = YES;
     
     [self.navigationController pushViewController:business animated:YES];
+    
 }
 -(void)citySleected:(NSString *)lngString withcouponlat:(NSString *)latString
 {
@@ -660,6 +663,7 @@ cityChoiceDelegate
             self.navigationItem.leftBarButtonItem = self.leftItem;
             
             [self reloadData];
+            
         }else{
             
             [JKToast showWithText:dic[@"datas"][@"error"]];

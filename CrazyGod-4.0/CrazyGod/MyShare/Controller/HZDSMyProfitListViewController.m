@@ -50,6 +50,7 @@ UITableViewDataSource
     self.profitListTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
         [self initData];
+        
     }];
     
     __weak __typeof(self) weakSelf = self;
@@ -61,13 +62,12 @@ UITableViewDataSource
         
         [self initMoreData];
         
-        [self.profitListTableView.mj_footer endRefreshing];
-
     }];
     
     _lineLabel=[[UILabel alloc] initWithFrame:CGRectMake(0,40,SCREEN_WIDTH/2,2)];
     
     _lineLabel.backgroundColor=[UIColor colorWithHexString:@"FF0270"];
+    
     
     [self.view addSubview:_lineLabel];
 }
@@ -137,6 +137,7 @@ UITableViewDataSource
             
             
         }
+        
         [strongSelf.profitListTableView.mj_header endRefreshing];
         
     } fail:^(NSError *error, NSString *url, NSString *Json) {
@@ -184,11 +185,16 @@ UITableViewDataSource
             
             [strongSelf.profitListTableView reloadData];
             
+            [strongSelf.profitListTableView.mj_footer endRefreshing];
+
             if (arr.count > 0) {
                 
             }else{
                 
-                [JKToast showWithText:@"没有更多了"];
+                [JKToast showWithText:NOMOREDATA_STRING];
+                
+                [strongSelf.profitListTableView.mj_footer endRefreshingWithNoMoreData];
+
             }
         }else{
             
@@ -363,7 +369,6 @@ UITableViewDataSource
 - (IBAction)buttonClick:(UIButton *)sender {
 
     NSInteger num = sender.tag - 400;
-    
     
     [self moveLineLabel:num];
 }

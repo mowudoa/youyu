@@ -119,8 +119,8 @@ UITableViewDataSource
     HZDSCityListTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CityListTableViewCell" forIndexPath:indexPath];
     
     HZDSCityListModel *model = [[HZDSCityListModel alloc] init];
+   
     model = _cityListDataSource[indexPath.section];
-    
     
     cell.cityName.text = [model.cityListArray[indexPath.row] objectForKey:@"name"];
     
@@ -188,6 +188,7 @@ UITableViewDataSource
 {
     
     HZDSCityListModel *model = [[HZDSCityListModel alloc] init];
+   
     model = _cityListDataSource[section];
     
     UIView* backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 35)];
@@ -195,6 +196,7 @@ UITableViewDataSource
     backView.backgroundColor = [UIColor whiteColor];
     
     UILabel* keyLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 5, SCREEN_WIDTH - 40, 25)];
+    
     keyLabel.text = model.citysFirstKey;
     
     keyLabel.textAlignment = NSTextAlignmentLeft;
@@ -204,7 +206,6 @@ UITableViewDataSource
     keyLabel.adjustsFontSizeToFitWidth = YES;
     
     [backView addSubview:keyLabel];
-    
     
     UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,34,SCREEN_WIDTH,1)];
     

@@ -35,9 +35,7 @@
 {
     self.navigationItem.title = @"我的领导";
     
-    _headerImage.layer.cornerRadius = _headerImage.frame.size.height/2;
-    
-    _headerImage.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_headerImage.frame.size.height/2 withView:_headerImage];
 }
 -(void)initData
 {

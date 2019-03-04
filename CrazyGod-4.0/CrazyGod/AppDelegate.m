@@ -24,7 +24,6 @@ WXApiDelegate
     
     self.window = [[crazyShakeWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     
-    
     _tabBarControll = [[XTBaseTabBarViewController alloc]init];
     
     self.window.rootViewController = _tabBarControll;

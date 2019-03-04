@@ -31,13 +31,10 @@
 {
     self.navigationItem.title = @"抢购券验证";
     
-    _checkButton.layer.cornerRadius = _checkButton.frame.size.height/16*3;
+    [WYFTools viewLayer:_checkButton.frame.size.height/16*3 withView:_checkButton];
     
-    _checkButton.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_checkHistoryButton.frame.size.height/16*3 withView:_checkHistoryButton];
     
-    _checkHistoryButton.layer.cornerRadius = _checkHistoryButton.frame.size.height/16*3;
-    
-    _checkHistoryButton.layer.masksToBounds = YES;
 }
 - (IBAction)check:(UIButton *)sender {
 

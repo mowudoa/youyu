@@ -40,13 +40,9 @@
 {
     self.navigationItem.title = @"修改支付密码";
     
-    _changeButton.layer.cornerRadius = _changeButton.frame.size.height/16*3;
+    [WYFTools viewLayer:_changeButton.frame.size.height/16*3 withView:_changeButton];
     
-    _changeButton.layer.masksToBounds = YES;
-    
-    _getCodeButton.layer.cornerRadius = _getCodeButton.frame.size.height/6;
-    
-    _getCodeButton.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_getCodeButton.frame.size.height/6 withView:_changeButton];
 }
 -(void)initData
 {
@@ -60,7 +56,6 @@
         __strong typeof(weakSelf) strongSelf = weakSelf;
         
         if (SUCCESS) {
-            
             
             strongSelf.phoneNumString = dic[@"datas"][@"mobile"];
             
@@ -79,7 +74,6 @@
 
     __weak typeof(self) weakSelf = self;
     
-    
     NSDictionary *urlDic = @{@"mobile":_phoneNumString};
     [CrazyNetWork CrazyRequest_Post:TRANSACCOUNT_GETCODE parameters:urlDic HUD:NO success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
@@ -95,7 +89,8 @@
             strongSelf.num = 60;
             
             [strongSelf.getCodeButton setTitle:[NSString stringWithFormat:@"(%ld)",(long)(strongSelf.num)] forState:UIControlStateNormal];
-        strongSelf.getCodeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+       
+            strongSelf.getCodeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
             
             strongSelf.getCodeButton.enabled = NO;
             

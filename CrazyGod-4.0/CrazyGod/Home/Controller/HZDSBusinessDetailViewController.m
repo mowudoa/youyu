@@ -333,6 +333,7 @@ UICollectionViewDataSource
         label.text = @"商家推荐";
 
     }
+    
     label.textColor = [UIColor blackColor];
    
     label.font = [UIFont boldSystemFontOfSize:13];
@@ -345,9 +346,7 @@ UICollectionViewDataSource
 }
 -(void)reloadData
 {
-    _businessIcon.layer.cornerRadius = _businessIcon.frame.size.height/2;
-    
-    _businessIcon.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_businessIcon.frame.size.height/2 withView:_businessIcon];
     
     [WYFTools createTagLabel:[UIFont systemFontOfSize:12] tagArray:_tagsArray itemSpace:2 itemHeight:20 currentX:0 currentY:0 superView:_tagsView];
     

@@ -117,14 +117,9 @@
     
     height1 = [WYFTools heightWithCreateTagLabel:[UIFont systemFontOfSize:12] tagArray:_historySearchArray itemSpace:2 itemHeight:20 currentX:0 currentY:0 superView:_historySearch action:@selector(click1:) vc:self buttonUserEnable:YES];
     
-    //边框宽度
-    [_businessBtn.layer setBorderWidth:1.0];
-    //设置边框颜色有两种方法：第一种如下:
-    _businessBtn.layer.borderColor=[UIColor colorWithHexString:@"f5f5f5"].CGColor;
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_businessBtn];
     
-    [_textbackgroundView.layer setBorderWidth:1.0];
-    //设置边框颜色有两种方法：第一种如下:
-    _textbackgroundView.layer.borderColor=[UIColor colorWithHexString:@"f5f5f5"].CGColor;
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_textbackgroundView];
     
 }
 -(void)click:(UIButton *)sender
@@ -163,6 +158,7 @@
     business.isRootNav = YES;
     
     [self.navigationController pushViewController:business animated:YES];
+    
 }
 -(void)viewWillAppear:(BOOL)animated
 {

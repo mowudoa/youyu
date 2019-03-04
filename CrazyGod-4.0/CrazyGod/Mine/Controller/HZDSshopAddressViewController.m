@@ -53,9 +53,7 @@ deleteBtnDelagate
   
     [_addressListTableView registerNib:nib forCellReuseIdentifier:@"AddressTableViewCell"];
     
-    _addAddressbutton.layer.cornerRadius = _addAddressbutton.frame.size.height/16*3;
-    
-    _addAddressbutton.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_addAddressbutton.frame.size.height/16*3 withView:_addAddressbutton];
 }
 -(void)requestData
 {
@@ -68,10 +66,13 @@ deleteBtnDelagate
     if (_orderID != nil) {
       
     [dic setObject:_orderID forKey:@"order_id"];
+        
     }
+    
     if (_LogID != nil) {
         
     [dic setObject:_LogID forKey:@"log_id"];
+        
     }
     
     [CrazyNetWork CrazyRequest_Get:[NSString stringWithFormat:@"%@%@",HEADURL,ADDRESS_LIST] parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {

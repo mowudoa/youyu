@@ -29,10 +29,9 @@
     [_selectedButton setImage:[UIImage imageNamed:@"radioed.png"] forState:UIControlStateSelected];
     [_selectedButton setImage:[UIImage imageNamed:@"radio.png"] forState:UIControlStateNormal];
     
-    _numLabel.layer.cornerRadius = 4;
+    [WYFTools viewLayer:4 withView:_numLabel];
     
-    _numLabel.layer.borderColor = [UIColor blackColor].CGColor;
-    _numLabel.layer.borderWidth = 1;
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor blackColor] withView:_numLabel];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(done:) name:@"doneAction" object:nil];
     

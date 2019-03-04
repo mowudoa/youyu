@@ -50,13 +50,9 @@
 {
     self.navigationItem.title = @"提交订单";
 
-    _numLabel.layer.borderColor = [UIColor grayColor].CGColor;
-   
-    _numLabel.layer.borderWidth = 0.5;
+    [WYFTools viewLayerBorderWidth:0.5 borderColor:[UIColor grayColor] withView:_numLabel];
     
-    _uploadButton.layer.cornerRadius = _uploadButton.frame.size.height/16*3;
-    
-    _uploadButton.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_uploadButton.frame.size.height/16*3 withView:_uploadButton];
 }
 
 -(void)initData
@@ -93,6 +89,7 @@
             strongSelf.price = [List[@"tuan_price"] stringValue];
             
             strongSelf.phoneLabel.text = dic[@"datas"][@"mobile"];
+            
         }else{
             
             [JKToast showWithText:dic[@"msg"]];
@@ -151,9 +148,11 @@
         if (![self.numLabel.text isEqualToString:@"1"]) {
             
             num --;
+            
         }else{
             
             [JKToast showWithText:@"商品数不能少于1"];
+            
             return;
         }
     }else

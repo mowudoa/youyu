@@ -41,9 +41,8 @@
 {
     self.navigationItem.title = @"商家积分";
     
-    _headerIcon.layer.cornerRadius = _headerIcon.frame.size.height/2;
+    [WYFTools viewLayer:_headerIcon.frame.size.height/2 withView:_headerIcon];
     
-    _headerIcon.layer.masksToBounds = YES;
 }
 -(void)initData
 {

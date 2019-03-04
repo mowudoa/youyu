@@ -31,9 +31,7 @@
 {
     self.navigationItem.title = @"修改密码";
     
-    _changeButton.layer.cornerRadius = _changeButton.frame.size.height/16*3;
-    
-    _changeButton.layer.masksToBounds = YES;
+    [WYFTools viewLayer:_changeButton.frame.size.height/16*3 withView:_changeButton];
     
 }
 - (IBAction)changePassWord:(UIButton *)sender {
