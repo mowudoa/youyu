@@ -146,6 +146,7 @@ couponBtnDelagate
                     model.couponTite = dict1[@"title"];
                     
                 }
+                
                 if (dict1[@"shop_name"] == NULL || dict1[@"shop_name"] == nil || dict1[@"shop_name"] == [NSNull null]) {
                     
                     model.couponShop = @"";

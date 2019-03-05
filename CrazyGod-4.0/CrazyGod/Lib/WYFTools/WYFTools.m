@@ -350,6 +350,27 @@ static WYFTools *god = nil;
     
 }
 
+//MJ适配iOS11
++(void)autuLayoutNewMJ:(UIScrollView *)scrollview
+{
+    if (@available(iOS 11.0, *)) {
+        
+        if ([scrollview isKindOfClass:[UITableView class]]) {
+            // iOS 11的tableView自动算高默认自动开启，不想使用则要这样关闭
+            UITableView *tableView = (UITableView *)scrollview;
+            
+            tableView.estimatedRowHeight = 0;
+            
+            tableView.estimatedSectionHeaderHeight = 0;
+            
+            tableView.estimatedSectionFooterHeight = 0;
+        }
+        
+        scrollview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
+    
+}
+
 //单例
 +(WYFTools *)shardGodlike
 {

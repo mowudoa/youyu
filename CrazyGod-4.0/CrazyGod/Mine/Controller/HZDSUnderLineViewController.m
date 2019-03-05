@@ -505,7 +505,6 @@ UIPickerViewDataSource
     return _imagePicker;
 }
 //选择器背景图
-//背景图
 -(UIView *)backgroundView
 {
     if (!_backgroundView) {

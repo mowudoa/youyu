@@ -261,7 +261,7 @@
 -(UIView*)headScrollView
 {
     if (_headScrollView == nil) {
-        _headScrollView = [[scrollPhotos alloc]initWithFrame:CGRectMake(0 , 0, SCREEN_WIDTH, SCREEN_WIDTH/8*5)];
+        _headScrollView = [[scrollPhotos alloc]initWithFrame:CGRectMake(0 , 0, SCREEN_WIDTH, SCREEN_WIDTH)];
         _headScrollView.delegate = self;
         
         _headScrollView.photos = _headerScrImgArray;

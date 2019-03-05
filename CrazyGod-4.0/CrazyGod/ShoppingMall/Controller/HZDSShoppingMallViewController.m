@@ -567,7 +567,7 @@ UICollectionViewDelegateFlowLayout
         
     }else if (indexPath.section == 1){
         
-        return CGSizeMake((_shoppingMallCollectionView.frame.size.width-10)/2-2, ((_shoppingMallCollectionView.frame.size.width-10)/2-2)*0.6);
+        return CGSizeMake((_shoppingMallCollectionView.frame.size.width-10)/2-2, ((_shoppingMallCollectionView.frame.size.width-10)/2-2)*0.8);
         
     }else if (indexPath.section == 4){
         

@@ -139,7 +139,7 @@
 {
     if (_headView == nil) {
        
-        _headView = [[scrollPhotos alloc]initWithFrame:CGRectMake(0 , 0, SCREEN_WIDTH, SCREEN_WIDTH/8*5)];
+        _headView = [[scrollPhotos alloc]initWithFrame:CGRectMake(0 , 0, SCREEN_WIDTH, SCREEN_WIDTH)];
        
         _headView.delegate = self;
         

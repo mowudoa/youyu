@@ -40,14 +40,14 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="999"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h50-jc-Wj9">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" secondItem="h50-jc-Wj9" secondAttribute="height" multiplier="8:5" id="oVg-Kk-q2n"/>
+                                        <constraint firstAttribute="width" secondItem="h50-jc-Wj9" secondAttribute="height" multiplier="1:1" id="jxA-u4-t28"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S4z-1v-e70">
-                                    <rect key="frame" x="0.0" y="208" width="320" height="128"/>
+                                    <rect key="frame" x="0.0" y="328" width="320" height="128"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2v-ow-C4I">
                                             <rect key="frame" x="8" y="15" width="304" height="21"/>
@@ -123,7 +123,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y1g-Fe-CIa">
-                                    <rect key="frame" x="0.0" y="378" width="320" height="60"/>
+                                    <rect key="frame" x="0.0" y="498" width="320" height="60"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="098-ZD-7pV">
                                             <rect key="frame" x="20" y="0.0" width="130" height="30"/>
@@ -204,7 +204,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q4Q-jN-Eao">
-                                    <rect key="frame" x="0.0" y="446" width="320" height="31"/>
+                                    <rect key="frame" x="0.0" y="566" width="320" height="31"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商家详情" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sfC-Ad-Upw">
                                             <rect key="frame" x="20" y="7" width="54" height="17"/>
@@ -244,7 +244,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p4K-2G-POy">
-                                    <rect key="frame" x="0.0" y="337" width="320" height="40"/>
+                                    <rect key="frame" x="0.0" y="457" width="320" height="40"/>
                                     <subviews>
                                         <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gKi-9I-Vx7" customClass="commentStar">
                                             <rect key="frame" x="10" y="7.5" width="140" height="25"/>

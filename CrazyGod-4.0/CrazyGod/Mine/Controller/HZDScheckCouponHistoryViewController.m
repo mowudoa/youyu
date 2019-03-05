@@ -125,6 +125,7 @@ UITableViewDataSource
                     model.couponTite = @"";
 
                 }else{
+                    
                     model.couponTite = dict1[@"title"];
 
                 }

@@ -120,6 +120,7 @@ UITableViewDataSource
 
     }];
 
+    [WYFTools autuLayoutNewMJ:_mallListTableView];
 }
 
 
@@ -395,7 +396,6 @@ UITableViewDataSource
             
             [strongSelf.areaArray addObject:@"全部地区"];
             
-            
             NSArray *areaArray = dic[@"datas"][@"areas"];
             
             for (NSDictionary *areaDic in areaArray){
@@ -454,7 +454,6 @@ UITableViewDataSource
         [_sortArray addObject:model];
         
     }
-    
     
 }
 #pragma mark - UITableViewDataSource

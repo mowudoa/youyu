@@ -48,6 +48,9 @@
 //给view设置边框
 +(void)viewLayerBorderWidth:(CGFloat)width borderColor:(UIColor *)color withView:(UIView *)currentView;
 
+//MJ适配iOS11
++(void)autuLayoutNewMJ:(UIScrollView *)scrollview;
+
 +(WYFTools *)shardGodlike;
 @property(nonatomic,copy) NSString *str;
 @property(nonatomic,copy) NSString *str1;

@@ -74,7 +74,7 @@ UITableViewDataSource
 
     }
     
-    
+    [WYFTools autuLayoutNewMJ:_integralListTableView];
 }
 -(void)registercell
 {
@@ -123,15 +123,19 @@ UITableViewDataSource
                 model.orderID = dict1[@"money_id"];
                 
                 model.orderTitle = dict1[@"type"];
+                
                 if (strongSelf.myLogType == moneyLogType) {
                     
-                    model.orderPrice = dict1[@"money"];
+                    double money = [dict1[@"money"] doubleValue]/100;
+                    
+                    model.orderPrice = [NSString stringWithFormat:@"%.2f",money];
                     
                 }else if (strongSelf.myLogType == integralLogType){
                     
                     model.orderPrice = [dict1[@"money"] stringValue];
                     
                 }
+                
                 model.orderStatus = dict1[@"intro"];
                 
                 model.orderTime = dict1[@"create_time"];
@@ -181,7 +185,9 @@ UITableViewDataSource
                 
                 if (strongSelf.myLogType == moneyLogType) {
                     
-                    model.orderPrice = dict1[@"money"];
+                    double money = [dict1[@"money"] doubleValue]/100;
+                    
+                    model.orderPrice = [NSString stringWithFormat:@"%.2f",money];
                     
                 }else if (strongSelf.myLogType == integralLogType){
                     
@@ -200,6 +206,7 @@ UITableViewDataSource
             [strongSelf.integralListTableView.mj_footer endRefreshing];
 
             if (arr.count > 0) {
+               
                 
             }else{
                 

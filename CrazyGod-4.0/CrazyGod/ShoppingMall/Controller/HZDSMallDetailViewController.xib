@@ -41,14 +41,14 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="999"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wfl-fx-UJJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" secondItem="Wfl-fx-UJJ" secondAttribute="height" multiplier="8:5" id="9H4-P9-hSG"/>
+                                        <constraint firstAttribute="width" secondItem="Wfl-fx-UJJ" secondAttribute="height" multiplier="1:1" id="5iZ-VN-cjA"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Sb-tH-yRo">
-                                    <rect key="frame" x="0.0" y="208" width="320" height="184"/>
+                                    <rect key="frame" x="0.0" y="328" width="320" height="184"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ES-Kc-Utj">
                                             <rect key="frame" x="10" y="15" width="300" height="21"/>

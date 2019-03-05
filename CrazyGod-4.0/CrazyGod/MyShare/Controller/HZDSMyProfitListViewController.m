@@ -102,22 +102,25 @@ UITableViewDataSource
             
             if (arr.count > 0) {
                 
-                strongSelf.profitListTableView.hidden = NO;
+            strongSelf.profitListTableView.hidden = NO;
                 
-                strongSelf.backGroundView.hidden = YES;
+            strongSelf.backGroundView.hidden = YES;
                 
             }else{
                 
-                strongSelf.profitListTableView.hidden = YES;
+            strongSelf.profitListTableView.hidden = YES;
                 
-                strongSelf.backGroundView.hidden = NO;
+            strongSelf.backGroundView.hidden = NO;
+            
             }
             
             for (NSDictionary *dict1 in arr) {
                 
                 HZDSLogListModel *model = [[HZDSLogListModel alloc] init];
                 
-                model.money = dict1[@"money"] ;
+                double money = [dict1[@"money"] doubleValue]/100;
+                
+                model.money = [NSString stringWithFormat:@"%.2f",money];
                 
                 model.listId = dict1[@"log_id"];
                 
@@ -169,8 +172,10 @@ UITableViewDataSource
                 
                 HZDSLogListModel *model = [[HZDSLogListModel alloc] init];
                 
-                model.money = dict1[@"money"] ;
-               
+                double money = [dict1[@"money"] doubleValue]/100;
+                
+                model.money = [NSString stringWithFormat:@"%.2f",money];
+                
                 model.listId = dict1[@"log_id"];
                 
                 model.time = dict1[@"create_time"];
