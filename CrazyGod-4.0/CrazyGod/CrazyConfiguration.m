@@ -12,6 +12,7 @@
 #import "SVProgressHUD.h"
 #import "CrazyGuideView.h"
 #import "UIAlertView+BlocksKit.h"
+
 @implementation CrazyConfiguration
 
 + (instancetype)sharedManager {

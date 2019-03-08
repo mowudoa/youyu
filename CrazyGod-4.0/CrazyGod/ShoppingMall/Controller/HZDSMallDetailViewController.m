@@ -171,8 +171,6 @@
         
     }];
 
-    
-    
 }
 -(UIBarButtonItem*)rightItem
 {

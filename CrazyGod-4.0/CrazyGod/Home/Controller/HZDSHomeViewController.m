@@ -522,10 +522,6 @@ cityChoiceDelegate
         
     }else if (indexPath.section == 2){
         
-        return 164;
-        
-    }else{
-       
         HomeModel *model;
         
         if (_shopArray.count > 0) {
@@ -534,8 +530,12 @@ cityChoiceDelegate
             
             return model.cellHeight;
         }
+        
+        return 164;
+        
+    }else{
      
-        return 103;
+        return HEIGHT(103);
 
     }
     

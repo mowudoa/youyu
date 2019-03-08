@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "AFNetworking.h"
 #import "WXApi.h"
 
 @interface AppDelegate ()<
@@ -28,10 +29,9 @@ WXApiDelegate
     
     self.window.rootViewController = _tabBarControll;
     
+    [self ConfigChcekNetWoring];
+    
     [self checkUserLoginStatus];
-    
-    
-    
     
     [self.window makeKeyAndVisible];
     
@@ -55,7 +55,6 @@ WXApiDelegate
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
 }
 
-
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
@@ -74,6 +73,33 @@ WXApiDelegate
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+//监测网络连接
+-(void)ConfigChcekNetWoring
+{
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        
+        switch (status) {
+                
+            case AFNetworkReachabilityStatusNotReachable:
+                
+                [JKToast showWithText:@"无网络连接"];
+                
+                [USER_DEFAULT setBool:NO forKey:@"isNetwork"];
+                
+                break;
+                
+            default:
+                
+                [USER_DEFAULT setBool:YES forKey:@"isNetwork"];
+                
+                break;
+        }
+        
+    }];
+    
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
 }
 
 -(void)checkUserLoginStatus
@@ -182,7 +208,6 @@ WXApiDelegate
         LOG(@"微信绑定", dic);
         
         if (SUCCESS) {
-            
             
             
         }else{

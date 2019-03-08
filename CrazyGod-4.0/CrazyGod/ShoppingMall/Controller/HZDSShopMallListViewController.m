@@ -147,6 +147,7 @@ UITableViewDataSource
         _headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 30)];
         
         for (int i = 0 ; i < 3; i++) {
+            
             NSArray* arr = @[@"选择分类",@"选择地区",@"选择排序"];
             
             UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -249,7 +250,6 @@ UITableViewDataSource
                 [strongSelf.mallListArray addObject:model];
                 
             }
-            
             
         }
         
@@ -441,7 +441,7 @@ UITableViewDataSource
     
 }
 
-//排序数组,前台写死
+//排序类别数组,由前台写死即可
 -(void)initSortArray
 {
     NSArray *sortId = @[@"0",@"1",@"2",@"3",@"4"];

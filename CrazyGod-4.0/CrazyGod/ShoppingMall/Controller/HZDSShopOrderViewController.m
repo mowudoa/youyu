@@ -639,9 +639,7 @@ UIActionSheetDelegate
     [CrazyNetWork CrazyRequest_Post:[NSString stringWithFormat:@"%@%@",HEADURL,SHOPPING_MALL_ORDER_SET] parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
         LOG(@"获取地址信息", dic);
-        
-        
-        
+                
         __strong typeof(weakSelf) strongSelf = weakSelf;
 
         [strongSelf.shopNameArray removeAllObjects];

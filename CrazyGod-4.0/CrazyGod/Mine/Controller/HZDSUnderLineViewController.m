@@ -392,7 +392,6 @@ UIPickerViewDataSource
     __weak typeof(self) weakSelf = self;
     
     NSDictionary *urlDict = @{@"name":@"cityareas" };
-
     
     [CrazyNetWork CrazyRequest_Post:CITY_LIST parameters:urlDict HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
@@ -476,7 +475,6 @@ UIPickerViewDataSource
                 
                 [model.goodsArray addObject:model2];
             }
-            
             
             [strongSelf.businessCityArray addObject:model];
         }

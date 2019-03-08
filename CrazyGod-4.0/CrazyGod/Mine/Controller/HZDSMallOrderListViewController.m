@@ -586,9 +586,7 @@ UITableViewDataSource
 }
 -(void)tapBtn:(UIButton *)sender
 {
-    
-    
-    
+
     HZDSShopMallModel *model = _mallOrderDataSource[sender.tag];
 
     NSDictionary *dic = @{@"order_id":model.orderID};

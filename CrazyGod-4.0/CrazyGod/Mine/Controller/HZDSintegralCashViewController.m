@@ -55,7 +55,7 @@
     
     [WYFTools viewLayer:_codeButton.frame.size.height/5 withView:_codeButton];
     
-    [WYFTools viewLayer:_codeButton.frame.size.height/5 withView:_codeButton];
+    [WYFTools viewLayer:_applyButton.frame.size.height/5 withView:_applyButton];
     
     if (_myCashType == moneyCashType) {
      

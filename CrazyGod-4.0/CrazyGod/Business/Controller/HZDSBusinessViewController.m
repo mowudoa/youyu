@@ -192,7 +192,6 @@ UITableViewDataSource
              strongSelf.businessListTableView.hidden = YES;
             }
             
-            
             for (NSDictionary *business in arr) {
                 
                 HZDSBusinessModel *model = [[HZDSBusinessModel alloc] init];
@@ -217,7 +216,6 @@ UITableViewDataSource
                 
                 [strongSelf.businessArray addObject:model];
             }
-            
             
         }
         
@@ -318,7 +316,6 @@ UITableViewDataSource
                 
                 [strongSelf.areaArray addObject:model];
             }
-            
             
             NSDictionary *choiceDic = dic[@"datas"][@"order"];
 
@@ -592,10 +589,11 @@ UITableViewDataSource
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    HZDSBusinessModel *model = _businessArray[indexPath.row];
     
     if (tableView == _businessListTableView) {
        
+        HZDSBusinessModel *model = _businessArray[indexPath.row];
+        
         return model.cellHeight;
 
     }else{
@@ -728,7 +726,6 @@ UITableViewDataSource
         }
     }
     
-    
     switch (sender.tag) {
         case 10:
             
@@ -741,6 +738,7 @@ UITableViewDataSource
             _subAreaTableView.hidden = YES;
             
             [_subClassTableView reloadData];
+            
             break;
         case 11:
             

@@ -120,7 +120,12 @@ NSString *encrpty = @"";
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-      //  [JKToast showWithText:@"您的网络不稳定,请重试!"];
+        if ([header isEqualToString:CITY_LIST]) {
+         
+        }else{
+         
+            [JKToast showWithText:@"您的网络不稳定,请重试!"];
+        }
 
         easyfly.block_fail(error,[operation.request.URL absoluteString],operation.responseString);
         

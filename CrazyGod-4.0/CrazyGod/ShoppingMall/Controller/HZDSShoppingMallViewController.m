@@ -183,7 +183,6 @@ UICollectionViewDelegateFlowLayout
                 
                 model.goodsPrice = [dictlist[@"mall_price"] stringValue];
                 
-                
                 [strongSelf.likeArray addObject:model];
             }
             
@@ -197,7 +196,6 @@ UICollectionViewDelegateFlowLayout
                 model.goodsIcon = dictlist[@"photo"];
                 
                 model.goodsId = dictlist[@"goods_id"];
-                
                 
                 [strongSelf.goodArray addObject:model];
             }
@@ -221,7 +219,6 @@ UICollectionViewDelegateFlowLayout
         }
         
         [self reloadData];
-
     [strongSelf.shoppingMallCollectionView.mj_header endRefreshing];
         
     } fail:^(NSError *error, NSString *url, NSString *Json) {
@@ -229,7 +226,6 @@ UICollectionViewDelegateFlowLayout
         LOG(@"cuow", Json);
         
     }];
-
     
 }
 #pragma mark PRIVATE

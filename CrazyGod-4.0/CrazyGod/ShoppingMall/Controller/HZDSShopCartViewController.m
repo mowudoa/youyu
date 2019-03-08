@@ -56,6 +56,7 @@ deleteBtnDelagate
     UINib* nib = [UINib nibWithNibName:@"HZDSCartTableViewCell" bundle:nil];
     
     [_cartListTableView registerNib:nib forCellReuseIdentifier:@"CartTableViewCell"];
+    
 }
 -(void)initUI
 {
