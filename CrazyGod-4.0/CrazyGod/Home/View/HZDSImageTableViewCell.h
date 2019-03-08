@@ -11,4 +11,5 @@
 @interface HZDSImageTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *advImageView;
+
 @end

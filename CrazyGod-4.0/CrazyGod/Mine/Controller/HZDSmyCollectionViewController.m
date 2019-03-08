@@ -28,7 +28,6 @@ UITableViewDataSource
 
 @property(nonatomic,strong) NSMutableArray *collectionMallGoodsListArray;
 
-
 @property(nonatomic,copy) NSString *urlString;
 
 @property(nonatomic,copy) NSString *collectionType;
@@ -38,6 +37,7 @@ UITableViewDataSource
 @property(nonatomic,assign) NSInteger pageNum;
 
 @property(nonatomic,assign) NSInteger totalPage;
+
 @end
 
 @implementation HZDSmyCollectionViewController
@@ -57,6 +57,7 @@ UITableViewDataSource
     [self registercell];
     
     [self initData];
+    
 }
 -(void)initUI
 {
@@ -82,6 +83,10 @@ UITableViewDataSource
         
     }];
     
+    _urlString = COLLECTION_MALLGOODS;
+    
+    _collectionType = @"0";
+    
     self.navigationItem.title = @"商品收藏";
     
     _lineLabel=[[UILabel alloc] initWithFrame:CGRectMake(0,40,SCREEN_WIDTH/3,2)];
@@ -90,9 +95,7 @@ UITableViewDataSource
     
     [self.view addSubview:_lineLabel];
     
-    _urlString = COLLECTION_MALLGOODS;
-   
-    _collectionType = @"0";
+    [WYFTools autuLayoutNewMJ:_collectionTableView];
     
 }
 -(void)registercell
@@ -100,6 +103,7 @@ UITableViewDataSource
     UINib* nib = [UINib nibWithNibName:@"HZDSOrderTableViewCell" bundle:nil];
    
     [_collectionTableView registerNib:nib forCellReuseIdentifier:@"OrderTableViewCell"];
+    
 }
 -(void)initData
 {
@@ -297,7 +301,6 @@ UITableViewDataSource
     
     if ([_collectionType isEqualToString:@"0"]) {
         
-
         return _collectionMallGoodsListArray.count;
         
     }else if ([_collectionType isEqualToString:@"1"]){
@@ -610,7 +613,7 @@ UITableViewDataSource
             break;
     }
     
-    __block CGRect lineFrame  = CGRectMake(_lineLabel.frame.origin.x,_lineLabel.frame.origin.y,SCREEN_WIDTH/3, _lineLabel.frame.size.height);
+    __block CGRect lineFrame  = CGRectMake(_lineLabel.mj_x,_lineLabel.mj_y,SCREEN_WIDTH/3, _lineLabel.height);
     
     [UIView animateWithDuration:0.3 animations:^{
         

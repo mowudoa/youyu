@@ -19,6 +19,7 @@ UITableViewDataSource
 @property (weak, nonatomic) IBOutlet UIView *backGroundView;
 
 @property(nonatomic,strong) NSMutableArray *evaluateListDataSource;
+
 @end
 
 @implementation HZDSMallEvaluateListViewController
@@ -62,7 +63,6 @@ UITableViewDataSource
         dic = @{@"goods_id":_goods_id};
     }
     
-
     [CrazyNetWork CrazyRequest_Post:[NSString stringWithFormat:@"%@%@",HEADURL,_evaluate_url] parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
         LOG(@"点评列表", dic);
@@ -86,6 +86,7 @@ UITableViewDataSource
             strongSelf.backGroundView.hidden = NO;
                 
             strongSelf.evaluateListTableView.hidden = YES;
+                
             }
             
             for (NSDictionary *dic1 in arr) {
@@ -123,8 +124,6 @@ UITableViewDataSource
                 
                 [strongSelf.evaluateListDataSource addObject:model];
             }
-            
-            
             
         }else{
             
@@ -171,11 +170,13 @@ UITableViewDataSource
     cell.userEvaluate.text = model.goodsEvaluate;
     
     cell.starView.numofStar = [model.evaluateScore intValue];;
+    
     cell.starView.selectingenabled = NO;
     
     cell.timeLabel.text = [self ConvertStrToTime:model.evaluateTime];
     
     cell.businessReply.text = [NSString stringWithFormat:@"商家回复:%@",model.businessReply];
+    
 }
 
 #pragma mark - UITableViewDelegate

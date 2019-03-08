@@ -10,7 +10,6 @@
 
 @implementation HZDSCityListModel
 
-
 - (instancetype)init
 {
     self = [super init];

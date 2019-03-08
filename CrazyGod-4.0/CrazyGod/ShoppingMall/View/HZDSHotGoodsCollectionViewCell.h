@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface HZDSHotGoodsCollectionViewCell : UICollectionViewCell
+
 @property (weak, nonatomic) IBOutlet UIImageView *hotImage;
 
 @end

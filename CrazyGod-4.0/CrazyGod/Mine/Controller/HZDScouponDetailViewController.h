@@ -10,7 +10,6 @@
 
 @interface HZDScouponDetailViewController : XTBaseBackViewController
 
-
 @property(nonatomic,copy) NSString *couponId;
 
 @end

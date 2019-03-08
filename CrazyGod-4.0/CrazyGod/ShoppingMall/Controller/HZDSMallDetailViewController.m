@@ -96,14 +96,12 @@
     __weak typeof(self) weakSelf = self;
     
     NSDictionary* dic = @{@"goods_id":_goodsId};
-
     
     [CrazyNetWork CrazyRequest_Post:[NSString stringWithFormat:@"%@%@",HEADURL,SHOPPING_MALL_DETAIL] parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
         LOG(@"产品详情", dic);
         
         __strong typeof(weakSelf) strongSelf = weakSelf;
-        
         
         if (SUCCESS) {
             
@@ -146,7 +144,6 @@
             
             strongSelf.starView.selectingenabled = NO;
             
-            
             strongSelf.evaluateNumLabel.text = [NSString stringWithFormat:@"%@人评价了该商品",dict[@"pingnum"]];
             
             if (dic[@"datas"][@"goodsfavorites"] == NULL || dic[@"datas"][@"goodsfavorites"] == nil ||dic[@"datas"][@"goodsfavorites"] == [NSNull null]) {
@@ -158,7 +155,6 @@
                 strongSelf.collectionImage.image = [UIImage imageNamed:@"星星"];
                 
             }
-            
             
             }else{
                 
@@ -200,6 +196,7 @@
         
         _rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightCustomView];
     }
+    
     return _rightItem;
 }
 
@@ -251,17 +248,20 @@
     
     [_backGroundView addSubview:label3];
     
-    _backGroundView.frame = CGRectMake(0,0,SCREEN_WIDTH, label3.frame.origin.y+label3.frame.size.height+44 + 10);
+    _backGroundView.frame = CGRectMake(0,0,SCREEN_WIDTH, label3.mj_y + label3.height + 10);
     
-    view.frame = CGRectMake(0,_goodsInfoDetailView.mj_y + _goodsInfoDetailView.height + 1,SCREEN_WIDTH,label3.frame.origin.y+label3.frame.size.height + 44 + 10 - _goodsInfoDetailView.mj_y - _goodsInfoDetailView.height - 1);
+    view.frame = CGRectMake(0,_goodsInfoDetailView.mj_y + _goodsInfoDetailView.height + 1,SCREEN_WIDTH,label3.mj_y + label3.height + 10 - _goodsInfoDetailView.mj_y - _goodsInfoDetailView.height - 1);
     
-    _myScrollView.contentSize = CGSizeMake(0,_backGroundView.frame.size.height);
+    _myScrollView.contentSize = CGSizeMake(0,_backGroundView.height);
     
 }
+
 -(UIView*)headScrollView
 {
     if (_headScrollView == nil) {
+        
         _headScrollView = [[scrollPhotos alloc]initWithFrame:CGRectMake(0 , 0, SCREEN_WIDTH, SCREEN_WIDTH)];
+        
         _headScrollView.delegate = self;
         
         _headScrollView.photos = _headerScrImgArray;
@@ -273,6 +273,7 @@
 - (IBAction)numClick:(UIButton *)sender {
 
     if (sender.tag == 10) {
+        
         if (![self.numLabel.text isEqualToString:@"1"]) {
             
             num --;
@@ -372,7 +373,9 @@
                     }
                     if ([str isEqualToString:@"order_id"]) {
                         
-                        order.orderId = [dic[@"datas"][str] stringValue];                    }
+                        order.orderId = [dic[@"datas"][str] stringValue];
+                        
+                    }
                     
                 }
                 

@@ -21,12 +21,14 @@
     // Do any additional setup after loading the view from its nib.
     
     self.navigationItem.title = @"商城管理";
+    
 }
 - (IBAction)orderManage:(UIButton *)sender {
 
     HZDSMallOrderManageViewController *order = [[HZDSMallOrderManageViewController alloc] init];
     
     [self.navigationController pushViewController:order animated:YES];
+    
 }
 - (IBAction)goodsManage:(UIButton *)sender {
 

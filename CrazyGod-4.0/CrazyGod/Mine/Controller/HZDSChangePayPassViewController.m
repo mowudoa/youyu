@@ -9,6 +9,7 @@
 #import "HZDSChangePayPassViewController.h"
 
 @interface HZDSChangePayPassViewController ()
+
 @property (weak, nonatomic) IBOutlet UITextField *oldPayPassWordTF;
 
 @property (weak, nonatomic) IBOutlet UITextField *payPassWordTF;
@@ -24,6 +25,7 @@
 @property(nonatomic,copy) NSString *phoneNumString;
 
 @property(nonatomic,assign) NSInteger num;
+
 @end
 
 @implementation HZDSChangePayPassViewController
@@ -40,9 +42,9 @@
 {
     self.navigationItem.title = @"修改支付密码";
     
-    [WYFTools viewLayer:_changeButton.frame.size.height/16*3 withView:_changeButton];
+    [WYFTools viewLayer:_changeButton.height/16*3 withView:_changeButton];
     
-    [WYFTools viewLayer:_getCodeButton.frame.size.height/6 withView:_changeButton];
+    [WYFTools viewLayer:_getCodeButton.height/6 withView:_changeButton];
 }
 -(void)initData
 {
@@ -109,7 +111,8 @@
 -(void)jishiTimer
 {
     _num--;
-    if (_num<1) {
+    
+    if (_num < 1) {
         _getCodeButton.enabled = YES;
        
         [_getCodeButton setTitle:[NSString stringWithFormat:@"立即获取"] forState:UIControlStateNormal];
@@ -117,6 +120,7 @@
         [_getCodeButton setBackgroundColor:[UIColor redColor]];
         
         return;
+        
     }else
     {
         _getCodeButton.enabled = NO;
@@ -126,6 +130,7 @@
         [_getCodeButton setBackgroundColor:[UIColor colorWithHexString:@"808080"]];
         
         [self performSelector:@selector(jishiTimer) withObject:nil afterDelay:1.0f];
+        
         return;
     }
     

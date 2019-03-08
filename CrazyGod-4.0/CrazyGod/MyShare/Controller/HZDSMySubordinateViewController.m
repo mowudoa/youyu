@@ -69,6 +69,8 @@ UITableViewDataSource
     _lineLabel.backgroundColor=[UIColor colorWithHexString:@"FF0270"];
     
     [self.view addSubview:_lineLabel];
+    
+    [WYFTools autuLayoutNewMJ:_mySubordinateTableView];
 }
 -(void)registercell
 {
@@ -138,7 +140,6 @@ UITableViewDataSource
             [strongSelf.mySubordinateTableView reloadData];
             
         }else{
-            
             
         }
         
@@ -229,7 +230,7 @@ UITableViewDataSource
             break;
     }
     
-    __block CGRect lineFrame  = CGRectMake(_lineLabel.frame.origin.x,_lineLabel.frame.origin.y,SCREEN_WIDTH/2, _lineLabel.frame.size.height);
+    __block CGRect lineFrame  = CGRectMake(_lineLabel.mj_x,_lineLabel.mj_y,SCREEN_WIDTH/2, _lineLabel.height);
     
     [UIView animateWithDuration:0.3 animations:^{
         
@@ -291,7 +292,6 @@ UITableViewDataSource
     cell.userNickName.text = [NSString stringWithFormat:@"昵称:%@",model.nickName];
     
     cell.userEmail.text = [NSString stringWithFormat:@"EMAIL:%@",model.email];
-
     
     return cell;
 }

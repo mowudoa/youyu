@@ -18,6 +18,7 @@
 #import "WXApi.h"
 
 @interface HZDSSetInfoViewController ()
+
 @property (weak, nonatomic) IBOutlet UIButton *userPhoneButton;
 
 @property (weak, nonatomic) IBOutlet UIButton *linkWChatButton;
@@ -63,7 +64,7 @@
             
             }else{
                 
-            strongSelf.authenticationButton.userInteractionEnabled = NO;
+                strongSelf.authenticationButton.userInteractionEnabled = NO;
 
                 [strongSelf.authenticationButton setTitle:@"已认证" forState:UIControlStateNormal];
 
@@ -72,14 +73,14 @@
             
             if ([dic[@"datas"][@"bind"] isKindOfClass:[NSArray class]]) {
              
-            strongSelf.linkWChatButton.userInteractionEnabled = YES;
+                strongSelf.linkWChatButton.userInteractionEnabled = YES;
                 
                 [strongSelf.linkWChatButton setTitle:@"未绑定" forState:UIControlStateNormal];
                 
                 [strongSelf.linkWChatButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             }else{
                 
-            strongSelf.linkWChatButton.userInteractionEnabled = NO;
+                strongSelf.linkWChatButton.userInteractionEnabled = NO;
                 
                 [strongSelf.linkWChatButton setTitle:@"已绑定" forState:UIControlStateNormal];
 
@@ -102,7 +103,7 @@
 {
     self.navigationItem.title = @"账户信息";
     
-    [WYFTools viewLayer:_exitLoginButton.frame.size.height/16*3 withView:_exitLoginButton];
+    [WYFTools viewLayer:_exitLoginButton.height/16*3 withView:_exitLoginButton];
     
 }
 //余额充值
@@ -245,6 +246,7 @@
     [USER_DEFAULT removeObjectForKey:@"payGoodsOrMall"];
     
     [USER_DEFAULT removeObjectForKey:@"xianshang"];
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

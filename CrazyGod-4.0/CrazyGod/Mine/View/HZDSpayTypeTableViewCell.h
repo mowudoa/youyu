@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol selectedBtnDelagate <NSObject>
+
+-(void)selectedButton:(NSInteger)index;
+
+@end
+
 @interface HZDSpayTypeTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *payImage;
@@ -15,4 +21,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *payName;
 
 @property (weak, nonatomic) IBOutlet UIButton *payButton;
+
+@property (nonatomic, weak) id<selectedBtnDelagate> delegate;
+
+
 @end

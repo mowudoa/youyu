@@ -11,4 +11,5 @@
 @interface HZDSShopViewController : XTBaseBackViewController
 
 @property(nonatomic,copy) NSString *shop_id;
+
 @end

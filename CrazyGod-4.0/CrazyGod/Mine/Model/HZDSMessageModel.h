@@ -13,7 +13,9 @@
 @property(copy,nonatomic)NSString* messageID; //消息id
 
 @property(copy,nonatomic)NSString* messageTitle; //消息标题
+
 @property(copy,nonatomic)NSString* messageUrl; //消息链接
+
 @property(copy,nonatomic)NSString* messageTime; //消息时间
 
 @end

@@ -39,7 +39,6 @@ UINavigationControllerDelegate
 
 @property (weak, nonatomic) IBOutlet UIButton *bannerButton2;
 
-
 @property (weak, nonatomic) IBOutlet UITextField *businessTitle;
 
 @property (weak, nonatomic) IBOutlet UITextField *businesssubTitle;
@@ -140,7 +139,6 @@ UINavigationControllerDelegate
 
     }
     
-    
 }
 -(void)initUI
 {
@@ -170,7 +168,6 @@ UINavigationControllerDelegate
     [_classTwoTableView registerNib:nib1 forCellReuseIdentifier:@"SubClassTableViewCell"];
     
     [_freightTypeTableView registerNib:nib1 forCellReuseIdentifier:@"SubClassTableViewCell"];
-    
     
 }
 -(void)initData

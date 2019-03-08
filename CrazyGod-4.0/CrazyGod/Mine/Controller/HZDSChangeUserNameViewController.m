@@ -9,6 +9,7 @@
 #import "HZDSChangeUserNameViewController.h"
 
 @interface HZDSChangeUserNameViewController ()
+
 @property (weak, nonatomic) IBOutlet UITextField *nickNameTextField;
 
 @property (weak, nonatomic) IBOutlet UILabel *nickNameLabel;
@@ -29,7 +30,7 @@
 {
     self.navigationItem.title = @"修改昵称";
     
-    [WYFTools viewLayer:_changeNickNameButton.frame.size.height/16*3 withView:_changeNickNameButton];
+    [WYFTools viewLayer:_changeNickNameButton.height/16*3 withView:_changeNickNameButton];
  
     _nickNameLabel.text = [USER_DEFAULT objectForKey:@"nickname"];
 }

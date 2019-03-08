@@ -41,6 +41,7 @@ UINavigationControllerDelegate
     [self initUI];
     
     [self initData];
+    
 }
 -(void)initUI
 {
@@ -48,7 +49,7 @@ UINavigationControllerDelegate
     
     [WYFTools CreateTextPlaceHolder:@"请输入详细地址" WithFont:[UIFont systemFontOfSize:14.0] WithSuperView:_detailAddress];
     
-    [WYFTools viewLayer:_authenticationButton.frame.size.height/16*3 withView:_authenticationButton];
+    [WYFTools viewLayer:_authenticationButton.height/16*3 withView:_authenticationButton];
     
     [WYFTools viewLayer:5 withView:_detailAddress];
     
@@ -245,7 +246,6 @@ UINavigationControllerDelegate
     } success:^(NSURLSessionDataTask *task, id responseObject) {
         
         NSLog(@"====成功====");
-        
         
         [self saveUrl:responseObject withImage:image];
         

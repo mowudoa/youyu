@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 
 @property (weak, nonatomic) IBOutlet UILabel *userEvaluate;
+
 @property (weak, nonatomic) IBOutlet UIImageView *userIcon;
 
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;

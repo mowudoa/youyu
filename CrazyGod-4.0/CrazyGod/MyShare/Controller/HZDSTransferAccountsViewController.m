@@ -9,6 +9,7 @@
 #import "HZDSTransferAccountsViewController.h"
 
 @interface HZDSTransferAccountsViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *transAccountInfo;
@@ -32,6 +33,7 @@
 @property(nonatomic,copy) NSString *formTokenString;
 
 @property(nonatomic,assign) NSInteger num;
+
 @end
 
 @implementation HZDSTransferAccountsViewController
@@ -48,11 +50,11 @@
 {
     self.navigationItem.title = @"转账给好友";
     
-    [WYFTools viewLayer:_transAccountButton.frame.size.height/16*3 withView:_transAccountButton];
+    [WYFTools viewLayer:_transAccountButton.height/16*3 withView:_transAccountButton];
     
-    [WYFTools viewLayer:_getCodeButton.frame.size.height/6 withView:_getCodeButton];
+    [WYFTools viewLayer:_getCodeButton.height/6 withView:_getCodeButton];
     
-    [WYFTools viewLayer:_checkPhoneButton.frame.size.height/6 withView:_checkPhoneButton];
+    [WYFTools viewLayer:_checkPhoneButton.height/6 withView:_checkPhoneButton];
     
 }
 -(void)initData
@@ -142,6 +144,7 @@
             strongSelf.num = 60;
             
             [strongSelf.getCodeButton setTitle:[NSString stringWithFormat:@"(%ld)",(long)(strongSelf.num)] forState:UIControlStateNormal];
+           
             strongSelf.getCodeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
             
             strongSelf.getCodeButton.enabled = NO;
@@ -225,6 +228,7 @@
 {
     _num--;
     if (_num<1) {
+        
         _getCodeButton.enabled = YES;
         
         [_getCodeButton setTitle:[NSString stringWithFormat:@"立即获取"] forState:UIControlStateNormal];

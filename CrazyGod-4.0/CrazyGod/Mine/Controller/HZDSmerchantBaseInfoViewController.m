@@ -9,6 +9,7 @@
 #import "HZDSmerchantBaseInfoViewController.h"
 
 @interface HZDSmerchantBaseInfoViewController ()
+
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
 
 @property (weak, nonatomic) IBOutlet UITextView *describeTextView;
@@ -45,7 +46,7 @@
     
     [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_describeTextView];
     
-    [WYFTools viewLayer:_editButton.frame.size.height/16*3 withView:_editButton];
+    [WYFTools viewLayer:_editButton.height/16*3 withView:_editButton];
     
     [WYFTools CreateTextPlaceHolder:@"店铺介绍,建议不超过200字!" WithFont:[UIFont systemFontOfSize:14] WithSuperView:_describeTextView];
 }
@@ -81,11 +82,8 @@
                 strongSelf.DeliveryTime.text = [dic[@"datas"][@"ex"][@"delivery_time"] stringValue];
 
             }
-            
-            
-            
+ 
             strongSelf.describeTextView.text = dic[@"datas"][@"ex"][@"details"];
-
             
             }
         

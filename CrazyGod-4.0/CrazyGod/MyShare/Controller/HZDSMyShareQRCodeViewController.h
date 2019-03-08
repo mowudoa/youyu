@@ -11,4 +11,5 @@
 @interface HZDSMyShareQRCodeViewController : XTBaseBackViewController
 
 @property(nonatomic,copy) NSString *userID;
+
 @end

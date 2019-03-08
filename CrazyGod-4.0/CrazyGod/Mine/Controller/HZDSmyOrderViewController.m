@@ -21,8 +21,11 @@ UITableViewDataSource
     
     NSString *couponStatus;
 }
+
 @property (weak, nonatomic) IBOutlet UITableView *myOrderListTableView;
+
 @property (weak, nonatomic) IBOutlet UIView *headerView;
+
 @property (weak, nonatomic) IBOutlet UIView *backGroundView;
 
 @property(nonatomic,strong) UILabel *lineLabel;
@@ -80,6 +83,9 @@ UITableViewDataSource
     _lineLabel.backgroundColor=[UIColor colorWithHexString:@"FF0270"];
     
     [self.view addSubview:_lineLabel];
+    
+    [WYFTools autuLayoutNewMJ:_myOrderListTableView];
+    
 }
 -(void)registercell
 {
@@ -97,8 +103,6 @@ UITableViewDataSource
     NSDictionary *dic = @{@"lastindex":[NSString stringWithFormat:@"%ld",(long)_pageNum],
                           @"aready":couponStatus
                           };
-    
-    
     
     [CrazyNetWork CrazyRequest_Post:MY_ORDER parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
@@ -247,14 +251,14 @@ UITableViewDataSource
             break;
     }
     
-    __block CGRect lineFrame  = CGRectMake(_lineLabel.frame.origin.x,_lineLabel.frame.origin.y,SCREEN_WIDTH/3, _lineLabel.frame.size.height);
+    __block CGRect lineFrame  = CGRectMake(_lineLabel.mj_x,_lineLabel.mj_y,SCREEN_WIDTH/3, _lineLabel.height);
     
     [UIView animateWithDuration:0.3 animations:^{
-        
         
         lineFrame.origin.x = index* SCREEN_WIDTH /3;
         
         self->_lineLabel.frame = lineFrame;
+        
     }];
     
     [self initData];
@@ -305,7 +309,8 @@ UITableViewDataSource
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-       HZDSOrderModel *model = _orderListDataSource[indexPath.section];
+    
+    HZDSOrderModel *model = _orderListDataSource[indexPath.section];
     
     HZDSOrderDetailViewController *detail = [[HZDSOrderDetailViewController alloc] init];
     
@@ -324,6 +329,7 @@ UITableViewDataSource
 {
     
     HZDSOrderModel *model = [[HZDSOrderModel alloc] init];
+    
     model = _orderListDataSource[section];
     
     UIView* backView = [[UIView alloc]initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, 31)];
@@ -367,6 +373,7 @@ UITableViewDataSource
     [view1 addSubview:dingdantime];
     
     return backView;
+    
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -494,10 +501,7 @@ UITableViewDataSource
             leftBtn.backgroundColor = [UIColor colorWithHexString:@"#b5b5b5"];
         }
     }
-    
-    
-    
-    
+      
     return view;
 }
 

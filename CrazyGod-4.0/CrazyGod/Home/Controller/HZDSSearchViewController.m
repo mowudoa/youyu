@@ -10,6 +10,7 @@
 #import "HZDSBusinessViewController.h"
 
 @interface HZDSSearchViewController ()
+
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 
 @property (weak, nonatomic) IBOutlet UIButton *businessBtn;
@@ -27,7 +28,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *keyWordTextField;
 
 @property(nonatomic,strong) NSMutableArray *hotSearchArray;
-
 
 @end
 
@@ -102,7 +102,6 @@
     
     float height1;
     
-    
     for (UIView *view in _historySearch.subviews) {
         
         [view removeFromSuperview];
@@ -113,7 +112,6 @@
     }
     
     height = [WYFTools heightWithCreateTagLabel:[UIFont systemFontOfSize:12] tagArray:_hotSearchArray itemSpace:2 itemHeight:20 currentX:0 currentY:0 superView:_hotSearch action:@selector(click:) vc:(id)self buttonUserEnable:YES];
-
     
     height1 = [WYFTools heightWithCreateTagLabel:[UIFont systemFontOfSize:12] tagArray:_historySearchArray itemSpace:2 itemHeight:20 currentX:0 currentY:0 superView:_historySearch action:@selector(click1:) vc:self buttonUserEnable:YES];
     

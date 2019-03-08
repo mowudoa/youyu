@@ -9,6 +9,7 @@
 #import "HZDSSendByExpressViewController.h"
 
 @interface HZDSSendByExpressViewController ()
+
 @property (weak, nonatomic) IBOutlet UITextField *expressNum;
 
 @property (weak, nonatomic) IBOutlet UIButton *sendGoodsButton;

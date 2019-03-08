@@ -24,6 +24,7 @@ UITableViewDataSource
 @property(nonatomic,assign) NSInteger pageNum;
 
 @property(nonatomic,assign) NSInteger totalPage;
+
 @end
 
 @implementation HZDSingegralListViewController
@@ -75,6 +76,7 @@ UITableViewDataSource
     }
     
     [WYFTools autuLayoutNewMJ:_integralListTableView];
+    
 }
 -(void)registercell
 {

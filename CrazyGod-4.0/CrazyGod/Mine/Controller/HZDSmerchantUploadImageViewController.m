@@ -24,6 +24,7 @@ UIImagePickerControllerDelegate
 @property(strong,nonatomic) UIImagePickerController* imagePicker;
 
 @property(nonatomic,copy) NSString *imageUrlString;
+
 @end
 
 @implementation HZDSmerchantUploadImageViewController
@@ -38,7 +39,8 @@ UIImagePickerControllerDelegate
 {
     self.navigationItem.title = @"添加环境图";
     
-    [WYFTools viewLayer:_addImageButton.frame.size.height/16*3 withView:_addImageButton];
+    [WYFTools viewLayer:_addImageButton.height/16*3 withView:_addImageButton];
+    
 }
 -(UIImagePickerController *)imagePicker
 {
@@ -99,8 +101,6 @@ UIImagePickerControllerDelegate
         
     }
 
-    
-    
 }
 - (IBAction)choiceImage:(UIButton *)sender {
 
@@ -199,6 +199,7 @@ UIImagePickerControllerDelegate
     [_imageButton setImage:image forState:UIControlStateNormal];
     
     _imageUrlString = dic[@"url"];
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

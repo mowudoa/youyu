@@ -91,6 +91,7 @@
     _codeButton.enabled = NO;
     
     _num--;
+    
     if (_num<1) {
         
         _codeButton.enabled = YES;

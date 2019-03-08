@@ -16,9 +16,9 @@ UITableViewDataSource,
 UITableViewDelegate
 >
 {
-    
     NSString *couponStatus;
 }
+
 @property (weak, nonatomic) IBOutlet UITableView *merchantOrderListTableView;
 
 @property (weak, nonatomic) IBOutlet UIView *backGroundView;
@@ -30,6 +30,7 @@ UITableViewDelegate
 @property(nonatomic,assign) NSInteger pageNum;
 
 @property(nonatomic,assign) NSInteger totalPage;
+
 @end
 
 @implementation HZDSmerchantOrderViewController
@@ -45,6 +46,7 @@ UITableViewDelegate
     [self registercell];
     
     [self initData];
+    
 }
 - (IBAction)clickButotn:(UIButton *)sender {
 
@@ -85,6 +87,9 @@ UITableViewDelegate
     _lineLabel.backgroundColor=[UIColor colorWithHexString:@"FF0270"];
    
     [self.view addSubview:_lineLabel];
+    
+    [WYFTools autuLayoutNewMJ:_merchantOrderListTableView];
+    
 }
 -(void)registercell
 {
@@ -260,7 +265,7 @@ UITableViewDelegate
             break;
     }
     
-    __block CGRect lineFrame  = CGRectMake(_lineLabel.frame.origin.x,_lineLabel.frame.origin.y,SCREEN_WIDTH/5, _lineLabel.frame.size.height);
+    __block CGRect lineFrame  = CGRectMake(_lineLabel.mj_x,_lineLabel.mj_y,SCREEN_WIDTH/5, _lineLabel.height);
     
     [UIView animateWithDuration:0.3 animations:^{
         
@@ -513,7 +518,6 @@ UITableViewDelegate
 }
 -(void)tapBtn:(UIButton *)sender
 {
-    
     
   
 }

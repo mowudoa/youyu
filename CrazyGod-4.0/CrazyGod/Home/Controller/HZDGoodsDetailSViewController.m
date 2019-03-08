@@ -72,9 +72,9 @@
     [CrazyNetWork CrazyRequest_Get:[NSString stringWithFormat:@"%@%@",HEADURL,RUSHTOBUYDETAIL] parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
         LOG(@"抢购详情", dic);
-        
 
         [self->_thumbArray removeAllObjects];
+        
         if (SUCCESS) {
             
             // [JKToast showWithText:@"购物车列表"];
@@ -99,7 +99,6 @@
             
             self->rushInfo = List[@"tuandetails"][@"details"];
 
-            
             if (dic[@"datas"][@"tuan_favorites"] == NULL || dic[@"datas"][@"tuan_favorites"] == nil ||dic[@"datas"][@"tuan_favorites"] == [NSNull null]) {
                 
                 self->_collectImage.image = [UIImage imageNamed:@"星星x"];
@@ -187,7 +186,6 @@
     
     label2.textColor = [UIColor redColor];
     
-    
     UILabel *label3 = [WYFTools createLabelLoadHtml:rushInfo withFont:[UIFont systemFontOfSize:12]];
     
     CGSize size1 = [label3.attributedText boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 40, MAXFLOAT) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil].size;
@@ -198,11 +196,11 @@
     
     [_backgroundView addSubview:label3];
     
-    _backgroundView.frame = CGRectMake(0,0,SCREEN_WIDTH, label3.frame.origin.y+label3.frame.size.height+44 + 10);
+    _backgroundView.frame = CGRectMake(0,0,SCREEN_WIDTH, label3.frame.origin.y+label3.height + 10);
     
-    view.frame = CGRectMake(0,_businessDetailView.mj_y + _businessDetailView.height + 1,SCREEN_WIDTH,label3.frame.origin.y+label3.frame.size.height + 44 + 10 - _businessDetailView.mj_y - _businessDetailView.height - 1);
+    view.frame = CGRectMake(0,_businessDetailView.mj_y + _businessDetailView.height + 1,SCREEN_WIDTH,label3.mj_y + label3.height + 10 - _businessDetailView.mj_y - _businessDetailView.height - 1);
     
-    _myScrollView.contentSize = CGSizeMake(0,_backgroundView.frame.size.height);
+    _myScrollView.contentSize = CGSizeMake(0,_backgroundView.height);
     
 }
 //立即购买

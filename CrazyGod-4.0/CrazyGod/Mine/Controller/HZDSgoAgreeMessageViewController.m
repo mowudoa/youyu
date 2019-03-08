@@ -60,7 +60,6 @@
         LOG(@"请求详情", dic);
         
         __strong typeof(weakSelf) strongSelf = weakSelf;
-
         
         if (SUCCESS) {
          
@@ -90,13 +89,11 @@
 }
 - (IBAction)agree:(UIButton *)sender {
 
-    NSDictionary *dic = @{@"worker_id":_workerID                          };
-    
+    NSDictionary *dic = @{@"worker_id":_workerID};
     
     [CrazyNetWork CrazyRequest_Post:MESSAGE_AGREE parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
         LOG(@"同意", dic);
-        
         
         if (SUCCESS) {
             
@@ -122,7 +119,6 @@
     [CrazyNetWork CrazyRequest_Post:MESSAGE_REFUSE parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
         LOG(@"拒绝", dic);
-        
         
         if (SUCCESS) {
             

@@ -10,7 +10,6 @@
 
 @interface HZDSNewMessageViewController : XTBaseBackViewController
 
-
 @property(nonatomic,copy) NSString *messageUrl;
 
 @end

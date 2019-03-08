@@ -35,6 +35,7 @@ deleteBtnDelagate
 @property (weak, nonatomic) IBOutlet UIButton *uploadButton;
 
 @property(nonatomic,strong)NSMutableArray *cartListArray;
+
 @end
 
 @implementation HZDSShopCartViewController
@@ -60,11 +61,12 @@ deleteBtnDelagate
 {
     self.navigationItem.title = @"购物车";
     
+    //通知方便刷新价格
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getTotalPrice:) name:@"getToalMoney" object:nil];
     
-    [WYFTools viewLayer:_tagLabel.frame.size.height/2 withView:_tagLabel];
+    [WYFTools viewLayer:_tagLabel.height/2 withView:_tagLabel];
     
-    [WYFTools viewLayer:_uploadButton.frame.size.height/6 withView:_uploadButton];
+    [WYFTools viewLayer:_uploadButton.height/6 withView:_uploadButton];
     
 }
 -(void)initData
@@ -231,8 +233,6 @@ deleteBtnDelagate
             return;
         }
         
-        
-        
         [CrazyNetWork CrazyRequest_Post:[NSString stringWithFormat:@"%@%@",HEADURL,SHOPPING_MALL_UPLOADORDER] parameters:dict HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
             
             LOG(@"结算", dic);
@@ -241,29 +241,28 @@ deleteBtnDelagate
                 
                 [JKToast showWithText:dic[@"datas"][@"msg"]];
                 
+                HZDSShopOrderViewController *order = [[HZDSShopOrderViewController alloc] init];
                     
-                    HZDSShopOrderViewController *order = [[HZDSShopOrderViewController alloc] init];
+                NSArray *arr = [dic[@"datas"] allKeys];
                     
-                    NSArray *arr = [dic[@"datas"] allKeys];
-                    
-                    for (NSString *str in arr) {
+                for (NSString *str in arr) {
                         
-                        if ([str isEqualToString:@"order_id"]) {
+                    if ([str isEqualToString:@"order_id"]) {
                         
-                            order.orderId = dic[@"datas"][str];
-                        }
-                        if ([str isEqualToString:@"log_id"]) {
-                            
-                            order.logId = dic[@"datas"][str];
-                        }
-                        
+                        order.orderId = dic[@"datas"][str];
                     }
+                    if ([str isEqualToString:@"log_id"]) {
+                            
+                        order.logId = dic[@"datas"][str];
+                    }
+                        
+                }
                 
                 [USER_DEFAULT removeObjectForKey:@"choiceAddress"];
 
-                    order.orderDic = dic;
+                order.orderDic = dic;
                 
-                    [self.navigationController pushViewController:order animated:YES];
+                [self.navigationController pushViewController:order animated:YES];
                             
             }else{
                 
@@ -283,6 +282,9 @@ deleteBtnDelagate
     
     
 }
+
+#pragma mark deleteBtnDelagate
+
 -(void)buttonDelete:(NSString *)goodsId goodsSpec:(NSString *)goodsSpec
 {
     
@@ -319,7 +321,6 @@ deleteBtnDelagate
     if ([USER_DEFAULT boolForKey:@"isLogin"]) {
         
         [self initData];
-
        
     }else{
         
@@ -331,6 +332,7 @@ deleteBtnDelagate
     }
     
 }
+
 -(void)createAlertToAddress
 {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"抱歉,您还没有添加收货地址" preferredStyle:UIAlertControllerStyleAlert];
@@ -344,6 +346,7 @@ deleteBtnDelagate
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     
     [alertController addAction:okAction];
+    
     [alertController addAction:cancelAction];
     
     [self presentViewController:alertController animated:YES completion:^{

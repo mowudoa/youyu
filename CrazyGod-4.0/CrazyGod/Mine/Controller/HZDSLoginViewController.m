@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *passWordTextField;
 
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
+
 @end
 
 @implementation HZDSLoginViewController
@@ -31,7 +32,8 @@
 }
 -(void)initUI
 {
-    [WYFTools viewLayer:_loginButton.frame.size.height/16*9 withView:_loginButton];
+   
+    [WYFTools viewLayer:_loginButton.height/16*9 withView:_loginButton];
     
 }
 - (IBAction)clickRegister:(UIButton *)sender {

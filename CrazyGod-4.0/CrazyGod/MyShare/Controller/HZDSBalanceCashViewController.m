@@ -9,6 +9,7 @@
 #import "HZDSBalanceCashViewController.h"
 
 @interface HZDSBalanceCashViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *tagInfoLabel;
 
 @property (weak, nonatomic) IBOutlet UITextField *moneyNum;
@@ -39,7 +40,8 @@
 {
     self.navigationItem.title = @"余额提现";
     
-    [WYFTools viewLayer:_cashButton.frame.size.height/16*3 withView:_cashButton];
+    [WYFTools viewLayer:_cashButton.height/16*3 withView:_cashButton];
+    
 }
 -(void)initData
 {
@@ -98,7 +100,6 @@
                               @"bank_realname":_bankUser.text,
                               @"code":@"bank"
                               };
-        
         
         [CrazyNetWork CrazyRequest_Post:[NSString stringWithFormat:@"%@",MYBALANCE_CASHSUBMIT] parameters:dic HUD:NO success:^(NSDictionary *dic, NSString *url, NSString *Json) {
             

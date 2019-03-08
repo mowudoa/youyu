@@ -25,6 +25,7 @@ UITableViewDataSource
 @property(nonatomic,assign) NSInteger pageNum;
 
 @property(nonatomic,assign) NSInteger totalPage;
+
 @end
 
 @implementation HZDSNewMessageViewController
@@ -178,7 +179,6 @@ UITableViewDataSource
                     
                 }
                 
-                
                 model.messageTitle = dict1[@"title"];
                 
                 [strongSelf.messageDataSource addObject:model];
@@ -311,7 +311,6 @@ UITableViewDataSource
     return view;
 }
 -(NSString *)ConvertStrToTime:(NSString *)timeStr
-
 {
     
     long long time=[timeStr longLongValue];

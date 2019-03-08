@@ -12,9 +12,11 @@ typedef enum {
     addMallGoodsType,
     editMallGoodsType
 }mallGoodsType;
+
 @interface HZDSAddMallGoodsViewController : XTBaseBackViewController
 
 @property(nonatomic)mallGoodsType addgoodsType;
 
 @property(nonatomic,copy) NSString *goods_id;
+
 @end

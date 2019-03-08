@@ -52,7 +52,8 @@
 
     [WYFTools viewLayerBorderWidth:0.5 borderColor:[UIColor grayColor] withView:_numLabel];
     
-    [WYFTools viewLayer:_uploadButton.frame.size.height/16*3 withView:_uploadButton];
+    [WYFTools viewLayer:_uploadButton.height/16*3 withView:_uploadButton];
+    
 }
 
 -(void)initData
@@ -60,7 +61,6 @@
     NSDictionary* dic = @{@"tuan_id":_goodId};
     
     __weak typeof(self) weakSelf = self;
-
     
     [CrazyNetWork CrazyRequest_Post:[NSString stringWithFormat:@"%@",UPLOAD_ORDER] parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         

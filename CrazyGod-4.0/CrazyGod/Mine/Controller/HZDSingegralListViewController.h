@@ -18,4 +18,5 @@ typedef enum {
 @property(nonatomic)LogType myLogType;
 
 @property(nonatomic,copy) NSString *logUrl;
+
 @end

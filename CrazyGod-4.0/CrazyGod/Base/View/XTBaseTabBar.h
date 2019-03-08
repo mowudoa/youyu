@@ -15,6 +15,7 @@
 -(void)tabBar:(XTBaseTabBar *)tabBar itemIndex:(NSUInteger)index;
 
 @end
+
 @interface XTBaseTabBar : UIView
 
 @property (nonatomic, weak) id<XTBaseTabBarDelegate> delegate;

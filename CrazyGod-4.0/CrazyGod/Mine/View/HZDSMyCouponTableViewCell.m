@@ -33,6 +33,7 @@
     _timeLabel.text = couponModel.couponTime;
 
     _couponTime.adjustsFontSizeToFitWidth = YES;
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

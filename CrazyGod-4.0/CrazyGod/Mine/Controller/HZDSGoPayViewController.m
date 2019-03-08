@@ -44,9 +44,10 @@
 
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(zhifushibai:) name:@"zhifushibai" object:nil];
 
-    [WYFTools viewLayer:_payButton.frame.size.height/16*3 withView:_payButton];
+    [WYFTools viewLayer:_payButton.height/16*3 withView:_payButton];
     
     self.navigationItem.title = @"确认支付";
+    
 }
 - (IBAction)goPay:(UIButton *)sender {
 
@@ -62,7 +63,6 @@
             if (SUCCESS) {
                 
                 [JKToast showWithText:dic[@"datas"][@"msg"]];
-                
                 
                 PayReq *req  = [[PayReq alloc] init];
                 
@@ -98,7 +98,6 @@
         }];
         
     }
-
     
 }
 -(void)zhifuchonggong:(NSNotification*)userinfo
@@ -110,9 +109,11 @@
     detail.orderId = _OrderID;
     
     [self.navigationController pushViewController:detail animated:YES];
+    
 }
 -(void)zhifushibai:(NSNotification*)userinfo
 {
+   
     [JKToast showWithText:@"支付失败"];
         
 }

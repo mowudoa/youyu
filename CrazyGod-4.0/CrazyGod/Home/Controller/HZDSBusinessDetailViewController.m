@@ -83,7 +83,6 @@ UICollectionViewDataSource
         
         LOG(@"首页", dic);
         
-        
         [self->_tableSource removeAllObjects];
         
         [self->_tagsArray removeAllObjects];
@@ -209,6 +208,7 @@ UICollectionViewDataSource
         cell.goodsPrice.adjustsFontSizeToFitWidth = YES;
        
         cell.goodsOldPrice.adjustsFontSizeToFitWidth = YES;
+        
         cell.goodsInfo.adjustsFontSizeToFitWidth = YES;
         
         [cell.goodsImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,model.goodsArray[indexPath.row][@"photo"]]] placeholderImage:[UIImage imageNamed:@"baseImage.png"]];

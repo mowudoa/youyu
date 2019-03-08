@@ -10,6 +10,7 @@
 #import "HomeModel.h"
 
 @interface HZDSHomeTableViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UIView *tagView;
 
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;

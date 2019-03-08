@@ -51,9 +51,9 @@
 {
     self.navigationItem.title = @"商户中心";
     
-    [WYFTools viewLayer:_messageLabel.frame.size.height/3 withView:_messageLabel];
+    [WYFTools viewLayer:_messageLabel.height/3 withView:_messageLabel];
     
-    [WYFTools viewLayer:_headerImage.frame.size.height/2 withView:_headerImage];
+    [WYFTools viewLayer:_headerImage.height/2 withView:_headerImage];
     
 }
 -(void)initData
@@ -169,7 +169,7 @@
 {
     UIView* conView = (UIView*)[_myScrollView viewWithTag:2048];
     
-    _myScrollView.contentSize = CGSizeMake(0, conView.frame.origin.y+conView.frame.size.height + 10);
+    _myScrollView.contentSize = CGSizeMake(0, conView.frame.origin.y+conView.height + 10);
     
 }
 - (void)didReceiveMemoryWarning {

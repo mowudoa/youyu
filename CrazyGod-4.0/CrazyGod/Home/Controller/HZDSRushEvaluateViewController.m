@@ -175,7 +175,6 @@ UINavigationControllerDelegate
         
         [dic addEntriesFromDictionary:dict];
         
-        
         [CrazyNetWork CrazyRequest_Post:MY_ORDER_EVALUATE parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
             
             LOG(@"提交评价", dic);
@@ -205,7 +204,8 @@ UINavigationControllerDelegate
 {
     UIView* conView = (UIView*)[_scrollView viewWithTag:2048];
     
-    _scrollView.contentSize = CGSizeMake(0, conView.frame.origin.y+conView.frame.size.height + 20);
+    _scrollView.contentSize = CGSizeMake(0, conView.mj_y+conView.height + 20);
+    
 }
 #pragma mark ==== UIImagePickerControllerDelegate
 
@@ -257,12 +257,13 @@ UINavigationControllerDelegate
         
         NSLog(@"====成功====");
         
-        
         [self saveUrl:responseObject withImage:image];
         
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
         NSLog(@"======失败======");
+        
     }];
     
     

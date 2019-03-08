@@ -15,6 +15,14 @@
     // Initialization code
 }
 
+- (IBAction)selectedButtonClick:(UIButton *)sender {
+    
+    if ([self.delegate respondsToSelector:@selector(selectedButton:)]) {
+        
+        [self.delegate selectedButton:sender.tag];
+    }
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

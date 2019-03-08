@@ -10,7 +10,6 @@
 
 @interface HZDGoodsDetailSViewController : XTBaseBackViewController
 
-
 @property(copy,nonatomic) NSString *goodsID;
 
 @property(assign,nonatomic) BOOL isHotGoods;

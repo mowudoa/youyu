@@ -11,8 +11,8 @@
 #import "HZDSSendByExpressViewController.h"
 #import "HZDSOrderTableViewCell.h"
 #import "HZDSShopMallModel.h"
-
 #import "HZDSOrderModel.h"
+
 @interface HZDSMallOrderManageViewController ()<
 UITableViewDataSource,
 UITableViewDelegate
@@ -86,6 +86,9 @@ UITableViewDelegate
     _lineLabel.backgroundColor=[UIColor colorWithHexString:@"FF0270"];
    
     [self.view addSubview:_lineLabel];
+    
+    [WYFTools autuLayoutNewMJ:_orderListTableView];
+    
 }
 -(void)registercell
 {

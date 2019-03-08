@@ -67,7 +67,7 @@ UIActionSheetDelegate
 {
     self.navigationItem.title = @"订单设定";
     
-    [WYFTools viewLayer:_uploadOrderButton.frame.size.height/16*3 withView:_uploadOrderButton];
+    [WYFTools viewLayer:_uploadOrderButton.height/16*3 withView:_uploadOrderButton];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(zhifuchonggongWithMall:) name:@"zhifuchenggongWithMall" object:nil];
     
@@ -85,9 +85,9 @@ UIActionSheetDelegate
 -(void)initData
 {
         
-        [_shopNameArray removeAllObjects];
+    [_shopNameArray removeAllObjects];
     
-        [_payTypeDataSource removeAllObjects];
+    [_payTypeDataSource removeAllObjects];
     
     if ([_orderDic[@"datas"][@"defaultAddress"] isKindOfClass:[NSDictionary class]]) {
      
@@ -104,39 +104,40 @@ UIActionSheetDelegate
         [_uploadOrderButton setTitle:@"选择收货地址" forState:UIControlStateNormal];
     }
             
-            NSArray *keysarr = [_orderDic[@"datas"][@"ordergoods"] allKeys];
+        NSArray *keysarr = [_orderDic[@"datas"][@"ordergoods"] allKeys];
             
-            for (NSString *keyStr in keysarr) {
+        for (NSString *keyStr in keysarr) {
                 
-                NSArray *goodsArr = _orderDic[@"datas"][@"ordergoods"][keyStr];
+            NSArray *goodsArr = _orderDic[@"datas"][@"ordergoods"][keyStr];
                 
-                HZDSShoopTypeModel *model = [[HZDSShoopTypeModel alloc] init];
+            HZDSShoopTypeModel *model = [[HZDSShoopTypeModel alloc] init];
                 
-                model.shopId = keyStr;
+            model.shopId = keyStr;
                 
-                for (NSDictionary *dict1 in goodsArr) {
+            for (NSDictionary *dict1 in goodsArr) {
                  
                     
-                    HZDSOrderModel *order = [[HZDSOrderModel alloc] init];
+                HZDSOrderModel *order = [[HZDSOrderModel alloc] init];
                     
-                    order.orderID = dict1[@"goods_id"];
+                order.orderID = dict1[@"goods_id"];
                     
-                    order.orderNum = dict1[@"num"];
+                order.orderNum = dict1[@"num"];
                     
-                    order.orderPrice = [dict1[@"price"] stringValue];
+                order.orderPrice = [dict1[@"price"] stringValue];
                     
-                    order.orderImage = dict1[@"photo"];
+                order.orderImage = dict1[@"photo"];
                     
-                    order.orderTitle = dict1[@"goods_name"];
+                order.orderTitle = dict1[@"goods_name"];
                     
-                    order.orderNeedPayPrice = [dict1[@"total_price"] stringValue];
+                order.orderNeedPayPrice = [dict1[@"total_price"] stringValue];
                     
-                    [model.goodsArray addObject:order];
-                }
+                [model.goodsArray addObject:order];
+                
+            }
 
                 [_payTypeDataSource addObject:model];
                 
-            }
+        }
             
             NSDictionary *shopDic = _orderDic[@"datas"][@"shop"];
 
@@ -277,8 +278,8 @@ UIActionSheetDelegate
                     
                     [strongSelf.payTypeArray addObject:order];
                     
-                    
                 }
+                
                 [self showPayType];
                 
             }else{
@@ -340,7 +341,7 @@ UIActionSheetDelegate
         
         if (![WXApi isWXAppInstalled]) {
             
-            [JKToast showWithText:@"请安装微信后使用"];
+            [JKToast showWithText:@"推荐安装微信后使用"];
             
             return;
         }
@@ -404,8 +405,7 @@ UIActionSheetDelegate
     [CrazyNetWork CrazyRequest_Post:[NSString stringWithFormat:@"%@%@",HEADURL,PAY_WITHMOREGOODS] parameters:dic HUD:NO success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
         LOG(@"支付", dic);
-        
-        
+
         if (SUCCESS) {
             
             [self gopay:[dic[@"datas"][@"log_id"] stringValue]];
@@ -508,7 +508,7 @@ UIActionSheetDelegate
         }
         ];
             
-            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
             
             [alertController addAction:okAction];
         
@@ -516,7 +516,7 @@ UIActionSheetDelegate
             
             [self presentViewController:alertController animated:YES completion:^{
                 
-            }];
+        }];
 
     }
  

@@ -13,4 +13,5 @@
 @property(copy,nonatomic)NSString *shopId;
 
 @property(strong,nonatomic)NSMutableArray *goodsArray;
+
 @end

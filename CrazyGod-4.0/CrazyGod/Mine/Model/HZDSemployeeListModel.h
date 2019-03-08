@@ -25,6 +25,7 @@
 @property(copy,nonatomic)NSString* employeeQQ; //员工qq
 
 @property(copy,nonatomic)NSString* employeeWchat; //微信
+
 @property(copy,nonatomic)NSString* employeeAddress; //员工地址
 
 @property(copy,nonatomic)NSString* employeePower; //员工权限

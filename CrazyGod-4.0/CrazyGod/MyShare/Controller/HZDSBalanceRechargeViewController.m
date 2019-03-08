@@ -18,19 +18,22 @@
 
 @interface HZDSBalanceRechargeViewController ()<
 UITableViewDelegate,
-UITableViewDataSource
+UITableViewDataSource,
+selectedBtnDelagate
 >
 @property (weak, nonatomic) IBOutlet UIButton *rechargeButton;
+
 @property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *moneyView;
+
 @property (weak, nonatomic) IBOutlet UITextField *moneyTextField;
+
 @property (weak, nonatomic) IBOutlet UITableView *payTypeTableView;
 
 @property(nonatomic,strong) NSMutableArray *payTypeDataSource;
 
 @property(nonatomic,copy) NSString *payTypeString;
-
 
 @end
 
@@ -51,7 +54,7 @@ UITableViewDataSource
     
     _payTypeDataSource = [[NSMutableArray alloc] init];
     
-    [WYFTools viewLayer:_rechargeButton.frame.size.height/16*3 withView:_rechargeButton];
+    [WYFTools viewLayer:_rechargeButton.height/16*3 withView:_rechargeButton];
 }
 -(void)registercell
 {
@@ -75,7 +78,6 @@ UITableViewDataSource
         
         if (SUCCESS) {
             
-            
             strongSelf.moneyLabel.text = [NSString stringWithFormat:@"￥%@",[dic[@"datas"][@"money"] stringValue]];
             
             NSArray *arr = dic[@"datas"][@"payment"];
@@ -93,7 +95,7 @@ UITableViewDataSource
                 order.orderImage = dict1[@"mobile_logo"];
                 
                 [strongSelf.payTypeDataSource addObject:order];
-                
+
             }
             
         }else{
@@ -192,8 +194,11 @@ UITableViewDataSource
     
     cell.payName.text = order.orderTitle;
     
-    [cell.payImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,order.orderImage]]];
+    cell.payButton.tag = indexPath.row;
     
+    cell.delegate = self;
+    
+    [cell.payImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,order.orderImage]]];
     
     return cell;
     
@@ -204,22 +209,7 @@ UITableViewDataSource
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    NSArray *visibleCells = [tableView visibleCells];
-    
-    
-    for (HZDSpayTypeTableViewCell *cell in visibleCells){
-        
-        cell.payButton.selected = NO;
-        
-        }
-    
-    HZDSpayTypeTableViewCell *celled = [tableView cellForRowAtIndexPath:indexPath];
-    
-    celled.payButton.selected = YES;
-    
-    HZDSOrderModel *order = _payTypeDataSource[indexPath.row];
-    
-    _payTypeString = order.orderStatus;
+    [self changeButtonStatusWithTableviewcell:indexPath.row];
     
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -256,7 +246,37 @@ UITableViewDataSource
         _rechargeButton.hidden = NO;
     }
 }
+#pragma mark SelectedButtonDelegate
 
+-(void)selectedButton:(NSInteger)index
+{
+   
+    [self changeButtonStatusWithTableviewcell:index];
+    
+}
+
+-(void)changeButtonStatusWithTableviewcell:(NSInteger)index
+{
+ 
+    NSArray *visibleCells = [_payTypeTableView visibleCells];
+    
+    for (HZDSpayTypeTableViewCell *cell in visibleCells){
+        
+        cell.payButton.selected = NO;
+        
+    }
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    
+    HZDSpayTypeTableViewCell *celled = [_payTypeTableView cellForRowAtIndexPath:indexPath];
+    
+    celled.payButton.selected = YES;
+    
+    HZDSOrderModel *order = _payTypeDataSource[index];
+    
+    _payTypeString = order.orderStatus;
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

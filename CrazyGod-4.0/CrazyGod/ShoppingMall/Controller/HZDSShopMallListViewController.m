@@ -56,7 +56,6 @@ UITableViewDataSource
 
 @property(nonatomic,assign) NSInteger totalPage;
 
-
 @end
 
 @implementation HZDSShopMallListViewController
@@ -82,6 +81,7 @@ UITableViewDataSource
     [self initData];
     
     [self initCLassData];
+    
 }
 -(void)initUI
 {
@@ -105,6 +105,7 @@ UITableViewDataSource
 
     // 下拉加载
     self.mallListTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+       
         weakSelf.pageNum = 1;
        
         [self initData];
@@ -142,6 +143,7 @@ UITableViewDataSource
 -(UIView*)headerView
 {
     if (_headerView == nil) {
+        
         _headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 30)];
         
         for (int i = 0 ; i < 3; i++) {
@@ -217,11 +219,12 @@ UITableViewDataSource
             
             if (arr.count > 0) {
                 
-               strongSelf.backGroundViewWithNothing.hidden = YES;
+                strongSelf.backGroundViewWithNothing.hidden = YES;
                 
                 strongSelf.mallListTableView.hidden = NO;
                 
             }else{
+                
                 strongSelf.backGroundViewWithNothing.hidden = NO;
                 
                 strongSelf.mallListTableView.hidden = YES;
@@ -244,23 +247,26 @@ UITableViewDataSource
                 model.businessOldPrice = [business[@"price"] stringValue];
                 
                 [strongSelf.mallListArray addObject:model];
+                
             }
             
             
         }
+        
         [strongSelf.mallListTableView reloadData];
         
         [strongSelf.mallListTableView.mj_header endRefreshing];
-
         
     } fail:^(NSError *error, NSString *url, NSString *Json) {
         
         LOG(@"cuow", Json);
         
     }];
+    
     _keyWordString = nil;
     
     _backGroundView.hidden = YES;
+    
 }
 -(void)initMoreData
 {
@@ -342,6 +348,7 @@ UITableViewDataSource
     
     _backGroundView.hidden = YES;
 }
+//分类
 -(void)initCLassData
 {
     __weak typeof(self) weakSelf = self;
@@ -373,7 +380,6 @@ UITableViewDataSource
                 model.classId = classDic[str][@"cate_id"];
                 
                 model.className = classDic[str][@"cate_name"];
-                
                 
                 NSDictionary *subClassDic = classDic[str][@"son"];
                 
@@ -419,7 +425,6 @@ UITableViewDataSource
                     [model.subClassArray addObject:model1];
                     
                 }
-                
                 
                 [strongSelf.areaArray addObject:model];
             }
@@ -502,7 +507,6 @@ UITableViewDataSource
         cell.priceLabel.text = [NSString stringWithFormat:@"￥%@",model.businessPrice];
         
         cell.soldNumLabel.text = [NSString stringWithFormat:@"已售:%@",model.businessSaleNum];
-        
         
         NSString *textStr = [NSString stringWithFormat:@"￥%@", model.businessOldPrice];
         
@@ -593,7 +597,9 @@ UITableViewDataSource
         if (indexPath.row == 0) {
             
             _classTableView.hidden = YES;
+            
             _subClassTableView.hidden = YES;
+            
             _backGroundView.hidden = YES;
             
             if ([classString isEqualToString:@"1"]) {
@@ -692,7 +698,6 @@ UITableViewDataSource
         UIButton *btn = [self.headerView viewWithTag:12];
         
         HZDSClassifyModel *model = _sortArray[indexPath.row];
-        
         
         [btn setTitle:model.className forState:UIControlStateNormal];
         

@@ -14,7 +14,8 @@
 
 @interface HZDSPayViewController ()<
 UITableViewDelegate,
-UITableViewDataSource
+UITableViewDataSource,
+selectedBtnDelagate
 >
 @property (weak, nonatomic) IBOutlet UIButton *payButton;
 
@@ -55,11 +56,12 @@ UITableViewDataSource
     [self registercell];
     
     [self initData];
+    
 }
 -(void)initUI
 {
     
-    [WYFTools viewLayer:_payButton.frame.size.height/16*3 withView:_payButton];
+    [WYFTools viewLayer:_payButton.height/16*3 withView:_payButton];
     
 }
 -(void)initData
@@ -128,6 +130,18 @@ UITableViewDataSource
 }
 - (IBAction)pay:(UIButton *)sender {
 
+    if ([_payNameString isEqualToString:@"微信支付"]) {
+        
+        if (![WXApi isWXAppInstalled]) {
+            
+            [JKToast showWithText:@"推荐安装微信后使用"];
+            
+            return;
+        }
+        
+    }
+
+    
     if (_payTypeString == nil) {
         
         [JKToast showWithText:@"请选择支付方式"];
@@ -146,11 +160,11 @@ UITableViewDataSource
               
             [JKToast showWithText:dic[@"datas"][@"msg"]];
                 
-                [self gopay:[dic[@"datas"][@"log_id"] stringValue]];
+            [self gopay:[dic[@"datas"][@"log_id"] stringValue]];
                 
             }else{
                 
-                [JKToast showWithText:dic[@"datas"][@"error"]];
+            [JKToast showWithText:dic[@"datas"][@"error"]];
                 
             }
             
@@ -164,15 +178,6 @@ UITableViewDataSource
 }
 -(void)gopay:(NSString *)str
 {
-    
-    if ([_payNameString isEqualToString:@"微信支付"]) {
-        
-        if (![WXApi isWXAppInstalled]) {
-            
-            [JKToast showWithText:@"请安装微信后使用"];
-        }
-        
-    }
     
     HZDSGoPayViewController *gopay = [[HZDSGoPayViewController alloc] init];
     
@@ -204,8 +209,11 @@ UITableViewDataSource
     
     cell.payName.text = order.orderTitle;
     
-    [cell.payImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,order.orderImage]]];
+    cell.payButton.tag = indexPath.row;
     
+    cell.delegate = self;
+    
+    [cell.payImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,order.orderImage]]];
     
     return cell;
     
@@ -216,15 +224,7 @@ UITableViewDataSource
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    HZDSpayTypeTableViewCell *celled = [tableView cellForRowAtIndexPath:indexPath];
-
-    celled.payButton.selected = YES;
-    
-    HZDSOrderModel *order = _payTypeDataSource[indexPath.row];
-
-    _payTypeString = order.orderStatus;
-    
-    _payNameString = order.orderTitle;
+    [self changeButtonStatusWithTableviewcell:indexPath.row];
     
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -233,6 +233,39 @@ UITableViewDataSource
     
 }
 
+#pragma mark SelectedButtonDelegate
+
+-(void)selectedButton:(NSInteger)index
+{
+    
+    [self changeButtonStatusWithTableviewcell:index];
+    
+}
+
+-(void)changeButtonStatusWithTableviewcell:(NSInteger)index
+{
+    
+    NSArray *visibleCells = [_payTypeTableView visibleCells];
+    
+    for (HZDSpayTypeTableViewCell *cell in visibleCells){
+        
+        cell.payButton.selected = NO;
+        
+    }
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    
+    HZDSpayTypeTableViewCell *celled = [_payTypeTableView cellForRowAtIndexPath:indexPath];
+    
+    celled.payButton.selected = YES;
+    
+    HZDSOrderModel *order = _payTypeDataSource[index];
+    
+    _payTypeString = order.orderStatus;
+    
+    _payNameString = order.orderTitle;
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

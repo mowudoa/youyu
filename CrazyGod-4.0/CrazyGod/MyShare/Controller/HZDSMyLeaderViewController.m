@@ -9,6 +9,7 @@
 #import "HZDSMyLeaderViewController.h"
 
 @interface HZDSMyLeaderViewController ()
+
 @property (weak, nonatomic) IBOutlet UIImageView *headerImage;
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -47,7 +48,6 @@
         LOG(@"我的领导", dic);
         
         __strong typeof(weakSelf) strongSelf = weakSelf;
-        
         
         if (SUCCESS) {
             
@@ -93,7 +93,6 @@
             
             [JKToast showWithText:dic[@"datas"][@"error"]];
             
-          
         }
         
     } fail:^(NSError *error, NSString *url, NSString *Json) {

@@ -85,6 +85,7 @@ UITableViewDataSource
     [self initData];
     
     [self initCLassData];
+    
 }
 -(void)initUI
 {
@@ -385,6 +386,7 @@ UITableViewDataSource
         [cell setBussinessModel:model];
         
         return cell;
+        
     }else if (tableView == _subClassTableView)
     {
         HZDSSubClassTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"SubClassTableViewCell" forIndexPath:indexPath];
@@ -503,9 +505,11 @@ UITableViewDataSource
             if ([classString isEqualToString:@"1"]) {
                 
                 model =  _classArray[indexPath.row];
+                
             }else{
                 
                 model = _areaArray[indexPath.row];
+                
             }
             
             [_subClassArray addObjectsFromArray:model.subClassArray];
@@ -709,6 +713,7 @@ UITableViewDataSource
     sender.selected = !sender.selected;
     
     NSArray* arr = [_headerView subviews];
+    
     for (id obj in arr) {
         
         if ([obj isKindOfClass:[UIButton class]]) {

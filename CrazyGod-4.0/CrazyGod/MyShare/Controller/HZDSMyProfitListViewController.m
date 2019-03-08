@@ -68,8 +68,9 @@ UITableViewDataSource
     
     _lineLabel.backgroundColor=[UIColor colorWithHexString:@"FF0270"];
     
-    
     [self.view addSubview:_lineLabel];
+    
+    [WYFTools autuLayoutNewMJ:_profitListTableView];
 }
 -(void)registercell
 {
@@ -227,10 +228,9 @@ UITableViewDataSource
             break;
     }
     
-    __block CGRect lineFrame  = CGRectMake(_lineLabel.frame.origin.x,_lineLabel.frame.origin.y,SCREEN_WIDTH/2, _lineLabel.frame.size.height);
+    __block CGRect lineFrame  = CGRectMake(_lineLabel.mj_x,_lineLabel.mj_y,SCREEN_WIDTH/2, _lineLabel.height);
     
     [UIView animateWithDuration:0.3 animations:^{
-        
         
         lineFrame.origin.x =  index* SCREEN_WIDTH/2;
         
@@ -242,8 +242,8 @@ UITableViewDataSource
 -(void)initnavBtn
 {
     
-    
     NSInteger num = 0;
+    
     switch (_profitType) {
         case MyProfitTypeOk:
             num = 0;

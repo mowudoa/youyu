@@ -9,6 +9,7 @@
 #import "HZDSaddEmployeeViewController.h"
 
 @interface HZDSaddEmployeeViewController ()
+
 @property (weak, nonatomic) IBOutlet UITextField *employeeID;
 
 @property (weak, nonatomic) IBOutlet UITextField *employeeName;
@@ -80,14 +81,10 @@
         _addButton.hidden = YES;
     }
     
-    [WYFTools viewLayer:_checkButton.frame.size.height/3 withView:_checkButton];
-    
-    [WYFTools viewLayer:_addButton.frame.size.height/16*3 withView:_addButton];
-    
-    
     if (_employeeType == editType) {
       
 //        _employeeID.text = _employModel.employeeID;
+        
         _employeeJob.text = _employModel.employeeJob;
         
         _employeeQQ.text = _employModel.employeeQQ;
@@ -109,6 +106,7 @@
             _noButton.selected = NO;
             
             _powerString = @"1";
+            
         }else{
             
             _noButton.selected = YES;
@@ -119,6 +117,10 @@
         }
         
     }
+    
+    [WYFTools viewLayer:_checkButton.height/3 withView:_checkButton];
+    
+    [WYFTools viewLayer:_addButton.height/16*3 withView:_addButton];
     
 }
 - (IBAction)addEmployee:(UIButton *)sender {
@@ -187,7 +189,6 @@
                               @"work":_employeeJob.text,
                               @"tuan":_powerString
                               };
-        
         
         [CrazyNetWork CrazyRequest_Post:_addUrl parameters:dic HUD:NO success:^(NSDictionary *dic, NSString *url, NSString *Json) {
             

@@ -16,8 +16,6 @@
 
 @property(copy,nonatomic) NSString *classNameString;
 
-
 @property(assign,nonatomic) BOOL isRootNav;
-
 
 @end

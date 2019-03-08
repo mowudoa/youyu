@@ -15,6 +15,7 @@
 UITableViewDelegate,
 UITableViewDataSource
 >
+
 @property (weak, nonatomic) IBOutlet UITableView *imageListTableView;
 
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
@@ -68,7 +69,6 @@ UITableViewDataSource
                 strongSelf.backgroundView.hidden = NO;
                 
             }
-            
             
             for (NSDictionary *dict1 in arr) {
                 
@@ -129,6 +129,7 @@ UITableViewDataSource
         
         _rightItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
     }
+    
     return _rightItem;
 }
 #pragma  mark ===TbaleViewDateSource

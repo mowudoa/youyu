@@ -312,7 +312,7 @@ static WYFTools *god = nil;
     
     NSDictionary *options = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType};
     
-    NSAttributedString *html = [[NSAttributedString alloc]initWithData:data
+    NSMutableAttributedString *html = [[NSMutableAttributedString alloc]initWithData:data
                                 
                                                                options:options
                                 

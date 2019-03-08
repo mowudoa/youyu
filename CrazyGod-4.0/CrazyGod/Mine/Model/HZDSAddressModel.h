@@ -10,7 +10,6 @@
 
 @interface HZDSAddressModel : rootModel
 
-
 @property(copy,nonatomic)NSString* addressDetail;//详细地址
 
 @property(copy,nonatomic)NSString* userPhone;//电话
@@ -21,6 +20,6 @@
 
 @property(copy,nonatomic)NSString* address;//地址
 
-
 @property(copy,nonatomic)NSString *addressId;//id
+
 @end

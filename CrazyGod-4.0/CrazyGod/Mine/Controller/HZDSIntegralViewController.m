@@ -41,7 +41,7 @@
 {
     self.navigationItem.title = @"商家积分";
     
-    [WYFTools viewLayer:_headerIcon.frame.size.height/2 withView:_headerIcon];
+    [WYFTools viewLayer:_headerIcon.height/2 withView:_headerIcon];
     
 }
 -(void)initData

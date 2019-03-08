@@ -16,6 +16,7 @@
 
 
 @interface HZDSClassTableViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UIButton *titleBtn1;
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel1;

@@ -10,6 +10,7 @@
 #import "WXApi.h"
 
 @interface HZDSGoRechargeViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *orderId;
 
 @property (weak, nonatomic) IBOutlet UILabel *orderMoney;
@@ -32,7 +33,7 @@
 }
 -(void)initUI
 {
-    [WYFTools viewLayer:_payButton.frame.size.height/16*3 withView:_payButton];
+    [WYFTools viewLayer:_payButton.height/16*3 withView:_payButton];
     
     _orderId.text = [_payInfo[@"log_id"] stringValue];
     
@@ -53,7 +54,6 @@
         if (SUCCESS) {
             
             [JKToast showWithText:dic[@"datas"][@"msg"]];
-            
             
             PayReq *req  = [[PayReq alloc] init];
             

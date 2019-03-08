@@ -11,7 +11,6 @@
 @interface HZDSRegisterViewController ()
 {
     
-    
     NSTimer* timer;
 }
 @property (weak, nonatomic) IBOutlet UIButton *codeButton;
@@ -43,9 +42,9 @@
 {
     self.navigationItem.title = @"注册";
     
-    [WYFTools viewLayer:_registerButton.frame.size.height/16*9 withView:_registerButton];
+    [WYFTools viewLayer:_registerButton.height/16*9 withView:_registerButton];
     
-    [WYFTools viewLayer:_codeButton.frame.size.height/6 withView:_codeButton];
+    [WYFTools viewLayer:_codeButton.height/6 withView:_codeButton];
 
 }
 - (IBAction)getCode:(UIButton *)sender {
@@ -73,7 +72,8 @@
                 strongSelf.num = 60;
                 
                 [strongSelf.codeButton setTitle:[NSString stringWithFormat:@"(%ld)",(long)(strongSelf.num)] forState:UIControlStateNormal];
-            strongSelf.codeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+            
+                strongSelf.codeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
                 
                 strongSelf.codeButton.enabled = NO;
                 

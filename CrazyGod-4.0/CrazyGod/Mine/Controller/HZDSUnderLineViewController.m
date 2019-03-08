@@ -11,7 +11,6 @@
 #import "HZDSBusinessModel.h"
 #import "HZDSCityListModel.h"
 
-
 @interface HZDSUnderLineViewController ()<
 UIImagePickerControllerDelegate,
 UINavigationControllerDelegate,
@@ -190,7 +189,7 @@ UIPickerViewDataSource
     
     [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_businessInfoTextView];
     
-    [WYFTools viewLayer:_SettledButton.frame.size.height/16*3 withView:_SettledButton];
+    [WYFTools viewLayer:_SettledButton.height/16*3 withView:_SettledButton];
     
     [WYFTools viewLayer:5 withView:_addressButton];
     
@@ -310,7 +309,6 @@ UIPickerViewDataSource
 {
     __weak typeof(self) weakSelf = self;
 
-    
     [CrazyNetWork CrazyRequest_Get:UNDERLINE_INFO parameters:nil HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
         LOG(@"线下信息", dic);
@@ -322,8 +320,6 @@ UIPickerViewDataSource
         if (SUCCESS) {
             
             // [JKToast showWithText:@"购物车列表"];
-            
-            
             
             if (dic[@"datas"][@"parent_id"][@"fuid1"] == NULL || dic[@"datas"][@"parent_id"][@"fuid1"] == nil ||dic[@"datas"][@"parent_id"][@"fuid1"] == [NSNull null]) {
                 
@@ -1199,7 +1195,6 @@ UIPickerViewDataSource
         
     }
     
-
 }
 - (IBAction)getAddressCode:(UIButton *)sender
 {

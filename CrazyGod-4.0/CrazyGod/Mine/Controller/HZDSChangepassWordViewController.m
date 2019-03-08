@@ -9,6 +9,7 @@
 #import "HZDSChangepassWordViewController.h"
 
 @interface HZDSChangepassWordViewController ()
+
 @property (weak, nonatomic) IBOutlet UIButton *changeButton;
 
 @property (weak, nonatomic) IBOutlet UITextField *passWordTwo;

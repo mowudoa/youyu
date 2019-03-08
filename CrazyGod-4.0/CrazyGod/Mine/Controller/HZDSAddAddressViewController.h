@@ -20,7 +20,6 @@ typedef enum {
 
 @property(nonatomic,strong)HZDSAddressModel *addressModel;
 
-
 @property(nonatomic,copy) NSString *orderID;
 
 @property(nonatomic,copy) NSString *LogID;

@@ -11,4 +11,5 @@
 @interface HZDScouponCheckViewController : XTBaseBackViewController
 
 @property(nonatomic,copy) NSString *checkUrl;
+
 @end

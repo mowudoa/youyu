@@ -63,7 +63,6 @@ UICollectionViewDelegateFlowLayout
     _goodsHomeDataSource = [[NSMutableArray alloc] init];
     
     self.navigationItem.title = @"店铺详情";
- 
     
     _lineLabel=[[UILabel alloc] initWithFrame:CGRectMake(0,169,SCREEN_WIDTH/8,2)];
     
@@ -74,6 +73,7 @@ UICollectionViewDelegateFlowLayout
     [self.view addSubview:_lineLabel];
     
     [WYFTools viewLayer:10 withView:_followButton];
+    
 }
 -(void)registeCell
 {
@@ -145,11 +145,8 @@ UICollectionViewDelegateFlowLayout
                     
                     model.goodsPrice = [dictlist[@"mall_price"] stringValue];
                     
-                    
                     [strongSelf.goodsHomeDataSource addObject:model];
                 }
-                
-                
                 
             }
             if (dict[@"goods_rx"] == NULL || dict[@"goods_rx"] == nil ||dict[@"goods_rx"] == [NSNull null]) {
@@ -173,7 +170,6 @@ UICollectionViewDelegateFlowLayout
                     model.goodsId = dictlist[@"goods_id"];
                     
                     model.goodsPrice = [dictlist[@"mall_price"] stringValue];
-                    
                     
                     [strongSelf.goodsHotDataSource addObject:model];
                 }
@@ -259,7 +255,6 @@ UICollectionViewDelegateFlowLayout
     
         return cell;
     
-    
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -287,7 +282,7 @@ UICollectionViewDelegateFlowLayout
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    return CGSizeMake((_shopGoodsCollectionView.frame.size.width-10)/2-2, ((_shopGoodsCollectionView.frame.size.width-10)/2-2) + 90);
+    return CGSizeMake((_shopGoodsCollectionView.width-10)/2-2, ((_shopGoodsCollectionView.width-10)/2-2) + 90);
     
 }
 
@@ -328,10 +323,12 @@ UICollectionViewDelegateFlowLayout
 
             break;
         case 2:
+            
             [_goodsDataSource addObjectsFromArray:_goodsHotDataSource];
 
             break;
         case 3:
+            
             [_goodsDataSource addObjectsFromArray:_goodsNewDataSource];
             
             break;
@@ -339,7 +336,7 @@ UICollectionViewDelegateFlowLayout
             break;
     }
     
-    __block CGRect lineFrame  = CGRectMake(_lineLabel.frame.origin.x,_lineLabel.frame.origin.y,SCREEN_WIDTH/8, _lineLabel.frame.size.height);
+    __block CGRect lineFrame  = CGRectMake(_lineLabel.mj_x,_lineLabel.mj_y,SCREEN_WIDTH/8, _lineLabel.height);
     
     [UIView animateWithDuration:0.3 animations:^{
         

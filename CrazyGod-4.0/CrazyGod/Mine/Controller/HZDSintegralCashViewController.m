@@ -84,7 +84,6 @@
         
         if (SUCCESS) {
             
-            
             strongSelf.shopUserName.text = [NSString stringWithFormat:@"您好:%@", dic[@"datas"][@"MEMBER"][@"account"]];
             
             strongSelf.shopName.text = [NSString stringWithFormat:@"您的店铺:%@",dic[@"datas"][@"SHOP"][@"shop_name"] ];
@@ -154,7 +153,6 @@
             LOG(@"获取验证码", dic);
             
             __strong typeof(weakSelf) strongSelf = weakSelf;
-            
             
             if (SUCCESS) {
                 
@@ -265,7 +263,6 @@
                               @"bank_realname":_bankUserTextField.text,
                               @"yzm":_codeTextField.text
                               };
-        
         
         [CrazyNetWork CrazyRequest_Post:[NSString stringWithFormat:@"%@",MERCHANT_MONEY_APPLY] parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
             

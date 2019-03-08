@@ -11,7 +11,6 @@
 #import "HZDScouponCheckViewController.h"
 #import "HZDSNewMessageViewController.h"
 
-
 @interface HZDSemployeeCenterViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *titleImage;
@@ -38,7 +37,7 @@
 {
     self.navigationItem.title = @"店员中心";
     
-    [WYFTools viewLayer:_titleImage.frame.size.height/2 withView:_titleImage];
+    [WYFTools viewLayer:_titleImage.height/2 withView:_titleImage];
     
 }
 -(void)initData
@@ -63,7 +62,6 @@
             strongSelf.shopName.text = [NSString stringWithFormat:@"店铺:%@",dict[@"SHOP"][@"shop_name"]];
 
             [strongSelf.titleImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,dict[@"SHOP"][@"logo"]]]];
-
             
         }else{
             

@@ -10,6 +10,7 @@
 #import "HZDSOrderDetailViewController.h"
 
 @interface HZDScouponDetailViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *couponNum;
 
 @property (weak, nonatomic) IBOutlet UILabel *counponPrice;
@@ -19,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *orderDetailButton;
 
 @property (nonatomic,copy) NSString *order_id;
+
 @end
 
 @implementation HZDScouponDetailViewController
@@ -66,7 +68,6 @@
         }else{
             
 
-            
         }
         
     } fail:^(NSError *error, NSString *url, NSString *Json) {

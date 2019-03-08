@@ -16,6 +16,7 @@
 @end
 
 @interface HZDSCartTableViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UIButton *selectedButton;
 
 @property (weak, nonatomic) IBOutlet UIImageView *goodsImage;

@@ -15,6 +15,7 @@
 #import "HZDSLoginViewController.h"
 
 @interface HZDSMyShareViewController ()
+
 @property (weak, nonatomic) IBOutlet UIImageView *headerImage;
 
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
@@ -28,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *myCancleReward;
 
 @property(nonatomic,copy) NSString *user_id;
+
 @end
 
 @implementation HZDSMyShareViewController
@@ -45,7 +47,7 @@
 {
     self.navigationItem.title = @"我的营销中心";
     
-    [WYFTools viewLayer:_headerImage.frame.size.height/2 withView:_headerImage];
+    [WYFTools viewLayer:_headerImage.height/2 withView:_headerImage];
     
     [WYFTools viewLayer:3 withView:_vipRank];
 }
@@ -60,7 +62,6 @@
         
         __strong typeof(weakSelf) strongSelf = weakSelf;
 
-        
         if (SUCCESS) {
             
             strongSelf.user_id = dic[@"datas"][@"MEMBER"][@"user_id"];

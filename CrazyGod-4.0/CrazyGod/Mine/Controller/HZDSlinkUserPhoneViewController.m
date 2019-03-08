@@ -9,6 +9,7 @@
 #import "HZDSlinkUserPhoneViewController.h"
 
 @interface HZDSlinkUserPhoneViewController ()
+
 @property (weak, nonatomic) IBOutlet UIButton *getCodeButton;
 
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
@@ -33,9 +34,9 @@
 {
     self.navigationItem.title = @"绑定手机";
     
-    [WYFTools viewLayer:_linkButton.frame.size.height/16*3 withView:_linkButton];
+    [WYFTools viewLayer:_linkButton.height/16*3 withView:_linkButton];
     
-    [WYFTools viewLayer:_getCodeButton.frame.size.height/6 withView:_getCodeButton];
+    [WYFTools viewLayer:_getCodeButton.height/6 withView:_getCodeButton];
     
 }
 - (IBAction)getCode:(UIButton *)sender {
@@ -64,7 +65,8 @@
                 strongSelf.num = 60;
                 
                 [strongSelf.getCodeButton setTitle:[NSString stringWithFormat:@"(%ld)",(long)(strongSelf.num)] forState:UIControlStateNormal];
-            strongSelf.getCodeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+                
+                strongSelf.getCodeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
                 
                 [self jishiTimer];
                 
@@ -87,7 +89,8 @@
     _getCodeButton.enabled = NO;
     
     _num--;
-    if (_num<1) {
+    
+    if (_num < 1) {
         
         _getCodeButton.enabled = YES;
         
@@ -125,6 +128,7 @@
         
         NSDictionary *urlDict = @{@"mobile":_phoneTextField.text,
                                   @"scode":_codeTextField.text};
+        
         [CrazyNetWork CrazyRequest_Post:[NSString stringWithFormat:@"%@",LINKUSER_PHONE] parameters:urlDict HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
             
             LOG(@"绑定新手机", dic);

@@ -55,7 +55,6 @@ UITableViewDataSource
 
     }
     
-    
     __weak typeof(self) weakSelf = self;
     
     [CrazyNetWork CrazyRequest_Get:[NSString stringWithFormat:@"%@%@",HEADURL,CITYLIST] parameters:keyDic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
@@ -256,7 +255,6 @@ UITableViewDataSource
         }else{
             
             [JKToast showWithText:dic[@"datas"][@"error"]];
-            
             
         }
         

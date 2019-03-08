@@ -9,6 +9,7 @@
 #import "HZDSMyShareQRCodeViewController.h"
 
 @interface HZDSMyShareQRCodeViewController ()
+
 @property (weak, nonatomic) IBOutlet UIImageView *headerImage;
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -33,7 +34,7 @@
 {
     self.navigationItem.title = @"我的二维码";
     
-    [WYFTools viewLayer:_headerImage.frame.size.height/2 withView:_headerImage];
+    [WYFTools viewLayer:_headerImage.height/2 withView:_headerImage];
    
 }
 -(void)initData
@@ -49,7 +50,6 @@
         
         __strong typeof(weakSelf) strongSelf = weakSelf;
         
-        
         if (SUCCESS) {
           
             strongSelf.titleLabel.text = dic[@"datas"][@"MEMBER"][@"nickname"];
@@ -62,7 +62,6 @@
         }else{
             
             [JKToast showWithText:dic[@"datas"][@"error"]];
-            
             
         }
         

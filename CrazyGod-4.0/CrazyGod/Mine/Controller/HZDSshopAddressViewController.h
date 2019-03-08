@@ -14,5 +14,4 @@
 
 @property(nonatomic,copy) NSString *LogID;
 
-
 @end

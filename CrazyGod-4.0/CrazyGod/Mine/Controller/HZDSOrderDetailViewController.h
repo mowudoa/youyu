@@ -8,8 +8,6 @@
 
 #import "XTBaseBackViewController.h"
 
-
-
 @interface HZDSOrderDetailViewController : XTBaseBackViewController
 
 @property(nonatomic,copy) NSString *orderId;

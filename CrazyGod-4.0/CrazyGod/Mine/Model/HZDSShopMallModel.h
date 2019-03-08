@@ -15,9 +15,11 @@
 @property(copy,nonatomic)NSString* orderTitle; //订单名字
 
 @property(copy,nonatomic)NSString* orderImage; //订单图片
+
 @property(copy,nonatomic)NSString* orderStatus; //订单状态
 
 @property(copy,nonatomic)NSString* orderPrice; //订单价格
+
 @property(copy,nonatomic)NSString* orderTime; //订单时间
 
 @property(copy,nonatomic)NSString* orderNeedPayPrice; //订单实际支付价格

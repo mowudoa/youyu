@@ -234,6 +234,7 @@ UICollectionViewDelegateFlowLayout
 }
 #pragma mark PRIVATE
 
+//轮播
 -(UIView*)headView
 {
     if (_headView == nil) {
@@ -249,6 +250,7 @@ UICollectionViewDelegateFlowLayout
     
     return _headView;
 }
+//搜索
 -(UIImageView*)searchImage
 {
     if (_searchImage == nil) {
@@ -270,6 +272,7 @@ UICollectionViewDelegateFlowLayout
         [_searchImage addSubview:ima];
         
     }
+    
     return  _searchImage;
 }
 -(UITextField*)searchTextField
@@ -345,12 +348,12 @@ UICollectionViewDelegateFlowLayout
         
     }
     
-    
 }
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    //section 0:分类 1:热门 2:新人 3:优选好物 4:猜你喜欢
+
     if (indexPath.section == 0) {
-        
         
         HZDSMallClassCollectionViewCell *cell  =[collectionView dequeueReusableCellWithReuseIdentifier:@"ClassCollectionViewCell" forIndexPath:indexPath];
         
@@ -375,6 +378,7 @@ UICollectionViewDelegateFlowLayout
         HomeModel *model = _goodArray[indexPath.row];
         
         [cell.goodsImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,model.goodsIcon]]];
+        
         cell.titleLabel.text = model.goodsName;
         
         return cell;
@@ -386,6 +390,7 @@ UICollectionViewDelegateFlowLayout
         HomeModel *model = _likeArray[indexPath.row];
         
         [cell.goodsImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,model.goodsIcon]]];
+       
         cell.titleLabel.text = model.goodsName;
         
         cell.goodsInfo.text = [NSString stringWithFormat:@"已售:%@",model.goodsSoldNum];
@@ -413,8 +418,6 @@ UICollectionViewDelegateFlowLayout
         [self.navigationController pushViewController:list animated:YES];
         
     }else if (indexPath.section == 1){
-     
-        
         
         HZDSMallDetailViewController *detail = [[HZDSMallDetailViewController alloc] init];
         
@@ -423,7 +426,6 @@ UICollectionViewDelegateFlowLayout
         [self.navigationController pushViewController:detail animated:YES];
         
     }else if (indexPath.section == 2){
-      
         
         
     }else if (indexPath.section == 3){
@@ -493,7 +495,6 @@ UICollectionViewDelegateFlowLayout
             
             return  reusable2;
             
-            
         }else if (indexPath.section == 3){
             
             UICollectionReusableView* reusable4 = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header4" forIndexPath:indexPath];
@@ -524,33 +525,31 @@ UICollectionViewDelegateFlowLayout
         return reusableFooter;
     }
     
- 
-    
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {
         
-        return CGSizeMake(_shoppingMallCollectionView.frame.size.width, SCREEN_WIDTH/2 + 5);
+        return CGSizeMake(_shoppingMallCollectionView.width, SCREEN_WIDTH/2 + 5);
         
     }else if (section == 2){
         
-        return CGSizeMake(_shoppingMallCollectionView.frame.size.width,(SCREEN_WIDTH - 60)/2+50);
+        return CGSizeMake(_shoppingMallCollectionView.width,(SCREEN_WIDTH - 60)/2+50);
         
     }else if (section == 4){
      
-        return CGSizeMake(_shoppingMallCollectionView.frame.size.width,SCREEN_WIDTH/10 + 30 +1);
+        return CGSizeMake(_shoppingMallCollectionView.width,SCREEN_WIDTH/10 + 30 +1);
 
     }else{
         
-        return CGSizeMake(_shoppingMallCollectionView.frame.size.width,SCREEN_WIDTH/10+1);
+        return CGSizeMake(_shoppingMallCollectionView.width,SCREEN_WIDTH/10+1);
     }
 }
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
 {
     
-    return CGSizeMake(_shoppingMallCollectionView.frame.size.width,10);
+    return CGSizeMake(_shoppingMallCollectionView.width,10);
 
 }
 
@@ -563,23 +562,24 @@ UICollectionViewDelegateFlowLayout
 {
     if (indexPath.section == 0) {
         
-        return CGSizeMake((_shoppingMallCollectionView.frame.size.width - 20)/5 - 2, (_shoppingMallCollectionView.frame.size.width - 20)/5 - 2);
+        return CGSizeMake((_shoppingMallCollectionView.width - 20)/5 - 2, (_shoppingMallCollectionView.width - 20)/5 - 2);
         
     }else if (indexPath.section == 1){
         
-        return CGSizeMake((_shoppingMallCollectionView.frame.size.width-10)/2-2, ((_shoppingMallCollectionView.frame.size.width-10)/2-2)*0.8);
+        return CGSizeMake((_shoppingMallCollectionView.width-10)/2-2, ((_shoppingMallCollectionView.width-10)/2-2)*0.8);
         
     }else if (indexPath.section == 4){
         
-        return CGSizeMake((_shoppingMallCollectionView.frame.size.width-10)/2-2, ((_shoppingMallCollectionView.frame.size.width-10)/2-2) + 90);
+        return CGSizeMake((_shoppingMallCollectionView.width-10)/2-2, ((_shoppingMallCollectionView.width-10)/2-2) + 90);
         
     }else{
         
-        return CGSizeMake((_shoppingMallCollectionView.frame.size.width-20)/3 -2, ((_shoppingMallCollectionView.frame.size.width-20)/3 - 2) + 41);
+        return CGSizeMake((_shoppingMallCollectionView.width-20)/3 -2, ((_shoppingMallCollectionView.width-20)/3 - 2) + 41);
 
     }
     
 }
+//新人专区加载
 -(void)reloadData
 {
     if (_userGoodsArray.count > 0) {
@@ -604,41 +604,12 @@ UICollectionViewDelegateFlowLayout
         }
         
     }
-
     
     [_shoppingMallCollectionView reloadData];
     
 }
--(UIView*)createheader2ViewWithSection:(NSInteger)section
-{
-    UIView *subTitleView = [self createheadSubView2];
-    
-    UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2-35, 0, 70, SCREEN_WIDTH/10)];
-    
-    if (section == 1) {
-     
-        label.text = @"热门商品";
 
-    }else if (section == 3){
-        
-        label.text = @"优选好物";
-
-    }else if (section == 4){
-        
-        label.text = @"猜你喜欢";
-
-    }
-    
-    label.textColor = [UIColor blackColor];
-    
-    label.font = [UIFont boldSystemFontOfSize:16];
-    
-    label.textAlignment = NSTextAlignmentCenter;
-    
-    [subTitleView addSubview:label];
-    
-    return subTitleView;
-}
+//collectview尾部留空
 -(UIView *)createheadSubView2
 {
     UIView * headSubView2 = [[UIView alloc] initWithFrame:CGRectMake(0 ,0, SCREEN_WIDTH,10)];
@@ -647,13 +618,12 @@ UICollectionViewDelegateFlowLayout
     
     headSubView2.userInteractionEnabled = YES;
     
-    
     return headSubView2;
 }
+//新人专区
 - (IBAction)clickBton:(UIButton *)sender {
 
     HZDSMallDetailViewController *detail = [[HZDSMallDetailViewController alloc] init];
-    
     
     if (sender.tag == 600) {
     
@@ -664,7 +634,7 @@ UICollectionViewDelegateFlowLayout
         
     }else if (sender.tag == 601){
         
-        detail.goodsId = _userGoodsArray[0][@"val"];
+        detail.goodsId = _userGoodsArray2[0][@"val"];
 
     }else if (sender.tag == 602){
         
@@ -675,12 +645,14 @@ UICollectionViewDelegateFlowLayout
     [self.navigationController pushViewController:detail animated:YES];
 
 }
+//查看更多
 - (IBAction)seeMoreGoods:(UIButton *)sender {
 
     HZDSShopMallListViewController *list = [[HZDSShopMallListViewController alloc] init];
     
     [self.navigationController pushViewController:list animated:YES];
 }
+//关键字搜索
 - (void)searchMallGoodsByKeyWords:(NSNotification *)notification{
     
     if ([self.searchTextField.text isEqualToString:@""] ||[self.searchTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0 ) {

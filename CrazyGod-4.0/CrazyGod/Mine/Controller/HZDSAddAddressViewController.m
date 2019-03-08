@@ -53,6 +53,7 @@ UIPickerViewDataSource
 @property(nonatomic,strong) NSMutableArray *countyDataSource;
 
 @property(nonatomic,copy) NSString *defaultString;
+
 @end
 
 @implementation HZDSAddAddressViewController
@@ -79,7 +80,7 @@ UIPickerViewDataSource
     
     [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_addressDetailTextView];
     
-    [WYFTools viewLayer:_addAddressButton.frame.size.height/16*3 withView:_addAddressButton];
+    [WYFTools viewLayer:_addAddressButton.height/16*3 withView:_addAddressButton];
     
     if (_addressType == addType) {
         
@@ -663,7 +664,6 @@ UIPickerViewDataSource
 -(void)leftButtonClick:(UIButton *)sender
 {
  
-    
     [self.myPickView removeFromSuperview];
     
     [self.backGroundView removeFromSuperview];

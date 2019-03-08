@@ -118,7 +118,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="V4A-ZJ-GiD"/>
-            <point key="canvasLocation" x="406" y="25"/>
+            <point key="canvasLocation" x="810" y="80"/>
         </view>
         <view contentMode="scaleToFill" id="oG7-dG-3B5">
             <rect key="frame" x="0.0" y="0.0" width="346" height="53"/>
@@ -140,7 +140,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="fN3-WU-c6Q"/>
-            <point key="canvasLocation" x="55" y="838"/>
+            <point key="canvasLocation" x="64" y="824"/>
         </view>
         <view contentMode="scaleToFill" id="vCu-gb-DuC">
             <rect key="frame" x="0.0" y="0.0" width="349" height="43"/>
@@ -180,7 +180,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="51k-3O-lGe"/>
-            <point key="canvasLocation" x="30.5" y="538.5"/>
+            <point key="canvasLocation" x="65" y="575"/>
         </view>
         <view contentMode="scaleToFill" id="Xzg-fS-a5w">
             <rect key="frame" x="0.0" y="0.0" width="349" height="65"/>
@@ -216,7 +216,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="uPO-N8-PP5"/>
-            <point key="canvasLocation" x="30.5" y="683"/>
+            <point key="canvasLocation" x="65" y="687"/>
         </view>
     </objects>
 </document>

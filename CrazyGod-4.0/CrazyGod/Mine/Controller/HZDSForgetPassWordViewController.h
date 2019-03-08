@@ -11,4 +11,5 @@
 @interface HZDSForgetPassWordViewController : XTBaseBackViewController
 
 @property(nonatomic,copy) NSString *request_url;
+
 @end

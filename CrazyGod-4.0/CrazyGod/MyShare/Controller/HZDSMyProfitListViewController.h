@@ -7,10 +7,12 @@
 //
 
 #import "XTBaseBackViewController.h"
+
 typedef enum {
     MyProfitTypeOk,
     MyProfitTypeCancle
 }WXMyProfitType;
+
 @interface HZDSMyProfitListViewController : XTBaseBackViewController
 
 @property(nonatomic)WXMyProfitType profitType;

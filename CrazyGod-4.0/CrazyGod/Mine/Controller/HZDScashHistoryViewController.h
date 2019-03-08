@@ -19,4 +19,5 @@ typedef enum {
 @property(nonatomic)cashLogType myCashLogType;
 
 @property(nonatomic,copy) NSString *logUrl;
+
 @end

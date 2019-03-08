@@ -27,6 +27,7 @@
 -(void)initcell
 {
     [_selectedButton setImage:[UIImage imageNamed:@"radioed.png"] forState:UIControlStateSelected];
+   
     [_selectedButton setImage:[UIImage imageNamed:@"radio.png"] forState:UIControlStateNormal];
     
     [WYFTools viewLayer:4 withView:_numLabel];
@@ -64,9 +65,11 @@
     }else{
         
         if (sender.tag == 10) {
+            
             if (![self.numTF.text isEqualToString:@"1"]) {
                 
                 num --;
+                
             }else{
 
                 [JKToast showWithText:@"数量不能少于1"];
@@ -96,6 +99,7 @@
 - (IBAction)slectedClick:(UIButton *)sender {
 
     sender.selected = !sender.selected;
+    
     self.carModel.isSelect = sender.selected;
     
     [[NSNotificationCenter defaultCenter]postNotificationName:@"getToalMoney" object:self userInfo:nil];
@@ -121,12 +125,12 @@
         
     }
     
-    
     if ([_carModel.goodsStockNum integerValue] <= 0) {
         
         [JKToast showWithText:@"没有剩余库存"];
         
         return;
+        
     }else if ([_numTF.text integerValue] > [_carModel.goodsStockNum integerValue]){
         
 
@@ -139,15 +143,13 @@
         return;
         
     }else{
-        
-        
-        
-        
+ 
         if (_numTF.text.length > 0) {
             
             _carModel.goodsnum = _numTF.text;
             
             [self refreshCartList];
+            
         }else if ([_numTF.text isEqualToString:@""] ||[_numTF.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0 || [_numTF.text isEqualToString:@"0"]){
             
             _numTF.text = @"1";
@@ -165,10 +167,8 @@
 
     if ([self.delegate respondsToSelector:@selector(buttonDelete:goodsSpec:)]) {
         
-        
         [self.delegate buttonDelete:_carModel.goodsId goodsSpec:_carModel.goodsIdAndSpec];
     }
-    
 }
 
 @end

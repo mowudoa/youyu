@@ -10,7 +10,6 @@
 
 @interface HZDSevaluateModel : rootModel
 
-
 @property(copy,nonatomic)NSString* goodsEvaluate;//商品评价
 
 @property(copy,nonatomic)NSString* businessReply;//商家回复
@@ -24,4 +23,5 @@
 @property(copy,nonatomic)NSString* evaluateTime;//评价时间
 
 @property(copy,nonatomic)NSString*evaluateScore;//评分
+
 @end

@@ -9,6 +9,7 @@
 #import "XTBaseBackViewController.h"
 
 @interface HZDSEmployeeViewController : XTBaseBackViewController
+
 @property (weak, nonatomic) IBOutlet UITableView *enmloyeeListTableView;
 
 @end

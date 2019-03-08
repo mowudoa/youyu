@@ -14,8 +14,6 @@
     [super awakeFromNib];
     // Initialization code
     
-    
-    
 }
 -(void)setHomeModel:(HomeModel *)homeModel
 {

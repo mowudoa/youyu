@@ -11,4 +11,5 @@
 @interface HZDSMallDetailViewController : XTBaseBackViewController
 
 @property(nonatomic,copy) NSString *goodsId;
+
 @end

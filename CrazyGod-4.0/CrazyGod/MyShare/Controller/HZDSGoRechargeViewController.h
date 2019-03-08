@@ -12,6 +12,4 @@
 
 @property(nonatomic,copy) NSDictionary *payInfo;
 
-
-
 @end

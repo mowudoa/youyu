@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface HZDSMallClassCollectionViewCell : UICollectionViewCell
+
 @property (weak, nonatomic) IBOutlet UIImageView *classIcon;
 
 @property (weak, nonatomic) IBOutlet UILabel *classTitle;

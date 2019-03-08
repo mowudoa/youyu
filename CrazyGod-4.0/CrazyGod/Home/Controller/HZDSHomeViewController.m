@@ -226,7 +226,7 @@ cityChoiceDelegate
         
         UIButton* rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
        
-        [rightBtn setFrame:CGRectMake(0, 0,self.searchImage.frame.size.width,self.searchImage.frame.size.height)];
+        [rightBtn setFrame:CGRectMake(0, 0,self.searchImage.width,self.searchImage.height)];
         
         [rightBtn setTitle:@"" forState:UIControlStateNormal];
        
@@ -245,8 +245,6 @@ cityChoiceDelegate
 {
     if (_leftItem == nil) {
         
-        
-        
         UIButton* button = [UIButton buttonWithType: UIButtonTypeCustom];;
        
         [button setFrame:CGRectMake(0, 0, 100, 30)];
@@ -259,7 +257,7 @@ cityChoiceDelegate
         
         [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         
-        button.layer.cornerRadius = button.frame.size.height/2;
+        button.layer.cornerRadius = button.height/2;
 
         button.backgroundColor = [UIColor colorWithHexString:@"ffffff"];
         

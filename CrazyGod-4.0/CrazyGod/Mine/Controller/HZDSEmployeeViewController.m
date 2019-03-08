@@ -25,6 +25,7 @@ UITableViewDataSource
 @property(nonatomic,assign) NSInteger pageNum;
 
 @property(nonatomic,assign) NSInteger totalPage;
+
 @end
 
 @implementation HZDSEmployeeViewController
@@ -66,6 +67,7 @@ UITableViewDataSource
     self.navigationItem.title = @"员工设置";
     
     self.navigationItem.rightBarButtonItem = self.rightItem;
+    
 }
 -(UIBarButtonItem*)rightItem
 {
@@ -256,6 +258,7 @@ UITableViewDataSource
     UINib* nib = [UINib nibWithNibName:@"HZDSemployeeListTableViewCell" bundle:nil];
     
     [_enmloyeeListTableView registerNib:nib forCellReuseIdentifier:@"employeeListTableViewCell"];
+    
 }
 #pragma  mark ===TbaleViewDateSource
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -362,7 +365,6 @@ UITableViewDataSource
     [WYFTools viewLayer:3 withView:leftBtn];
     
     leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    
     
     leftBtn.backgroundColor = [UIColor redColor];
    

@@ -28,5 +28,4 @@
 
 @property(assign,nonatomic)BOOL isSelect;
 
-
 @end

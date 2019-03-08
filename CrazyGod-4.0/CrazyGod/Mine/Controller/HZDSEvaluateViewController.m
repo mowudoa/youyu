@@ -198,6 +198,7 @@ UINavigationControllerDelegate
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
+   
     UIImage *orgImage = info[UIImagePickerControllerEditedImage];
    
     [picker dismissViewControllerAnimated:YES completion:nil];
@@ -257,6 +258,7 @@ UINavigationControllerDelegate
 }
 -(void)saveUrl:(NSDictionary *)dic withImage:(UIImage *)image
 {
+   
     [_uploadImageButton setImage:image forState:UIControlStateNormal];
     
     _imageString = dic[@"url"];

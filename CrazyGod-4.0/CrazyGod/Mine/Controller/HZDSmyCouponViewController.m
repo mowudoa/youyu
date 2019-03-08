@@ -20,15 +20,16 @@ couponBtnDelagate
     
     NSString *couponStatus;
 }
+
 @property(nonatomic,strong) UILabel *lineLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 
 @property (weak, nonatomic) IBOutlet UITableView *couponListTableView;
 
-@property(nonatomic,strong) NSMutableArray *couponListDataSource;
-
 @property (weak, nonatomic) IBOutlet UIView *backGroundView;
+
+@property(nonatomic,strong) NSMutableArray *couponListDataSource;
 
 @property(nonatomic,assign) NSInteger pageNum;
 
@@ -83,6 +84,9 @@ couponBtnDelagate
     _lineLabel.backgroundColor=[UIColor colorWithHexString:@"FF0270"];
     
     [self.view addSubview:_lineLabel];
+    
+    [WYFTools autuLayoutNewMJ:_couponListTableView];
+    
 }
 -(void)initData
 {
@@ -233,6 +237,7 @@ couponBtnDelagate
                     model.couponShop = dict1[@"shop_name"];
 
                 }
+                
                 model.couponOrderCode = dict1[@"order_id"];
                 
                 model.couponTime = dict1[@"create_time"];
@@ -290,10 +295,9 @@ couponBtnDelagate
     }
     
     
-    __block CGRect lineFrame  = CGRectMake(_lineLabel.frame.origin.x,_lineLabel.frame.origin.y,SCREEN_WIDTH/3, _lineLabel.frame.size.height);
+    __block CGRect lineFrame  = CGRectMake(_lineLabel.mj_x,_lineLabel.mj_y,SCREEN_WIDTH/3, _lineLabel.height);
     
     [UIView animateWithDuration:0.3 animations:^{
-        
         
         lineFrame.origin.x = index* SCREEN_WIDTH /3;
         
@@ -307,7 +311,6 @@ couponBtnDelagate
 
     
     NSInteger num = sender.tag - 300;
-    
     
     [self moveLineLabel:num];
     
@@ -327,9 +330,7 @@ couponBtnDelagate
     cell.delegate = self;
     
     [cell setCouponModel:_couponListDataSource[indexPath.row]];
-    
-    
-    
+        
     return cell;
 }
 

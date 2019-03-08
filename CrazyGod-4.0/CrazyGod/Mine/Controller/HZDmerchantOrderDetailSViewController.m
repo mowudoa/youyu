@@ -39,6 +39,7 @@
     self.navigationItem.title = @"订单详情";
     
     [self initData];
+    
 }
 -(void)initData
 {

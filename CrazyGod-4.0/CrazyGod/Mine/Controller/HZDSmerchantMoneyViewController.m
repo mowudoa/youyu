@@ -41,7 +41,7 @@
 {
     self.navigationItem.title = @"商家资金";
     
-    [WYFTools viewLayer:_merchantIcon.frame.size.height/2 withView:_merchantIcon];
+    [WYFTools viewLayer:_merchantIcon.height/2 withView:_merchantIcon];
     
 }
 -(void)initData

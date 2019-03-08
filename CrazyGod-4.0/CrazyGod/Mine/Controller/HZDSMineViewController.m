@@ -54,10 +54,9 @@ UITableViewDataSource
     
     _dataSource = [[NSMutableArray alloc] init];
     
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapIconView:)];
     
-      UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapIconView:)];
-    
-      [_UserHeaderIcon addGestureRecognizer:tap];
+    [_UserHeaderIcon addGestureRecognizer:tap];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getUserINfo) name:@"getUserInfo" object:nil];
 

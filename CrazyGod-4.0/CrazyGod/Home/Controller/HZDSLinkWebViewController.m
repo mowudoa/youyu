@@ -32,7 +32,6 @@
         
         LOG(@"广告详情", dic);
         
-        
         if (SUCCESS) {
             
             [self initUI:dic[@"datas"][@"detail"]];
@@ -92,7 +91,7 @@
     
     [self.backGroundView addSubview:label1];
     
-    _backGroundView.contentSize = CGSizeMake(0,label1.frame.size.height + 50);
+    _backGroundView.contentSize = CGSizeMake(0,label1.height + 50);
     
 }
 -(NSString *)ConvertStrToTime:(NSString *)timeStr

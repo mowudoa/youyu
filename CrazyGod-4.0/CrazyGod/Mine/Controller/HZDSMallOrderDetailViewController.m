@@ -55,7 +55,7 @@
     
     self.navigationItem.title = @"订单详情";
 
-    [WYFTools viewLayer:_statusLabel.size.height/16*3 withView:_statusLabel];
+    [WYFTools viewLayer:_statusLabel.height/16*3 withView:_statusLabel];
 }
 
 -(void)iniData

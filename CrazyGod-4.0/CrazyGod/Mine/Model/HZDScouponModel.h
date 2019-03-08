@@ -21,6 +21,7 @@
 @property(copy,nonatomic)NSString* couponOrderCode; //订单id
 
 @property(copy,nonatomic)NSString* couponNUm; //消费券码
+
 @property(copy,nonatomic)NSString* couponTime; //生成时间
 
 @property(copy,nonatomic)NSString* orderTime; //订单时间

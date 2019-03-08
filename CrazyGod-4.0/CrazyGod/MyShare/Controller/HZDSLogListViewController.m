@@ -110,6 +110,10 @@ UITableViewDataSource
                
                 model.intro = dict1[@"intro"];
                 
+                model.intro = [model.intro stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+
+                model.intro = [model.intro stringByReplacingOccurrencesOfString:@"\t" withString:@""];
+                
                 model.time = dict1[@"create_time"];
                 
                 [strongSelf.logListArray addObject:model];
@@ -154,9 +158,14 @@ UITableViewDataSource
                
                 model.intro = dict1[@"intro"];
                 
+                model.intro = [model.intro stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+                
+                model.intro = [model.intro stringByReplacingOccurrencesOfString:@"\t" withString:@""];
+                
                 model.time = dict1[@"create_time"];
                 
                 [strongSelf.logListArray addObject:model];
+                
             }
             
             [strongSelf.logListTableView reloadData];

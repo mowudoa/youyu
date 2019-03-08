@@ -7,10 +7,12 @@
 //
 
 #import "XTBaseBackViewController.h"
+
 typedef enum {
     MySubordinateFirst,
     MySubordinateSecond
 }WXMySubordinate;
+
 @interface HZDSMySubordinateViewController : XTBaseBackViewController
 
 @property(nonatomic)WXMySubordinate SubordinateType;

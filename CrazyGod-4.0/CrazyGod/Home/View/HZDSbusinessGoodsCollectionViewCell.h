@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface HZDSbusinessGoodsCollectionViewCell : UICollectionViewCell
+
 @property (weak, nonatomic) IBOutlet UIImageView *goodsImage;
 
 @property (weak, nonatomic) IBOutlet UILabel *goodsPrice;

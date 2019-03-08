@@ -41,9 +41,10 @@ UINavigationControllerDelegate
     
     [_oldImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,[USER_DEFAULT objectForKey:@"face"]]] placeholderImage:[UIImage imageNamed:@"1213per"]];
     
-    [WYFTools viewLayer:_oldImage.frame.size.height/2 withView:_oldImage];
+    [WYFTools viewLayer:_oldImage.height/2 withView:_oldImage];
     
-    [WYFTools viewLayer:_confirmButton.frame.size.height/16*3 withView:_confirmButton];
+    [WYFTools viewLayer:_confirmButton.height/16*3 withView:_confirmButton];
+    
 }
 -(UIImagePickerController *)imagePicker
 {
@@ -175,7 +176,6 @@ UINavigationControllerDelegate
         
         NSLog(@"====成功====");
         
-        
         [self saveUrl:responseObject withImage:image];
         
         
@@ -194,6 +194,7 @@ UINavigationControllerDelegate
     _headImageString = dic[@"url"];
     
     _confirmButton.hidden = NO;
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

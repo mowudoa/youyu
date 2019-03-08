@@ -84,12 +84,14 @@ UITableViewDataSource
     _lineLabel.backgroundColor=[UIColor colorWithHexString:@"FF0270"];
     
     [self.view addSubview:_lineLabel];
+    
 }
 -(void)registercell
 {
     UINib* nib = [UINib nibWithNibName:@"HZDSOrderTableViewCell" bundle:nil];
     
     [_mallOrderListTableView registerNib:nib forCellReuseIdentifier:@"OrderTableViewCell"];
+    
 }
 -(void)initData
 {
@@ -193,8 +195,7 @@ UITableViewDataSource
     NSDictionary *dic = @{@"lastindex":[NSString stringWithFormat:@"%ld",(long)_pageNum],
                           @"aready":mallOrderStatus
                           };
-    
-    
+        
     [CrazyNetWork CrazyRequest_Post:SHOPPING_MALL_ORDER parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
         LOG(@"商城订单列表", dic);

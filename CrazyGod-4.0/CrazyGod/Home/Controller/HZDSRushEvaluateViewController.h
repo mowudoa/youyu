@@ -12,7 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HZDSRushEvaluateViewController : XTBaseBackViewController
 
-
 @property(nonatomic,copy) NSString *order_id;
 
 @end
