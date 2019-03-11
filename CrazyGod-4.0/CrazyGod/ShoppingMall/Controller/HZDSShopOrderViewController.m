@@ -115,8 +115,7 @@ UIActionSheetDelegate
             model.shopId = keyStr;
                 
             for (NSDictionary *dict1 in goodsArr) {
-                 
-                    
+                
                 HZDSOrderModel *order = [[HZDSOrderModel alloc] init];
                     
                 order.orderID = dict1[@"goods_id"];

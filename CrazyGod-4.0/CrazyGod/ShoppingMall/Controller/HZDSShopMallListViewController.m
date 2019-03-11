@@ -160,8 +160,8 @@ UITableViewDataSource
             
             [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             
-            [button setTitleColor:[UIColor colorWithHexString:@"#FF6E9A"] forState:UIControlStateSelected];
-            
+            [button setTitleColor:[UIColor colorWithHexString:@"#fc6621"] forState:UIControlStateSelected];
+
             [button setBackgroundImage:[UIImage imageNamed:@"arrdown"] forState:UIControlStateNormal];
             
             [button setBackgroundImage:[UIImage imageNamed:@"arrup"] forState:UIControlStateSelected];
@@ -177,6 +177,7 @@ UITableViewDataSource
         }
         
     }
+    
     return _headerView;
 }
 -(void)initData
@@ -608,6 +609,8 @@ UITableViewDataSource
                 
                 [btn setTitle:@"选择分类" forState:UIControlStateNormal];
                 
+                [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+
                 btn.selected = NO;
                 
                 _classIDString = nil;
@@ -620,6 +623,8 @@ UITableViewDataSource
                 
                 [btn setTitle:@"选择地区" forState:UIControlStateNormal];
                 
+                [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+
                 btn.selected = NO;
                 
                 areaIdString = nil;
@@ -629,6 +634,8 @@ UITableViewDataSource
             }
             
         }else{
+            
+            [self changeCellBackgroundColor:tableView withIndexPath:indexPath];
             
             [_subClassArray removeAllObjects];
             
@@ -651,8 +658,6 @@ UITableViewDataSource
             
         }
         
-        
-        
     }else if (tableView == _subClassTableView){
         
         if ([classString isEqualToString:@"1"]) {
@@ -665,6 +670,8 @@ UITableViewDataSource
             
             [btn setTitle:model1.className forState:UIControlStateNormal];
             
+            [btn setTitleColor:[UIColor colorWithHexString:@"#fc6621"] forState:UIControlStateNormal];
+
             _classIDString = model1.classId;
             
             [self initData];
@@ -681,6 +688,8 @@ UITableViewDataSource
             
             [btn setTitle:model1.className forState:UIControlStateNormal];
             
+            [btn setTitleColor:[UIColor colorWithHexString:@"#fc6621"] forState:UIControlStateNormal];
+
             btn.selected = NO;
             
             areaIdString = model1.classId;
@@ -691,7 +700,8 @@ UITableViewDataSource
         _classTableView.hidden = YES;
         
         _subClassTableView.hidden = YES;
-    
+        
+        [self changeCellBackgroundColor:_classTableView withIndexPath:nil];
         
     }else if (tableView == _sortTableview){
         
@@ -699,17 +709,23 @@ UITableViewDataSource
         
         HZDSClassifyModel *model = _sortArray[indexPath.row];
         
-        [btn setTitle:model.className forState:UIControlStateNormal];
-        
         _sortTableview.hidden = YES;
         
         if ([model.classId isEqualToString:@"0"]) {
             
             choiceString = nil;
             
+            [btn setTitle:@"选择排序" forState:UIControlStateNormal];
+            
+            [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            
         }else{
          
             choiceString = model.classId;
+
+            [btn setTitle:model.className forState:UIControlStateNormal];
+
+            [btn setTitleColor:[UIColor colorWithHexString:@"#fc6621"] forState:UIControlStateNormal];
 
         }
         
@@ -748,22 +764,6 @@ UITableViewDataSource
 -(void)touchheaderView:(UIButton *)sender
 {
     sender.selected = !sender.selected;
-    
-    NSArray* arr = [_headerView subviews];
-    
-    for (id obj in arr) {
-        
-        if ([obj isKindOfClass:[UIButton class]]) {
-           
-            UIButton* btn = (UIButton*)obj;
-            
-            if (btn.tag != sender.tag) {
-            
-                btn.selected = NO;
-            }
-        }
-    }
-    
     
     switch (sender.tag) {
         case 10:
@@ -849,6 +849,29 @@ UITableViewDataSource
             
             btn.selected = NO;
         }
+    }
+    
+}
+
+//改变选中cell的背景色颜色
+-(void)changeCellBackgroundColor:(UITableView *)tableview withIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *visibleCells = [tableview visibleCells];
+    
+    for (HZDSSubClassTableViewCell *cell in visibleCells){
+        
+        cell.backgroundColor = [UIColor clearColor];
+        
+        cell.nameLabel.textColor = [UIColor blackColor];
+    }
+    
+    if (indexPath != nil) {
+   
+        HZDSSubClassTableViewCell *celled = [tableview cellForRowAtIndexPath:indexPath];
+        
+        celled.backgroundColor = [UIColor colorWithHexString:@"#f9f9f9"];
+        
+        celled.nameLabel.textColor = [UIColor colorWithHexString:@"#fc6621"];
     }
     
 }

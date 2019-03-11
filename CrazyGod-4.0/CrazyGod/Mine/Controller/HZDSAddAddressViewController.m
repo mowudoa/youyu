@@ -268,9 +268,10 @@ UIPickerViewDataSource
     
         _backGroundView = [[UIView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH,SCREEN_HEIGHT)];
         
-        _backGroundView.backgroundColor = [UIColor colorWithHexString:@"#bababa"];
+        _backGroundView.backgroundColor = [UIColor blackColor];
         
         _backGroundView.alpha = 0.5;
+        
     }
 
     return _backGroundView;

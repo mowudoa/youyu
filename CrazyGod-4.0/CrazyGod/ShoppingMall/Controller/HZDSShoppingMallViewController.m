@@ -161,7 +161,6 @@ UICollectionViewDelegateFlowLayout
         
         [strongSelf.goodArray removeAllObjects];
 
-        
         if (SUCCESS) {
             
             // [JKToast showWithText:@"购物车列表"];

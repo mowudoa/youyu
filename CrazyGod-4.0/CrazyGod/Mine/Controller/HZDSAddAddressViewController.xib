@@ -236,6 +236,7 @@
                         </imageView>
                         <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VeV-Rs-MSC">
                             <rect key="frame" x="88" y="0.0" width="177" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
@@ -292,6 +293,7 @@
                         </imageView>
                         <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ts8-bc-LQR">
                             <rect key="frame" x="88" y="0.0" width="177" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
@@ -348,6 +350,7 @@
                         </imageView>
                         <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XpW-8a-U3O">
                             <rect key="frame" x="88" y="0.0" width="177" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>

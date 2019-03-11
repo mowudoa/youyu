@@ -19,8 +19,7 @@
                 <outlet property="ShopProportionTF" destination="Csl-0I-Hcw" id="ogu-pg-DUV"/>
                 <outlet property="addressButton" destination="JjW-Vb-El8" id="dAV-JY-Ktw"/>
                 <outlet property="agreementTextView" destination="tEf-oT-tlw" id="Q41-dU-Vka"/>
-                <outlet property="backGroundView" destination="hBD-yP-11a" id="VnU-SQ-3C8"/>
-                <outlet property="bankGroundView" destination="TT5-0E-LfP" id="OEZ-TF-yZF"/>
+                <outlet property="bankGroundView" destination="TT5-0E-LfP" id="L9v-e4-mn8"/>
                 <outlet property="businessAddressTF" destination="h9s-JB-RXN" id="UlB-8e-ym1"/>
                 <outlet property="businessAreaButton" destination="hZu-re-Iq0" id="Sfh-BY-cVm"/>
                 <outlet property="businessClassButton" destination="i1r-xM-rfD" id="R2L-zA-CjF"/>
@@ -695,10 +694,11 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i1r-xM-rfD">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i1r-xM-rfD">
                                             <rect key="frame" x="88" y="0.0" width="212" height="28"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <state key="normal">
-                                                <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
                                             <connections>
                                                 <action selector="businessClass:" destination="-1" eventType="touchUpInside" id="3HD-gO-CNm"/>
@@ -751,10 +751,11 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZu-re-Iq0">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZu-re-Iq0">
                                             <rect key="frame" x="88" y="0.0" width="212" height="28"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <state key="normal">
-                                                <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
                                             <connections>
                                                 <action selector="AreaClass:" destination="-1" eventType="touchUpInside" id="wdn-HN-2mJ"/>

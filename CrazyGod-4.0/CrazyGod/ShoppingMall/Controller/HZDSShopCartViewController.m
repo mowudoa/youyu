@@ -62,7 +62,7 @@ deleteBtnDelagate
 {
     self.navigationItem.title = @"购物车";
     
-    //通知方便刷新价格
+    //通知以刷新价格
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getTotalPrice:) name:@"getToalMoney" object:nil];
     
     [WYFTools viewLayer:_tagLabel.height/2 withView:_tagLabel];

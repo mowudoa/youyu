@@ -505,7 +505,7 @@ UIPickerViewDataSource
         
         _backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH,SCREEN_HEIGHT)];
         
-        _backgroundView.backgroundColor = [UIColor colorWithHexString:@"#bababa"];
+        _backgroundView.backgroundColor = [UIColor blackColor];
         
         _backgroundView.alpha = 0.5;
     }
@@ -514,34 +514,6 @@ UIPickerViewDataSource
     
 }
 
-#pragma  mark ==== UIActionSheetDelegate
-
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 0) {
-        
-        NSLog(@"访问相机拍照");
-        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-            
-            self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-            
-            [self presentViewController:self.imagePicker animated:YES completion:NULL];
-            
-        }
-        
-    }else if (buttonIndex == 1){
-        
-        NSLog(@"相册选择");
-        self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        
-        [self presentViewController:_imagePicker animated:YES completion:NULL];
-        
-    }else if (buttonIndex == 2){
-        
-        NSLog(@"取消");
-    }
-    
-}
 #pragma mark ==== UIImagePickerControllerDelegate
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
@@ -975,7 +947,6 @@ UIPickerViewDataSource
                 
                 areaThressID = nil;
             }
-            
          
             
         }else{
@@ -1003,13 +974,9 @@ UIPickerViewDataSource
     
     
 }
--(void)viewDidLayoutSubviews
-{
-    UIView* conView = (UIView*)[_mainScrollview viewWithTag:2048];
-    
-    _mainScrollview.contentSize = CGSizeMake(0, conView.frame.origin.y+conView.frame.size.height + 10);
-    
-}
+
+#pragma mark XIB
+//上传执照
 - (IBAction)clickcameracameraclickCamera:(UIButton *)sender {
   
     switch (sender.tag) {
@@ -1035,14 +1002,43 @@ UIPickerViewDataSource
             break;
     }
     
+    [self createActionSheet];
+
+}
+//相册/拍照
+-(void)createActionSheet
+{
     
-    UIActionSheet *acSheet = [[UIActionSheet alloc] initWithTitle:@"上传头像" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"相册", nil];
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"上传图片" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
-    acSheet.tag = sender.tag;
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
     
-    [acSheet showInView:self.view];
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            
+            self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            
+            [self presentViewController:self.imagePicker animated:YES completion:NULL];
+            
+        }
+    }]];
+    
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        
+        [self presentViewController:self.imagePicker animated:YES completion:NULL];
+        
+    }]];
+    
+    [self presentViewController:actionSheet animated:YES completion:nil];
     
 }
+
+//入驻申请
 - (IBAction)clickSettled:(UIButton *)sender
 {
     NSMutableDictionary *businessInfo = [[NSMutableDictionary alloc] init];
@@ -1194,6 +1190,7 @@ UIPickerViewDataSource
     }
     
 }
+//地址转坐标
 - (IBAction)getAddressCode:(UIButton *)sender
 {
     
@@ -1232,6 +1229,7 @@ UIPickerViewDataSource
     }
     
 }
+//地域
 - (IBAction)AreaClass:(UIButton *)sender
 {
 
@@ -1253,7 +1251,6 @@ UIPickerViewDataSource
     [self.view addSubview:self.backgroundView];
     
     [self.view addSubview:self.myPickView];
-    
     
     [pickView reloadAllComponents];
 
@@ -1280,6 +1277,7 @@ UIPickerViewDataSource
     }
     
 }
+
 -(UIPickerView *)createPickView
 {
    
@@ -1292,6 +1290,7 @@ UIPickerViewDataSource
     return pickView;
 }
 
+//商圈
 - (IBAction)businessClass:(UIButton *)sender {
 
     choiceID = @"100";
@@ -1304,7 +1303,6 @@ UIPickerViewDataSource
         }
         
     }
-    
     
     UIPickerView *pickView = [self createPickView];
     
@@ -1330,18 +1328,26 @@ UIPickerViewDataSource
     }
     
 }
+//同意
 - (IBAction)agreeBtn:(UIButton *)sender {
 
     _AgreementView.hidden = YES;
     
     _bankGroundView.hidden = YES;
 }
+//取消
 - (IBAction)backBtn:(UIButton *)sender {
 
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
+-(void)viewDidLayoutSubviews
+{
+    UIView* conView = (UIView*)[_mainScrollview viewWithTag:2048];
+    
+    _mainScrollview.contentSize = CGSizeMake(0, conView.frame.origin.y+conView.frame.size.height + 10);
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -51,6 +51,7 @@ UICollectionViewDelegateFlowLayout
     [self registeCell];
     
     [self initData];
+    
 }
 -(void)initUI
 {
@@ -197,7 +198,9 @@ UICollectionViewDelegateFlowLayout
                     model.goodsPrice = [dictlist[@"mall_price"] stringValue];
                     
                     [strongSelf.goodsNewDataSource addObject:model];
+                    
                 }
+                
             }
             
             

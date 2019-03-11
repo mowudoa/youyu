@@ -16,6 +16,7 @@
 
 @interface HZDSMallDetailViewController ()
 {
+   
     NSInteger num;
 
 }
@@ -76,6 +77,7 @@
     [self initUI];
     
     [self initData];
+    
 }
 -(void)initUI
 {
