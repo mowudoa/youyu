@@ -9,6 +9,8 @@
 #import "HZDSLoginViewController.h"
 #import "HZDSForgetPassWordViewController.h"
 #import "HZDSRegisterViewController.h"
+#import "XTBaseTabBarViewController.h"
+#import "HZDSMineViewController.h"
 #import "WXApi.h"
 
 @interface HZDSLoginViewController ()
@@ -36,12 +38,14 @@
     [WYFTools viewLayer:_loginButton.height/16*9 withView:_loginButton];
     
 }
+//注册
 - (IBAction)clickRegister:(UIButton *)sender {
 
     HZDSRegisterViewController *regis = [[HZDSRegisterViewController alloc] init];
     
     [self.navigationController pushViewController:regis animated:YES];
 }
+//忘记密码
 - (IBAction)clickForgetPassWord:(UIButton *)sender {
 
     HZDSForgetPassWordViewController *pass = [[HZDSForgetPassWordViewController alloc] init];
@@ -51,6 +55,7 @@
     [self.navigationController pushViewController:pass animated:YES];
     
 }
+//登录
 - (IBAction)clickLogin:(UIButton *)sender {
 
 
@@ -95,9 +100,26 @@
     }
 
 }
+//退出登录页面(并不是退出登录)
+- (IBAction)closeLoginClick:(UIButton *)sender {
+    
+    [YY_APPDELEGATE.tabBarControll joinBaseController:0];
+    
+    for (UIViewController *viewcontrollview in self.navigationController.viewControllers) {
+        
+        if (![viewcontrollview isKindOfClass:[HZDSMineViewController class]]) {
+            
+            [self.navigationController popToRootViewControllerAnimated:YES];
+
+        }
+        
+    }
+    
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+ //   [super viewWillAppear:animated];
     
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
@@ -106,7 +128,6 @@
 {
     [super viewWillDisappear:animated];
     
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 - (IBAction)wxLogin:(UIButton *)sender {
 

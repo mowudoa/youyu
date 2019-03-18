@@ -28,6 +28,7 @@
         
       //  self.backgroundColor = [UIColor redColor];
         [self createMyTabBarWithBackgroundImageName:@"tabbar_btn" andItemTitles:self.titleDataList andItemImagesName:self.imageDataList andItemSelectImagesName:self.selectedDataList andClass:self andSEL:@selector(tabbarSelected:)];
+        
     }
     return self;
 }
@@ -93,10 +94,6 @@
     
     [self addSubview:btn];
     
-    //    UIImageView *lineV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0.7)];
-    //    lineV.backgroundColor = RGBACOLOR(73, 151, 253, 1);
-    //    [self addSubview:lineV];
-    
     //3.设置按钮
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     
@@ -115,8 +112,6 @@
     label.frame = CGRectMake(0, imageSize.height+8, btn.frame.size.width, 20);
     
     label.text = itemTitle;
-   
-    // label.backgroundColor = [UIColor greenColor];
     
     label.textColor = [UIColor colorWithRed:50/255.0 green:50/255.0 blue:50/255.0 alpha:1];
     
@@ -129,13 +124,16 @@
     if (index == 0) {
         
         button.selected = YES;
+        
         label.textColor = [UIColor colorWithRed:249/255.0 green:58/255.0 blue:101/255.0 alpha:1];
+        
     }
     
 }
 //创建分栏的条的背景图片
 -(void)createBackgroundImageWithImageViewName:(NSString *)imageName
 {
+    
     UIImageView *imageView = [[UIImageView alloc] init];
    
     imageView.image = [UIImage imageNamed:imageName];
@@ -150,6 +148,7 @@
     
 }
 -(void)tabbarSelected:(UIButton *)sender{
+   
     for(UIView *view in sender.superview.subviews)
     {
         if([view isKindOfClass:[UIButton class]])
@@ -157,6 +156,7 @@
             ((UIButton *)[view.subviews objectAtIndex:0]).selected = NO;
             
             ((UILabel *)[view.subviews objectAtIndex:1]).textColor = [UIColor colorWithRed:50/255.0 green:50/255.0 blue:50/255.0 alpha:1];
+            
         }
     }
     
@@ -164,12 +164,13 @@
     
     ((UILabel *)[sender.subviews objectAtIndex:1]).textColor = [UIColor colorWithRed:249/255.0 green:58/255.0 blue:101/255.0 alpha:1];
     
-    // self.selectedIndex = sender.tag;
-    
+    //协议
     if ([self.delegate respondsToSelector:@selector(tabBar:itemIndex:)]) {
         
         [self.delegate tabBar:self itemIndex:sender.tag];
+        
     }
+    
 }
 /*
 // Only override drawRect: if you perform custom drawing.

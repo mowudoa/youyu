@@ -152,8 +152,6 @@ UITableViewDataSource
     HZDSEvaluateTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"EvaluateTableViewCell" forIndexPath:indexPath];
     
     [self configureCell:cell atIndexPath:indexPath];
-
-  
     
     return cell;
 }
@@ -175,7 +173,13 @@ UITableViewDataSource
     
     cell.timeLabel.text = [self ConvertStrToTime:model.evaluateTime];
     
-    cell.businessReply.text = [NSString stringWithFormat:@"商家回复:%@",model.businessReply];
+    if ([model.businessReply isEqualToString:@""]) {
+       
+    }else{
+     
+        cell.businessReply.text = [NSString stringWithFormat:@"商家回复:%@",model.businessReply];
+    }
+    
     
 }
 

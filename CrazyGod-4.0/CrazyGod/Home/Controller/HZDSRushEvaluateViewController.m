@@ -52,6 +52,7 @@ UINavigationControllerDelegate
 }
 
 #pragma mark PRIVATE
+
 -(UIImagePickerController *)imagePicker
 {
     if (_imagePicker == nil) {
@@ -78,7 +79,7 @@ UINavigationControllerDelegate
     
     self.navigationItem.title = @"商品点评";
     
-    [WYFTools CreateTextPlaceHolder:@"还记得这家店吗?写点评记录生活,分享体验" WithFont:[UIFont systemFontOfSize:14] WithSuperView:_evaluateTextView];
+    [WYFTools CreateTextPlaceHolder:@"还记得这家店吗?写点评记录生活,分享体验!" WithFont:[UIFont systemFontOfSize:14] WithSuperView:_evaluateTextView];
 }
 -(void)initData
 {

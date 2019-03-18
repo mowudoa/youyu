@@ -47,6 +47,7 @@ UITableViewDataSource
     [self initUI];
     
     [self registercell];
+    
 }
 -(void)initUI
 {
@@ -113,10 +114,17 @@ UITableViewDataSource
     message.messageUrl = MY_MESSAGE;
     
     [self.navigationController pushViewController:message animated:YES];
+    
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+   
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+
+}
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     
     if ([USER_DEFAULT boolForKey:@"isLogin"]) {
         
@@ -129,8 +137,6 @@ UITableViewDataSource
         [self.navigationController pushViewController:login animated:YES];
         
     }
-    
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
     
 }
 //点击头像用户信息设置界面
@@ -266,12 +272,12 @@ UITableViewDataSource
     [self.navigationController pushViewController:myOrder animated:YES];
 }
 
-
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     
     [self.navigationController setNavigationBarHidden:NO animated:NO];
+    
 }
 #pragma mark - UITableViewDataSource
 

@@ -13,6 +13,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    [WYFTools viewLayer:self.userIcon.height/2 withView:self.userIcon];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

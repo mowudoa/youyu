@@ -109,6 +109,11 @@ UITableViewDataSource
     }else{
         
     }
+    
+    self.businessListTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+        [self initData];
+    }];
 }
 
 -(void)initBackButton
@@ -221,6 +226,8 @@ UITableViewDataSource
         
         [strongSelf.businessListTableView reloadData];
         
+        [self.businessListTableView.mj_header endRefreshing];
+        
     } fail:^(NSError *error, NSString *url, NSString *Json) {
         
         LOG(@"cuow", Json);
@@ -230,6 +237,7 @@ UITableViewDataSource
     _keyWordString = nil;
     
     _backgroundView.hidden = YES;
+    
 }
 -(void)initCLassData
 {
@@ -807,6 +815,7 @@ UITableViewDataSource
        
         [appDelegate.tabBarControll.tabBar setHidden:YES];
     }
+    
     [self initView];
     
 }

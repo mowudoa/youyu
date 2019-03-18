@@ -106,15 +106,19 @@ UICollectionViewDelegateFlowLayout
 {
     
     UINib* cate = [UINib nibWithNibName:@"HZDSMallClassCollectionViewCell" bundle:nil];
+    
     [_shoppingMallCollectionView registerNib:cate forCellWithReuseIdentifier:@"ClassCollectionViewCell"];
     
     UINib* cate1 = [UINib nibWithNibName:@"HZDSHotGoodsCollectionViewCell" bundle:nil];
+    
     [_shoppingMallCollectionView registerNib:cate1 forCellWithReuseIdentifier:@"HotGoodsCollectionViewCell"];
     
     UINib* cate2 = [UINib nibWithNibName:@"HZDSgoodGoodsCollectionViewCell" bundle:nil];
+    
     [_shoppingMallCollectionView registerNib:cate2 forCellWithReuseIdentifier:@"goodGoodsCollectionViewCell"];
     
     UINib* cate3 = [UINib nibWithNibName:@"HZDSlikeGoodsCollectionViewCell" bundle:nil];
+    
     [_shoppingMallCollectionView registerNib:cate3 forCellWithReuseIdentifier:@"likeGoodsCollectionViewCell"];
     
     [_shoppingMallCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
@@ -136,6 +140,7 @@ UICollectionViewDelegateFlowLayout
         [self.shoppingMallCollectionView.mj_footer endRefreshingWithNoMoreData];
         
     }];
+    
 }
 -(void)initData
 {

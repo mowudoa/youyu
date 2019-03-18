@@ -47,7 +47,7 @@ UINavigationControllerDelegate
 {
     self.navigationItem.title = @"实名认证";
     
-    [WYFTools CreateTextPlaceHolder:@"请输入详细地址" WithFont:[UIFont systemFontOfSize:14.0] WithSuperView:_detailAddress];
+    [WYFTools CreateTextPlaceHolder:@"请输入详细地址!" WithFont:[UIFont systemFontOfSize:14.0] WithSuperView:_detailAddress];
     
     [WYFTools viewLayer:_authenticationButton.height/16*3 withView:_authenticationButton];
     

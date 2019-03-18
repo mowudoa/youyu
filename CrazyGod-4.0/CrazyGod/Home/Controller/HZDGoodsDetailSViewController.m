@@ -63,6 +63,7 @@
     _thumbArray = [[NSMutableArray alloc] init];
     
     [self initData];
+    
 }
 -(void)initData
 {
@@ -150,6 +151,7 @@
     
     return _headView;
 }
+//商品详情页
 -(void)reloadData
 {
     [self.headerView addSubview:self.headView];
@@ -229,7 +231,19 @@
 //收藏
 - (IBAction)collectGoods:(UIButton *)sender {
 
-    NSDictionary *dic = @{@"tuan_id":_tuanID                          };
+    if (![USER_DEFAULT boolForKey:@"isLogin"]){
+        
+        [JKToast showWithText:@"请先登录"];
+        
+        HZDSLoginViewController *login = [[HZDSLoginViewController alloc] init];
+        
+        [self.navigationController pushViewController:login animated:YES];
+        
+        return;
+        
+    }
+    
+    NSDictionary *dic = @{@"tuan_id":_tuanID};
     
     [CrazyNetWork CrazyRequest_Get:FAVORITES_GOODS parameters:dic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         

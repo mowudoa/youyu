@@ -10,4 +10,6 @@
 
 @interface XTBaseTabBarViewController : UITabBarController
 
+-(void)joinBaseController:(NSInteger)index;
+
 @end

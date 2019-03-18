@@ -26,6 +26,7 @@ UITableViewDataSource
     NSString *choiceString;
     
 }
+
 @property (weak, nonatomic) IBOutlet UITableView *mallListTableView;
 
 @property (weak, nonatomic) IBOutlet UITableView *classTableView;

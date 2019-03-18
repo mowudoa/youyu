@@ -27,6 +27,7 @@ XTBaseTabBarDelegate
     [self createTabBar];
     
     [self.tabBar addSubview:self.baseTabBar];
+    
 }
 -(XTBaseTabBar *)baseTabBar
 {
@@ -36,6 +37,7 @@ XTBaseTabBarDelegate
         
         _baseTabBar.delegate = self;
     }
+    
     return _baseTabBar;
     
 }
@@ -77,6 +79,31 @@ XTBaseTabBarDelegate
 -(void)tabBar:(XTBaseTabBar *)tabBar itemIndex:(NSUInteger)index
 {
     
+    self.selectedIndex = index;
+    
+}
+//tabbar平行页面跳转
+-(void)joinBaseController:(NSInteger)index
+{
+    
+    for (int i = 0 ; i < self.viewControllers.count ; i ++) {
+        
+        if (i == index) {
+            
+            ((UIButton *)[((UIButton *)[self.baseTabBar.subviews objectAtIndex:i]).subviews objectAtIndex:0]).selected = YES;
+           
+            ((UILabel *)[((UIButton *)[self.baseTabBar.subviews objectAtIndex:i]).subviews objectAtIndex:1]).textColor =[UIColor colorWithRed:249/255.0 green:58/255.0 blue:101/255.0 alpha:1];
+            
+        }else{
+            
+            ((UIButton *)[((UIButton *)[self.baseTabBar.subviews objectAtIndex:i]).subviews objectAtIndex:0]).selected = NO;
+            
+            ((UILabel *)[((UIButton *)[self.baseTabBar.subviews objectAtIndex:i]).subviews objectAtIndex:1]).textColor = [UIColor colorWithRed:50/255.0 green:50/255.0 blue:50/255.0 alpha:1];
+            
+        }
+        
+    }
+
     self.selectedIndex = index;
 }
 

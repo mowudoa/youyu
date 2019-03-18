@@ -155,6 +155,17 @@
                         <action selector="wxLogin:" destination="-1" eventType="touchUpInside" id="aPW-11-KDJ"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phM-Tk-aro">
+                    <rect key="frame" x="15" y="50" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="ggP-q0-Gdn"/>
+                        <constraint firstAttribute="width" constant="30" id="hZ0-1h-Qp0"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="close"/>
+                    <connections>
+                        <action selector="closeLoginClick:" destination="-1" eventType="touchUpInside" id="igK-rU-Owh"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -172,18 +183,22 @@
                 <constraint firstItem="sn8-RJ-Jzq" firstAttribute="top" secondItem="qTs-Ez-OD4" secondAttribute="bottom" id="Ogm-R4-sgv"/>
                 <constraint firstAttribute="trailing" secondItem="sn8-RJ-Jzq" secondAttribute="trailing" id="bYh-1f-mFM"/>
                 <constraint firstItem="sn8-RJ-Jzq" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="evw-1K-cHY"/>
+                <constraint firstItem="phM-Tk-aro" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="15" id="gI2-jj-IZx"/>
                 <constraint firstItem="MWt-lw-8T9" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="gKu-wh-Gle"/>
                 <constraint firstItem="sn8-RJ-Jzq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="h2A-hy-fSj"/>
+                <constraint firstItem="phM-Tk-aro" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="30" id="kF2-63-QUt"/>
                 <constraint firstItem="yU1-ms-W7F" firstAttribute="top" secondItem="sn8-RJ-Jzq" secondAttribute="bottom" id="moh-eA-d2V"/>
                 <constraint firstItem="CxM-QM-g8b" firstAttribute="top" secondItem="yU1-ms-W7F" secondAttribute="bottom" constant="8" id="sCs-Bl-Ybg"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="IJk-4z-K16" secondAttribute="trailing" constant="25" id="wbD-T1-QZK"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="wuk-LX-zhg" secondAttribute="trailing" constant="30" id="zDY-v4-1TG"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="138.75" y="136.26760563380282"/>
         </view>
     </objects>
     <resources>
         <image name="baseImage" width="180" height="180"/>
+        <image name="close" width="200" height="200"/>
         <image name="微信" width="200" height="200"/>
     </resources>
 </document>

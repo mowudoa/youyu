@@ -92,7 +92,7 @@ UIPickerViewDataSource
 
     }
 
-    [WYFTools CreateTextPlaceHolder:@"请填写详细地址" WithFont:[UIFont systemFontOfSize:14] WithSuperView:_addressDetailTextView];
+    [WYFTools CreateTextPlaceHolder:@"请填写详细地址!" WithFont:[UIFont systemFontOfSize:14] WithSuperView:_addressDetailTextView];
     
 }
 -(void)initData
@@ -547,6 +547,10 @@ UIPickerViewDataSource
     }
     
     pickerLabel.text=[self pickerView:pickerView titleForRow:row forComponent:component];
+    
+    ((UILabel *)[pickerView.subviews objectAtIndex:1]).backgroundColor = [UIColor clearColor];
+    
+    ((UILabel *)[pickerView.subviews objectAtIndex:2]).backgroundColor = [UIColor clearColor];
     
     return pickerLabel;
     

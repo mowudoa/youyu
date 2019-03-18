@@ -3612,7 +3612,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage1;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = F6X6FVSDS4;
+				DEVELOPMENT_TEAM = 8CXJASWT6Z;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CrazyPrefixHeader.pch";
 				INFOPLIST_FILE = CrazyGod/Info.plist;
@@ -3630,7 +3630,7 @@
 					"-Objc",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.renrenyouyu.hzds;
+				PRODUCT_BUNDLE_IDENTIFIER = com.youyu.huizhong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -3644,7 +3644,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage1;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = F6X6FVSDS4;
+				DEVELOPMENT_TEAM = 8CXJASWT6Z;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CrazyPrefixHeader.pch";
 				INFOPLIST_FILE = CrazyGod/Info.plist;
@@ -3662,7 +3662,7 @@
 					"-Objc",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.renrenyouyu.hzds;
+				PRODUCT_BUNDLE_IDENTIFIER = com.youyu.huizhong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;

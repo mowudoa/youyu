@@ -143,9 +143,9 @@ UINavigationControllerDelegate
 -(void)initUI
 {
     
-    [WYFTools CreateTextPlaceHolder:@"购买须知,建议不超过100字" WithFont:[UIFont systemFontOfSize:14] WithSuperView:_buyInfoTextView];
+    [WYFTools CreateTextPlaceHolder:@"购买须知,建议不超过100字!" WithFont:[UIFont systemFontOfSize:14] WithSuperView:_buyInfoTextView];
     
-    [WYFTools CreateTextPlaceHolder:@"添加商品详情,建议不超过200字,如需上传文章详情图,建议使用电脑端" WithFont:[UIFont systemFontOfSize:14] WithSuperView:_goodsInfoTextView];
+    [WYFTools CreateTextPlaceHolder:@"添加商品详情,建议不超过200字,如需上传文章详情图,建议使用电脑端!" WithFont:[UIFont systemFontOfSize:14] WithSuperView:_goodsInfoTextView];
     
     [WYFTools viewLayer:5 withView:_addGoodsButton];
     
@@ -558,7 +558,7 @@ UINavigationControllerDelegate
     
     [UIView animateWithDuration:0.5f animations:^{
         
-        self.dateView.frame = CGRectMake(0,SCREEN_HEIGHT-300,SCREEN_WIDTH,300);
+        self.dateView.frame = CGRectMake(0,SCREEN_HEIGHT-344,SCREEN_WIDTH,344);
         
     } completion:^(BOOL finished) {
     }];

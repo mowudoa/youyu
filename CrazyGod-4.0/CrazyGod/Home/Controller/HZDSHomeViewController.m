@@ -85,6 +85,7 @@ cityChoiceDelegate
     _titleArray  = [[NSMutableArray alloc] init];
     
     _advArray = [[NSMutableArray alloc] init];
+    
 }
 -(void)initData
 {
@@ -175,8 +176,7 @@ cityChoiceDelegate
 
 -(void)registercell
 {
-    
-    
+
     UINib* nib = [UINib nibWithNibName:@"HZDSHomeTableViewCell" bundle:nil];
     
     [_homeTableView registerNib:nib forCellReuseIdentifier:@"HomeTableViewCell"];
@@ -195,7 +195,7 @@ cityChoiceDelegate
     }];
 }
 #pragma mark PRIVATE
-
+//搜索视图
 -(UIImageView*)searchImage
 {
     if (_searchImage == nil) {
@@ -241,6 +241,7 @@ cityChoiceDelegate
     }
     return  _searchImage;
 }
+//城市选择
 -(UIBarButtonItem*)leftItem
 {
     if (_leftItem == nil) {
@@ -270,6 +271,7 @@ cityChoiceDelegate
     }
     return _leftItem;
 }
+//扫一扫按钮
 -(UIBarButtonItem*)rightItem
 {
     if (_rightItem == nil) {
@@ -291,6 +293,7 @@ cityChoiceDelegate
     }
     return _rightItem;
 }
+//正常轮播
 -(UIView*)headView
 {
     if (_headView == nil) {
@@ -305,6 +308,7 @@ cityChoiceDelegate
     
     return _headView;
 }
+//卡片轮播
 -(DCCycleScrollView *)scrollImageView
 {
     
@@ -339,6 +343,7 @@ cityChoiceDelegate
     
     [self.navigationController pushViewController:city animated:YES];
 }
+//点击搜索
 -(void)touchsearch:(UIButton *)sender
 {
     HZDSSearchViewController *search = [[HZDSSearchViewController alloc] init];
@@ -346,6 +351,7 @@ cityChoiceDelegate
     [self.navigationController pushViewController:search animated:YES];
     
 }
+//扫一扫
 -(void)touchScan:(UIButton *) sender
 {
     SWQRCodeConfig *config = [[SWQRCodeConfig alloc]init];
@@ -573,6 +579,7 @@ cityChoiceDelegate
     [_homeTableView reloadData];
     
 }
+//卡片轮播点击事件
 -(void)cycleScrollView:(DCCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
 {
     
@@ -586,6 +593,8 @@ cityChoiceDelegate
     
     
 }
+
+//分类跳商家
 -(void)buttonSleected:(NSString *)buttonTitle buttonID:(NSString *)buttonId
 {
     HZDSBusinessViewController *business = [[HZDSBusinessViewController alloc] init];
@@ -684,6 +693,8 @@ cityChoiceDelegate
         
         [self initData];
     });
+    
+    YY_APPDELEGATE.tabBarControll.tabBar.hidden = NO;
 }
 
 

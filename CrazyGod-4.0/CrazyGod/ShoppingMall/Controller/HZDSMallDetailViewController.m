@@ -403,6 +403,17 @@
 //收藏
 - (IBAction)collectionGoods:(UIButton *)sender {
     
+    if (![USER_DEFAULT boolForKey:@"isLogin"]){
+        
+        [JKToast showWithText:@"请先登录"];
+        
+        HZDSLoginViewController *login = [[HZDSLoginViewController alloc] init];
+        
+        [self.navigationController pushViewController:login animated:YES];
+        
+        return;
+    }
+    
     NSDictionary *dic = @{@"goods_id":_goodsID                         };
     
     __weak typeof(self) weakSelf = self;

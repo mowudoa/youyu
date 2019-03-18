@@ -9,6 +9,7 @@
 #import "HZDSShopViewController.h"
 #import "HZDSlikeGoodsCollectionViewCell.h"
 #import "HZDSMallDetailViewController.h"
+#import "HZDSLoginViewController.h"
 #import "HomeModel.h"
 
 @interface HZDSShopViewController ()<
@@ -352,7 +353,18 @@ UICollectionViewDelegateFlowLayout
 }
 - (IBAction)followShop:(UIButton *)sender {
    
-    NSDictionary *dic = @{@"shop_id":_shop_id                         };
+    if (![USER_DEFAULT boolForKey:@"isLogin"]){
+        
+        [JKToast showWithText:@"请先登录"];
+        
+        HZDSLoginViewController *login = [[HZDSLoginViewController alloc] init];
+        
+        [self.navigationController pushViewController:login animated:YES];
+        
+        return;
+    }
+    
+    NSDictionary *dic = @{@"shop_id":_shop_id};
     
     __weak typeof(self) weakSelf = self;
     
