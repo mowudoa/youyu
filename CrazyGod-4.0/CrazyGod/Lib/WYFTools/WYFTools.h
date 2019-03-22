@@ -11,10 +11,10 @@
 @interface WYFTools : NSObject
 
 //按钮
-+(UIButton *)createButton:(CGRect)frame bgColor:(UIColor *)color title:(NSString *)title titleColor:(UIColor *)titleColor tag:(NSInteger)tag action:(SEL)action vc:(id)vc;
++(UIButton *)createButton:(CGRect)frame bgColor:(UIColor *)color title:(NSString *)title titleFont:(UIFont *)font titleColor:(UIColor *)titleColor slectedTitleColor:(UIColor *)selectedTitleColor tag:(NSInteger)tag action:(SEL)action vc:(id)vc;
 
 //标题
-+(UILabel *)createLabel:(CGRect)frame bgColor:(UIColor *)color text:(NSString *)text textAlignment:(NSTextAlignment)textAlignment textColor:(UIColor *)textColor tag:(NSInteger)tag;
++(UILabel *)createLabel:(CGRect)frame bgColor:(UIColor *)color text:(NSString *)text textFont:(UIFont *)font textAlignment:(NSTextAlignment)textAlignment textColor:(UIColor *)textColor tag:(NSInteger)tag;
 
 //文本框
 +(UITextField *)createTextField:(CGRect)frame bgColor:(UIColor *)color placeHolder:(NSString *)holder clearbutnMode:(UITextFieldViewMode)mode keyBoardType:(UIKeyboardType)type tag:(NSInteger)tag TextEntry:(BOOL)bo;

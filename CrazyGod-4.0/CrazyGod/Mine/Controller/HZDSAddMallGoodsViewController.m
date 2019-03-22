@@ -57,7 +57,11 @@ UINavigationControllerDelegate
 
 @property (weak, nonatomic) IBOutlet UIButton *classOneButton;
 
+@property (weak, nonatomic) IBOutlet UIView *classOneView;
+
 @property (weak, nonatomic) IBOutlet UIButton *classTwoButton;
+
+@property (weak, nonatomic) IBOutlet UIView *classTwoView;
 
 @property (weak, nonatomic) IBOutlet UITextField *goodsPrice;
 
@@ -153,10 +157,18 @@ UINavigationControllerDelegate
     
     [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_buyInfoTextView];
     
-    
     [WYFTools viewLayer:5 withView:_goodsInfoTextView];
     
     [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_goodsInfoTextView];
+    
+    [WYFTools viewLayer:2 withView:_freightButton];
+ 
+    [WYFTools viewLayer:2 withView:_classOneView];
+    
+    [WYFTools viewLayer:2 withView:_classTwoView];
+
+    [WYFTools viewLayer:2 withView:_endDateButton];
+
 }
 -(void)registercell
 {

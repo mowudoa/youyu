@@ -25,7 +25,7 @@ UICollectionViewDelegateFlowLayout
 >
 @property (weak, nonatomic) IBOutlet UICollectionView *shoppingMallCollectionView;
 
-@property(strong,nonatomic)UIImageView* searchImage;
+@property(strong,nonatomic)UIView* searchView;
 
 @property(strong,nonatomic)UITextField* searchTextField;
 
@@ -77,7 +77,7 @@ UICollectionViewDelegateFlowLayout
 -(void)initUI
 {
     
-    self.navigationItem.titleView = self.searchImage;
+    self.navigationItem.titleView = self.searchView;
     
     _classArray = [[NSMutableArray alloc] init];
     
@@ -223,7 +223,8 @@ UICollectionViewDelegateFlowLayout
         }
         
         [self reloadData];
-    [strongSelf.shoppingMallCollectionView.mj_header endRefreshing];
+        
+        [strongSelf.shoppingMallCollectionView.mj_header endRefreshing];
         
     } fail:^(NSError *error, NSString *url, NSString *Json) {
         
@@ -247,33 +248,32 @@ UICollectionViewDelegateFlowLayout
         
     }
     
-    
     return _headView;
 }
 //搜索
--(UIImageView*)searchImage
+-(UIView*)searchView
 {
-    if (_searchImage == nil) {
+    if (_searchView == nil) {
         
-        _searchImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH*0.8, 30)];
+        _searchView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH*0.8, 30)];
         
-        _searchImage.backgroundColor = [UIColor colorWithHexString:@"ffffff"];
+        _searchView.backgroundColor = [UIColor colorWithHexString:@"ffffff"];
         
         UIImageView *ima = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH*0.8 -30,8,14,14)];
         
         ima.image = [UIImage imageNamed:@"searchIma"];
         
-        _searchImage.layer.cornerRadius = _searchImage.frame.size.height/2;
+        _searchView.layer.cornerRadius = _searchView.frame.size.height/2;
         
-        _searchImage.userInteractionEnabled = YES;
+        _searchView.userInteractionEnabled = YES;
         
-        [_searchImage addSubview:self.searchTextField];
+        [_searchView addSubview:self.searchTextField];
         
-        [_searchImage addSubview:ima];
+        [_searchView addSubview:ima];
         
     }
     
-    return  _searchImage;
+    return  _searchView;
 }
 -(UITextField*)searchTextField
 {
@@ -283,7 +283,7 @@ UICollectionViewDelegateFlowLayout
         
         _searchTextField.placeholder = @"你想要的...";
         
-        [_searchTextField setValue:[UIColor redColor] forKeyPath:@"_placeholderLabel.textColor"];
+        [_searchTextField setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
         
         _searchTextField.borderStyle = UITextBorderStyleNone;
         
@@ -297,7 +297,10 @@ UICollectionViewDelegateFlowLayout
         
         _searchTextField.textColor = [UIColor lightGrayColor];
         
+        _searchTextField.tintColor = [UIColor colorWithHexString:@"#1571fb"];
+        
     }
+    
     return _searchTextField;
 }
 
@@ -312,8 +315,6 @@ UICollectionViewDelegateFlowLayout
 {
     [textField resignFirstResponder];
     
-    [self gosearchByKeyWord:textField.text];
-    
     return YES;
 }
 #pragma mark - UICollectionViewDataSource
@@ -322,6 +323,7 @@ UICollectionViewDelegateFlowLayout
 {
     
     return 5;
+    
 }
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
@@ -655,13 +657,13 @@ UICollectionViewDelegateFlowLayout
 //关键字搜索
 - (void)searchMallGoodsByKeyWords:(NSNotification *)notification{
     
-    if ([self.searchTextField.text isEqualToString:@""] ||[self.searchTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0 ) {
-        
-    }else{
-        
+//    if ([self.searchTextField.text isEqualToString:@""] ||[self.searchTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0 ) {
+//
+//    }else{
+    
         [self gosearchByKeyWord:self.searchTextField.text];
         
-    }
+//    }
     
 }
 -(void)gosearchByKeyWord:(NSString *)keyWords

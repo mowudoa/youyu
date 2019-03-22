@@ -123,6 +123,8 @@
     
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
+    YY_APPDELEGATE.tabBarControll.tabBar.hidden = YES;
+    
 }
 -(void)viewWillDisappear:(BOOL)animated
 {

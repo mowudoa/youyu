@@ -231,10 +231,10 @@
                     </connections>
                 </tableView>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HZk-h2-utq">
-                    <rect key="frame" x="25" y="401" width="270" height="35"/>
+                    <rect key="frame" x="16" y="401" width="288" height="35"/>
                     <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="HZk-h2-utq" secondAttribute="height" multiplier="54:7" id="0d9-pq-nG7"/>
+                        <constraint firstAttribute="width" secondItem="HZk-h2-utq" secondAttribute="height" multiplier="288:35" id="O4d-1u-lVk"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="提交充值">
@@ -248,19 +248,20 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="kpn-mO-2XJ" firstAttribute="top" secondItem="QlU-IH-LXG" secondAttribute="bottom" constant="8" id="0n0-II-w9E"/>
-                <constraint firstItem="HZk-h2-utq" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="25" id="2w9-n1-taU"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="kpn-mO-2XJ" secondAttribute="trailing" id="57G-2S-XNU"/>
+                <constraint firstItem="HZk-h2-utq" firstAttribute="top" secondItem="kpn-mO-2XJ" secondAttribute="bottom" constant="45" id="CN1-ac-6Gz"/>
                 <constraint firstItem="kpn-mO-2XJ" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="RXG-P5-LPs"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="HZk-h2-utq" secondAttribute="trailing" constant="16" id="RdJ-14-lgg"/>
                 <constraint firstItem="cvX-e4-LUT" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="Wk0-dJ-0I2"/>
-                <constraint firstItem="HZk-h2-utq" firstAttribute="top" secondItem="kpn-mO-2XJ" secondAttribute="bottom" constant="45" id="bHn-I8-3KS"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="HZk-h2-utq" secondAttribute="trailing" constant="25" id="bjO-n9-mgy"/>
                 <constraint firstItem="QlU-IH-LXG" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="jjS-xv-H3k"/>
+                <constraint firstItem="HZk-h2-utq" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="16" id="kt9-xJ-P0j"/>
                 <constraint firstItem="cvX-e4-LUT" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="pro-7a-Tv9"/>
                 <constraint firstItem="QlU-IH-LXG" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="qNe-D1-nep"/>
                 <constraint firstItem="cvX-e4-LUT" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="tKZ-gw-9SG"/>
                 <constraint firstItem="QlU-IH-LXG" firstAttribute="top" secondItem="cvX-e4-LUT" secondAttribute="bottom" constant="8" id="xRG-oe-MOU"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="138.75" y="132.04225352112675"/>
         </view>
     </objects>
 </document>

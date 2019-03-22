@@ -132,7 +132,15 @@ UITableViewDataSource
                 
                 model.couponNUm = dict1[@"code"];
                 
-                model.couponChecker = dict1[@"user_name"];
+                if ([strongSelf.checkHistoryUrl isEqualToString:MERCHANT_COUPON_CHECK_HISTORY]) {
+                    
+                    model.couponChecker = dict1[@"user_name"];
+
+                }else{
+                    
+                    model.couponChecker = dict1[@"worker_name"];
+
+                }
                 
                 model.couponTime = dict1[@"create_time"];
                 
@@ -172,7 +180,6 @@ UITableViewDataSource
             
             NSArray *arr = dic[@"datas"][@"list"];
             
-            
             for (NSDictionary *dict1 in arr) {
                 
                 HZDScouponModel *model = [[HZDScouponModel alloc] init];
@@ -186,11 +193,22 @@ UITableViewDataSource
                     model.couponTite = @"";
                     
                 }else{
+                    
                     model.couponTite = dict1[@"title"];
                     
                 }
                 
                 model.couponNUm = dict1[@"code"];
+                
+                if ([strongSelf.checkHistoryUrl isEqualToString:MERCHANT_COUPON_CHECK_HISTORY]) {
+                    
+                    model.couponChecker = dict1[@"user_name"];
+                    
+                }else{
+                    
+                    model.couponChecker = dict1[@"worker_name"];
+                    
+                }
                 
                 model.couponTime = dict1[@"create_time"];
                 

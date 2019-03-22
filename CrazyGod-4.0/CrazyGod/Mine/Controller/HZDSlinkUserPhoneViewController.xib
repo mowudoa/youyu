@@ -130,10 +130,10 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xc5-lg-Fd7">
-                    <rect key="frame" x="25" y="195" width="270" height="35"/>
+                    <rect key="frame" x="16" y="195" width="288" height="35"/>
                     <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="Xc5-lg-Fd7" secondAttribute="height" multiplier="54:7" id="pCf-K2-lHW"/>
+                        <constraint firstAttribute="width" secondItem="Xc5-lg-Fd7" secondAttribute="height" multiplier="288:35" id="zdm-Dm-daq"/>
                     </constraints>
                     <state key="normal" title="确认">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -148,14 +148,15 @@
                 <constraint firstItem="Heq-aC-taS" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="5" id="B8y-Db-JaD"/>
                 <constraint firstItem="Heq-aC-taS" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="CbV-lr-XjV"/>
                 <constraint firstItem="iur-CV-qe5" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="G8n-eF-czA"/>
+                <constraint firstItem="Xc5-lg-Fd7" firstAttribute="top" secondItem="iur-CV-qe5" secondAttribute="bottom" constant="80" id="HFh-JH-9q0"/>
                 <constraint firstItem="iur-CV-qe5" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="MR2-0f-Kpq"/>
                 <constraint firstItem="Heq-aC-taS" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="TfJ-Vq-xSR"/>
-                <constraint firstItem="Xc5-lg-Fd7" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="25" id="aqG-Xr-GgR"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Xc5-lg-Fd7" secondAttribute="trailing" constant="25" id="eCC-ST-VEh"/>
-                <constraint firstItem="Xc5-lg-Fd7" firstAttribute="top" secondItem="iur-CV-qe5" secondAttribute="bottom" constant="80" id="nJx-Fu-G3c"/>
+                <constraint firstItem="Xc5-lg-Fd7" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="16" id="mzc-Mi-wwn"/>
                 <constraint firstItem="iur-CV-qe5" firstAttribute="top" secondItem="Heq-aC-taS" secondAttribute="bottom" id="rT6-Y1-X2T"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Xc5-lg-Fd7" secondAttribute="trailing" constant="16" id="xHk-uC-jvD"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="138.75" y="132.04225352112675"/>
         </view>
     </objects>
 </document>

@@ -63,10 +63,10 @@
                     </connections>
                 </button>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8uk-aA-RV3">
-                    <rect key="frame" x="25" y="404" width="270" height="30"/>
+                    <rect key="frame" x="16" y="404" width="288" height="35"/>
                     <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="8uk-aA-RV3" secondAttribute="height" multiplier="9:1" id="U0r-0S-zIF"/>
+                        <constraint firstAttribute="width" secondItem="8uk-aA-RV3" secondAttribute="height" multiplier="288:35" id="J1B-SP-fa7"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="立即使用">
@@ -89,20 +89,20 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="5D8-se-Ihz" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="0h3-ZR-BDc"/>
-                <constraint firstItem="8uk-aA-RV3" firstAttribute="top" secondItem="HUm-Fy-16y" secondAttribute="bottom" constant="35" id="B9m-a0-wij"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="8uk-aA-RV3" secondAttribute="trailing" constant="16" id="4qY-mN-arU"/>
+                <constraint firstItem="8uk-aA-RV3" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="16" id="B8Q-gX-yzd"/>
                 <constraint firstAttribute="trailing" secondItem="YEf-DK-Txc" secondAttribute="trailing" id="Bqx-pW-Aj0"/>
                 <constraint firstItem="tMX-GG-W2J" firstAttribute="top" secondItem="YEf-DK-Txc" secondAttribute="bottom" constant="25" id="Elq-5x-5bV"/>
-                <constraint firstItem="8uk-aA-RV3" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="25" id="Jl2-bz-5bV"/>
                 <constraint firstItem="HUm-Fy-16y" firstAttribute="top" secondItem="tMX-GG-W2J" secondAttribute="bottom" constant="15" id="PAT-BI-20r"/>
                 <constraint firstItem="YEf-DK-Txc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Qty-bn-bzW"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="HUm-Fy-16y" secondAttribute="trailing" constant="20" id="SYU-pF-hlj"/>
                 <constraint firstItem="UjU-1z-taa" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="Yw0-eQ-t5m"/>
                 <constraint firstItem="tMX-GG-W2J" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="a13-VD-kVI"/>
                 <constraint firstItem="YEf-DK-Txc" firstAttribute="top" secondItem="UjU-1z-taa" secondAttribute="bottom" constant="40" id="c82-qw-UDD"/>
+                <constraint firstItem="8uk-aA-RV3" firstAttribute="top" secondItem="HUm-Fy-16y" secondAttribute="bottom" constant="35" id="hqa-eR-sNf"/>
                 <constraint firstItem="5D8-se-Ihz" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="30" id="m6a-71-YPp"/>
                 <constraint firstItem="HUm-Fy-16y" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="w8j-ZO-fKc"/>
                 <constraint firstItem="UjU-1z-taa" firstAttribute="top" secondItem="5D8-se-Ihz" secondAttribute="bottom" constant="20" id="xZS-tG-hOw"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="8uk-aA-RV3" secondAttribute="trailing" constant="25" id="yNQ-fu-oeN"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <point key="canvasLocation" x="138.75" y="125.70422535211267"/>

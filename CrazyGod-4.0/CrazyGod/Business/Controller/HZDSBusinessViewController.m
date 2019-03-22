@@ -689,36 +689,26 @@ UITableViewDataSource
 {
     if (_headerView == nil) {
         
-        _headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 30)];
+        _headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 35)];
         
         for (int i = 0 ; i < 3; i++) {
           
             NSArray* arr = @[@"选择分类",@"选择地区",@"选择排序"];
             
-            UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
             
-            [button setFrame:CGRectMake(i*SCREEN_WIDTH/3 , 5, SCREEN_WIDTH/3, 30)];
-
-            [button setTitle:arr[i] forState:UIControlStateNormal];
-
-            button.titleLabel.font = [UIFont systemFontOfSize:15];
-
-            [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-
-            [button setTitleColor:[UIColor colorWithHexString:@"#fc6621"] forState:UIControlStateSelected];
-           
-            [button setBackgroundImage:[UIImage imageNamed:@"arrdown"] forState:UIControlStateNormal];
-            
-            [button setBackgroundImage:[UIImage imageNamed:@"arrup"] forState:UIControlStateSelected];
-            
-            button.tag = i+10;
+            UIButton *button = [WYFTools createButton:CGRectMake(i*((SCREEN_WIDTH - 20)/3 + 5) ,0, (SCREEN_WIDTH - 20)/3, 35) bgColor:[UIColor clearColor] title:arr[i] titleFont:[UIFont systemFontOfSize:15] titleColor:[UIColor blackColor] slectedTitleColor:[UIColor colorWithHexString:@"#fc6621"]  tag:i + 10 action:@selector(touchheaderView:) vc:self];
             
             _headerView.userInteractionEnabled = YES;
-           
-            [button addTarget:self action:@selector(touchheaderView:) forControlEvents:UIControlEventTouchUpInside];
             
             [_headerView addSubview:button];
             
+            if (i < 2) {
+                
+                UILabel *label = [WYFTools createLabel:CGRectMake((i+ 1)*SCREEN_WIDTH/3 , 5,1, 25) bgColor:[UIColor colorWithHexString:@"#F5F5F5"] text:@"" textFont:[UIFont systemFontOfSize:15]  textAlignment:NSTextAlignmentCenter textColor:[UIColor clearColor] tag:i];
+
+                [_headerView addSubview:label];
+                
+            }
         }
         
     }
@@ -811,9 +801,7 @@ UITableViewDataSource
     
     if (_isRootNav) {
         
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-       
-        [appDelegate.tabBarControll.tabBar setHidden:YES];
+        [YY_APPDELEGATE.tabBarControll.tabBar setHidden:YES];
     }
     
     [self initView];
@@ -825,9 +813,7 @@ UITableViewDataSource
     
     if (_isRootNav) {
         
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-       
-        [appDelegate.tabBarControll.tabBar setHidden:NO];
+        [YY_APPDELEGATE.tabBarControll.tabBar setHidden:NO];
     }
     
 }

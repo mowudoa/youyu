@@ -62,7 +62,7 @@
             
             if (SUCCESS) {
                 
-                [JKToast showWithText:dic[@"datas"][@"msg"]];
+             //   [JKToast showWithText:dic[@"datas"][@"msg"]];
                 
                 PayReq *req  = [[PayReq alloc] init];
                 

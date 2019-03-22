@@ -42,9 +42,7 @@
 {
     [super viewWillAppear:animated];
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-   
-    [appDelegate.tabBarControll.tabBar setHidden:YES];
+    [YY_APPDELEGATE.tabBarControll.tabBar setHidden:YES];
     
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
@@ -53,9 +51,7 @@
 {
     [super viewWillDisappear:animated];
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    
-    [appDelegate.tabBarControll.tabBar setHidden:NO];
+    [YY_APPDELEGATE.tabBarControll.tabBar setHidden:NO];
     
 }
 

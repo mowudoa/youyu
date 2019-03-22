@@ -14,6 +14,8 @@ UIImagePickerControllerDelegate,
 UINavigationControllerDelegate
 >
 
+@property (weak, nonatomic) IBOutlet UIScrollView *bgScrollView;
+
 @property (weak, nonatomic) IBOutlet UILabel *headerTitleLabel;
 
 @property (weak, nonatomic) IBOutlet UIImageView *goodsImage;
@@ -263,6 +265,14 @@ UINavigationControllerDelegate
     [_uploadImageButton setImage:image forState:UIControlStateNormal];
     
     _imageString = dic[@"url"];
+    
+}
+
+-(void)viewDidLayoutSubviews
+{
+    UIView* conView = (UIView*)[_bgScrollView viewWithTag:2048];
+    
+    _bgScrollView.contentSize = CGSizeMake(0, conView.mj_y+conView.height + 20);
     
 }
 - (void)didReceiveMemoryWarning {

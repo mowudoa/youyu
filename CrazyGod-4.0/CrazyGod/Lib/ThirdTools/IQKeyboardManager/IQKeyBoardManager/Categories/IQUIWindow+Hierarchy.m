@@ -33,13 +33,15 @@ IQ_LoadCategory(IQUIWindowHierarchy)
 
 - (UIViewController*) topMostController
 {
-    UIViewController *topController = [self rootViewController];
     
+    UIViewController *topController = [self rootViewController];
+
     //  Getting topMost ViewController
-    while ([topController presentedViewController])	topController = [topController presentedViewController];
-	
+    while ([topController presentedViewController])    topController = [topController presentedViewController];
+
     //  Returning topMost ViewController
     return topController;
+    
 }
 
 - (UIViewController*)currentViewController;

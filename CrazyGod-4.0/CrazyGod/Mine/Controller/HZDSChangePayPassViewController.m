@@ -44,7 +44,7 @@
     
     [WYFTools viewLayer:_changeButton.height/16*3 withView:_changeButton];
     
-    [WYFTools viewLayer:_getCodeButton.height/6 withView:_changeButton];
+    [WYFTools viewLayer:_getCodeButton.height/6 withView:_getCodeButton];
 }
 -(void)initData
 {

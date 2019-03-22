@@ -10,6 +10,8 @@
 
 @interface HZDSTransferAccountsViewController ()
 
+@property (weak, nonatomic) IBOutlet UIScrollView *bgScrollView;
+
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *transAccountInfo;
@@ -55,6 +57,8 @@
     [WYFTools viewLayer:_getCodeButton.height/6 withView:_getCodeButton];
     
     [WYFTools viewLayer:_checkPhoneButton.height/6 withView:_checkPhoneButton];
+    
+    self.transAccountButton.userInteractionEnabled = NO;
     
 }
 -(void)initData
@@ -110,11 +114,15 @@
                 
                 [self loadHtmlString:dic[@"datas"][@"msg"]];
                 
+            strongSelf.transAccountButton.userInteractionEnabled = YES;
+                
                 [strongSelf.transAccountButton setBackgroundColor:[UIColor redColor]];
                 
             }else{
                 
                 [JKToast showWithText:dic[@"datas"][@"error"]];
+                
+                strongSelf.transAccountButton.userInteractionEnabled = NO;
                 
                 [strongSelf.transAccountButton setBackgroundColor:[UIColor colorWithHexString:@"#aaaaaa"]];
             }
@@ -252,6 +260,14 @@
     
 }
 
+-(void)viewDidLayoutSubviews
+{
+    
+    UIView* conView = (UIView*)[_bgScrollView viewWithTag:2048];
+    
+    _bgScrollView.contentSize = CGSizeMake(0, conView.frame.origin.y+conView.frame.size.height + 10 + SCREEN_WIDTH/8 + 55);
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

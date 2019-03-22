@@ -96,6 +96,7 @@
     manager.shouldToolbarUsesTextFieldTintColor = YES;
     
     manager.enableAutoToolbar = YES;
+    
 }
 -(void)ConfigSVProgressHUD{
     

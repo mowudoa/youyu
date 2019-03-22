@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,7 +36,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.89999997615814209" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="快递名称:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TxT-2D-jD0">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="快递名称:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TxT-2D-jD0">
                             <rect key="frame" x="10" y="0.0" width="72" height="39"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="72" id="ORF-65-3yT"/>
@@ -91,7 +90,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.89999997615814209" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="快递单号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bh3-Yw-UuE">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="快递单号:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bh3-Yw-UuE">
                             <rect key="frame" x="10" y="0.0" width="72" height="39"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="72" id="jpA-QA-6JA"/>
@@ -123,11 +122,12 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6xv-37-nVN">
-                    <rect key="frame" x="25" y="188" width="270" height="40"/>
+                    <rect key="frame" x="16" y="188" width="288" height="35"/>
                     <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="6xv-37-nVN" secondAttribute="height" multiplier="27:4" id="U7f-3g-KeW"/>
+                        <constraint firstAttribute="width" secondItem="6xv-37-nVN" secondAttribute="height" multiplier="288:35" id="Msv-qG-dav"/>
                     </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="确认发货">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
@@ -138,13 +138,13 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="6xv-37-nVN" secondAttribute="trailing" constant="25" id="4bS-D0-sXr"/>
-                <constraint firstItem="6xv-37-nVN" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="25" id="84b-FY-BbE"/>
                 <constraint firstItem="Je7-Co-DYt" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="8IX-Gz-jr7"/>
                 <constraint firstItem="Je7-Co-DYt" firstAttribute="top" secondItem="5hR-Yq-6AZ" secondAttribute="bottom" id="9PW-rW-oQq"/>
                 <constraint firstItem="5hR-Yq-6AZ" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="BKT-8r-oXd"/>
-                <constraint firstItem="6xv-37-nVN" firstAttribute="top" secondItem="Je7-Co-DYt" secondAttribute="bottom" constant="88" id="GnG-SJ-qvP"/>
                 <constraint firstItem="5hR-Yq-6AZ" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="UFh-de-LxY"/>
+                <constraint firstItem="6xv-37-nVN" firstAttribute="top" secondItem="Je7-Co-DYt" secondAttribute="bottom" constant="88" id="ffO-PT-qHH"/>
+                <constraint firstItem="6xv-37-nVN" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="16" id="gGe-mG-K41"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="6xv-37-nVN" secondAttribute="trailing" constant="16" id="gSF-Nm-L5S"/>
                 <constraint firstItem="Je7-Co-DYt" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="hgS-jA-lWi"/>
                 <constraint firstItem="5hR-Yq-6AZ" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="wMY-mV-Iu3"/>
             </constraints>

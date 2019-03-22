@@ -115,9 +115,9 @@
     
     height1 = [WYFTools heightWithCreateTagLabel:[UIFont systemFontOfSize:12] tagArray:_historySearchArray itemSpace:2 itemHeight:20 currentX:0 currentY:0 superView:_historySearch action:@selector(click1:) vc:self buttonUserEnable:YES];
     
-    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_businessBtn];
+    [WYFTools viewLayerBorderWidth:0.5 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_businessBtn];
     
-    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_textbackgroundView];
+    [WYFTools viewLayerBorderWidth:0.5 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_textbackgroundView];
     
 }
 -(void)click:(UIButton *)sender
@@ -137,11 +137,11 @@
     [_keyWordTextField resignFirstResponder];
     
     if ([_keyWordTextField.text isEqualToString:@""] || [_keyWordTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
-        
+
         [JKToast showWithText:@"关键字不可为空"];
-    
+
     }else{
-        
+    
         [self searchBusinessByKeyWord:_keyWordTextField.text];
     }
 

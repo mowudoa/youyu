@@ -10,6 +10,7 @@
 
 @interface HZDSintegralCashViewController ()
 
+@property (weak, nonatomic) IBOutlet UIScrollView *bgScrollView;
 @property (weak, nonatomic) IBOutlet UILabel *tagLabel;
 
 @property (weak, nonatomic) IBOutlet UITextField *codeTextField;
@@ -348,6 +349,15 @@
         
     }
 }
+
+-(void)viewDidLayoutSubviews
+{
+    UIView* conView = (UIView*)[_bgScrollView viewWithTag:2048];
+    
+    _bgScrollView.contentSize = CGSizeMake(0, conView.mj_y+conView.height + 20 + 90 + 10);
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

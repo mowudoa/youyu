@@ -20,7 +20,10 @@ UIPickerViewDataSource
     HZDSAddressModel *_countyModel;
 
     NSString *choiceString;
+    
 }
+
+@property (weak, nonatomic) IBOutlet UIScrollView *bgScollView;
 
 @property (weak, nonatomic) IBOutlet UIButton *addAddressButton;
 
@@ -71,6 +74,7 @@ UIPickerViewDataSource
     [self initUI];
     
     [self initData];
+    
 }
 -(void)initUI
 {
@@ -93,7 +97,7 @@ UIPickerViewDataSource
     }
 
     [WYFTools CreateTextPlaceHolder:@"请填写详细地址!" WithFont:[UIFont systemFontOfSize:14] WithSuperView:_addressDetailTextView];
-    
+ 
 }
 -(void)initData
 {
@@ -839,6 +843,15 @@ UIPickerViewDataSource
         
         
     }
+}
+
+-(void)viewDidLayoutSubviews
+{
+    
+    UIView* conView = (UIView*)[_bgScollView viewWithTag:2048];
+    
+    _bgScollView.contentSize = CGSizeMake(0, conView.frame.origin.y+conView.frame.size.height + 10);
+    
 }
 
 - (void)didReceiveMemoryWarning {

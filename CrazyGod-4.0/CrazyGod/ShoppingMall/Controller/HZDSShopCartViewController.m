@@ -122,6 +122,7 @@ deleteBtnDelagate
                 model.isSelect = NO;
                 
                 [strongSelf.cartListArray addObject:model];
+                
             }
             
             if ([dic[@"datas"][@"check_user_addr"] isKindOfClass:[NSDictionary class]]) {

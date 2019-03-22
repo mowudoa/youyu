@@ -10,6 +10,8 @@
 
 @interface HZDSBalanceCashViewController ()
 
+@property (weak, nonatomic) IBOutlet UIScrollView *bgScrollView;
+
 @property (weak, nonatomic) IBOutlet UILabel *tagInfoLabel;
 
 @property (weak, nonatomic) IBOutlet UITextField *moneyNum;
@@ -122,6 +124,13 @@
         }];
         
     }
+}
+-(void)viewDidLayoutSubviews
+{
+    
+    UIView* conView = (UIView*)[_bgScrollView viewWithTag:2048];
+    
+    _bgScrollView.contentSize = CGSizeMake(0, conView.frame.origin.y+conView.frame.size.height + 10 + 60);
 }
 
 - (void)didReceiveMemoryWarning {

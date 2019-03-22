@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#define DEFAULT_DISPLAY_DURATION 3.0f
+#define DEFAULT_DISPLAY_DURATION 2.0f
 #define Version_7 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0f)
 
 @interface JKToast : NSObject {

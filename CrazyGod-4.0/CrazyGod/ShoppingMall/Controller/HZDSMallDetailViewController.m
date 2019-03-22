@@ -115,8 +115,18 @@
             
             strongSelf.priceLabel.text = [NSString stringWithFormat:@"￥%@",[dict[@"detail"][@"mall_price"] stringValue]];
 
-            strongSelf.oldPriceLabel.text = [NSString stringWithFormat:@"原价:￥%@",[dict[@"detail"][@"price"] stringValue]];
+            //strongSelf.oldPriceLabel.text = [NSString stringWithFormat:@"原价:￥%@",[dict[@"detail"][@"price"] stringValue]];
 
+            NSString *oldPriceString = [NSString stringWithFormat:@"原价:￥%@",[dict[@"detail"][@"price"] stringValue]];
+            
+            //中划线
+            NSDictionary *attribtDic = @{NSStrikethroughStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleSingle]};
+            
+            NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc]initWithString:oldPriceString attributes:attribtDic];
+            
+            // 赋值
+            strongSelf.oldPriceLabel.attributedText = attribtStr;
+            
             strongSelf.soldNumPrice.text =  [NSString stringWithFormat:@"销量:%@笔",dict[@"detail"][@"sold_num"]];
             
             strongSelf.collectNumLabel.text =  [NSString stringWithFormat:@"收藏人数:%@",dict[@"count_goodsfavorites"]];
@@ -163,6 +173,7 @@
                 [JKToast showWithText:dic[@"datas"][@"error"]];
 
                 [self.navigationController popViewControllerAnimated:YES];
+                
             }
         
         [self reloadData];
@@ -195,6 +206,7 @@
         [rightCustomView addSubview:button];
         
         _rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightCustomView];
+        
     }
     
     return _rightItem;
@@ -221,7 +233,7 @@
 //  //接口返回为html字符串,所以详情用label富文本加载html数据
     UILabel *label1 = [WYFTools createLabelLoadHtml:_goodsInfo withFont:[UIFont systemFontOfSize:12]];
 
-    CGSize size = [label1.attributedText boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 40, MAXFLOAT) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil].size;
+    CGSize size = [label1.attributedText boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 40, CGFLOAT_MAX) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil].size;
     
     label1.frame = CGRectMake(20,label.mj_y + label.height, SCREEN_WIDTH - 40,size.height);
     
@@ -370,6 +382,7 @@
                     if ([str isEqualToString:@"log_id"]) {
                         
                         order.logId = [dic[@"datas"][str] stringValue];
+                        
                     }
                     if ([str isEqualToString:@"order_id"]) {
                         
@@ -396,9 +409,11 @@
 }
 -(void)jumpShopCart
 {
+    
     HZDSShopCartViewController *cart = [[HZDSShopCartViewController alloc] init];
     
     [self.navigationController pushViewController:cart animated:YES];
+    
 }
 //收藏
 - (IBAction)collectionGoods:(UIButton *)sender {

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,10 +31,10 @@
                     </connections>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FrF-8m-HKG">
-                    <rect key="frame" x="25" y="513" width="270" height="35"/>
+                    <rect key="frame" x="16" y="513" width="288" height="35"/>
                     <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="FrF-8m-HKG" secondAttribute="height" multiplier="54:7" id="rMX-aC-Uog"/>
+                        <constraint firstAttribute="width" secondItem="FrF-8m-HKG" secondAttribute="height" multiplier="288:35" id="8ZZ-9a-kae"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="新增收货地址">
@@ -48,8 +47,8 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="FrF-8m-HKG" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="25" id="95v-5F-uiB"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="FrF-8m-HKG" secondAttribute="trailing" constant="25" id="CMC-WO-Zfi"/>
+                <constraint firstItem="FrF-8m-HKG" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="16" id="95v-5F-uiB"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="FrF-8m-HKG" secondAttribute="trailing" constant="16" id="CMC-WO-Zfi"/>
                 <constraint firstItem="0eQ-hn-KmN" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="MJ3-ua-MYa"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="0eQ-hn-KmN" secondAttribute="trailing" id="bVB-Dz-XI6"/>
                 <constraint firstItem="FrF-8m-HKG" firstAttribute="top" secondItem="0eQ-hn-KmN" secondAttribute="bottom" constant="20" id="fFt-BL-Mix"/>

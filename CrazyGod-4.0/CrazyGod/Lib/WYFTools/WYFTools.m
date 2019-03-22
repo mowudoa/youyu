@@ -18,15 +18,19 @@ static WYFTools *god = nil;
 
 
 //工厂模式
-+(UIButton *)createButton:(CGRect)frame bgColor:(UIColor *)color title:(NSString *)title titleColor:(UIColor *)titleColor tag:(NSInteger)tag action:(SEL)action vc:(id)vc
++(UIButton *)createButton:(CGRect)frame bgColor:(UIColor *)color title:(NSString *)title titleFont:(UIFont *)font titleColor:(UIColor *)titleColor slectedTitleColor:(UIColor *)selectedTitleColor tag:(NSInteger)tag action:(SEL)action vc:(id)vc
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     
     button.frame = frame;
     
     button.backgroundColor = color;
-    
+
     [button setTitle:title forState:UIControlStateNormal];
+
+    button.titleLabel.font = font;
+    
+    [button setTitleColor:selectedTitleColor forState:UIControlStateSelected];
     
     [button setTitleColor:titleColor forState:UIControlStateNormal];
     
@@ -37,7 +41,7 @@ static WYFTools *god = nil;
     
     return button;
 }
-+(UILabel *)createLabel:(CGRect)frame bgColor:(UIColor *)color text:(NSString *)text textAlignment:(NSTextAlignment)textAlignment textColor:(UIColor *)textColor tag:(NSInteger)tag
++(UILabel *)createLabel:(CGRect)frame bgColor:(UIColor *)color text:(NSString *)text textFont:(UIFont *)font textAlignment:(NSTextAlignment)textAlignment textColor:(UIColor *)textColor tag:(NSInteger)tag
 {
 
     UILabel *label = [[UILabel alloc] init];
@@ -54,7 +58,7 @@ static WYFTools *god = nil;
     
     label.textAlignment = textAlignment;
     
-    label.font = [UIFont systemFontOfSize:17];
+    label.font = font;
     
     label.numberOfLines = 0;
     

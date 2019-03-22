@@ -2023,10 +2023,10 @@
 		7101CAA521DDCEE900E5F094 /* JKToast */ = {
 			isa = PBXGroup;
 			children = (
+				7101CAA921DDCEE900E5F094 /* JKAlert.h */,
 				7101CAA621DDCEE900E5F094 /* JKAlert.m */,
 				7101CAA721DDCEE900E5F094 /* JKToast.m */,
 				7101CAA821DDCEE900E5F094 /* JKToast.h */,
-				7101CAA921DDCEE900E5F094 /* JKAlert.h */,
 			);
 			path = JKToast;
 			sourceTree = "<group>";

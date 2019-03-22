@@ -10,6 +10,8 @@
 
 @interface HZDSmerchantBaseInfoViewController ()
 
+@property (weak, nonatomic) IBOutlet UIScrollView *bgScrollView;
+
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
 
 @property (weak, nonatomic) IBOutlet UITextView *describeTextView;
@@ -49,6 +51,7 @@
     [WYFTools viewLayer:_editButton.height/16*3 withView:_editButton];
     
     [WYFTools CreateTextPlaceHolder:@"店铺介绍,建议不超过200字!" WithFont:[UIFont systemFontOfSize:14] WithSuperView:_describeTextView];
+    
 }
 -(void)initData
 {
@@ -160,6 +163,15 @@
         
     }
     
+    
+}
+
+-(void)viewDidLayoutSubviews
+{
+    
+    UIView* conView = (UIView*)[_bgScrollView viewWithTag:2048];
+    
+    _bgScrollView.contentSize = CGSizeMake(0, conView.frame.origin.y+conView.frame.size.height + 10);
     
 }
 

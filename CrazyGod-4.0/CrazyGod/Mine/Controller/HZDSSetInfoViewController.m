@@ -134,6 +134,7 @@
     HZDSlinkUserPhoneViewController *link = [[HZDSlinkUserPhoneViewController alloc] init];
     
     [self.navigationController pushViewController:link animated:YES];
+    
 }
 //会员认证
 - (IBAction)authenticationCLick:(UIButton *)sender {
@@ -141,6 +142,7 @@
     HZDSAuthenticationViewController *authentication = [[HZDSAuthenticationViewController alloc] init];
     
     [self.navigationController pushViewController:authentication animated:YES];
+    
 }
 
 - (IBAction)linkWX:(id)sender {
@@ -176,6 +178,7 @@
     HZDSChangePayPassViewController *pay = [[HZDSChangePayPassViewController alloc] init];
     
     [self.navigationController pushViewController:pay animated:YES];
+    
 }
 //忘记支付密码
 - (IBAction)forgetpayPass:(UIButton *)sender {
@@ -185,12 +188,11 @@
     pass.request_url = GETNEWPAYPASSWORD;
     
     [self.navigationController pushViewController:pass animated:YES];
+    
 }
 
 //退出登录
 - (IBAction)exitLogin:(UIButton *)sender {
-
-    
     
     [CrazyNetWork CrazyRequest_Post:EXITLOGINSTATUS parameters:nil HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
         
@@ -215,13 +217,10 @@
     } fail:^(NSError *error, NSString *url, NSString *Json) {
         
     }];
-    
-    
   
 }
 -(void)clearData
 {
-  
 
     [USER_DEFAULT removeObjectForKey:@"User_ID"];
     

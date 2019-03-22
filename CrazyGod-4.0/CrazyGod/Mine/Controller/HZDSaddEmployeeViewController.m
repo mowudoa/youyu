@@ -10,6 +10,8 @@
 
 @interface HZDSaddEmployeeViewController ()
 
+@property (weak, nonatomic) IBOutlet UIScrollView *bgScrollView;
+
 @property (weak, nonatomic) IBOutlet UITextField *employeeID;
 
 @property (weak, nonatomic) IBOutlet UITextField *employeeName;
@@ -339,6 +341,15 @@
         
     }
 
+}
+
+-(void)viewDidLayoutSubviews
+{
+    
+    UIView* conView = (UIView*)[_bgScrollView viewWithTag:2048];
+    
+    _bgScrollView.contentSize = CGSizeMake(0, conView.frame.origin.y+conView.frame.size.height + 10);
+    
 }
 
 - (void)didReceiveMemoryWarning {

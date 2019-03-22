@@ -332,7 +332,17 @@ UITableViewDataSource
         
         cell.titleLabel.text = model.orderTitle;
         
-        cell.oldPriceLabel.text = [NSString stringWithFormat:@"原价:¥%@",model.orderPrice];
+        //cell.oldPriceLabel.text = [NSString stringWithFormat:@"原价:¥%@",model.orderPrice];
+        
+        NSString *oldPriceString = [NSString stringWithFormat:@"原价:¥%@",model.orderPrice];
+        
+        //中划线
+        NSDictionary *attribtDic = @{NSStrikethroughStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleSingle]};
+        
+        NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc]initWithString:oldPriceString attributes:attribtDic];
+        
+        // 赋值
+        cell.oldPriceLabel.attributedText = attribtStr;
         
         cell.oldPriceLabel.textColor = [UIColor colorWithHexString:@"#dcdcdc"];
         
@@ -362,7 +372,15 @@ UITableViewDataSource
         
         cell.titleLabel.text = model.orderTitle;
         
-        cell.oldPriceLabel.text = [NSString stringWithFormat:@"原价:¥%@",model.orderPrice];
+        NSString *oldPriceString = [NSString stringWithFormat:@"原价:¥%@",model.orderPrice];
+        
+        //中划线
+        NSDictionary *attribtDic = @{NSStrikethroughStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleSingle]};
+        
+        NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc]initWithString:oldPriceString attributes:attribtDic];
+        
+        // 赋值
+        cell.oldPriceLabel.attributedText = attribtStr;
         
         cell.oldPriceLabel.textColor = [UIColor colorWithHexString:@"#dcdcdc"];
         

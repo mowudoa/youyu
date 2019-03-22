@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HZDSaddEmployeeViewController">
             <connections>
                 <outlet property="addButton" destination="iSl-i8-HTb" id="QsL-cf-20e"/>
+                <outlet property="bgScrollView" destination="0Oq-PK-1fB" id="Gik-cM-5Q6"/>
                 <outlet property="checkButton" destination="Msn-B4-vyG" id="2d5-ke-yC5"/>
                 <outlet property="employeeAddress" destination="f4f-Bn-gqf" id="WuQ-mu-cp1"/>
                 <outlet property="employeeID" destination="1VD-FV-mKe" id="e8c-dm-E4E"/>
@@ -75,7 +76,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5e7-qE-TCh">
                                     <rect key="frame" x="0.0" y="100" width="320" height="35"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.89999997615814209" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="员工ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Im-oV-zVx">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="员工ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Im-oV-zVx">
                                             <rect key="frame" x="10" y="0.0" width="65" height="34"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="65" id="Cgt-DH-PLG"/>
@@ -137,7 +138,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Wm-sW-dp4">
                                     <rect key="frame" x="0.0" y="135" width="320" height="35"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.89999997615814209" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="员工姓名:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfb-Wi-cw8">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="员工姓名:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfb-Wi-cw8">
                                             <rect key="frame" x="10" y="0.0" width="65" height="34"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="65" id="abL-rk-mHN"/>
@@ -182,7 +183,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qF4-PV-DVk">
                                     <rect key="frame" x="0.0" y="170" width="320" height="35"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.89999997615814209" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="员工座机:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhp-hC-8Xf">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="员工座机:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhp-hC-8Xf">
                                             <rect key="frame" x="10" y="0.0" width="65" height="34"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="65" id="13J-vD-ZBI"/>
@@ -227,7 +228,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2LN-f1-eHN">
                                     <rect key="frame" x="0.0" y="205" width="320" height="35"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.89999997615814209" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="员工手机:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7au-Qz-DpQ">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="员工手机:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7au-Qz-DpQ">
                                             <rect key="frame" x="10" y="0.0" width="65" height="34"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="65" id="Emc-fS-TR0"/>
@@ -272,7 +273,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ziv-nc-xHL">
                                     <rect key="frame" x="0.0" y="240" width="320" height="35"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.89999997615814209" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QQ:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Km3-di-ksv">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QQ:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Km3-di-ksv">
                                             <rect key="frame" x="10" y="0.0" width="65" height="34"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="65" id="GC3-fH-rgg"/>
@@ -317,7 +318,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="87T-az-wEr">
                                     <rect key="frame" x="0.0" y="275" width="320" height="35"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.89999997615814209" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="员工微信:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HGQ-ci-dhl">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="员工微信:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HGQ-ci-dhl">
                                             <rect key="frame" x="10" y="0.0" width="65" height="34"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="65" id="wsc-oH-jgw"/>
@@ -362,7 +363,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AqS-9M-UkS">
                                     <rect key="frame" x="0.0" y="310" width="320" height="35"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.89999997615814209" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联系地址:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8s6-Ks-iYb">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联系地址:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8s6-Ks-iYb">
                                             <rect key="frame" x="10" y="0.0" width="65" height="34"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="65" id="sFl-4J-sFs"/>
@@ -407,7 +408,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K39-31-RSD">
                                     <rect key="frame" x="0.0" y="345" width="320" height="35"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.89999997615814209" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="员工职务:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvl-jr-wNE">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="员工职务:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvl-jr-wNE">
                                             <rect key="frame" x="10" y="0.0" width="65" height="34"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="65" id="hTo-Oj-uwC"/>
@@ -452,7 +453,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24I-1V-gSZ">
                                     <rect key="frame" x="0.0" y="380" width="320" height="35"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.89999997615814209" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="线下抢购核销权限:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0Z-W7-p6L">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="线下抢购核销权限:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0Z-W7-p6L">
                                             <rect key="frame" x="10" y="0.0" width="121" height="34"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="121" id="YNo-N2-Dxn"/>
@@ -535,11 +536,11 @@
                                         <constraint firstItem="jVA-3O-aZJ" firstAttribute="centerY" secondItem="24I-1V-gSZ" secondAttribute="centerY" id="ZyN-QA-pGa"/>
                                     </constraints>
                                 </view>
-                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSl-i8-HTb">
-                                    <rect key="frame" x="25" y="461" width="270" height="30"/>
+                                <button hidden="YES" opaque="NO" tag="2048" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSl-i8-HTb">
+                                    <rect key="frame" x="16" y="461" width="288" height="35"/>
                                     <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" secondItem="iSl-i8-HTb" secondAttribute="height" multiplier="9:1" id="zuP-OK-xNy"/>
+                                        <constraint firstAttribute="width" secondItem="iSl-i8-HTb" secondAttribute="height" multiplier="288:35" id="Rrz-7G-lHI"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <state key="normal" title="确认添加">
@@ -564,20 +565,21 @@
                                 <constraint firstAttribute="trailing" secondItem="87T-az-wEr" secondAttribute="trailing" id="BUE-tq-h59"/>
                                 <constraint firstAttribute="trailing" secondItem="K39-31-RSD" secondAttribute="trailing" id="DbP-Iw-68B"/>
                                 <constraint firstAttribute="trailing" secondItem="0Wm-sW-dp4" secondAttribute="trailing" id="GvO-RV-FiA"/>
-                                <constraint firstItem="iSl-i8-HTb" firstAttribute="leading" secondItem="eQQ-EZ-2fr" secondAttribute="leading" constant="25" id="J1e-4F-G7H"/>
                                 <constraint firstItem="5e7-qE-TCh" firstAttribute="leading" secondItem="eQQ-EZ-2fr" secondAttribute="leading" id="JTd-BV-fQz"/>
                                 <constraint firstItem="24I-1V-gSZ" firstAttribute="top" secondItem="K39-31-RSD" secondAttribute="bottom" id="K27-w8-TsN"/>
-                                <constraint firstItem="iSl-i8-HTb" firstAttribute="top" secondItem="24I-1V-gSZ" secondAttribute="bottom" constant="46" id="Phr-HK-44s"/>
+                                <constraint firstItem="iSl-i8-HTb" firstAttribute="leading" secondItem="eQQ-EZ-2fr" secondAttribute="leading" constant="16" id="Sf5-4h-aUS"/>
                                 <constraint firstAttribute="trailing" secondItem="qF4-PV-DVk" secondAttribute="trailing" id="Sty-6Z-Wkq"/>
                                 <constraint firstItem="qF4-PV-DVk" firstAttribute="leading" secondItem="eQQ-EZ-2fr" secondAttribute="leading" id="VAK-Wc-w56"/>
                                 <constraint firstItem="qF4-PV-DVk" firstAttribute="top" secondItem="0Wm-sW-dp4" secondAttribute="bottom" id="Wyf-an-Bfo"/>
                                 <constraint firstAttribute="trailing" secondItem="5e7-qE-TCh" secondAttribute="trailing" id="aDn-7O-QZJ"/>
+                                <constraint firstItem="iSl-i8-HTb" firstAttribute="top" secondItem="24I-1V-gSZ" secondAttribute="bottom" constant="46" id="abC-gO-aec"/>
                                 <constraint firstItem="ziv-nc-xHL" firstAttribute="top" secondItem="2LN-f1-eHN" secondAttribute="bottom" id="cp2-vY-Sxs"/>
                                 <constraint firstItem="0Wm-sW-dp4" firstAttribute="top" secondItem="5e7-qE-TCh" secondAttribute="bottom" id="frN-u3-Ij7"/>
                                 <constraint firstAttribute="trailing" secondItem="VnZ-73-syi" secondAttribute="trailing" constant="20" id="gEq-Xu-tpK"/>
                                 <constraint firstItem="P36-ed-6m0" firstAttribute="leading" secondItem="eQQ-EZ-2fr" secondAttribute="leading" id="hpL-dC-46v"/>
                                 <constraint firstItem="K39-31-RSD" firstAttribute="leading" secondItem="eQQ-EZ-2fr" secondAttribute="leading" id="kFK-Ou-WMd"/>
                                 <constraint firstItem="P36-ed-6m0" firstAttribute="top" secondItem="VnZ-73-syi" secondAttribute="bottom" constant="5" id="kyB-Bo-0cY"/>
+                                <constraint firstAttribute="trailing" secondItem="iSl-i8-HTb" secondAttribute="trailing" constant="16" id="l3R-r0-gz7"/>
                                 <constraint firstItem="K39-31-RSD" firstAttribute="top" secondItem="AqS-9M-UkS" secondAttribute="bottom" id="lLk-d7-6pY"/>
                                 <constraint firstItem="24I-1V-gSZ" firstAttribute="leading" secondItem="eQQ-EZ-2fr" secondAttribute="leading" id="mVX-Sz-vfj"/>
                                 <constraint firstItem="2LN-f1-eHN" firstAttribute="top" secondItem="qF4-PV-DVk" secondAttribute="bottom" id="oM9-IR-dir"/>
@@ -586,7 +588,6 @@
                                 <constraint firstItem="5e7-qE-TCh" firstAttribute="top" secondItem="P36-ed-6m0" secondAttribute="bottom" constant="5" id="tjU-md-3Un"/>
                                 <constraint firstItem="AqS-9M-UkS" firstAttribute="leading" secondItem="eQQ-EZ-2fr" secondAttribute="leading" id="wJR-k6-ECg"/>
                                 <constraint firstAttribute="trailing" secondItem="ziv-nc-xHL" secondAttribute="trailing" id="xCu-wa-rYn"/>
-                                <constraint firstAttribute="trailing" secondItem="iSl-i8-HTb" secondAttribute="trailing" constant="25" id="xjg-qm-s1g"/>
                                 <constraint firstItem="0Wm-sW-dp4" firstAttribute="leading" secondItem="eQQ-EZ-2fr" secondAttribute="leading" id="xy9-ft-KqP"/>
                                 <constraint firstAttribute="trailing" secondItem="P36-ed-6m0" secondAttribute="trailing" id="zb8-3Z-ZW2"/>
                             </constraints>

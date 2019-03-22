@@ -88,8 +88,18 @@
 
             self->_tuanID = List[@"detail"][@"tuan_id"];
             
-            self->_goodsOldPrice.text = [NSString stringWithFormat:@"原价:￥%@",[List[@"detail"][@"price"] stringValue]];
+           // self->_goodsOldPrice.text = [NSString stringWithFormat:@"原价:￥%@",[List[@"detail"][@"price"] stringValue]];
+            
+            NSString *oldPriceString = [NSString stringWithFormat:@"原价:￥%@",[List[@"detail"][@"price"] stringValue]];
 
+            //中划线
+            NSDictionary *attribtDic = @{NSStrikethroughStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleSingle]};
+            
+            NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc]initWithString:oldPriceString attributes:attribtDic];
+            
+            // 赋值
+            self->_goodsOldPrice.attributedText = attribtStr;
+            
             self->_goodsInfoLabel.text = List[@"detail"][@"intro"];
             
             self->_goodsSaleNum.text = [NSString stringWithFormat:@"已售:%@",List[@"detail"][@"sold_num"]];
