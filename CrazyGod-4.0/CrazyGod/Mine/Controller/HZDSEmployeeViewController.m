@@ -294,23 +294,6 @@ UITableViewDataSource
     
     return cell;
 }
--(NSString *)ConvertStrToTime:(NSString *)timeStr
-
-{
-    
-    long long time=[timeStr longLongValue];
-    
-    NSDate *d = [[NSDate alloc]initWithTimeIntervalSince1970:time];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    
-    NSString*timeString=[formatter stringFromDate:d];
-    
-    return timeString;
-    
-}
 
 #pragma mark - UITableViewDelegate
 
@@ -333,62 +316,16 @@ UITableViewDataSource
     lineLabel.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
     
     [view addSubview:lineLabel];
-    
-    UILabel* zongjia = [[UILabel alloc]initWithFrame:CGRectMake(15, 13,100, 20)];
-    
-    zongjia.font=[UIFont systemFontOfSize:14];
-    
-    zongjia.textAlignment = NSTextAlignmentLeft;
-    
-    zongjia.textColor = [UIColor colorWithHexString:@"BEC2C9"];
-    
-    [view addSubview:zongjia];
-    
-    UILabel* price = [[UILabel alloc]initWithFrame:CGRectMake(120, 13,SCREEN_WIDTH - 120 -75 -5, 20)];
    
-    [view addSubview:price];
-    
-    price.tag = section;
-    
-    price.textColor = [UIColor colorWithHexString:@"#BEC2C9"];
-    
-    price.font=[UIFont systemFontOfSize:14];
-    
-    price.textAlignment = NSTextAlignmentLeft;
-    
-    UIButton* leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-   
-    [leftBtn setFrame:CGRectMake(SCREEN_WIDTH-75-75, 8, 70, 25)];
-    
-    [leftBtn setTitle:@"编辑" forState:UIControlStateNormal];
+    UIButton *leftBtn = [WYFTools createButton:CGRectMake(SCREEN_WIDTH-75-75, 8, 70, 25) bgColor:[UIColor redColor] title:@"编辑" titleFont:[UIFont systemFontOfSize:14] titleColor:[UIColor whiteColor] slectedTitleColor:nil tag:section action:@selector(tapLeftBtn:) vc:self];
     
     [WYFTools viewLayer:3 withView:leftBtn];
-    
-    leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    
-    leftBtn.backgroundColor = [UIColor redColor];
-   
-    leftBtn.tag = section;
-    
-    [leftBtn addTarget:self action:@selector(tapLeftBtn:) forControlEvents:UIControlEventTouchUpInside];
    
     [view addSubview:leftBtn];
     
-    UIButton* rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    [rightBtn setFrame:CGRectMake(SCREEN_WIDTH-75, 8, 70, 25)];
-    
-    rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-    
-    [rightBtn setTitle:@"删除" forState:UIControlStateNormal];
-    
-    rightBtn.backgroundColor = [UIColor colorWithHexString:@"46a0fc"];
+    UIButton *rightBtn = [WYFTools createButton:CGRectMake(SCREEN_WIDTH-75, 8, 70, 25) bgColor:[UIColor colorWithHexString:@"46a0fc"] title:@"删除" titleFont:[UIFont systemFontOfSize:14] titleColor:[UIColor whiteColor] slectedTitleColor:nil tag:section action:@selector(tapRightBtn:) vc:self];
     
     [WYFTools viewLayer:3 withView:rightBtn];
-    
-    rightBtn.tag = section;
-    
-    [rightBtn addTarget:self action:@selector(tapRightBtn:) forControlEvents:UIControlEventTouchUpInside];
     
     [view addSubview:rightBtn];
     

@@ -167,23 +167,6 @@ UITableViewDataSource
 
     return cell;
 }
--(NSString *)ConvertStrToTime:(NSString *)timeStr
-
-{
-    
-    long long time=[timeStr longLongValue];
-    
-    NSDate *d = [[NSDate alloc]initWithTimeIntervalSince1970:time];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    
-    NSString*timeString=[formatter stringFromDate:d];
-    
-    return timeString;
-    
-}
 
 #pragma mark - UITableViewDelegate
 
@@ -230,7 +213,7 @@ UITableViewDataSource
     
     UILabel* dingdantime = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-10, 20)];
     
-    dingdantime.text =[NSString stringWithFormat:@"上传时间:%@",[self ConvertStrToTime:model.iamgecreateTime]];
+    dingdantime.text =[NSString stringWithFormat:@"上传时间:%@",[WYFTools ConvertStrToTime:model.iamgecreateTime dateModel:@"yyyy-MM-dd HH:mm:ss" withDateMultiple:1]];
     
     dingdantime.textAlignment = NSTextAlignmentRight;
     
@@ -256,59 +239,15 @@ UITableViewDataSource
     
     [view addSubview:lineLabel];
     
-    UILabel* zongjia = [[UILabel alloc]initWithFrame:CGRectMake(15, 13,100, 20)];
-    
-    zongjia.font=[UIFont systemFontOfSize:14];
-    
-    zongjia.textAlignment = NSTextAlignmentLeft;
-    
-    zongjia.textColor = [UIColor colorWithHexString:@"BEC2C9"];
-    
-    [view addSubview:zongjia];
-    
-    UILabel* price = [[UILabel alloc]initWithFrame:CGRectMake(120, 13,SCREEN_WIDTH - 120 -75 -5, 20)];
-    
-    [view addSubview:price];
-    
-    price.tag = section;
-
-    price.textColor = [UIColor colorWithHexString:@"#BEC2C9"];
-
-    price.font=[UIFont systemFontOfSize:14];
-
-    price.textAlignment = NSTextAlignmentLeft;
-    
-    UIButton* leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-   
-    [leftBtn setFrame:CGRectMake(SCREEN_WIDTH-75-75, 8, 70, 25)];
-    
-    [leftBtn setTitle:@"" forState:UIControlStateNormal];
+    UIButton *leftBtn = [WYFTools createButton:CGRectMake(SCREEN_WIDTH-75-75, 8, 70, 25) bgColor:[UIColor colorWithHexString:@"#b5b5b5"] title:@"" titleFont:[UIFont systemFontOfSize:14] titleColor:[UIColor whiteColor] slectedTitleColor:nil tag:section action:nil vc:self];
     
     [WYFTools viewLayer:3 withView:leftBtn];
-    
-    leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    
-    leftBtn.backgroundColor = [UIColor colorWithHexString:@"#b5b5b5"];
-    
-    leftBtn.tag = section;
 
     [view addSubview:leftBtn];
     
-    UIButton* rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    [rightBtn setFrame:CGRectMake(SCREEN_WIDTH-75, 8, 70, 25)];
-    
-    rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-    
-    [rightBtn setTitle:@"删除" forState:UIControlStateNormal];
-
-    rightBtn.backgroundColor = [UIColor colorWithHexString:@"#ff9980"];
+    UIButton *rightBtn = [WYFTools createButton:CGRectMake(SCREEN_WIDTH-75, 8, 70, 25) bgColor:[UIColor colorWithHexString:@"#ff9980"] title:@"删除" titleFont:[UIFont systemFontOfSize:14] titleColor:[UIColor whiteColor] slectedTitleColor:nil tag:section action:@selector(tapBtn:) vc:self];
 
     [WYFTools viewLayer:3 withView:rightBtn];
-
-    rightBtn.tag = section;
-
-    [rightBtn addTarget:self action:@selector(tapBtn:) forControlEvents:UIControlEventTouchUpInside];
 
     [view addSubview:rightBtn];
     
@@ -325,6 +264,7 @@ UITableViewDataSource
     view.backgroundColor=[UIColor whiteColor];
     
     return view;
+    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section

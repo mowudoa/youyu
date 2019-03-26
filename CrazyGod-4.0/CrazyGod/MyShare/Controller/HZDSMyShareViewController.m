@@ -88,8 +88,8 @@
             }
             
             strongSelf.vipRank.text = [NSString stringWithFormat:@"VIP %@",dic[@"datas"][@"MEMBER"][@"rank_id"]];
-
-            strongSelf.myBalance.text = [NSString stringWithFormat:@"¥%@",[dic[@"datas"][@"MEMBER"][@"money"] stringValue]];
+            
+            strongSelf.myBalance.text = [NSString stringWithFormat:@"¥%.2f",            [[dic[@"datas"][@"MEMBER"][@"money"] stringValue] doubleValue]];
 
             if (dic[@"datas"][@"profit_ok"] == NULL || dic[@"datas"][@"profit_ok"] == nil ||dic[@"datas"][@"profit_ok"] == [NSNull null]) {
                 

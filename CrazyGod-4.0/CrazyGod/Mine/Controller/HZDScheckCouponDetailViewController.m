@@ -22,6 +22,11 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *userPhoneLabel;
 
+@property (weak, nonatomic) IBOutlet UIImageView *couponGoodsIcon;
+@property (weak, nonatomic) IBOutlet UILabel *couponGoodsTitle;
+@property (weak, nonatomic) IBOutlet UILabel *couponGoodsSoldNum;
+@property (weak, nonatomic) IBOutlet UILabel *couponGoodsPrice;
+
 @end
 
 @implementation HZDScheckCouponDetailViewController
@@ -56,13 +61,25 @@
             
             strongSelf.couponNumLabel.text = dic[@"datas"][@"detail"][@"code"];
             
-            strongSelf.createTimeLabel.text = [self ConvertStrToTime:dic[@"datas"][@"detail"][@"create_time"]];
-            
-            strongSelf.usedTimeLabel.text = [self ConvertStrToTime:dic[@"datas"][@"detail"][@"used_time"]];
-            
+            strongSelf.createTimeLabel.text = [WYFTools ConvertStrToTime:dic[@"datas"][@"detail"][@"create_time"] dateModel:@"yyyy-MM-dd HH:mm:ss" withDateMultiple:1];
+
+            strongSelf.usedTimeLabel.text = [WYFTools ConvertStrToTime:dic[@"datas"][@"detail"][@"used_time"] dateModel:@"yyyy-MM-dd HH:mm:ss" withDateMultiple:1];
+                    
             strongSelf.userNameLabel.text = dic[@"datas"][@"users"][@"nickname"];
             
             strongSelf.userPhoneLabel.text = dic[@"datas"][@"users"][@"mobile"];            
+            
+            [strongSelf.couponGoodsIcon sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",defaultImageUrl,dic[@"datas"][@"detail"][@"tuan"][@"photo"]]] placeholderImage:[UIImage imageNamed:@"baseImage"]];
+
+            strongSelf.couponGoodsTitle.text = dic[@"datas"][@"detail"][@"tuan"][@"title"];
+            
+            strongSelf.couponGoodsPrice.text = [NSString stringWithFormat:@"抢购价:%@",[dic[@"datas"][@"detail"][@"tuan"][@"price"] stringValue]];
+
+            if ([[dic[@"datas"][@"detail"][@"tuan"] allKeys] containsObject:@"sold_num"]) {
+              
+                strongSelf.couponGoodsSoldNum.text = [NSString stringWithFormat:@"已售:%@ 库存:%@",dic[@"datas"][@"detail"][@"tuan"][@"sold_num"],dic[@"datas"][@"detail"][@"tuan"][@"num"]];
+
+            }
             
         }else{
             
@@ -74,23 +91,7 @@
         
     }];
 }
--(NSString *)ConvertStrToTime:(NSString *)timeStr
 
-{
-    
-    long long time=[timeStr longLongValue];
-    
-    NSDate *d = [[NSDate alloc]initWithTimeIntervalSince1970:time];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    
-    NSString*timeString=[formatter stringFromDate:d];
-    
-    return timeString;
-    
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

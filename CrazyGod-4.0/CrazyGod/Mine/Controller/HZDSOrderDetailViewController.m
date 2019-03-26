@@ -57,8 +57,8 @@
             
             strongSelf.orderID.text = dic[@"datas"][@"detail"][@"order_id"];
             
-            strongSelf.orderTimer.text = [self ConvertStrToTime:dic[@"datas"][@"detail"][@"create_time"]];
-
+            strongSelf.orderTimer.text = [WYFTools ConvertStrToTime:dic[@"datas"][@"detail"][@"create_time"] dateModel:@"yyyy-MM-dd HH:mm:ss" withDateMultiple:1];
+            
             strongSelf.orderName.text = dic[@"datas"][@"detail"][@"tuan_title"];
 
             strongSelf.orderPrice.text = [NSString stringWithFormat:@"%@元",[dic[@"datas"][@"detail"][@"tuan_price"] stringValue]];
@@ -81,23 +81,7 @@
         
     }];
 }
--(NSString *)ConvertStrToTime:(NSString *)timeStr
 
-{
-    
-    long long time=[timeStr longLongValue];
-    
-    NSDate *d = [[NSDate alloc]initWithTimeIntervalSince1970:time];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    
-    NSString*timeString=[formatter stringFromDate:d];
-    
-    return timeString;
-    
-}
 -(void)initStatusLabel:(NSString *)orderStatus
 {
     

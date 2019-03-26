@@ -30,14 +30,26 @@ static WYFTools *god = nil;
 
     button.titleLabel.font = font;
     
-    [button setTitleColor:selectedTitleColor forState:UIControlStateSelected];
+    if (selectedTitleColor != nil) {
+     
+        [button setTitleColor:selectedTitleColor forState:UIControlStateSelected];
+
+    }
     
-    [button setTitleColor:titleColor forState:UIControlStateNormal];
+    if (titleColor != nil) {
+        
+        [button setTitleColor:titleColor forState:UIControlStateNormal];
+
+    }
+    
     
     button.tag = tag;
     
-    [button addTarget:vc action:action forControlEvents:UIControlEventTouchUpInside];
-    
+    if (action != nil) {
+        
+        [button addTarget:vc action:action forControlEvents:UIControlEventTouchUpInside];
+
+    }    
     
     return button;
 }
@@ -61,7 +73,6 @@ static WYFTools *god = nil;
     label.font = font;
     
     label.numberOfLines = 0;
-    
     
     return label ;
 
@@ -216,12 +227,12 @@ static WYFTools *god = nil;
     float height = 0.0;
     
     for (int index = 0; index < array.count; index++) {
+        
         NSString *itemString = [array objectAtIndex:index];
         
         NSDictionary *attribute = @{NSFontAttributeName: font};
         
         CGSize size = [itemString boundingRectWithSize:CGSizeMake(myView.frame.size.width, 0) options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
-        
         
         if ([itemString isEqualToString:@""] || [itemString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
             
@@ -372,6 +383,22 @@ static WYFTools *god = nil;
         
         scrollview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
+    
+}
++(NSString *)ConvertStrToTime:(NSString *)timeStr dateModel:(NSString *)dateModel withDateMultiple:(NSInteger)multiple
+{
+    
+    long long time=[timeStr longLongValue];
+    
+    NSDate *d = [[NSDate alloc]initWithTimeIntervalSince1970:time/multiple];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    
+    [formatter setDateFormat:dateModel];
+    
+    NSString*timeString=[formatter stringFromDate:d];
+    
+    return timeString;
     
 }
 

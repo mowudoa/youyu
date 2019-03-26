@@ -77,6 +77,7 @@ UITableViewDataSource
     UINib* nib = [UINib nibWithNibName:@"HZDSSubordinteTableViewCell" bundle:nil];
     
     [_mySubordinateTableView registerNib:nib forCellReuseIdentifier:@"SubordinteTableViewCell"];
+    
 }
 -(void)initData
 {
@@ -323,13 +324,7 @@ UITableViewDataSource
     
     [backView addSubview:view];
     
-    UILabel* shanghu = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-5-5, 20)];
-    
-    shanghu.text = [NSString stringWithFormat:@"ID:%@",model.SubRoradinteID];
-    
-    shanghu.textAlignment = NSTextAlignmentLeft;
-    
-    shanghu.font=[UIFont systemFontOfSize:13];
+    UILabel *shanghu = [WYFTools createLabel:CGRectMake(5, 5, SCREEN_WIDTH/2 - 5 - 5, 20) bgColor:[UIColor clearColor] text:[NSString stringWithFormat:@"ID:%@",model.SubRoradinteID] textFont:[UIFont systemFontOfSize:12] textAlignment:NSTextAlignmentLeft textColor:[UIColor blackColor] tag:section];
     
     shanghu.adjustsFontSizeToFitWidth = YES;
     
@@ -339,17 +334,14 @@ UITableViewDataSource
     
     [backView addSubview:view1];
     
-    UILabel* dingdantime = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-10, 20)];
-    
-    dingdantime.text =[NSString stringWithFormat:@"注册时间:%@",model.registerTime];
-    
-    dingdantime.textAlignment = NSTextAlignmentRight;
-    
-    dingdantime.font = [UIFont systemFontOfSize:13];
+    UILabel *dingdantime = [WYFTools createLabel:CGRectMake(5, 5, SCREEN_WIDTH/2 - 10,20) bgColor:[UIColor clearColor] text:[NSString stringWithFormat:@"注册时间:%@",model.registerTime] textFont:[UIFont systemFontOfSize:12] textAlignment:NSTextAlignmentRight textColor:[UIColor blackColor] tag:section];
    
+    dingdantime.adjustsFontSizeToFitWidth = YES;
+    
     [view1 addSubview:dingdantime];
     
     return backView;
+    
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {

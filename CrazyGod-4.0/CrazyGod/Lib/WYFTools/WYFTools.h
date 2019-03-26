@@ -51,6 +51,9 @@
 //MJ适配iOS11
 +(void)autuLayoutNewMJ:(UIScrollView *)scrollview;
 
+//时间转换
++(NSString *)ConvertStrToTime:(NSString *)timeStr dateModel:(NSString *)dateModel withDateMultiple:(NSInteger)multiple;
+
 +(WYFTools *)shardGodlike;
 @property(nonatomic,copy) NSString *str;
 @property(nonatomic,copy) NSString *str1;

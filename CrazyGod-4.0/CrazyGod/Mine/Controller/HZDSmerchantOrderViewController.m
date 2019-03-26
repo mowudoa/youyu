@@ -363,15 +363,7 @@ UITableViewDelegate
     
     [backView addSubview:view];
     
-    UILabel* shanghu = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-5-5, 20)];
-    
-    shanghu.text = [NSString stringWithFormat:@"ID:%@",model.orderID];
-    
-    shanghu.textAlignment = NSTextAlignmentLeft;
-    
-    shanghu.font=[UIFont systemFontOfSize:12];
-    
-    shanghu.adjustsFontSizeToFitWidth = YES;
+    UILabel *shanghu = [WYFTools createLabel:CGRectMake(5, 5, SCREEN_WIDTH/2-5-5, 20) bgColor:[UIColor clearColor] text:[NSString stringWithFormat:@"ID:%@",model.orderID] textFont:[UIFont systemFontOfSize:12] textAlignment:NSTextAlignmentLeft textColor:[UIColor blackColor] tag:section];
     
     [view addSubview:shanghu];
     
@@ -379,17 +371,12 @@ UITableViewDelegate
     
     [backView addSubview:view1];
     
-    UILabel* dingdantime = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-10, 20)];
-    
-    dingdantime.text =[NSString stringWithFormat:@"下单时间:%@",model.orderTime];
-    
-    dingdantime.textAlignment = NSTextAlignmentRight;
-    
-    dingdantime.font = [UIFont systemFontOfSize:12];
+    UILabel *dingdantime = [WYFTools createLabel:CGRectMake(5, 5, SCREEN_WIDTH/2-10, 20) bgColor:[UIColor clearColor] text:[NSString stringWithFormat:@"下单时间:%@",[WYFTools ConvertStrToTime:model.orderTime dateModel:@"yyyy-MM-dd HH:mm:ss" withDateMultiple:1]] textFont:[UIFont systemFontOfSize:12] textAlignment:NSTextAlignmentRight textColor:[UIColor blackColor] tag:section];
 
     [view1 addSubview:dingdantime];
     
     return backView;
+    
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -402,7 +389,6 @@ UITableViewDelegate
     
     model = _orderListArray[section];
     
-    
     UIView* view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
     
     UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,39,SCREEN_WIDTH,1)];
@@ -411,62 +397,16 @@ UITableViewDelegate
     
     [view addSubview:lineLabel];
     
-    UILabel* zongjia = [[UILabel alloc]initWithFrame:CGRectMake(15, 13,100, 20)];
-    
-    zongjia.font=[UIFont systemFontOfSize:14];
-    
-    zongjia.textAlignment = NSTextAlignmentLeft;
-    
-    zongjia.textColor = [UIColor colorWithHexString:@"BEC2C9"];
-    
-    [view addSubview:zongjia];
-    
-    UILabel* price = [[UILabel alloc]initWithFrame:CGRectMake(120, 13,SCREEN_WIDTH - 120 -75 -5, 20)];
-   
-    [view addSubview:price];
-    
-    price.tag = section;
-
-    price.textColor = [UIColor colorWithHexString:@"#BEC2C9"];
-    
-    price.font=[UIFont systemFontOfSize:14];
-    
-    price.textAlignment = NSTextAlignmentLeft;
-   
-    UIButton* leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-   
-    [leftBtn setFrame:CGRectMake(SCREEN_WIDTH-75-75, 8, 70, 25)];
-    
-    [leftBtn setTitle:@"" forState:UIControlStateNormal];
+    UIButton *leftBtn = [WYFTools createButton:CGRectMake(SCREEN_WIDTH-75-75, 8, 70, 25) bgColor:[UIColor colorWithHexString:@"#c6c6c6"] title:@"" titleFont:[UIFont systemFontOfSize:14] titleColor:[UIColor whiteColor] slectedTitleColor:nil tag:section action:@selector(tapleftBtn:) vc:self];
     
     [WYFTools viewLayer:3 withView:leftBtn];
-    
-    leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    
-    leftBtn.backgroundColor = [UIColor colorWithHexString:@"#c6c6c6"];
-
-    leftBtn.tag = section;
-
-    [leftBtn addTarget:self action:@selector(tapleftBtn:) forControlEvents:UIControlEventTouchUpInside];
 
     [view addSubview:leftBtn];
     
-    UIButton* rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-
-    [rightBtn setFrame:CGRectMake(SCREEN_WIDTH-75, 8, 70, 25)];
-
-    rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-
-    [rightBtn setTitle:@"" forState:UIControlStateNormal];
-
-    rightBtn.backgroundColor = [UIColor colorWithHexString:@"46a0fc"];
+    UIButton *rightBtn = [WYFTools createButton:CGRectMake(SCREEN_WIDTH-75, 8, 70, 25) bgColor:[UIColor colorWithHexString:@"46a0fc"] title:@"" titleFont:[UIFont systemFontOfSize:14] titleColor:[UIColor whiteColor] slectedTitleColor:nil tag:section action:@selector(tapBtn:) vc:self];
 
     [WYFTools viewLayer:3 withView:rightBtn];
-
-    rightBtn.tag = section;
-
-    [rightBtn addTarget:self action:@selector(tapBtn:) forControlEvents:UIControlEventTouchUpInside];
-
+    
     [view addSubview:rightBtn];
     
     view.backgroundColor=[UIColor whiteColor];
@@ -502,7 +442,6 @@ UITableViewDelegate
         [rightBtn setTitle:@"电脑订单" forState:UIControlStateNormal];
 
     }
-    
     
     return view;
 }

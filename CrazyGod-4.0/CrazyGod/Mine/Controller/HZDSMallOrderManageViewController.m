@@ -299,24 +299,6 @@ UITableViewDelegate
     
     return cell;
 }
--(NSString *)ConvertStrToTime:(NSString *)timeStr
-
-{
-    
-    long long time=[timeStr longLongValue];
-    
-    NSDate *d = [[NSDate alloc]initWithTimeIntervalSince1970:time];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    
-    NSString*timeString=[formatter stringFromDate:d];
-    
-    return timeString;
-    
-}
-
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -375,7 +357,7 @@ UITableViewDelegate
     
     UILabel* dingdantime = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-10, 20)];
    
-    dingdantime.text =[NSString stringWithFormat:@"交易时间:%@",[self ConvertStrToTime:model.orderTime]];
+    dingdantime.text =[NSString stringWithFormat:@"交易时间:%@",[WYFTools ConvertStrToTime:model.orderTime dateModel:@"yyyy-MM-dd HH:mm:ss" withDateMultiple:1]];
     
     dingdantime.textAlignment = NSTextAlignmentRight;
     
@@ -403,64 +385,18 @@ UITableViewDelegate
     lineLabel.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
     
     [view addSubview:lineLabel];
-    
-    UILabel* zongjia = [[UILabel alloc]initWithFrame:CGRectMake(15, 13,100, 20)];
    
-    zongjia.font=[UIFont systemFontOfSize:14];
+    UIButton *rightBtn = [WYFTools createButton:CGRectMake(SCREEN_WIDTH-75, 8, 70, 25) bgColor:[UIColor colorWithHexString:@"#b5b5b5"] title:@"" titleFont:[UIFont systemFontOfSize:14] titleColor:[UIColor whiteColor] slectedTitleColor:nil tag:section action:@selector(tapBtn:) vc:self];
     
-    zongjia.textAlignment = NSTextAlignmentLeft;
+    [WYFTools viewLayer:3 withView:rightBtn];
     
-    zongjia.textColor = [UIColor colorWithHexString:@"BEC2C9"];
-    
-    [view addSubview:zongjia];
-    
-    UILabel* price = [[UILabel alloc]initWithFrame:CGRectMake(120, 13,SCREEN_WIDTH - 120 -75 -5, 20)];
-   
-    [view addSubview:price];
-    
-    price.tag = section;
-
-    price.textColor = [UIColor colorWithHexString:@"#BEC2C9"];
-
-    price.font=[UIFont systemFontOfSize:14];
-
-    price.textAlignment = NSTextAlignmentLeft;
-    
-    UIButton* leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-   
-    [leftBtn setFrame:CGRectMake(SCREEN_WIDTH-75-75, 8, 70, 25)];
-    
-    [leftBtn setTitle:@"" forState:UIControlStateNormal];
+    UIButton *leftBtn = [WYFTools createButton:CGRectMake(SCREEN_WIDTH- rightBtn.width - 5 -75, 8, 70, 25) bgColor:[UIColor colorWithHexString:@"#b5b5b5"] title:@"" titleFont:[UIFont systemFontOfSize:14] titleColor:[UIColor whiteColor] slectedTitleColor:nil tag:section action:@selector(tapleftBtn:) vc:self];
     
     [WYFTools viewLayer:3 withView:leftBtn];
-    
-    leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    
-    leftBtn.backgroundColor = [UIColor colorWithHexString:@"#b5b5b5"];
 
-    leftBtn.tag = section;
-
-    [leftBtn addTarget:self action:@selector(tapleftBtn:) forControlEvents:UIControlEventTouchUpInside];
-
-    [view addSubview:leftBtn];
-    
-    UIButton* rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-
-    [rightBtn setFrame:CGRectMake(SCREEN_WIDTH-75, 8, 70, 25)];
-
-    rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-
-    [rightBtn setTitle:@"" forState:UIControlStateNormal];
-
-    rightBtn.backgroundColor = [UIColor colorWithHexString:@"#b5b5b5"];
-
-    [WYFTools viewLayer:3 withView:rightBtn];
-
-    rightBtn.tag = section;
-
-    [rightBtn addTarget:self action:@selector(tapBtn:) forControlEvents:UIControlEventTouchUpInside];
-   
     [view addSubview:rightBtn];
+    
+    [view addSubview:leftBtn];
     
     view.backgroundColor=[UIColor whiteColor];
     
@@ -511,8 +447,15 @@ UITableViewDelegate
         [leftBtn setTitle:@"电脑订单" forState:UIControlStateNormal];
 
     }
-        
+    // 计算文字占据的高度
+    CGSize size = [rightBtn.titleLabel.text boundingRectWithSize:CGSizeMake(MAXFLOAT, rightBtn.height) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : rightBtn.titleLabel.font} context:nil].size;
+    
+    rightBtn.frame = CGRectMake(SCREEN_WIDTH - 15 - size.width, rightBtn.mj_y,size.width + 10, rightBtn.height);
+    
+    leftBtn.frame = CGRectMake(SCREEN_WIDTH - 15 - size.width - 75,leftBtn.mj_y,70,leftBtn.height);
+    
     return view;
+    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section

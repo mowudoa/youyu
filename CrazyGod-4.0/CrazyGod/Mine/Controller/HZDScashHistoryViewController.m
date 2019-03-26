@@ -243,23 +243,6 @@ UITableViewDelegate
     
     return cell;
 }
--(NSString *)ConvertStrToTime:(NSString *)timeStr
-
-{
-    
-    long long time=[timeStr longLongValue];
-    
-    NSDate *d = [[NSDate alloc]initWithTimeIntervalSince1970:time];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    
-    NSString*timeString=[formatter stringFromDate:d];
-    
-    return timeString;
-    
-}
 
 #pragma mark - UITableViewDelegate
 
@@ -271,6 +254,7 @@ UITableViewDelegate
 {
     
     HZDScashHistoryModel *model = [[HZDScashHistoryModel alloc] init];
+    
     model = _cashListArray[section];
     
     UIView* backView = [[UIView alloc]initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, 31)];
@@ -287,13 +271,7 @@ UITableViewDelegate
     
     [backView addSubview:view];
     
-    UILabel* shanghu = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-5-5, 20)];
-    
-    shanghu.text = [NSString stringWithFormat:@"提现编号:%@",model.cashID];
-    
-    shanghu.textAlignment = NSTextAlignmentLeft;
-    
-    shanghu.font=[UIFont systemFontOfSize:12];
+    UILabel *shanghu = [WYFTools createLabel:CGRectMake(5, 5, SCREEN_WIDTH/2-5-5, 20) bgColor:[UIColor clearColor] text:[NSString stringWithFormat:@"提现编号:%@",model.cashID] textFont:[UIFont systemFontOfSize:12] textAlignment:NSTextAlignmentLeft textColor:[UIColor blackColor] tag:section];
     
     shanghu.adjustsFontSizeToFitWidth = YES;
     
@@ -303,27 +281,24 @@ UITableViewDelegate
     
     [backView addSubview:view1];
     
-    UILabel* dingdantime = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-10, 20)];
-    
+    UILabel *dingdantime = [WYFTools createLabel:CGRectMake(5, 5, SCREEN_WIDTH/2-10, 20) bgColor:[UIColor clearColor] text:@"" textFont:[UIFont systemFontOfSize:12] textAlignment:NSTextAlignmentRight textColor:[UIColor blackColor] tag:section];
     
     if (_myCashLogType == moneyCashLogType) {
        
-        dingdantime.text = [NSString stringWithFormat:@"申请日期:%@",[self ConvertStrToTime:model.cashTime]];
+        dingdantime.text = [NSString stringWithFormat:@"申请日期:%@",[WYFTools ConvertStrToTime:model.cashTime dateModel:@"yyyy-MM-dd HH:mm:ss" withDateMultiple:1]];
 
     }else if (_myCashLogType == integralCashLogType){
      
         dingdantime.text = [NSString stringWithFormat:@"申请日期:%@",model.cashTime];
 
     }
-    
-    
-    dingdantime.textAlignment = NSTextAlignmentRight;
-    
-    dingdantime.font = [UIFont systemFontOfSize:12];
 
+    dingdantime.adjustsFontSizeToFitWidth = YES;
+    
     [view1 addSubview:dingdantime];
     
     return backView;
+    
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -344,51 +319,11 @@ UITableViewDelegate
     
     [view addSubview:lineLabel];
     
-    UILabel* zongjia = [[UILabel alloc]initWithFrame:CGRectMake(15, 13,100, 20)];
+ //   UIButton *leftBtn = [WYFTools createButton:CGRectMake(SCREEN_WIDTH-75-75, 8, 70, 25) bgColor:[UIColor colorWithHexString:@"#c6c6c6"] title:@"" titleFont:[UIFont systemFontOfSize:14] titleColor:[UIColor whiteColor] slectedTitleColor:nil tag:section action:nil vc:self];
     
-    zongjia.font=[UIFont systemFontOfSize:14];
+ //   [WYFTools viewLayer:3 withView:leftBtn];
     
-    zongjia.textAlignment = NSTextAlignmentLeft;
-    
-    zongjia.textColor = [UIColor colorWithHexString:@"BEC2C9"];
-    
-    [view addSubview:zongjia];
-    
-    UILabel* price = [[UILabel alloc]initWithFrame:CGRectMake(120, 13,SCREEN_WIDTH - 120 -75 -5, 20)];
-   
-    [view addSubview:price];
-
-    price.tag = section;
-
-    price.textColor = [UIColor colorWithHexString:@"#BEC2C9"];
-
-    price.font=[UIFont systemFontOfSize:14];
-
-    price.textAlignment = NSTextAlignmentLeft;
-    
-    UIButton* leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-  
-    [leftBtn setFrame:CGRectMake(SCREEN_WIDTH-75-75, 8, 70, 25)];
-    
-    [leftBtn setTitle:@"" forState:UIControlStateNormal];
-    
-    [WYFTools viewLayer:3 withView:leftBtn];
-    
-    leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    
-    leftBtn.backgroundColor = [UIColor colorWithHexString:@"#c6c6c6"];
-
-    leftBtn.tag = section;
-    
-    UIButton* rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    [rightBtn setFrame:CGRectMake(SCREEN_WIDTH-75, 8, 70, 25)];
-    
-    rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-    
-    [rightBtn setTitle:@"" forState:UIControlStateNormal];
-
-    rightBtn.backgroundColor = [UIColor colorWithHexString:@"#b5b5b5"];
+    UIButton *rightBtn = [WYFTools createButton:CGRectMake(SCREEN_WIDTH-75, 8, 70, 25) bgColor:[UIColor colorWithHexString:@"#b5b5b5"] title:@"" titleFont:[UIFont systemFontOfSize:14] titleColor:[UIColor whiteColor] slectedTitleColor:nil tag:section action:nil vc:self];
 
     [WYFTools viewLayer:3 withView:rightBtn];
 

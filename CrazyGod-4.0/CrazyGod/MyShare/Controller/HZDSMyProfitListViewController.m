@@ -333,13 +333,7 @@ UITableViewDataSource
    
     [backView addSubview:view];
     
-    UILabel* shanghu = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-5-5, 20)];
-    
-    shanghu.text = [NSString stringWithFormat:@"编号:%@",model.listId];
-    
-    shanghu.textAlignment = NSTextAlignmentLeft;
-    
-    shanghu.font=[UIFont systemFontOfSize:13];
+    UILabel *shanghu = [WYFTools createLabel:CGRectMake(5, 5, SCREEN_WIDTH/2 - 10, 20) bgColor:[UIColor clearColor] text:[NSString stringWithFormat:@"编号:%@",model.listId] textFont:[UIFont systemFontOfSize:12] textAlignment:NSTextAlignmentLeft textColor:[UIColor blackColor] tag:section];
     
     shanghu.adjustsFontSizeToFitWidth = YES;
     
@@ -349,17 +343,14 @@ UITableViewDataSource
     
     [backView addSubview:view1];
    
-    UILabel* dingdantime = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-10, 20)];
+    UILabel *dingdantime = [WYFTools createLabel:CGRectMake(5, 5, SCREEN_WIDTH/2 - 10, 20) bgColor:[UIColor clearColor] text:[NSString stringWithFormat:@"分成时间:%@",model.time] textFont:[UIFont systemFontOfSize:12] textAlignment:NSTextAlignmentRight textColor:[UIColor blackColor] tag:section];
     
-    dingdantime.text =[NSString stringWithFormat:@"分成时间:%@",model.time];
+    dingdantime.adjustsFontSizeToFitWidth = YES;
     
-    dingdantime.textAlignment = NSTextAlignmentRight;
-    
-    dingdantime.font = [UIFont systemFontOfSize:13];
-
     [view1 addSubview:dingdantime];
     
     return backView;
+    
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -376,6 +367,7 @@ UITableViewDataSource
     NSInteger num = sender.tag - 400;
     
     [self moveLineLabel:num];
+    
 }
 
 - (void)didReceiveMemoryWarning {

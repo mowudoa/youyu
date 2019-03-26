@@ -125,6 +125,7 @@ UITableViewDataSource
             
             
         }
+        
         [strongSelf.logListTableView.mj_header endRefreshing];
         
     } fail:^(NSError *error, NSString *url, NSString *Json) {
@@ -209,27 +210,10 @@ UITableViewDataSource
     
     cell.logMoneyInfo.text = [NSString stringWithFormat:@"金额:￥%@元, %@",model.money,model.intro];
     
-    cell.timeLabel.text = [NSString stringWithFormat:@"时间:%@",[self ConvertStrToTime:model.time]];
-    
+    cell.timeLabel.text = [NSString stringWithFormat:@"时间:%@",[WYFTools ConvertStrToTime:model.time dateModel:@"yyyy-MM-dd HH:mm:ss" withDateMultiple:1]];
     
     return cell;
-}
--(NSString *)ConvertStrToTime:(NSString *)timeStr
 
-{
-    
-    long long time=[timeStr longLongValue];
-    
-    NSDate *d = [[NSDate alloc]initWithTimeIntervalSince1970:time];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    
-    NSString*timeString=[formatter stringFromDate:d];
-    
-    return timeString;
-    
 }
 
 #pragma mark - UITableViewDelegate

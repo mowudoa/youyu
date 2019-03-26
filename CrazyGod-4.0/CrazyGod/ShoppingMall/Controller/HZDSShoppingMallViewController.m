@@ -73,6 +73,7 @@ UICollectionViewDelegateFlowLayout
     [self registeCell];
     
     [self initData];
+    
 }
 -(void)initUI
 {

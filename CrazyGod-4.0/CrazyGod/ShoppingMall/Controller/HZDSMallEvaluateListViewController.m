@@ -154,6 +154,7 @@ UITableViewDataSource
     [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
+    
 }
 - (void)configureCell:(HZDSEvaluateTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     
@@ -171,7 +172,7 @@ UITableViewDataSource
     
     cell.starView.selectingenabled = NO;
     
-    cell.timeLabel.text = [self ConvertStrToTime:model.evaluateTime];
+    cell.timeLabel.text = [WYFTools ConvertStrToTime:model.evaluateTime dateModel:@"yyyy-MM-dd HH:mm:ss" withDateMultiple:1];
     
     if ([model.businessReply isEqualToString:@""]) {
        
@@ -179,7 +180,6 @@ UITableViewDataSource
      
         cell.businessReply.text = [NSString stringWithFormat:@"商家回复:%@",model.businessReply];
     }
-    
     
 }
 
@@ -206,23 +206,7 @@ UITableViewDataSource
 {
     return 0.01;
 }
--(NSString *)ConvertStrToTime:(NSString *)timeStr
 
-{
-    
-    long long time=[timeStr longLongValue];
-    
-    NSDate *d = [[NSDate alloc]initWithTimeIntervalSince1970:time];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    
-    NSString*timeString=[formatter stringFromDate:d];
-    
-    return timeString;
-    
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

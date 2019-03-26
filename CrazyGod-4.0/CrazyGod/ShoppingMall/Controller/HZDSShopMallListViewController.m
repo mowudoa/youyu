@@ -313,6 +313,7 @@ UITableViewDataSource
                 model.businessOldPrice = [business[@"price"] stringValue];
                 
                 [strongSelf.mallListArray addObject:model];
+                
             }
         
             [strongSelf.mallListTableView reloadData];

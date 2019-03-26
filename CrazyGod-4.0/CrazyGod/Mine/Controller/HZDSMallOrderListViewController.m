@@ -306,24 +306,6 @@ UITableViewDataSource
     
     return cell;
 }
--(NSString *)ConvertStrToTime:(NSString *)timeStr
-
-{
-    
-    long long time=[timeStr longLongValue];
-    
-    NSDate *d = [[NSDate alloc]initWithTimeIntervalSince1970:time];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    
-    NSString*timeString=[formatter stringFromDate:d];
-    
-    return timeString;
-    
-}
-
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -367,6 +349,7 @@ UITableViewDataSource
     [backView addSubview:view];
     
     UILabel* shanghu = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-5-5, 20)];
+    
     shanghu.text = [NSString stringWithFormat:@"ID:%@",model.orderID];
     
     shanghu.textAlignment = NSTextAlignmentLeft;
@@ -381,17 +364,14 @@ UITableViewDataSource
     
     [backView addSubview:view1];
     
-    UILabel* dingdantime = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-10, 20)];
-    
-    dingdantime.text =[NSString stringWithFormat:@"下单时间:%@",[self ConvertStrToTime:model.orderTime]];
-    
-    dingdantime.textAlignment = NSTextAlignmentRight;
-    
-    dingdantime.font = [UIFont systemFontOfSize:12];
+    UILabel *dingdantime = [WYFTools createLabel:CGRectMake(5, 5, SCREEN_WIDTH/2-10, 20) bgColor:[UIColor clearColor] text:[NSString stringWithFormat:@"下单时间:%@",[WYFTools ConvertStrToTime:model.orderTime dateModel:@"yyyy-MM-dd HH:mm:ss" withDateMultiple:1]] textFont:[UIFont systemFontOfSize:12] textAlignment:NSTextAlignmentRight textColor:[UIColor blackColor] tag:section];
 
+    dingdantime.adjustsFontSizeToFitWidth = YES;
+    
     [view1 addSubview:dingdantime];
     
     return backView;
+    
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -412,61 +392,15 @@ UITableViewDataSource
     
     [view addSubview:lineLabel];
     
-    UILabel* zongjia = [[UILabel alloc]initWithFrame:CGRectMake(15, 13,100, 20)];
-    
-    zongjia.font=[UIFont systemFontOfSize:14];
-    
-    zongjia.textAlignment = NSTextAlignmentLeft;
-    
-    zongjia.textColor = [UIColor colorWithHexString:@"BEC2C9"];
-    
-    [view addSubview:zongjia];
-    
-    UILabel* price = [[UILabel alloc]initWithFrame:CGRectMake(120, 13,SCREEN_WIDTH - 120 -75 -5, 20)];
-   
-    [view addSubview:price];
-    
-    price.tag = section;
-
-    price.textColor = [UIColor colorWithHexString:@"#BEC2C9"];
-    
-    price.font=[UIFont systemFontOfSize:14];
-    
-    price.textAlignment = NSTextAlignmentLeft;
-    
-    UIButton* leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-   
-    [leftBtn setFrame:CGRectMake(SCREEN_WIDTH-75-75, 8, 70, 25)];
-    
-    [leftBtn setTitle:@"" forState:UIControlStateNormal];
+    UIButton *leftBtn = [WYFTools createButton:CGRectMake(SCREEN_WIDTH-75-75, 8, 70, 25) bgColor:[UIColor colorWithHexString:@"#ff9980"] title:@"" titleFont:[UIFont systemFontOfSize:14] titleColor:[UIColor whiteColor] slectedTitleColor:nil tag:section action:@selector(tapleftBtn:) vc:self];
     
     [WYFTools viewLayer:3 withView:leftBtn];
-    
-    leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    
-    leftBtn.backgroundColor = [UIColor colorWithHexString:@"#ff9980"];
-
-    leftBtn.tag = section;
-
-    [leftBtn addTarget:self action:@selector(tapleftBtn:) forControlEvents:UIControlEventTouchUpInside];
 
     [view addSubview:leftBtn];
     
-    UIButton* rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton *rightBtn = [WYFTools createButton:CGRectMake(SCREEN_WIDTH-75, 8, 70, 25) bgColor:[UIColor colorWithHexString:@"#ff9980"] title:@"" titleFont:[UIFont systemFontOfSize:15] titleColor:[UIColor whiteColor] slectedTitleColor:nil tag:section action:@selector(tapBtn:) vc:self];
     
-    [rightBtn setFrame:CGRectMake(SCREEN_WIDTH-75, 8, 70, 25)];
-    
-    rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-    
-    [rightBtn setTitle:@"" forState:UIControlStateNormal];
-
-    rightBtn.backgroundColor = [UIColor colorWithHexString:@"#ff9980"];
-
     [WYFTools viewLayer:3 withView:rightBtn];
-
-    rightBtn.tag = section;
-
-    [rightBtn addTarget:self action:@selector(tapBtn:) forControlEvents:UIControlEventTouchUpInside];
 
     [view addSubview:rightBtn];
     

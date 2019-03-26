@@ -259,26 +259,9 @@ UITableViewDataSource
     
     cell.ingegralInfo.text = [NSString stringWithFormat:@"结算说明:%@",model.orderStatus];
     
-    cell.integralTime.text = [NSString stringWithFormat:@"日期:%@",[self ConvertStrToTime:model.orderTime]];
-    
+    cell.integralTime.text = [NSString stringWithFormat:@"日期:%@",[WYFTools ConvertStrToTime:model.orderTime dateModel:@"yyyy-MM-dd HH:mm:ss" withDateMultiple:1]];
     
     return cell;
-}
--(NSString *)ConvertStrToTime:(NSString *)timeStr
-
-{
-    
-    long long time=[timeStr longLongValue];
-    
-    NSDate *d = [[NSDate alloc]initWithTimeIntervalSince1970:time];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    
-    NSString*timeString=[formatter stringFromDate:d];
-    
-    return timeString;
     
 }
 

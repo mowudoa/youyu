@@ -78,7 +78,7 @@ selectedBtnDelagate
         
         if (SUCCESS) {
             
-            strongSelf.moneyLabel.text = [NSString stringWithFormat:@"￥%@",[dic[@"datas"][@"money"] stringValue]];
+            strongSelf.moneyLabel.text = [NSString stringWithFormat:@"¥%.2f",            [[dic[@"datas"][@"money"] stringValue] doubleValue]];
             
             NSArray *arr = dic[@"datas"][@"payment"];
             

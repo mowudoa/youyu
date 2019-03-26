@@ -176,6 +176,7 @@ UIActionSheetDelegate
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+  
     HZDSOrderTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"OrderTableViewCell" forIndexPath:indexPath];
     
     HZDSShoopTypeModel *order = _payTypeDataSource[indexPath.section];
@@ -215,6 +216,7 @@ UIActionSheetDelegate
         if ([model1.classId isEqualToString:model.shopId]) {
             
             shanghu.text = model1.className;
+            
         }
         
     }
@@ -228,6 +230,7 @@ UIActionSheetDelegate
     [backView addSubview:shanghu];
     
     return backView;
+    
 }
 #pragma mark - UITableViewDelegate
 
