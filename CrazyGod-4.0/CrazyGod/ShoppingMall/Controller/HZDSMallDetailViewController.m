@@ -241,7 +241,6 @@
     
     [_backGroundView addSubview:label1];
     
-    
     UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(20,label1.mj_y + label1.height,SCREEN_WIDTH - 40,30)];
     
     label2.text = @"商品介绍";

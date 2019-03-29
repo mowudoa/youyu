@@ -19,8 +19,11 @@ UINavigationControllerDelegate
 >
 {
     HZDSClassifyModel* _classModel;
+    
     HZDSSubClassModel* _subClassModel;
+    
     HZDSSubClassModel* _freightModel;
+
 }
 
 @property (weak, nonatomic) IBOutlet UIScrollView *backGroundScrollview;
@@ -222,6 +225,7 @@ UINavigationControllerDelegate
                     [model.subClassArray addObject:model1];
                     
                 }
+                
                 [strongSelf.classTypeDataSource addObject:model];
             }
            
@@ -266,8 +270,7 @@ UINavigationControllerDelegate
         if (SUCCESS) {
             
             NSArray *classArr = dic[@"datas"][@"cates"];
-            
-            
+
             for (NSDictionary *classDic in classArr) {
                 
                 HZDSClassifyModel *model = [[HZDSClassifyModel alloc] init];
@@ -275,7 +278,6 @@ UINavigationControllerDelegate
                 model.classId = classDic[@"cate_id"];
                 
                 model.className = classDic[@"cate_name"];
-                
                 
                 NSArray *subClassArr = classDic[@"son"];
                 
@@ -290,6 +292,7 @@ UINavigationControllerDelegate
                     [model.subClassArray addObject:model1];
                     
                 }
+                
                 [strongSelf.classTypeDataSource addObject:model];
             }
             

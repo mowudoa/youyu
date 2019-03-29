@@ -1844,12 +1844,12 @@
 				7101CA4F21DDCEE900E5F094 /* Constants */,
 				7101CA5221DDCEE900E5F094 /* Resources */,
 				7101CA5421DDCEE900E5F094 /* IQKeyboardReturnKeyHandler.h */,
+				7101CA6221DDCEE900E5F094 /* IQKeyboardReturnKeyHandler.m */,
 				7101CA5521DDCEE900E5F094 /* IQKeyboardManager.h */,
+				7101CA5A21DDCEE900E5F094 /* IQKeyboardManager.m */,
 				7101CA5621DDCEE900E5F094 /* IQSegmentedNextPrevious */,
 				7101CA5921DDCEE900E5F094 /* KeyboardManager.h */,
-				7101CA5A21DDCEE900E5F094 /* IQKeyboardManager.m */,
 				7101CA5B21DDCEE900E5F094 /* Categories */,
-				7101CA6221DDCEE900E5F094 /* IQKeyboardReturnKeyHandler.m */,
 			);
 			path = IQKeyBoardManager;
 			sourceTree = "<group>";
@@ -1866,14 +1866,14 @@
 		7101CA4621DDCEE900E5F094 /* IQToolbar */ = {
 			isa = PBXGroup;
 			children = (
-				7101CA4721DDCEE900E5F094 /* IQUIView+IQKeyboardToolbar.h */,
+				7101CA4C21DDCEE900E5F094 /* IQToolbar.h */,
 				7101CA4821DDCEE900E5F094 /* IQToolbar.m */,
+				7101CA4E21DDCEE900E5F094 /* IQTitleBarButtonItem.h */,
 				7101CA4921DDCEE900E5F094 /* IQTitleBarButtonItem.m */,
+				7101CA4D21DDCEE900E5F094 /* IQBarButtonItem.h */,
 				7101CA4A21DDCEE900E5F094 /* IQBarButtonItem.m */,
 				7101CA4B21DDCEE900E5F094 /* IQUIView+IQKeyboardToolbar.m */,
-				7101CA4C21DDCEE900E5F094 /* IQToolbar.h */,
-				7101CA4D21DDCEE900E5F094 /* IQBarButtonItem.h */,
-				7101CA4E21DDCEE900E5F094 /* IQTitleBarButtonItem.h */,
+				7101CA4721DDCEE900E5F094 /* IQUIView+IQKeyboardToolbar.h */,
 			);
 			path = IQToolbar;
 			sourceTree = "<group>";
@@ -1898,8 +1898,8 @@
 		7101CA5621DDCEE900E5F094 /* IQSegmentedNextPrevious */ = {
 			isa = PBXGroup;
 			children = (
-				7101CA5721DDCEE900E5F094 /* IQSegmentedNextPrevious.m */,
 				7101CA5821DDCEE900E5F094 /* IQSegmentedNextPrevious.h */,
+				7101CA5721DDCEE900E5F094 /* IQSegmentedNextPrevious.m */,
 			);
 			path = IQSegmentedNextPrevious;
 			sourceTree = "<group>";

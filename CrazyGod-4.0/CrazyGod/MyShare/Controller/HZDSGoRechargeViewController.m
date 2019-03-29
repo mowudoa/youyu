@@ -40,6 +40,7 @@
     _orderMoney.text = [NSString stringWithFormat:@"￥%@",[_payInfo[@"need_pay"] stringValue]];
     
     self.navigationItem.title = @"余额充值";
+    
 }
 - (IBAction)goPay:(UIButton *)sender {
 

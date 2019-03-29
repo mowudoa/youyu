@@ -56,6 +56,7 @@
     self.navigationItem.title = @"订单详情";
 
     [WYFTools viewLayer:_statusLabel.height/16*3 withView:_statusLabel];
+    
 }
 
 -(void)iniData
@@ -94,7 +95,6 @@
             NSString *expressName = nil;
        
             NSString *expressNum = nil;
-
             
             if (dic[@"datas"][@"express_name"] == NULL || dic[@"datas"][@"express_name"] == nil ||dic[@"datas"][@"express_name"] == [NSNull null]) {
                 
@@ -148,7 +148,7 @@
             
             strongSelf.statusLabel.text = dic[@"datas"][@"types"][@"status"];
             
-            strongSelf.orderTime.text = [self ConvertStrToTime:dic[@"datas"][@"detail"][@"create_time"]];
+            strongSelf.orderTime.text = [WYFTools ConvertStrToTime:dic[@"datas"][@"detail"][@"create_time"] dateModel:@"yyyy-MM-dd HH:mm:ss" withDateMultiple:1];
             
             strongSelf.orderCode.text = dic[@"datas"][@"detail"][@"order_id"];
             
@@ -177,23 +177,7 @@
     }];
     
 }
--(NSString *)ConvertStrToTime:(NSString *)timeStr
 
-{
-    
-    long long time=[timeStr longLongValue];
-    
-    NSDate *d = [[NSDate alloc]initWithTimeIntervalSince1970:time];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    
-    NSString*timeString=[formatter stringFromDate:d];
-    
-    return timeString;
-    
-}
 -(void)backBtn:(UIButton *)sender
 {
     if ([_orderPay isEqualToString:@"OrderPay"]) {

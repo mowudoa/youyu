@@ -50,6 +50,7 @@
     [WYFTools viewLayer:_headerImage.height/2 withView:_headerImage];
     
     [WYFTools viewLayer:3 withView:_vipRank];
+    
 }
 -(void)initData
 {
@@ -117,6 +118,7 @@
             HZDSLoginViewController *login = [[HZDSLoginViewController alloc] init];
             
             [self.navigationController pushViewController:login animated:YES];
+            
         }
         
     } fail:^(NSError *error, NSString *url, NSString *Json) {

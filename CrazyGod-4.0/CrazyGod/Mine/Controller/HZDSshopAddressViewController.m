@@ -151,9 +151,7 @@ deleteBtnDelagate
         LOG(@"cuow", Json);
         
     }];
-    
-    
-    
+        
 }
 #pragma mark - UITableViewDataSource
 

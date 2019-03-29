@@ -51,6 +51,7 @@
                 <constraint firstItem="Hgb-gd-J0E" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="tgR-nA-H3g"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="138.75" y="207.04225352112675"/>
         </view>
         <view contentMode="scaleToFill" id="KXO-xn-sXM">
             <rect key="frame" x="0.0" y="0.0" width="320" height="224"/>

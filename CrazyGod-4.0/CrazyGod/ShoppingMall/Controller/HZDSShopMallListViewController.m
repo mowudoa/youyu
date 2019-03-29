@@ -221,6 +221,7 @@ UITableViewDataSource
                 strongSelf.backGroundViewWithNothing.hidden = NO;
                 
                 strongSelf.mallListTableView.hidden = YES;
+                
             }
             
             for (NSDictionary *business in arr) {

@@ -160,7 +160,6 @@ WXApiDelegate
                     [[NSNotificationCenter defaultCenter]postNotificationName:@"zhifuchenggongWithRecharge" object:nil];
 
                 }
-                
 
                 break;
                default:
@@ -190,8 +189,8 @@ WXApiDelegate
         
         if(req.errCode == 0){
             
-            
             [self getWxInfo:req.code];
+            
         }
     }
 
@@ -218,10 +217,10 @@ WXApiDelegate
         
     }];
     
-    
 }
 -(void)goWX:(NSString *)url
 {
     
 }
+
 @end

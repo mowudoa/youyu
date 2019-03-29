@@ -35,6 +35,7 @@
     HZDSMallGoodsManageViewController *mallGoods = [[HZDSMallGoodsManageViewController alloc] init];
     
     [self.navigationController pushViewController:mallGoods animated:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning {

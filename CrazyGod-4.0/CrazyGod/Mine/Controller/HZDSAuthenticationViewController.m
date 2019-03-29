@@ -176,6 +176,7 @@ UINavigationControllerDelegate
                                  @"data[mobile]":_accontPhone.text,
                                  @"data[card_id]":_accountIDCard.text,
                                  @"data[addr_info]":_detailAddress.text};
+        
         [CrazyNetWork CrazyRequest_Post:AUTHENTICATION parameters:urlDic HUD:YES success:^(NSDictionary *dic, NSString *url, NSString *Json) {
             
             LOG(@"会员认证", dic);

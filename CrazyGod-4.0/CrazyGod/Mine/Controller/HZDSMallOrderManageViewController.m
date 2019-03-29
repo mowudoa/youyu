@@ -339,13 +339,7 @@ UITableViewDelegate
    
     [backView addSubview:view];
     
-    UILabel* shanghu = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-5-5, 20)];
-    
-    shanghu.text = [NSString stringWithFormat:@"订单ID:%@",model.orderID];
-    
-    shanghu.textAlignment = NSTextAlignmentLeft;
-   
-    shanghu.font=[UIFont systemFontOfSize:12];
+    UILabel *shanghu = [WYFTools createLabel:CGRectMake(5, 5, SCREEN_WIDTH/2-5-5, 20) bgColor:[UIColor clearColor] text:[NSString stringWithFormat:@"订单ID:%@",model.orderID] textFont:[UIFont systemFontOfSize:12] textAlignment:NSTextAlignmentLeft textColor:[UIColor blackColor] tag:section];
     
     shanghu.adjustsFontSizeToFitWidth = YES;
     
@@ -355,17 +349,12 @@ UITableViewDelegate
     
     [backView addSubview:view1];
     
-    UILabel* dingdantime = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, SCREEN_WIDTH/2-10, 20)];
-   
-    dingdantime.text =[NSString stringWithFormat:@"交易时间:%@",[WYFTools ConvertStrToTime:model.orderTime dateModel:@"yyyy-MM-dd HH:mm:ss" withDateMultiple:1]];
-    
-    dingdantime.textAlignment = NSTextAlignmentRight;
-    
-    dingdantime.font = [UIFont systemFontOfSize:12];
+    UILabel *dingdantime = [WYFTools createLabel:CGRectMake(5, 5, SCREEN_WIDTH/2-10, 20) bgColor:[UIColor clearColor] text:[NSString stringWithFormat:@"交易时间:%@",[WYFTools ConvertStrToTime:model.orderTime dateModel:@"yyyy-MM-dd HH:mm:ss" withDateMultiple:1]] textFont:[UIFont systemFontOfSize:12] textAlignment:NSTextAlignmentRight textColor:[UIColor blackColor] tag:section];
    
     [view1 addSubview:dingdantime];
     
     return backView;
+    
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -418,15 +407,13 @@ UITableViewDelegate
 
         }
         
-        
     }else if ([model.orderStatus isEqualToString:@"2"]){
         
         [rightBtn setTitle:@"仓库已捡货" forState:UIControlStateNormal];
         
-        
     }else if ([model.orderStatus isEqualToString:@"8"]){
         
-            [rightBtn setTitle:@"已完成配送" forState:UIControlStateNormal];
+        [rightBtn setTitle:@"已完成配送" forState:UIControlStateNormal];
  
     }else if ([model.orderStatus isEqualToString:@"4"]){
         
@@ -504,6 +491,7 @@ UITableViewDelegate
     express.orderId = orderId;
     
     [self.navigationController pushViewController:express animated:YES];
+    
 }
 //一键发货
 -(void)sendGoodsNoExpress:(NSString *)orderId
@@ -560,7 +548,6 @@ UITableViewDelegate
     
     [UIView animateWithDuration:0.3 animations:^{
         
-        
         lineFrame.origin.x =  index* SCREEN_WIDTH/2;
         
         self->_lineLabel.frame = lineFrame;
@@ -573,8 +560,8 @@ UITableViewDelegate
     
     NSInteger num = sender.tag - 400;
     
-    
     [self moveLineLabel:num];
+    
 }
 
 - (void)didReceiveMemoryWarning {

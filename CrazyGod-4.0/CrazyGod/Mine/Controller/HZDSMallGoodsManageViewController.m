@@ -359,7 +359,6 @@ UITableViewDataSource
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 40;
-    
 }
 -(void)tapleftBtn:(UIButton *)sender
 {
