@@ -313,7 +313,7 @@ UITableViewDataSource
     
     UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,0,SCREEN_WIDTH - 20,1)];
     
-    lineLabel.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
+    lineLabel.backgroundColor = [UIColor colorWithHexString:@"#F0EFF4"];
     
     [view addSubview:lineLabel];
    
@@ -323,7 +323,7 @@ UITableViewDataSource
    
     [view addSubview:leftBtn];
     
-    UIButton *rightBtn = [WYFTools createButton:CGRectMake(SCREEN_WIDTH-75, 8, 70, 25) bgColor:[UIColor colorWithHexString:@"46a0fc"] title:@"删除" titleFont:[UIFont systemFontOfSize:14] titleColor:[UIColor whiteColor] slectedTitleColor:nil tag:section action:@selector(tapRightBtn:) vc:self];
+    UIButton *rightBtn = [WYFTools createButton:CGRectMake(SCREEN_WIDTH-75, 8, 70, 25) bgColor:[UIColor colorWithHexString:@"#46A0FC"] title:@"删除" titleFont:[UIFont systemFontOfSize:14] titleColor:[UIColor whiteColor] slectedTitleColor:nil tag:section action:@selector(tapRightBtn:) vc:self];
     
     [WYFTools viewLayer:3 withView:rightBtn];
     

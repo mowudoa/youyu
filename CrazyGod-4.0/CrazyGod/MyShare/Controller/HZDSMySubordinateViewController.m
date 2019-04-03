@@ -66,11 +66,12 @@ UITableViewDataSource
     
     _lineLabel=[[UILabel alloc] initWithFrame:CGRectMake(0,40,SCREEN_WIDTH/2,2)];
     
-    _lineLabel.backgroundColor=[UIColor colorWithHexString:@"FF0270"];
+    _lineLabel.backgroundColor=[UIColor colorWithHexString:@"#FF0270"];
     
     [self.view addSubview:_lineLabel];
     
     [WYFTools autuLayoutNewMJ:_mySubordinateTableView];
+    
 }
 -(void)registercell
 {
@@ -316,7 +317,7 @@ UITableViewDataSource
     
     UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,30,SCREEN_WIDTH,1)];
     
-    lineLabel.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
+    lineLabel.backgroundColor = [UIColor colorWithHexString:@"#F0EFF4"];
     
     [backView addSubview:lineLabel];
     

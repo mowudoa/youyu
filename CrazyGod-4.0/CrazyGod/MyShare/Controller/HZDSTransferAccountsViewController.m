@@ -124,7 +124,7 @@
                 
                 strongSelf.transAccountButton.userInteractionEnabled = NO;
                 
-                [strongSelf.transAccountButton setBackgroundColor:[UIColor colorWithHexString:@"#aaaaaa"]];
+                [strongSelf.transAccountButton setBackgroundColor:[UIColor colorWithHexString:@"#AAAAAA"]];
             }
             
         } fail:^(NSError *error, NSString *url, NSString *Json) {
@@ -251,7 +251,7 @@
         
         [_getCodeButton setTitle:[NSString stringWithFormat:@"(%ldS)",(long)_num] forState:UIControlStateNormal];
         
-        [_getCodeButton setBackgroundColor:[UIColor colorWithHexString:@"808080"]];
+        [_getCodeButton setBackgroundColor:[UIColor colorWithHexString:@"#808080"]];
         
         [self performSelector:@selector(jishiTimer) withObject:nil afterDelay:1.0f];
         

@@ -115,9 +115,9 @@
     
     height1 = [WYFTools heightWithCreateTagLabel:[UIFont systemFontOfSize:12] tagArray:_historySearchArray itemSpace:2 itemHeight:20 currentX:0 currentY:0 superView:_historySearch action:@selector(click1:) vc:self buttonUserEnable:YES];
     
-    [WYFTools viewLayerBorderWidth:0.5 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_businessBtn];
+    [WYFTools viewLayerBorderWidth:0.5 borderColor:[UIColor colorWithHexString:@"#F5F5F5"] withView:_businessBtn];
     
-    [WYFTools viewLayerBorderWidth:0.5 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_textbackgroundView];
+    [WYFTools viewLayerBorderWidth:0.5 borderColor:[UIColor colorWithHexString:@"#F5F5F5"] withView:_textbackgroundView];
     
 }
 -(void)click:(UIButton *)sender

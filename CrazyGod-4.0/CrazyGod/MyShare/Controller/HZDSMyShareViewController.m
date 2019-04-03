@@ -86,6 +86,7 @@
                 
                 [USER_DEFAULT setObject:dic[@"datas"][@"MEMBER"][@"face"] forKey:@"face"];
                 
+                [USER_DEFAULT synchronize];
             }
             
             strongSelf.vipRank.text = [NSString stringWithFormat:@"VIP %@",dic[@"datas"][@"MEMBER"][@"rank_id"]];

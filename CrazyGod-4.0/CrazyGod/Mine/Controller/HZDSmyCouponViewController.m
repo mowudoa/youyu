@@ -81,7 +81,7 @@ couponBtnDelagate
     
     _lineLabel=[[UILabel alloc] initWithFrame:CGRectMake(0,45,SCREEN_WIDTH/3,2)];
     
-    _lineLabel.backgroundColor=[UIColor colorWithHexString:@"FF0270"];
+    _lineLabel.backgroundColor=[UIColor colorWithHexString:@"#FF0270"];
     
     [self.view addSubview:_lineLabel];
     

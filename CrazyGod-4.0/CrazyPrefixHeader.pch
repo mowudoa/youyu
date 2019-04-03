@@ -22,6 +22,7 @@
 #import "UIImageView+WebCache.h"
 #import "UIButton+WebCache.h"
 #import "UIView+SDAutoLayout.h"
+#import "IQKeyboardManager.h"
 #import "MJExtension.h"
 #import "MJRefresh.h"
 #import "JSONKit.h"
@@ -57,7 +58,6 @@
 //获取当前语言
 #define CurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0])
 
-
 #define HEIGHT(f) f * (SCREEN_WIDTH/320.0) //屏幕比例 算出实际UI大小
 
 #define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
@@ -66,6 +66,7 @@
 
 
 #define SUCCESS     [[NSString stringWithFormat:@"%d",[dic[@"code"] intValue]] isEqualToString:@"200"]
+
 #define FAILURE     [[NSString stringWithFormat:@"%d",[dic[@"status"] intValue]] isEqualToString:@"400"]
 
 

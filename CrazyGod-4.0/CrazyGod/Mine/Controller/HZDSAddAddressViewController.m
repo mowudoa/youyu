@@ -82,7 +82,7 @@ UIPickerViewDataSource
     
     [WYFTools viewLayer:5 withView:_addressDetailTextView];
     
-    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_addressDetailTextView];
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"#F5F5F5"] withView:_addressDetailTextView];
     
     [WYFTools viewLayer:_addAddressButton.height/16*3 withView:_addAddressButton];
     

@@ -80,7 +80,7 @@ UITableViewDataSource
     
     _lineLabel=[[UILabel alloc] initWithFrame:CGRectMake(0,40,SCREEN_WIDTH/3,2)];
     
-    _lineLabel.backgroundColor=[UIColor colorWithHexString:@"FF0270"];
+    _lineLabel.backgroundColor=[UIColor colorWithHexString:@"#FF0270"];
     
     [self.view addSubview:_lineLabel];
     
@@ -320,7 +320,7 @@ UITableViewDataSource
     
     UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,30,SCREEN_WIDTH,1)];
     
-    lineLabel.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
+    lineLabel.backgroundColor = [UIColor colorWithHexString:@"#F0EFF4"];
     
     [backView addSubview:lineLabel];
     
@@ -362,17 +362,17 @@ UITableViewDataSource
     
     UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,39,SCREEN_WIDTH,1)];
     
-    lineLabel.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
+    lineLabel.backgroundColor = [UIColor colorWithHexString:@"#F0EFF4"];
     
     [view addSubview:lineLabel];
     
-    UIButton *leftBtn = [WYFTools createButton:CGRectMake(SCREEN_WIDTH-75-75, 8, 70, 25) bgColor:[UIColor colorWithHexString:@"#ff9980"] title:@"" titleFont:[UIFont systemFontOfSize:14] titleColor:[UIColor whiteColor] slectedTitleColor:nil tag:section action:@selector(tapleftBtn:) vc:self];
+    UIButton *leftBtn = [WYFTools createButton:CGRectMake(SCREEN_WIDTH-75-75, 8, 70, 25) bgColor:[UIColor colorWithHexString:@"#FF9980"] title:@"" titleFont:[UIFont systemFontOfSize:14] titleColor:[UIColor whiteColor] slectedTitleColor:nil tag:section action:@selector(tapleftBtn:) vc:self];
     
     [WYFTools viewLayer:3 withView:leftBtn];
     
     [view addSubview:leftBtn];
     
-    UIButton *rightBtn = [WYFTools createButton:CGRectMake(SCREEN_WIDTH-75, 8, 70, 25) bgColor:[UIColor colorWithHexString:@"#b5b5b5"] title:@"" titleFont:[UIFont systemFontOfSize:14] titleColor:[UIColor whiteColor] slectedTitleColor:nil tag:section action:@selector(tapBtn:) vc:self];
+    UIButton *rightBtn = [WYFTools createButton:CGRectMake(SCREEN_WIDTH-75, 8, 70, 25) bgColor:[UIColor colorWithHexString:@"#B5B5B5"] title:@"" titleFont:[UIFont systemFontOfSize:14] titleColor:[UIColor whiteColor] slectedTitleColor:nil tag:section action:@selector(tapBtn:) vc:self];
 
     [WYFTools viewLayer:3 withView:rightBtn];
 
@@ -386,7 +386,7 @@ UITableViewDataSource
        
         rightBtn.userInteractionEnabled = YES;
         
-        rightBtn.backgroundColor = [UIColor colorWithHexString:@"#ff9980"];
+        rightBtn.backgroundColor = [UIColor colorWithHexString:@"#FF9980"];
 
         rightBtn.hidden = NO;
         
@@ -423,7 +423,7 @@ UITableViewDataSource
             
             [leftBtn setTitle:@"已评价" forState:UIControlStateNormal];
             
-            leftBtn.backgroundColor = [UIColor colorWithHexString:@"#b5b5b5"];
+            leftBtn.backgroundColor = [UIColor colorWithHexString:@"#B5B5B5"];
         }
     }
       

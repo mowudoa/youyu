@@ -258,7 +258,7 @@ UICollectionViewDelegateFlowLayout
         
         _searchView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH*0.8, 30)];
         
-        _searchView.backgroundColor = [UIColor colorWithHexString:@"ffffff"];
+        _searchView.backgroundColor = [UIColor colorWithHexString:@"#FFFFFF"];
         
         UIImageView *ima = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH*0.8 -30,8,14,14)];
         
@@ -298,7 +298,7 @@ UICollectionViewDelegateFlowLayout
         
         _searchTextField.textColor = [UIColor lightGrayColor];
         
-        _searchTextField.tintColor = [UIColor colorWithHexString:@"#1571fb"];
+        _searchTextField.tintColor = [UIColor colorWithHexString:@"#1571FB"];
         
     }
     
@@ -466,7 +466,7 @@ UICollectionViewDelegateFlowLayout
             
             UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,SCREEN_WIDTH/2+ 10)];
             
-            view.backgroundColor = [UIColor colorWithHexString:@"#f5f5f5"];
+            view.backgroundColor = [UIColor colorWithHexString:@"#F5F5F5"];
             
             if (_advArray.count > 0) {
                 
@@ -617,7 +617,7 @@ UICollectionViewDelegateFlowLayout
 {
     UIView * headSubView2 = [[UIView alloc] initWithFrame:CGRectMake(0 ,0, SCREEN_WIDTH,10)];
     
-    headSubView2.backgroundColor = [UIColor colorWithHexString:@"#f5f5f5"];
+    headSubView2.backgroundColor = [UIColor colorWithHexString:@"#F5F5F5"];
     
     headSubView2.userInteractionEnabled = YES;
     

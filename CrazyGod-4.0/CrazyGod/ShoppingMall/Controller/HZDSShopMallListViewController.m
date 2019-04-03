@@ -151,7 +151,7 @@ UITableViewDataSource
             
             NSArray* arr = @[@"选择分类",@"选择地区",@"选择排序"];
             
-            UIButton *button = [WYFTools createButton:CGRectMake(i*((SCREEN_WIDTH - 20)/3 + 5) ,0, (SCREEN_WIDTH - 20)/3, 35) bgColor:[UIColor clearColor] title:arr[i] titleFont:[UIFont systemFontOfSize:15] titleColor:[UIColor blackColor] slectedTitleColor:[UIColor colorWithHexString:@"#fc6621"]  tag:i + 10 action:@selector(touchheaderView:) vc:self];
+            UIButton *button = [WYFTools createButton:CGRectMake(i*(SCREEN_WIDTH - 20)/3 + 5*(i + 1) ,0, (SCREEN_WIDTH - 20)/3, 35) bgColor:[UIColor clearColor] title:arr[i] titleFont:[UIFont systemFontOfSize:15] titleColor:[UIColor blackColor] slectedTitleColor:[UIColor colorWithHexString:@"#FC6621"]  tag:i + 10 action:@selector(touchheaderView:) vc:self];
             
             _headerView.userInteractionEnabled = YES;
             
@@ -663,7 +663,7 @@ UITableViewDataSource
             
             [btn setTitle:model1.className forState:UIControlStateNormal];
             
-            [btn setTitleColor:[UIColor colorWithHexString:@"#fc6621"] forState:UIControlStateNormal];
+            [btn setTitleColor:[UIColor colorWithHexString:@"#FC6621"] forState:UIControlStateNormal];
 
             _classIDString = model1.classId;
             
@@ -681,7 +681,7 @@ UITableViewDataSource
             
             [btn setTitle:model1.className forState:UIControlStateNormal];
             
-            [btn setTitleColor:[UIColor colorWithHexString:@"#fc6621"] forState:UIControlStateNormal];
+            [btn setTitleColor:[UIColor colorWithHexString:@"#FC6621"] forState:UIControlStateNormal];
 
             btn.selected = NO;
             
@@ -718,7 +718,7 @@ UITableViewDataSource
 
             [btn setTitle:model.className forState:UIControlStateNormal];
 
-            [btn setTitleColor:[UIColor colorWithHexString:@"#fc6621"] forState:UIControlStateNormal];
+            [btn setTitleColor:[UIColor colorWithHexString:@"#FC6621"] forState:UIControlStateNormal];
 
         }
         
@@ -862,9 +862,9 @@ UITableViewDataSource
    
         HZDSSubClassTableViewCell *celled = [tableview cellForRowAtIndexPath:indexPath];
         
-        celled.backgroundColor = [UIColor colorWithHexString:@"#f9f9f9"];
+        celled.backgroundColor = [UIColor colorWithHexString:@"#F9F9F9"];
         
-        celled.nameLabel.textColor = [UIColor colorWithHexString:@"#fc6621"];
+        celled.nameLabel.textColor = [UIColor colorWithHexString:@"#FC6621"];
     }
     
 }

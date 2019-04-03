@@ -29,6 +29,7 @@
       //  self.backgroundColor = [UIColor redColor];
         [self createMyTabBarWithBackgroundImageName:@"tabbar_btn" andItemTitles:self.titleDataList andItemImagesName:self.imageDataList andItemSelectImagesName:self.selectedDataList andClass:self andSEL:@selector(tabbarSelected:)];
         
+        
     }
     return self;
 }

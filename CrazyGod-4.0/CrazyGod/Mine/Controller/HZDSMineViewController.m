@@ -236,6 +236,8 @@ UITableViewDataSource
         
         [self reloadData];
         
+        [USER_DEFAULT synchronize];
+
     } fail:^(NSError *error, NSString *url, NSString *Json) {
         
     }];

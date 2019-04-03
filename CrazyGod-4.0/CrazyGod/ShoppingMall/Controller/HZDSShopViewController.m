@@ -66,14 +66,6 @@ UICollectionViewDelegateFlowLayout
     
     self.navigationItem.title = @"店铺详情";
     
-    _lineLabel=[[UILabel alloc] initWithFrame:CGRectMake(0,169,SCREEN_WIDTH/8,2)];
-    
-    _lineLabel.backgroundColor=[UIColor colorWithHexString:@"#FF0270"];
-    
-    _lineLabel.centerX = SCREEN_WIDTH/8;
-    
-    [self.view addSubview:_lineLabel];
-    
     [WYFTools viewLayer:10 withView:_followButton];
     
 }
@@ -397,6 +389,25 @@ UICollectionViewDelegateFlowLayout
     
     [self moveLineLabel:num];
     
+}
+-(void)viewDidLayoutSubviews
+{
+    __weak typeof(self) weakSelf = self;
+    
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+    
+        weakSelf.lineLabel=[[UILabel alloc] initWithFrame:CGRectMake(0,weakSelf.shopGoodsCollectionView.mj_y - 2,SCREEN_WIDTH/8,2)];
+        
+        weakSelf.lineLabel.backgroundColor=[UIColor colorWithHexString:@"#FF0270"];
+        
+        weakSelf.lineLabel.centerX = SCREEN_WIDTH/8;
+        
+        [self.view addSubview:weakSelf.lineLabel];
+        
+    });
+ 
 }
 
 - (void)didReceiveMemoryWarning {

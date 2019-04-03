@@ -258,7 +258,7 @@ deleteBtnDelagate
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,10)];
     
-    view.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
+    view.backgroundColor = [UIColor colorWithHexString:@"#F0EFF4"];
     
     return view;
 }

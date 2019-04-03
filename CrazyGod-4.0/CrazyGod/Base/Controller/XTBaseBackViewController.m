@@ -24,7 +24,7 @@
 {
     UIButton* backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
    
-    [backBtn setFrame:CGRectMake(0, 0, 20, 20)];
+    [backBtn setFrame:CGRectMake(0, 0, 25, 25)];
     
     [backBtn addTarget:self action:@selector(backBtn:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -33,6 +33,7 @@
     UIBarButtonItem* im = [[UIBarButtonItem alloc]initWithCustomView:backBtn];
     
     self.navigationItem.leftBarButtonItem = im;
+    
 }
 -(void)backBtn:(UIButton*)sender
 {

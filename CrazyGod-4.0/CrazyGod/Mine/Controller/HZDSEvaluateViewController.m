@@ -55,7 +55,7 @@ UINavigationControllerDelegate
   
     [WYFTools viewLayer:5 withView:_evaluateTextView];
     
-    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_evaluateTextView];
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"#F5F5F5"] withView:_evaluateTextView];
     
     [WYFTools viewLayer:5 withView:_evaluateButton];
     

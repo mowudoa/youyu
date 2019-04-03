@@ -91,7 +91,7 @@ UITableViewDataSource
     
     _lineLabel=[[UILabel alloc] initWithFrame:CGRectMake(0,40,SCREEN_WIDTH/3,2)];
    
-    _lineLabel.backgroundColor=[UIColor colorWithHexString:@"FF0270"];
+    _lineLabel.backgroundColor=[UIColor colorWithHexString:@"#FF0270"];
     
     [self.view addSubview:_lineLabel];
     
@@ -344,7 +344,7 @@ UITableViewDataSource
         // 赋值
         cell.oldPriceLabel.attributedText = attribtStr;
         
-        cell.oldPriceLabel.textColor = [UIColor colorWithHexString:@"#dcdcdc"];
+        cell.oldPriceLabel.textColor = [UIColor colorWithHexString:@"#DCDCDC"];
         
         cell.priceLabel.text = [NSString stringWithFormat:@"价格:¥%@",model.orderNeedPayPrice];
         
@@ -382,7 +382,7 @@ UITableViewDataSource
         // 赋值
         cell.oldPriceLabel.attributedText = attribtStr;
         
-        cell.oldPriceLabel.textColor = [UIColor colorWithHexString:@"#dcdcdc"];
+        cell.oldPriceLabel.textColor = [UIColor colorWithHexString:@"#DCDCDC"];
         
         cell.priceLabel.text = [NSString stringWithFormat:@"价格:¥%@",model.orderNeedPayPrice];
         
@@ -467,7 +467,7 @@ UITableViewDataSource
     
     UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,39,SCREEN_WIDTH,1)];
    
-    lineLabel.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
+    lineLabel.backgroundColor = [UIColor colorWithHexString:@"#F0EFF4"];
     
     [view addSubview:lineLabel];
     
@@ -477,7 +477,7 @@ UITableViewDataSource
     
     zongjia.textAlignment = NSTextAlignmentLeft;
     
-    zongjia.textColor = [UIColor colorWithHexString:@"BEC2C9"];
+    zongjia.textColor = [UIColor colorWithHexString:@"#BEC2C9"];
     
     [view addSubview:zongjia];
     
@@ -504,7 +504,7 @@ UITableViewDataSource
     leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     
     
-    leftBtn.backgroundColor = [UIColor colorWithHexString:@"#ff9980"];
+    leftBtn.backgroundColor = [UIColor colorWithHexString:@"#FF9980"];
 
     leftBtn.tag = section;
 

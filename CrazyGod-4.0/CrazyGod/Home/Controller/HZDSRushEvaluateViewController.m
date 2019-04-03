@@ -73,13 +73,14 @@ UINavigationControllerDelegate
   
     [WYFTools viewLayer:5 withView:_evaluateTextView];
    
-    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_evaluateTextView];
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"#F5F5F5"] withView:_evaluateTextView];
     
     [WYFTools viewLayer:5 withView:_evaluateButton];
     
     self.navigationItem.title = @"商品点评";
     
     [WYFTools CreateTextPlaceHolder:@"还记得这家店吗?写点评记录生活,分享体验!" WithFont:[UIFont systemFontOfSize:14] WithSuperView:_evaluateTextView];
+    
 }
 -(void)initData
 {

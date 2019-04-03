@@ -85,6 +85,9 @@
                     NSLog(@"吊起成功");
                     
                     [USER_DEFAULT setObject:@"0" forKey:@"payGoodsOrMall"];
+                    
+                    [USER_DEFAULT synchronize];
+                    
                 }
                 
             }else{

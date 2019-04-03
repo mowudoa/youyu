@@ -25,7 +25,7 @@ XTBaseTabBarDelegate
     // Do any additional setup after loading the view.
     
     [self createTabBar];
-    
+        
     [self.tabBar addSubview:self.baseTabBar];
     
 }
@@ -78,7 +78,7 @@ XTBaseTabBarDelegate
 
 -(void)tabBar:(XTBaseTabBar *)tabBar itemIndex:(NSUInteger)index
 {
-    
+
     self.selectedIndex = index;
     
 }

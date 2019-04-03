@@ -107,7 +107,7 @@
 
         [_codeButton setTitle:[NSString stringWithFormat:@"(%ldS)",(long)_num] forState:UIControlStateNormal];
 
-        [_codeButton setBackgroundColor:[UIColor colorWithHexString:@"808080"]];
+        [_codeButton setBackgroundColor:[UIColor colorWithHexString:@"#808080"]];
         
         [self performSelector:@selector(jishiTimer) withObject:nil afterDelay:1.0f];
         

@@ -202,7 +202,7 @@ cityChoiceDelegate
         
         _searchImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH*0.8, 30)];
         
-        _searchImage.backgroundColor = [UIColor colorWithHexString:@"ffffff"];
+        _searchImage.backgroundColor = [UIColor colorWithHexString:@"#FFFFFF"];
         
         UIImageView *ima = [[UIImageView alloc] initWithFrame:CGRectMake(8,8,14,14)];
         
@@ -260,7 +260,7 @@ cityChoiceDelegate
         
         button.layer.cornerRadius = button.height/2;
 
-        button.backgroundColor = [UIColor colorWithHexString:@"ffffff"];
+        button.backgroundColor = [UIColor colorWithHexString:@"#FFFFFF"];
         
         UIView *leftCustomView = [[UIView alloc] initWithFrame: button.frame];
 

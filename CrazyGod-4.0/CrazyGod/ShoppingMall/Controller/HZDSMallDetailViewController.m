@@ -372,7 +372,6 @@
                 order.orderDic = dic;
                 
                 [USER_DEFAULT removeObjectForKey:@"choiceAddress"];
-
                 
                 NSArray *arr = [dic[@"datas"] allKeys];
                 

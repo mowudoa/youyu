@@ -82,6 +82,8 @@
 
                 [USER_DEFAULT setBool:YES forKey:@"isLogin"];
                 
+                [USER_DEFAULT synchronize];
+                
                 //登录成功获取用户信息,主要是拿到user_id
                 [[NSNotificationCenter defaultCenter]postNotificationName:@"getUserINfo" object:nil];
                 

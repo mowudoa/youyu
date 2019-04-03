@@ -158,11 +158,11 @@ UINavigationControllerDelegate
     
     [WYFTools viewLayer:5 withView:_buyInfoTextView];
     
-    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_buyInfoTextView];
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"#F5F5F5"] withView:_buyInfoTextView];
     
     [WYFTools viewLayer:5 withView:_goodsInfoTextView];
     
-    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_goodsInfoTextView];
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"#F5F5F5"] withView:_goodsInfoTextView];
     
     [WYFTools viewLayer:2 withView:_freightButton];
  
@@ -171,7 +171,7 @@ UINavigationControllerDelegate
     [WYFTools viewLayer:2 withView:_classTwoView];
 
     [WYFTools viewLayer:2 withView:_endDateButton];
-
+    
 }
 -(void)registercell
 {
@@ -511,9 +511,10 @@ UINavigationControllerDelegate
 
     }
     
-    cell.backgroundColor = [UIColor colorWithHexString:@"#f5f5f5"];
+    cell.backgroundColor = [UIColor colorWithHexString:@"#F5F5F5"];
     
     return cell;
+    
 }
 
 #pragma mark - UITableViewDelegate
@@ -950,7 +951,7 @@ UINavigationControllerDelegate
     [manager POST:UPLOADIMAGE parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         
         NSData *imageDatas = UIImageJPEGRepresentation(image,0.4);
-    
+        
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         
         formatter.dateFormat = @"yyyyMMddHHmmss";
@@ -969,7 +970,6 @@ UINavigationControllerDelegate
         NSLog(@"====成功====");
         
         [self saveUrl:responseObject withImage:image];
-        
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
        

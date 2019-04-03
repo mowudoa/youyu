@@ -16,7 +16,6 @@
 #import "HZDSOrderModel.h"
 #import "WXApi.h"
 
-
 @interface HZDSShopOrderViewController ()<
 UITableViewDelegate,
 UITableViewDataSource,
@@ -205,7 +204,7 @@ UIActionSheetDelegate
     
     UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,30,SCREEN_WIDTH,1)];
     
-    lineLabel.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
+    lineLabel.backgroundColor = [UIColor colorWithHexString:@"#F0EFF4"];
     
     [backView addSubview:lineLabel];
     
@@ -299,6 +298,8 @@ UIActionSheetDelegate
         HZDSshopAddressViewController *address = [[HZDSshopAddressViewController alloc] init];
         
         [USER_DEFAULT setObject:@"1" forKey:@"choiceAddress"];
+        
+        [USER_DEFAULT synchronize];
         
         if (_orderId != nil) {
             
@@ -457,6 +458,8 @@ UIActionSheetDelegate
                     NSLog(@"吊起成功");
                     
                     [USER_DEFAULT setObject:@"1" forKey:@"payGoodsOrMall"];
+                    
+                    [USER_DEFAULT synchronize];
                 }
                 
             }else{
@@ -580,6 +583,8 @@ UIActionSheetDelegate
     HZDSshopAddressViewController *address = [[HZDSshopAddressViewController alloc] init];
     
     [USER_DEFAULT setObject:@"1" forKey:@"choiceAddress"];
+    
+    [USER_DEFAULT synchronize];
     
     if (_orderId != nil) {
      

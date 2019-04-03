@@ -30,7 +30,7 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZK-Km-b5l">
                     <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qul-ON-lbl">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qul-ON-lbl" customClass="IQPreviousNextView">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="999"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oQE-E7-qbK">

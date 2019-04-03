@@ -133,7 +133,6 @@ WXApiDelegate
         
     }];
     
-    
 }
 
 #pragma mark  WXAPIDELEGATE
@@ -206,7 +205,6 @@ WXApiDelegate
         LOG(@"微信绑定", dic);
         
         if (SUCCESS) {
-            
             
         }else{
             

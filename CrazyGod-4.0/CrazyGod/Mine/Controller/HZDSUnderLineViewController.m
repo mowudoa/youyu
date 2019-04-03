@@ -162,32 +162,31 @@ UIPickerViewDataSource
  
     [WYFTools viewLayer:5 withView:_contractView];
     
-    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_contractView];
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"#F5F5F5"] withView:_contractView];
     
     [WYFTools viewLayer:5 withView:_businessIconView];
     
-    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_businessIconView];
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"#F5F5F5"] withView:_businessIconView];
     
     [WYFTools viewLayer:5 withView:_logoView];
     
-    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_logoView];
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"#F5F5F5"] withView:_logoView];
     
     [WYFTools viewLayer:5 withView:_idCardView];
     
-    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_idCardView];
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"#F5F5F5"] withView:_idCardView];
     
     [WYFTools viewLayer:5 withView:_idCardOutFaceView];
     
-    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_idCardOutFaceView];
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"#F5F5F5"] withView:_idCardOutFaceView];
     
     [WYFTools viewLayer:5 withView:_businessLIcenseView];
     
-    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_businessLIcenseView];
-    
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"#F5F5F5"] withView:_businessLIcenseView];
     
     [WYFTools viewLayer:5 withView:_businessInfoTextView];
     
-    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_businessInfoTextView];
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"#F5F5F5"] withView:_businessInfoTextView];
     
     [WYFTools viewLayer:_SettledButton.height/16*3 withView:_SettledButton];
     
@@ -198,6 +197,7 @@ UIPickerViewDataSource
     self.navigationItem.title = @"线下入驻";
     
     [self initAgreement];
+    
 }
 -(void)initAgreement
 {
@@ -614,6 +614,7 @@ UIPickerViewDataSource
         
     }
     
+    [USER_DEFAULT synchronize];
     
 }
 #pragma mark pickerview function

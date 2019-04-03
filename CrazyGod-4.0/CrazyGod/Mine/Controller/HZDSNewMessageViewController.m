@@ -248,7 +248,7 @@ UITableViewDataSource
     
     UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,39,SCREEN_WIDTH,1)];
     
-    lineLabel.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
+    lineLabel.backgroundColor = [UIColor colorWithHexString:@"#F0EFF4"];
     
     [view addSubview:lineLabel];
     
@@ -258,7 +258,7 @@ UITableViewDataSource
     
     zongjia.textAlignment = NSTextAlignmentLeft;
     
-    zongjia.textColor = [UIColor colorWithHexString:@"BEC2C9"];
+    zongjia.textColor = [UIColor colorWithHexString:@"#BEC2C9"];
     
     [view addSubview:zongjia];
     
@@ -284,7 +284,7 @@ UITableViewDataSource
     
     leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     
-    leftBtn.backgroundColor = [UIColor colorWithHexString:@"#ff9980"];
+    leftBtn.backgroundColor = [UIColor colorWithHexString:@"#FF9980"];
 
     leftBtn.tag = section;
     
@@ -296,7 +296,7 @@ UITableViewDataSource
     
     [rightBtn setTitle:@"详细" forState:UIControlStateNormal];
 
-    rightBtn.backgroundColor = [UIColor colorWithHexString:@"46a0fc"];
+    rightBtn.backgroundColor = [UIColor colorWithHexString:@"#46A0FC"];
 
     [WYFTools viewLayer:3 withView:rightBtn];
 

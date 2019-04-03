@@ -189,10 +189,8 @@ static NSString *const cellID = @"cellID";
 //        }
     
         NSString *name = [NSString stringWithFormat:@"%@%@",defaultImageUrl,[self.imgArr[itemIndex] objectForKey:@"photo"]];
-
     
-    
-        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:name] placeholderImage:[UIImage imageNamed:@"PLaceHolderpicture"]];
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:name] placeholderImage:[UIImage imageNamed:@"baseImage"]];
     
         cell.infoLabel.text = [self.imgArr[itemIndex] objectForKey:@"shop_name"];
   

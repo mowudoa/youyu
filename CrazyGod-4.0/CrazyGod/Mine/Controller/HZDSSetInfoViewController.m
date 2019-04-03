@@ -68,7 +68,7 @@
 
                 [strongSelf.authenticationButton setTitle:@"已认证" forState:UIControlStateNormal];
 
-                [strongSelf.authenticationButton setTitleColor:[UIColor colorWithHexString:@"#1ec46d"] forState:UIControlStateNormal];
+                [strongSelf.authenticationButton setTitleColor:[UIColor colorWithHexString:@"#1EC46D"] forState:UIControlStateNormal];
             }
             
             if ([dic[@"datas"][@"bind"] isKindOfClass:[NSArray class]]) {
@@ -84,7 +84,7 @@
                 
                 [strongSelf.linkWChatButton setTitle:@"已绑定" forState:UIControlStateNormal];
 
-                [strongSelf.linkWChatButton setTitleColor:[UIColor colorWithHexString:@"#1ec46d"] forState:UIControlStateNormal];
+                [strongSelf.linkWChatButton setTitleColor:[UIColor colorWithHexString:@"#1EC46D"] forState:UIControlStateNormal];
             }
             
         }else{

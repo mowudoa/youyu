@@ -208,7 +208,7 @@ UITableViewDataSource
     
     UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,34,SCREEN_WIDTH,1)];
     
-    lineLabel.backgroundColor = [UIColor colorWithHexString:@"f5f5f5"];
+    lineLabel.backgroundColor = [UIColor colorWithHexString:@"#F5F5F5"];
     
     [backView addSubview:lineLabel];
     

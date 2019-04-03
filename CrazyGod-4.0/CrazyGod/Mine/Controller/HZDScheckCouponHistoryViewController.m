@@ -265,9 +265,9 @@ UITableViewDataSource
     
     cell.oldPriceLabel.text = [NSString stringWithFormat:@"验证码:%@",model.couponNUm];
     
-    cell.oldPriceLabel.textColor = [UIColor colorWithHexString:@"#dcdcdc"];
+    cell.oldPriceLabel.textColor = [UIColor colorWithHexString:@"#DCDCDC"];
     
-    cell.numLabel.textColor = [UIColor colorWithHexString:@"#dcdcdc"];
+    cell.numLabel.textColor = [UIColor colorWithHexString:@"#DCDCDC"];
 
     
     return cell;
@@ -313,7 +313,7 @@ UITableViewDataSource
     
     UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,30,SCREEN_WIDTH,1)];
    
-    lineLabel.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
+    lineLabel.backgroundColor = [UIColor colorWithHexString:@"#F0EFF4"];
     
     [backView addSubview:lineLabel];
     
@@ -353,12 +353,12 @@ UITableViewDataSource
     
     UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,39,SCREEN_WIDTH,1)];
    
-    lineLabel.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
+    lineLabel.backgroundColor = [UIColor colorWithHexString:@"#F0EFF4"];
     
     [view addSubview:lineLabel];
     
 
-    UIButton *rightBtn = [WYFTools createButton:CGRectMake(SCREEN_WIDTH-75, 8, 70, 25) bgColor:[UIColor colorWithHexString:@"#b5b5b5"] title:[NSString stringWithFormat:@"验证-%@",model.couponChecker] titleFont:[UIFont systemFontOfSize:15] titleColor:[UIColor whiteColor] slectedTitleColor:nil tag:section action:nil vc:self];
+    UIButton *rightBtn = [WYFTools createButton:CGRectMake(SCREEN_WIDTH-75, 8, 70, 25) bgColor:[UIColor colorWithHexString:@"#B5B5B5"] title:[NSString stringWithFormat:@"验证-%@",model.couponChecker] titleFont:[UIFont systemFontOfSize:15] titleColor:[UIColor whiteColor] slectedTitleColor:nil tag:section action:nil vc:self];
     
     [WYFTools viewLayer:3 withView:rightBtn];
 

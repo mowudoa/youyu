@@ -46,7 +46,6 @@ UITableViewDataSource
 
 @property(strong,nonatomic)UITextField* searchTextField;
 
-
 @property(nonatomic,strong) NSMutableArray *businessArray;
 
 @property(nonatomic,strong) NSMutableArray *classArray;
@@ -129,6 +128,7 @@ UITableViewDataSource
     UIBarButtonItem* im = [[UIBarButtonItem alloc]initWithCustomView:backBtn];
     
     self.navigationItem.leftBarButtonItem = im;
+    
 }
 -(void)registercell
 {
@@ -542,7 +542,7 @@ UITableViewDataSource
             
             [btn setTitle:model1.className forState:UIControlStateNormal];
             
-            [btn setTitleColor:[UIColor colorWithHexString:@"#fc6621"] forState:UIControlStateNormal];
+            [btn setTitleColor:[UIColor colorWithHexString:@"#FC6621"] forState:UIControlStateNormal];
 
             _classIDString = model1.classId;
             
@@ -560,7 +560,7 @@ UITableViewDataSource
             
             [btn setTitle:model1.className forState:UIControlStateNormal];
             
-            [btn setTitleColor:[UIColor colorWithHexString:@"#fc6621"] forState:UIControlStateNormal];
+            [btn setTitleColor:[UIColor colorWithHexString:@"#FC6621"] forState:UIControlStateNormal];
 
             btn.selected = NO;
             
@@ -591,7 +591,7 @@ UITableViewDataSource
 
         btn.selected = NO;
         
-        [btn setTitleColor:[UIColor colorWithHexString:@"#fc6621"] forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor colorWithHexString:@"#FC6621"] forState:UIControlStateNormal];
 
     }else{
         
@@ -630,7 +630,7 @@ UITableViewDataSource
         
         _searchImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH*0.8, 30)];
       
-        _searchImage.backgroundColor = [UIColor colorWithHexString:@"f0eff4"];
+        _searchImage.backgroundColor = [UIColor colorWithHexString:@"#F0EFF4"];
         
         UIImageView *ima = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH*0.8 - 30,8,14,14)];
        
@@ -667,7 +667,7 @@ UITableViewDataSource
         
         _searchTextField.placeholder = @"输入商家关键字";
         
-        [_searchTextField setValue:[UIColor colorWithHexString:@"b5b5b5"] forKeyPath:@"_placeholderLabel.textColor"];
+        [_searchTextField setValue:[UIColor colorWithHexString:@"#B5B5B5"] forKeyPath:@"_placeholderLabel.textColor"];
        
         _searchTextField.borderStyle = UITextBorderStyleNone;
         
@@ -695,8 +695,7 @@ UITableViewDataSource
           
             NSArray* arr = @[@"选择分类",@"选择地区",@"选择排序"];
             
-            
-            UIButton *button = [WYFTools createButton:CGRectMake(i*((SCREEN_WIDTH - 20)/3 + 5) ,0, (SCREEN_WIDTH - 20)/3, 35) bgColor:[UIColor clearColor] title:arr[i] titleFont:[UIFont systemFontOfSize:15] titleColor:[UIColor blackColor] slectedTitleColor:[UIColor colorWithHexString:@"#fc6621"]  tag:i + 10 action:@selector(touchheaderView:) vc:self];
+            UIButton *button = [WYFTools createButton:CGRectMake(i*(SCREEN_WIDTH - 20)/3 + 5*(i + 1) ,0, (SCREEN_WIDTH - 20)/3, 35) bgColor:[UIColor clearColor] title:arr[i] titleFont:[UIFont systemFontOfSize:15] titleColor:[UIColor blackColor] slectedTitleColor:[UIColor colorWithHexString:@"#FC6621"]  tag:i + 10 action:@selector(touchheaderView:) vc:self];
             
             _headerView.userInteractionEnabled = YES;
             
@@ -869,9 +868,9 @@ UITableViewDataSource
     
         HZDSSubClassTableViewCell *celled = [tableview cellForRowAtIndexPath:indexPath];
         
-        celled.backgroundColor = [UIColor colorWithHexString:@"#f9f9f9"];
+        celled.backgroundColor = [UIColor colorWithHexString:@"#F9F9F9"];
         
-        celled.nameLabel.textColor = [UIColor colorWithHexString:@"#fc6621"];
+        celled.nameLabel.textColor = [UIColor colorWithHexString:@"#FC6621"];
         
     }
     

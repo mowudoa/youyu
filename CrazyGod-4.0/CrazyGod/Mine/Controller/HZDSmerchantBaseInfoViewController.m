@@ -46,7 +46,7 @@
     
     [WYFTools viewLayer:10 withView:_describeTextView];
     
-    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"f5f5f5"] withView:_describeTextView];
+    [WYFTools viewLayerBorderWidth:1 borderColor:[UIColor colorWithHexString:@"#F5F5F5"] withView:_describeTextView];
     
     [WYFTools viewLayer:_editButton.height/16*3 withView:_editButton];
     
